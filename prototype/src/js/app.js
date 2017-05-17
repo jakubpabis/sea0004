@@ -15,11 +15,15 @@ if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
 else window.addEventListener('load', loadDeferredStyles);
 //-------------------- /Load some deferred styles --------------------//
 
-function openSearch() {
+function openSearch() 
+{
 	document.getElementById('search-field-general').classList.add('active');
-	document.getElementById('search-field-general-input').focus();
+	setTimeout(function() {
+		document.getElementById('search-field-general-input').focus();
+	}, 500);
 }
 
-function hideSearch() {
+function hideSearch() 
+{
 	document.getElementById('search-field-general').classList.remove('active');
 }
