@@ -15,8 +15,9 @@ if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
 else window.addEventListener('load', loadDeferredStyles);
 //-------------------- /Load some deferred styles --------------------//
 
-function openSearch() 
+function openSearch($el) 
 {
+	$el.classList.add('active');
 	document.getElementById('search-field-general').classList.add('active');
 	setTimeout(function() {
 		document.getElementById('search-field-general-input').focus();
@@ -26,4 +27,5 @@ function openSearch()
 function hideSearch() 
 {
 	document.getElementById('search-field-general').classList.remove('active');
+	document.getElementsByClassName('search-btn')[0].classList.remove('active');
 }

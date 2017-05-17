@@ -116,6 +116,11 @@
 			font-size: 32px;
 		}
 
+		&.active {
+			font-size: 32px;
+			color: $color-tertiary;
+		}
+
 	}
 
 	.search-field {

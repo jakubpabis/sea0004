@@ -2,7 +2,34 @@
 @@include('navigation.html')
 
 <section class="home-header">
-	
+	<div class="home-header__image">
+		<picture class="bg-cover">
+			<source media="(min-width: 768px)" srcset="assets/img/bench-accounting-49025.jpg">
+            <!-- <source media="(min-width: 569px)" srcset="{{ feature_img|media|resize(364, 349) }}">
+            <source media="(min-width: 480px)" srcset="{{ feature_img|media|resize(538, 516) }}">
+            <source media="(min-width: 240px)" srcset="{{ feature_img|media|resize(450, 432) }}"> -->
+            <img class="bg-cover" src="assets/img/bench-accounting-49025.jpg">
+		</picture>
+	</div>
+	<div class="home-header__text">
+		<div class="centerV-container">
+			<div class="centerV-content">
+				<div class="container__half-right">
+					<h1>
+						Specialized in<br/> Digital Recruitment
+					</h1>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua.
+					</p>
+					<form class="search-box">
+						<input type="text" class="search-box__field" placeholder="Enter a job title  -  eg. Web Developer">
+						<input type="submit" value="Search" class="search-box__submit">
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
 </section>
 
 @@include('footer.html')
