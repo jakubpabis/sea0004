@@ -4,8 +4,6 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Search It Recruitment</title>
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link rel="stylesheet" href="assets/css/prototype.css">
 </head>
 <body>
@@ -18,23 +16,42 @@
 				</a>
 			</div>
 			<div class="right">
+				<ul class="social">
+					<li>
+						<a href="#">
+							<i class="fa fa-facebook" aria-hidden="true"></i>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<i class="fa fa-twitter" aria-hidden="true"></i>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<i class="fa fa-instagram" aria-hidden="true"></i>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<i class="fa fa-linkedin" aria-hidden="true"></i>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<i class="fa fa-google-plus" aria-hidden="true"></i>
+						</a>
+					</li>
+				</ul>
 				<a href="#" class="btn btn-default">
 					<span>Upload CV</span>
 				</a>
-				<!-- <div class="lang">
-					<a href="#">
-						<object type="image/svg+xml" data="assets/img/gb.svg"></object>
-					</a>
-					<a href="#">
-						<object type="image/svg+xml" data="assets/img/nl.svg"></object>
-					</a>
-				</div> -->
 			</div>
 		</div>
 		<div class="bottom">
 			<div class="left">
 				<ul class="menu">
-					<li>
+					<!-- <li>
 						<a href="" title="">Jobs</a>
 					</li>
 					<li>
@@ -48,6 +65,24 @@
 					</li>
 					<li>
 						<a href="" title="">Our Team</a>
+					</li>
+					<li>
+						<a href="" title="">Contact</a>
+					</li> -->
+					<li>
+						<a href="" title="">Vacatures</a>
+					</li>
+					<li>
+						<a href="" title="">Kandidaten</a>
+					</li>
+					<li>
+						<a href="" title="">Opdrachtgevers</a>
+					</li>
+					<li>
+						<a href="" title="">Referenties</a>
+					</li>
+					<li>
+						<a href="" title="">Ons Team</a>
 					</li>
 					<li>
 						<a href="" title="">Contact</a>
@@ -82,7 +117,15 @@
 						</a>
 					</li>
 				</ul>
-				<i class="material-icons search-btn" aria-hidden="true">search</i>
+				<i class="material-icons search-btn" aria-hidden="true" onclick="openSearch()">search</i>
+				<form class="search-field" id="search-field-general">
+					<input type="text" id="search-field-general-input" placeholder="Zoek vacatures..." onblur="hideSearch()">
+				</form>
+				<a href="#" class="lang">
+					<i class="material-icons" aria-hidden="true">language</i>
+					<span>English</span>
+					<!-- <span>Nederlands</span> -->
+				</a>
 			</div>
 		</div>
 	</div>
@@ -92,10 +135,11 @@
 	
 </section>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" defer></script>
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" defer></script> -->
 	<script type="text/javascript" src="assets/js/app.js" defer></script>
-	<!-- <noscript id="deferred-styles">
-		<link href="https://fonts.googleapis.com/css?family=Libre+Franklin:300,600" rel="stylesheet">
-	</noscript> -->
+	<noscript id="deferred-styles">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500,700">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	</noscript>
 </body>
 </html>
