@@ -10,8 +10,7 @@
 		height: 64px;
 		width: auto;
 		display: inline-block;
-		float: left;
-		margin-top: 16px;
+		line-height: 64px;
 
 		object,
 		svg {
@@ -23,18 +22,127 @@
 	}
 
 	.top {
-		height: 100px;
+		height: 99px;
 		width: 100%;
 		display: block;
 		position: relative;
 		border-bottom: 1px solid rgba($color-primary, 0.1);
+		line-height: 99px;
 	}
 
 	.bottom {
-		height: 50px;
+		height: 60px;
 		width: 100%;
 		display: block;
 		position: relative;
+	}
+
+	.left {
+		float: left;
+		display: inline-block;
+	}
+
+	.right {
+		float: right;
+		display: inline-block;
+	}
+
+	.lang {
+		display: inline-block;
+		float: right;
+		position: relative;
+		height: 46px;
+		padding-left: 20px;
+		margin-top: 28px;
+
+		a {
+			text-decoration: none;
+			display: block;
+			height: 17px;
+			line-height: 17px;
+			width: 22px;
+			margin: 0;
+
+			object,
+			svg {
+				width: 22px;
+				display: block;
+				pointer-events: none;
+			}
+
+			&:first-of-type {
+				padding-bottom: 6px;
+			}
+
+			&:last-of-type {
+				padding-top: 6px;
+			}
+
+		}
+
+	}
+
+	.search-btn {
+		width: 60px;
+		// padding: 0 10px;
+		height: 60px;
+		line-height: 60px;
+		border-left: 1px solid rgba($color-primary, 0.1);
+		text-align: center;
+		font-size: 24px;
+		color: $color-primary;
+		cursor: pointer;
+		transition: all 200ms ease;
+
+		&:hover {
+			font-size: 32px;
+		}
+
+	}
+
+	.social {
+		padding: 0 15px;
+		height: 60px;
+		line-height: 60px;
+		margin: 0;
+		list-style: none;
+		color: $color-primary;
+		display: inline-block;
+		float: left;
+
+		li {
+			float: left;
+			line-height: 60px;
+
+			a {
+				padding: 0 10px;
+				color: $color-primary;
+				text-align: center;
+				text-decoration: none;
+				display: block;
+				position: relative;
+				
+				i {
+					display: block;
+					position: relative;
+					height: 60px;
+					line-height: 60px;
+					font-size: 18px;
+					transition: all 200ms ease;
+				}
+
+				&:hover {
+
+					i {
+						color: $color-tertiary;
+					}
+
+				}
+
+			}
+
+		}
+
 	}
 
 	.menu {
@@ -54,13 +162,37 @@
 				color: $color-primary;
 				text-decoration: none;
 				display: block;
+				position: relative;
 				height: 100%;
 				line-height: 60px;
 				padding: 0 15px;
 				font-size: 12px;
 				text-transform: uppercase;
-				font-weight: 400;
+				font-weight: 500;
 				letter-spacing: 0.5px;
+
+				&:after {
+					display: block;
+					position: absolute;
+					bottom: 0px;
+					left: 50%;
+					width: 0;
+					height: 3px;
+					content: '';
+					background-color: rgba($color-tertiary, 0.7);
+					transition: all 250ms ease;
+				}
+
+				&:hover {
+
+					&:after {
+						height: 3px;
+						width: calc(100% - 30px);
+						left: 15px;
+					}
+
+				}
+
 			}
 
 		}
