@@ -47,6 +47,11 @@
 		width: 100%;
 		display: block;
 		position: relative;
+
+		> div {
+			height: 60px;
+		}
+
 	}
 
 	.left {
@@ -230,11 +235,12 @@
 			margin: 0 0 0 -10px;
 		}
 
-		li {
+		> li {
 			float: left;
 			line-height: 60px;
+			position: relative;
 
-			a {
+			> a {
 				color: $color-primary;
 				text-decoration: none;
 				display: block;
@@ -246,6 +252,7 @@
 				text-transform: uppercase;
 				font-weight: 500;
 				letter-spacing: 0.5px;
+				transition: all 250ms ease;
 
 				@media(max-width: 1080px) {
 					padding: 0 10px;
@@ -263,10 +270,11 @@
 					transition: all 250ms ease;
 				}
 
-				&:hover {
+				&:hover,
+				&.active {
+					color: $color-tertiary;
 
 					&:after {
-						height: 3px;
 						width: calc(100% - 30px);
 						left: 15px;
 
@@ -277,6 +285,46 @@
 
 					}
 
+				}
+
+			}
+
+			.sub {
+				position: absolute;
+				background-color: $color-light;
+				z-index: 9;
+				width: auto;
+				list-style: none;
+				padding: 0;
+				transition: all 250ms ease;
+				display: none;
+
+				li {
+					float: none;
+
+					a {
+						display: block;
+						height: 40px;
+						line-height: 40px;
+						font-size: 12px;
+						font-weight: 500;
+						color: $color-primary;
+						text-decoration: none;
+						text-transform: uppercase;
+						padding: 0 15px;
+						letter-spacing: 0.5px;
+						position: relative;
+						transition: all 250ms ease;
+					}
+
+				}
+
+			}
+
+			&:hover {
+
+				.sub {
+					
 				}
 
 			}

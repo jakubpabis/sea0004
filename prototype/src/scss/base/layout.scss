@@ -4,8 +4,7 @@ body {
 	position: relative;
 	display: block;
 	font-family: 'Roboto', sans-serif;
-	// font-family: 'Montserrat', sans-serif;
-	// font-weight: 300;
+	font-weight: 400;
 	font-size: 16px;
 	color: $color-primary;
 	min-height: 200vh;
@@ -86,4 +85,15 @@ section {
 		position: absolute;
 	}
 
+}
+
+.flex-cont {
+	display: flex;
+	flex-wrap: nowrap;
+	align-content: stretch;
+	align-items: stretch;
+}
+
+.flex-item {
+	align-self: stretch;
 }

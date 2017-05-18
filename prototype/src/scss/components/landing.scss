@@ -17,6 +17,8 @@
 			
 			.container__half-right {
 				padding-left: 100px;
+				padding-right: 15px;
+				max-width: 455px;
 			}
 
 			h1 {
@@ -27,15 +29,12 @@
 				margin-top: 20px;
 				width: auto;
 				display: inline-block;
-				// border-bottom: 2px solid $color-tertiary;
+				position: relative;
 
 				&__field {
 					border: none;
-					// border-top: 2px solid transparent;
-					// border-left: 2px solid transparent;
-					border-bottom: 2px solid transparent;
 					line-height: 1.44;
-					height: 48px;
+					height: 50px;
 					outline: none;
 					-webkit-appearance: none;
 					appearance: none;
@@ -51,7 +50,14 @@
 					float: left;
 
 					&:focus {
-						border-color: $color-tertiary;
+						-webkit-box-shadow: 3px 3px 0 0 rgba(0, 0, 0, 0.7);
+						box-shadow: 3px 3px 0 0 rgba(0, 0, 0, 0.7);
+						
+						&+.search-box__submit {
+							-webkit-box-shadow: 3px 3px 0 0 rgba(0, 0, 0, 0.7);
+							box-shadow: 3px 3px 0 0 rgba(0, 0, 0, 0.7);
+						}
+
 					}
 
 				}
@@ -63,25 +69,99 @@
 					outline: none;
 					-webkit-appearance: none;
 					appearance: none;
-					padding: 0 15px;
+					padding: 0 0 0 50px;
 					margin: 0;
 					background-color: $color-tertiary;
 					font-family: 'Roboto', sans-serif;
 					float: left;
-					color: $color-light;
+					color: $color-tertiary;
 					font-size: 13px;
 					font-weight: 500;
 					letter-spacing: 0.5px;
 					text-transform: uppercase;
-					width: 100px;
+					width: 50px;
 					transition: all 250ms ease;
 					display: inline-block;
 					cursor: pointer;
 
-					&:hover {
-						
+					&-icon {
+						height: 50px;
+						width: 50px;
+						line-height: 50px;
+						text-align: center;
+						display: block;
+						position: absolute;
+						right: 0px;
+						top: 0;
+						cursor: pointer;
+						pointer-events: none;
+						background-color: $color-tertiary;
+						font-size: 24px;
 					}
 
+					&:hover {
+						width: 120px;
+						padding: 0 50px 0 15px;
+						color: $color-light;
+					}
+
+				}
+
+			}
+
+		}
+
+	}
+
+	&-categories {
+		background-color: $color-tertiary;
+		padding: 96px 0;
+		
+		&__grid-container {
+			display: flex;
+			flex-wrap: wrap;
+			margin: 0 -30px;
+		}
+
+		&__grid {
+			flex-basis: 20%;
+			width: 20%;
+		}
+
+		&__grid-content {
+			padding: 20px 30px;
+			color: $color-light;
+			text-align: center;
+			cursor: pointer;
+			transition: all 250ms ease;
+
+			i {
+				font-size: 44px;
+				margin-bottom: 25px;
+				transition: all 250ms ease;
+				text-shadow: 0 0 0 transparent;
+			}
+
+			.category-title {
+				margin: 0;
+				font-size: 14px;
+				text-transform: uppercase;
+				font-weight: 500;
+				transition: all 250ms ease;
+				text-shadow: 0 0 0 transparent;
+			}
+
+			&:hover {
+				padding-bottom: 5px;
+				transform: translateY(-5px);
+
+				i {
+					transform: scale(1.2);
+					text-shadow: 2px 3px 0 $color-darker;
+				}
+
+				.category-title {
+					text-shadow: 1px 2px 1px $color-darker;
 				}
 
 			}
