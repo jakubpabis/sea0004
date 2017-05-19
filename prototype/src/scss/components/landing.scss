@@ -14,12 +14,6 @@
 			height: 600px;
 			background-color: $color-primary;
 			color: $color-light;
-			
-			.container__half-right {
-				padding-left: 100px;
-				padding-right: 15px;
-				max-width: 455px;
-			}
 
 			h1 {
 				margin: 0;
@@ -152,7 +146,6 @@
 			}
 
 			&:hover {
-				padding-bottom: 5px;
 				transform: translateY(-5px);
 
 				i {
@@ -162,6 +155,38 @@
 
 				.category-title {
 					text-shadow: 1px 2px 1px $color-darker;
+				}
+
+			}
+
+		}
+
+	}
+
+	&-about {
+
+		&__section {
+			display: flex;
+			flex-wrap: nowrap;
+
+			&-img-left,
+			&-img-right,
+			&-text-left,
+			&-text-right {
+				flex-basis: 50%;
+				height: 640px;
+
+				h2,
+				h3 {
+					margin-top: 0;
+				}
+
+				a {
+					text-decoration: underline;
+				}
+
+				p:last-of-type {
+					margin-bottom: 0;
 				}
 
 			}
