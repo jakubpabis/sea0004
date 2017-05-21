@@ -64,7 +64,6 @@
 		display: inline-block;
 	}
 
-
 	.lang {
 		text-decoration: none;
 		display: inline-block;
@@ -175,7 +174,7 @@
 		display: inline-block;
 		float: left;
 
-		@media(max-width: 1080px) {
+		@media(max-width: 1170px) {
 			padding: 0 10px;
 		}
 
@@ -195,7 +194,7 @@
 				display: block;
 				position: relative;
 
-				@media(max-width: 1080px) {
+				@media(max-width: 1170px) {
 					padding: 0 7px;
 				}
 				
@@ -231,22 +230,23 @@
 		line-height: 60px;
 		margin: 0 0 0 -15px;
 		position: relative;
-		z-index: 9999;
+		z-index: 9;
 
-		@media(max-width: 1080px) {
+		@media(max-width: 1170px) {
 			margin: 0 0 0 -10px;
 		}
 
 		> li {
 			float: left;
 			line-height: 60px;
+			height: 60px;
 			position: relative;
-			z-index: 9999;
+			z-index: 9;
 
 			> a {
 				color: $color-primary;
 				text-decoration: none;
-				display: block;
+				display: inline-block;
 				position: relative;
 				height: 100%;
 				line-height: 60px;
@@ -255,10 +255,19 @@
 				text-transform: uppercase;
 				font-weight: 500;
 				letter-spacing: 0.5px;
-				z-index: 9999;
+				z-index: 9;
 				transition: all 250ms ease;
 
-				@media(max-width: 1080px) {
+				// i {
+				// 	display: block;
+				// 	float: right;
+				// 	line-height: 60px;
+				// 	font-size: 20px;
+				// 	width: 15px;
+				// 	text-align: center;	
+				// }
+
+				@media(max-width: 1170px) {
 					padding: 0 10px;
 				}
 
@@ -274,45 +283,81 @@
 					transition: all 250ms ease;
 				}
 
-				&:hover,
-				&.active {
+			}
+
+			&:hover,
+			&.active {
+
+				a {
 					color: $color-tertiary;
 
 					&:after {
 						width: calc(100% - 30px);
 						left: 15px;
 
-						@media(max-width: 1080px) {
+						@media(max-width: 1170px) {
 							width: calc(100% - 20px);
 							left: 10px;
 						}
 
 					}
-
+				
 				}
 
 			}
 
 			.sub {
 				position: absolute;
+				top: 58px;
 				background-color: $color-light;
 				width: auto;
 				list-style: none;
-				padding: 0;
+				padding: 3px;
 				transition: all 300ms ease;
 				overflow: hidden;
 				opacity: 0;
-				z-index: -999999;
 				visibility: hidden;
-				transform: translateY(-60px);
-				transition-delay: 0s, 0s, 0.3s;
-				// transform: scale(1, 0);
-				// // transform: rotateX(-90deg);
-				// transform-origin: top;
-				// // backface-visibility: hidden;
+				max-height: 0;
+
+				&:before {
+					display: block;
+					position: absolute;
+					content: '';
+					top: 0;
+					left: 50%;
+					transition: all 300ms ease;
+					width: 0;
+					height: 3px;
+					background-color: $color-tertiary;
+					z-index: 0;
+				}
+
+				&:after {
+					display: block;
+					position: absolute;
+					content: '';
+					top: 0;
+					left: 0;
+					transition: all 300ms ease;
+					width: 0;
+					height: 3px;
+					background-color: $color-tertiary;
+					z-index: 0;
+				}
 
 				li {
 					float: none;
+					position: relative;
+					z-index: 9;
+					background-color: $color-light;
+
+					&:first-of-type {
+						padding-top: 5px;
+					}
+
+					&:last-of-type {
+						padding-bottom: 5px;
+					}
 
 					a {
 						display: block;
@@ -323,11 +368,17 @@
 						color: $color-primary;
 						text-decoration: none;
 						text-transform: uppercase;
-						padding: 0 15px;
+						padding: 0 12px;
 						letter-spacing: 0.5px;
 						position: relative;
 						transition: all 250ms ease;
 						white-space: nowrap;
+
+						&:hover {
+							color: $color-tertiary;
+							transform: translateX(7px);
+						}
+
 					}
 
 				}
@@ -338,11 +389,22 @@
 
 				.sub {
 					opacity: 1;
-					z-index: 1;
+					max-height: 9999px;
 					visibility: visible;
-					transform: translateY(0);
-					// transform: scale(1, 1);
-					// transform: rotateX(0deg);
+
+					&:before {
+						width: 100%;
+						height: calc(100% - 6px);
+						left: 3px;
+						bottom: 3px;
+					}
+
+					&:after {
+						width: 100%;
+						height: 100%;
+						bottom: 0;
+					}
+
 				}
 
 			}
