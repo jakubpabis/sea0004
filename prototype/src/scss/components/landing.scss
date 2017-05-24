@@ -305,6 +305,89 @@
 	}
 
 	&-references {
+		padding: 70px 0;
+		text-align: center;
+		color: $color-light;
+		background-color: $color-tertiary;
+
+		@media(min-height: 900px) {
+			padding: 90px 0;
+		}
+
+		@media(min-height: 1000px) {
+			padding: 100px 0;
+		}
+
+		@media(min-height: 1080px) {
+			padding: 120px 0;
+		}
+
+		.container {
+			max-width: 1000px;
+		}
+
+		&__title {
+			text-align: center;
+			margin: 0 0 30px 0;
+		}
+
+		&__summary {
+			font-size: 18px;
+			line-height: 1.5;
+		}
+
+		&__person {
+			font-size: 15px;
+			font-weight: 700;
+			margin-top: 30px;
+			margin-bottom: 0;
+		}
+
+		#siema-prev,
+		#siema-next {
+			position: absolute;
+			top: 50%;
+			display: block;
+			width: 64px;
+			height: 64px;
+			cursor: pointer;
+			margin-top: -32px;
+			transition: all 300ms ease;
+
+			i {
+				font-size: 64px;
+				cursor: pointer;
+				transition: all 300ms ease;
+			}
+
+			&:hover {
+
+				i {
+					transform: scale(1.15);
+					text-shadow: 2px 3px 0 $color-darker;
+				}
+
+			}
+
+		}
+
+		#siema-prev {
+			left: -64px;
+
+			&:hover {
+				transform: translateX(-10px);
+			}
+
+		}
+
+		#siema-next {
+			right: -64px;
+
+			&:hover {
+				transform: translateX(10px);
+			}
+
+		}
 
 	}
 
