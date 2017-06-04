@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="assets/css/prototype.css">
 </head>
 <body>
+	<div id="wrapper">
 <nav role="navigation" class="main-navigation">
 	<div class="container">
 		<div class="top">
@@ -50,6 +51,11 @@
 		</div>
 		<div class="bottom">
 			<div class="left">
+				<div id="menu-btn" onclick="showMenu(this)">
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
 				<ul class="menu">
 					<!-- <li>
 						<a href="" title="">Jobs</a>
@@ -147,7 +153,7 @@
 				</ul>
 			</div>
 			<div class="right">
-				<ul class="social">
+				<ul id="header-social-links" class="social">
 					<li>
 						<a href="#">
 							<i class="fa fa-facebook" aria-hidden="true"></i>
@@ -176,10 +182,10 @@
 				</ul>
 				<i class="material-icons search-btn" aria-hidden="true" onclick="openSearch(this)">search</i>
 				<form class="search-field" id="search-field-general">
-					<input type="text" id="search-field-general-input" placeholder="Zoek vacatures..." onblur="hideSearch()" tabindex="-1">
+					<input type="search" id="search-field-general-input" placeholder="Zoek vacatures..." onblur="hideSearch()" tabindex="-1">
 				</form>
 				<a href="#" class="lang">
-					<i class="material-icons" aria-hidden="true">language</i>
+					<i class="material-icons" aria-hidden="true" onclick="showLang(this, event)">language</i>
 					<span>English</span>
 					<!-- <span>Nederlands</span> -->
 				</a>
@@ -431,110 +437,111 @@
 	</div>
 </section>
 
-	<footer class="footer">
-		<div class="container">
-			<div class="footer__grid-container">
-				<div class="footer__grid">
-					<div class="footer__grid-content">
-						<h5 class="footer__title">Contact</h5>
-						<div class="footer__content">
-							<p>
-								Search It Recruitment B.V.<br/>
-								Laan van Kronenburg 14<br/>
-								1183 AS Amstelveen<br/>
-								Amsterdam Area, The Netherlands
-							</p>
-							<p>
-								Phone: +31 (0) 20 - 7782393<br/>
-								Email:  info@searchitrecruitment.com
-							</p>
-							<p>
-								KVK: 62737244<br/>
-								BTW: NL854937274B01<br/>
-								BANK: NL54INGB0006845114
-							</p>
-						</div>
-					</div>
-				</div>
-				<div class="footer__grid">
-					<div class="footer__grid-content">
-						<h5 class="footer__title">Recent Jobs</h5>
-						<div class="footer__content">
-							<ul>
-								<li>Full-Stack Developer Amsterdam</li>
-								<li>Drupal Developer </li>
-								<li>Digital Solution Architect </li>
-								<li>Junior .NET Developer </li>
-								<li>Content Specialist </li>
-								<li>Java Applicatiebeheerder Utrecht </li>
-								<li>.NET Developer Amsterdam </li>
-								<li>Technisch Applicatiebeheerder Amsterdam </li>
-								<li>Senior / Lead Scheduler Rotterdam </li>
-								<li>Ruby on Rails Developer </li>
-								<li>Salesforce Lead Developer </li>
-								<li>Technisch Applicatiebeheerder Microsoft Den Haag </li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<div class="footer__grid">
-					<div class="footer__grid-content">
-						<h5 class="footer__title">Hot Skills</h5>
-						<div class="footer__content">
-							<ul>
-								<li>Scala Development </li>
-								<li>Java Development </li>
-								<li>Android Development </li>
-								<li>iOS Development </li>
-								<li>Sitecore Development </li>
-								<li>.NET Development </li>
-								<li>PHP Development </li>
-								<li>Front-End Development </li>
-								<li>JavaScript Development </li>
-								<li>Conversion Optimalisation </li>
-								<li>Search Engine Advertising </li>
-								<li>Search Engine Optimization</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<div class="footer__grid">
-					<div class="footer__grid-content">
-						<h5 class="footer__title">Newsletter</h5>
-						<div class="footer__content">
-							<p>
-								Interested in instantly receiving the latest Search It Recruitment jobs within your are of expertise?
-							</p>
-							<a href="#" class="btn btn-default">
-								<span>Subscribe</span>
-							</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="footer__lower">
+		<footer class="footer">
 			<div class="container">
-				<div class="footer__lower__grid-container">
-					<div class="footer__lower__grid left">
-						<p>
-							Copyright © 2017 Search It Recruitment B.V.
-						</p>
+				<div class="footer__grid-container">
+					<div class="footer__grid">
+						<div class="footer__grid-content">
+							<h5 class="footer__title">Contact</h5>
+							<div class="footer__content">
+								<p>
+									Search It Recruitment B.V.<br/>
+									Laan van Kronenburg 14<br/>
+									1183 AS Amstelveen<br/>
+									Amsterdam Area, The Netherlands
+								</p>
+								<p>
+									Phone: +31 (0) 20 - 7782393<br/>
+									Email:  info@searchitrecruitment.com
+								</p>
+								<p>
+									KVK: 62737244<br/>
+									BTW: NL854937274B01<br/>
+									BANK: NL54INGB0006845114
+								</p>
+							</div>
+						</div>
 					</div>
-					<div class="footer__lower__grid right">
-						<p>
-							Made with love by <a href="#" target="_blank"><u>Sative</u></a>
-						</p>
+					<div class="footer__grid">
+						<div class="footer__grid-content">
+							<h5 class="footer__title">Recent Jobs</h5>
+							<div class="footer__content">
+								<ul>
+									<li>Full-Stack Developer Amsterdam</li>
+									<li>Drupal Developer </li>
+									<li>Digital Solution Architect </li>
+									<li>Junior .NET Developer </li>
+									<li>Content Specialist </li>
+									<li>Java Applicatiebeheerder Utrecht </li>
+									<li>.NET Developer Amsterdam </li>
+									<li>Technisch Applicatiebeheerder Amsterdam </li>
+									<li>Senior / Lead Scheduler Rotterdam </li>
+									<li>Ruby on Rails Developer </li>
+									<li>Salesforce Lead Developer </li>
+									<li>Technisch Applicatiebeheerder Microsoft Den Haag </li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="footer__grid">
+						<div class="footer__grid-content">
+							<h5 class="footer__title">Hot Skills</h5>
+							<div class="footer__content">
+								<ul>
+									<li>Scala Development </li>
+									<li>Java Development </li>
+									<li>Android Development </li>
+									<li>iOS Development </li>
+									<li>Sitecore Development </li>
+									<li>.NET Development </li>
+									<li>PHP Development </li>
+									<li>Front-End Development </li>
+									<li>JavaScript Development </li>
+									<li>Conversion Optimalisation </li>
+									<li>Search Engine Advertising </li>
+									<li>Search Engine Optimization</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="footer__grid">
+						<div class="footer__grid-content">
+							<h5 class="footer__title">Newsletter</h5>
+							<div class="footer__content">
+								<p>
+									Interested in instantly receiving the latest Search It Recruitment jobs within your are of expertise?
+								</p>
+								<a href="#" class="btn btn-default">
+									<span>Subscribe</span>
+								</a>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-	</footer>
-	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" defer></script> -->
-	<script type="text/javascript" src="assets/js/app.js" defer></script>
-	<noscript id="deferred-styles">
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900">
-		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-	</noscript>
+			<div class="footer__lower">
+				<div class="container">
+					<div class="footer__lower__grid-container">
+						<div class="footer__lower__grid left">
+							<p>
+								Copyright © 2017 Search It Recruitment B.V.
+							</p>
+						</div>
+						<div class="footer__lower__grid right">
+							<p>
+								Made with love by <a href="#" target="_blank"><u>Sative</u></a>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" defer></script> -->
+		<script type="text/javascript" src="assets/js/app.js" defer></script>
+		<noscript id="deferred-styles">
+			<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900">
+			<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		</noscript>
+	</div>
 </body>
 </html>

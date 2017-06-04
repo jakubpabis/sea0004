@@ -16,6 +16,11 @@ body {
 	max-width: 100%;
 	max-width: 100vw;
 	overflow-x: hidden;
+
+	&.menu-active {
+		overflow: hidden;
+	}
+
 }
 
 * {
@@ -48,6 +53,21 @@ ul {
 
 	li {
 		line-height: 1.44;
+	}
+
+}
+
+#wrapper {
+	position: relative;
+	display: block;
+
+	@media(max-width: 660px) {
+		transition: all 250ms ease;
+
+		&.menu-active {
+			transform: translateX(270px);
+		}
+
 	}
 
 }
