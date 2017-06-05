@@ -1,0 +1,25 @@
+.job-listing {
+    padding: 100px 0;
+    position: relative;
+    display: block;
+    background-color: #f1f1f1;
+
+    &__container {
+        display: flex;
+		flex-wrap: nowrap;
+    }
+
+    &__filters {
+        flex-basis: 25%;
+    }
+
+    &__list {
+        flex-basis: 75%;
+
+        &-item {
+            
+        }
+
+    }
+
+}
