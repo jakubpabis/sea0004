@@ -10,7 +10,97 @@
     }
 
     &__filters {
-        flex-basis: 25%;
+        flex-basis: calc(25% - 40px);
+        background-color: white;
+        padding: 0 20px;
+        transition: all 250ms ease;
+
+        &:hover {
+            -webkit-box-shadow: 0 0 30px 0 rgba($color-primary, 0.15);
+            box-shadow: 0 0 30px 0 rgba($color-primary, 0.15);
+        }
+
+        form {
+            width: 100%;
+            position: relative;
+            display: block;
+            margin: 0 0 35px 0;
+
+            &:nth-child(1) {
+                margin-top: 20px;
+            }
+
+            .title {
+                font-size: 18px;
+                border-bottom: 1px solid rgba($color-primary, 0.1);
+                padding-bottom: 12px;
+                margin-bottom: 12px;
+                display: block;
+            }
+
+            input,
+            select,
+            label {
+                width: 100%;
+                font-size: 14px;
+                color: $color-primary;
+            }
+
+            label {
+                margin-bottom: 5px;
+
+                &.checkbox {
+                    margin-bottom: 6px;
+
+                    &.active {
+                        
+                        span {
+                            background-color: $color-tertiary;
+                            color: white;
+                            margin-left: 0;
+                        }
+
+                    }
+
+                    &.active {
+
+                        i {
+                            opacity: 1;
+                        }
+
+                    }
+
+                    span {
+                        margin-left: -8px;
+                        padding: 2px 8px;
+                        border-radius: 10px;
+                        transition: all 250ms ease;
+                        cursor: pointer;
+
+                        &:hover {
+                            background-color: $color-tertiary;
+                            color: white;
+                            margin-left: 0;
+                        }
+
+                    }
+
+                }
+
+            }
+
+            select {
+                background-color: $color-light;
+                padding: 10px;
+                margin-bottom: 12px;
+            }
+
+            input[type="checkbox"] {
+                display: none;
+            }
+
+        }
+
     }
 
     &__list {

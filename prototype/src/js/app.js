@@ -75,6 +75,15 @@ function hideMenu() {
 	});
 }
 
+function checkboxLabel($el) 
+{
+	if(hasClass($el, 'active')) {
+		$el.classList.remove('active');
+	} else {
+		$el.classList.add('active');
+	}
+}
+
 function siemaAutoplay($time, $siema, $carousel) {
 	var timer = setInterval(function() {
 		$siema.next();

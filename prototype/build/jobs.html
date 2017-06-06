@@ -211,8 +211,14 @@
     </form>
     <form>
         <span class="title">Job category</span>
-        <label for="IT"><input type="checkbox" name="IT" value="IT">IT</label>
-        <label for="Online Marketing"><input type="checkbox" name="Online Marketing" value="Online Marketing">Online Marketing</label>
+        <label for="IT" class="checkbox" onclick="checkboxLabel(this)">
+            <span>IT</span>
+            <input type="checkbox" name="IT" value="IT" checked>
+        </label>
+        <label for="Online Marketing" class="checkbox" onclick="checkboxLabel(this)">
+            <span>Online Marketing</span>
+            <input type="checkbox" name="Online Marketing" value="Online Marketing">
+        </label>
         <button type="reset">Reset</button>
     </form>
     <form>
