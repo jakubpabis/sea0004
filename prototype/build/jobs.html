@@ -192,6 +192,21 @@
 		</div>
 	</div>
 </nav>
+<div class="breadcrumbs">
+    <div class="container">
+        <ul>
+            <li>
+                <a href="landing.html">Home</a>
+            </li>
+            <li>
+                &rarr;
+            </li>
+            <li>
+                <a href="jobs.html">Vacatures</a>
+            </li>
+        </ul>
+    </div>
+</div>
 
 <section class="job-listing">
     <div class="container">
@@ -199,32 +214,44 @@
             <aside class="job-listing__filters">
     <form>
         <span class="title">Salary range</span>
-        <label for="">From:</label>
-        <select>
-            <option value="">Any</option>
-        </select>
-        <label for="">To:</label>
-        <select>
-            <option value="">Any</option>
-        </select>
+        <label for="" class="select">
+            <span>From:</span>
+            <select>
+                <option value="">Any</option>
+            </select>
+            <i class="material-icons">expand_more</i>
+        </label>
+        <label for="" class="select">
+            <span>To:</span>
+            <select>
+                <option value="">Any</option>
+            </select>
+            <i class="material-icons">expand_more</i>
+        </label>
         <button type="reset">Reset</button>
     </form>
     <form>
         <span class="title">Job category</span>
         <label for="IT" class="checkbox" onclick="checkboxLabel(this)">
-            <span>IT</span>
-            <input type="checkbox" name="IT" value="IT" checked>
+            <input type="checkbox" name="IT" value="IT">
+            <span>IT<i class="material-icons">cancel</i></span>
         </label>
         <label for="Online Marketing" class="checkbox" onclick="checkboxLabel(this)">
-            <span>Online Marketing</span>
             <input type="checkbox" name="Online Marketing" value="Online Marketing">
+            <span>Online Marketing<i class="material-icons">cancel</i></span>
         </label>
         <button type="reset">Reset</button>
     </form>
     <form>
         <span class="title">Job type</span>
-        <label for="Full-time"><input type="checkbox" name="Full-time" value="Full-time">Full-time</label>
-        <label for="Part-time"><input type="checkbox" name="Part-time" value="Part-time">Part-time</label>
+        <label for="Full-time" class="checkbox" onclick="checkboxLabel(this)">
+            <input type="checkbox" name="Full-time" value="Full-time">
+            <span>Full-time<i class="material-icons">cancel</i></span>
+        </label>
+        <label for="Part-time" class="checkbox" onclick="checkboxLabel(this)">
+            <input type="checkbox" name="Part-time" value="Part-time">
+            <span>Part-time<i class="material-icons">cancel</i></span>
+        </label>
         <button type="reset">Reset</button>
     </form>
 </aside>

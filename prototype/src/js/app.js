@@ -77,10 +77,12 @@ function hideMenu() {
 
 function checkboxLabel($el) 
 {
-	if(hasClass($el, 'active')) {
+	if($el.getElementsByTagName('input')[0].checked === true) {
 		$el.classList.remove('active');
+		$el.getElementsByTagName('input')[0].checked = false;
 	} else {
 		$el.classList.add('active');
+		$el.getElementsByTagName('input')[0].checked = true;
 	}
 }
 
