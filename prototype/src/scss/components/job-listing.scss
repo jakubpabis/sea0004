@@ -411,4 +411,93 @@
 
     }
 
+    &__pagination {
+        display: block;
+        width: 100%;
+        line-height: 28px;
+        padding: 12px 0;
+        margin: 30px 0 0 0;
+        text-align: center;
+        font-weight: 500;
+
+        > * {
+            display: inline-block;
+        }
+
+        .prev,
+        .next {
+
+            span,
+            i {
+                vertical-align: middle;
+                display: inline-block;
+                transition: all 200ms ease;
+            }
+
+            span {
+                font-size: 14px;
+                text-transform: uppercase;
+                margin: 0 -4px;
+            }
+
+            i {
+                font-size: 32px;
+            }
+
+            &:hover {
+                color: $color-tertiary;
+
+                &.prev {
+
+                    i {
+                        transform: translateX(-8px) scale(1.1);
+                    }
+
+                }
+
+                &.next {
+
+                    i {
+                        transform: translateX(8px) scale(1.1);
+                    }
+
+                }
+
+            }
+
+        }
+
+        ul {
+            display: inline-block;
+            margin: 0 32px;
+
+            li {
+                display: inline-block;
+                line-height: 28px;
+                vertical-align: -2px;
+                margin: 0 1px;
+
+                a {
+                    padding: 0 10px;
+                    display: block;
+                    border-radius: 4px;
+                    transition: all 200ms ease;
+                }
+
+                &:hover,
+                &.active {
+                    
+                    a {
+                        background-color: $color-tertiary;
+                        color: white;
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
 }
