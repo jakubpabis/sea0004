@@ -21,6 +21,41 @@
             box-shadow: 0 0 24px 0 rgba($color-primary, 0.15);
         }
 
+        .shortlisted-jobs {
+            padding: 8px 20px;
+            background-color: $color-tertiary;
+            display: block;
+            line-height: 32px;
+            width: 100%;
+            margin-left: -20px;
+            margin-bottom: 16px;
+            
+            i,
+            p {
+                vertical-align: middle;
+                margin: 0;
+                line-height: 32px;
+                font-size: 18px;
+                color: white;
+                display: inline-block;
+            }
+
+            i {
+                font-size: 24px;
+                margin-right: 5px;
+                transition: all 250ms ease;
+            }
+
+            &:hover {
+
+                i {
+                    font-size: 32px;
+                }
+
+            }
+
+        }
+
         form {
             width: 100%;
             position: relative;
