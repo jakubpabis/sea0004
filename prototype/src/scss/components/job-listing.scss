@@ -107,6 +107,19 @@
                 color: $color-primary;
             }
 
+            button[type="reset"] {
+                cursor: pointer;
+                color: $color-primary;
+                background: none;
+                margin-top: 5px;
+                float: right;
+
+                i {
+                    font-size: 16px;
+                }
+
+            }
+
             label {
                 margin-bottom: 5px;
 

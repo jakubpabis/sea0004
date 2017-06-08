@@ -4,7 +4,12 @@
         <p>Shortlist vacatures</p>
     </a>
     <form>
-        <span class="title">Salary range</span>
+        <span class="title">
+            Salary range
+            <button type="reset" title="Reset filter">
+                <i class="material-icons">not_interested</i>
+            </button>
+        </span>
         <label for="" class="select">
             <span>From:</span>
             <select>
@@ -19,10 +24,14 @@
             </select>
             <i class="material-icons">expand_more</i>
         </label>
-        <button type="reset">Reset</button>
     </form>
     <form>
-        <span class="title">Job category</span>
+        <span class="title">
+            Job category
+            <button type="reset" title="Reset filter">
+                <i class="material-icons">not_interested</i>
+            </button>    
+        </span>
         <label for="IT" class="checkbox" onclick="checkboxLabel(this)">
             <input type="checkbox" name="IT" value="IT">
             <span>IT<i class="material-icons">cancel</i></span>
@@ -31,10 +40,14 @@
             <input type="checkbox" name="Online Marketing" value="Online Marketing">
             <span>Online Marketing<i class="material-icons">cancel</i></span>
         </label>
-        <button type="reset">Reset</button>
     </form>
     <form>
-        <span class="title">Job type</span>
+        <span class="title">
+            Job type
+            <button type="reset" title="Reset filter">
+                <i class="material-icons">not_interested</i>
+            </button>
+        </span>
         <label for="Full-time" class="checkbox" onclick="checkboxLabel(this)">
             <input type="checkbox" name="Full-time" value="Full-time">
             <span>Full-time<i class="material-icons">cancel</i></span>
@@ -43,6 +56,5 @@
             <input type="checkbox" name="Part-time" value="Part-time">
             <span>Part-time<i class="material-icons">cancel</i></span>
         </label>
-        <button type="reset">Reset</button>
     </form>
 </aside>
