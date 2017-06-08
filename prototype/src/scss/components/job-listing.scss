@@ -1,5 +1,5 @@
 .job-listing {
-    padding: 100px 0;
+    padding: 32px 0;
     position: relative;
     display: block;
     background-color: #f1f1f1;
@@ -7,6 +7,7 @@
     &__container {
         display: flex;
 		flex-wrap: nowrap;
+        align-items: flex-start;
     }
 
     &__filters {
@@ -16,8 +17,8 @@
         transition: all 250ms ease;
 
         &:hover {
-            -webkit-box-shadow: 0 0 30px 0 rgba($color-primary, 0.15);
-            box-shadow: 0 0 30px 0 rgba($color-primary, 0.15);
+            -webkit-box-shadow: 0 0 24px 0 rgba($color-primary, 0.15);
+            box-shadow: 0 0 24px 0 rgba($color-primary, 0.15);
         }
 
         form {
@@ -76,6 +77,8 @@
 
                 &.checkbox {
                     margin-bottom: 6px;
+                    -webkit-touch-callout: none;
+                    user-select: none;
 
                     input:checked {
                         
@@ -171,11 +174,193 @@
 
     }
 
+    &__searchbar {
+        display: block;
+        position: relative;
+        background-color: white;
+        padding: 20px;
+        transition: all 250ms ease;
+
+        &:hover {
+            -webkit-box-shadow: 0 0 24px 0 rgba($color-primary, 0.15);
+            box-shadow: 0 0 24px 0 rgba($color-primary, 0.15);
+        }
+
+        form {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        label,
+        input {
+            display: inline-block;
+        }
+
+        label {
+            font-size: 18px;
+        }
+
+        input {
+            appearance: none;
+            border: none;
+            border-radius: 0;
+            margin: 0 12px -12px;
+            padding: 9px 10px 7px;
+            outline: 0;
+            position: relative;
+            background-color: $color-light;
+            font-size: 14px;
+            color: $color-primary;
+            border-bottom: 2px solid transparent;
+            flex-grow: 2;
+            transform: translateY(-6px);
+            transition: all 250ms ease;
+
+            &[type="submit"] {
+                margin: 0 0 -12px;
+                flex-grow: 1;
+            }
+
+            &:focus,
+            &:active {
+                outline: none;
+                border-color: $color-tertiary;
+            }
+        }
+
+    }
+
+    &__job-number {
+        height: 28px;
+        line-height: 27px;
+        border-top: 1px solid rgba($color-primary, 0.1);
+        background-color: rgba($color-primary, 0.1);
+        font-size: 14px;
+        padding: 0 20px;
+
+        > * {
+            display: inline-block;
+            font-size: 14px;
+            margin: 0;
+        }
+
+        span {
+            font-weight: 600;
+        }
+
+    }
+
     &__list {
         flex-basis: 75%;
+        padding-left: 16px;
 
         &-item {
-            
+            margin: 16px 0;
+            background: white;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 250ms ease;
+            position: relative;
+
+            &:hover {
+                -webkit-box-shadow: 0 0 24px 0 rgba($color-primary, 0.15);
+                box-shadow: 0 0 24px 0 rgba($color-primary, 0.15);
+
+                .title {
+                    color: $color-tertiary;
+                }
+
+            }
+
+            .favorite {
+                position: absolute;
+                right: 20px;
+                top: 22px;
+                color: $color-tertiary;
+                line-height: 24px;
+                overflow: hidden;
+
+                p,
+                i {
+                    transition: all 250ms ease;
+                    display: inline-block;
+                    margin: 0;
+                    vertical-align: middle;
+                }
+
+                i {
+                    background-color: white;
+                    position: relative;
+                    z-index: 9;
+                    margin-left: 5px;
+                }
+
+                p {
+                    opacity: 0;
+                    font-size: 13px;
+                    font-weight: 600;
+                    transform: translateX(100%);
+                }
+
+                &:hover {
+
+                    i {
+                        font-size: 28px;
+                    }
+
+                    p {
+                        transform: translateX(0);
+                        opacity: 1;
+                    }
+
+                }
+
+            }
+
+            .title {
+                margin: 0 0 16px 0;
+                font-size: 21px;
+                font-weight: 600;
+                display: inline-block;
+                transition: all 250ms ease;
+            }
+
+            .info {
+                margin: 20px 0;
+                display: flex;
+                flex-wrap: nowrap;
+
+                &-single {
+                    flex-basis: 33%;
+                    margin: 0;
+
+                    i,
+                    p {
+                        display: inline-block;
+                        margin: 0;
+                        vertical-align: middle;
+                    }
+
+                    i {
+                        font-size: 19px;
+                        margin-right: 3px;
+                        color: $color-tertiary;
+                    }
+
+                    p {
+                        font-size: 14px;
+                    }
+
+                }
+
+            }
+
+            .description {
+                margin: 0 0 16px 0;
+                font-size: 15px;
+                font-weight: 400;
+            }
+
         }
 
     }
