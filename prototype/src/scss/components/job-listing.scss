@@ -283,6 +283,17 @@
             font-weight: 600;
         }
 
+        .showing {
+            float: right;
+
+            > * {
+                display: inline-block;
+                font-size: 14px;
+                margin: 0;
+            }
+
+        }
+
     }
 
     &__list {
