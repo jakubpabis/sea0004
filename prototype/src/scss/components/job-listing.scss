@@ -298,6 +298,14 @@
             &[type="submit"] {
                 margin: 0 0 -12px;
                 flex-grow: 1;
+                background-color: $color-tertiary;
+                color: white;
+                font-weight: 700;
+                letter-spacing: 0;
+                font-size: 12px;
+                text-transform: uppercase;
+                text-align: center;
+                cursor: pointer;
             }
 
             &:focus,
