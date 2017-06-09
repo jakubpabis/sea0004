@@ -113,9 +113,40 @@
                 background: none;
                 margin-top: 5px;
                 float: right;
+                overflow: hidden;
 
                 i {
                     font-size: 16px;
+                    background-color: white;
+                    margin-left: 3px;
+                    vertical-align: middle;
+                    position: relative;
+                    z-index: 9;
+                    transition: all 200ms ease;
+                }
+
+                span {
+                    transition: all 200ms ease;
+                    opacity: 0;
+                    transform: translateX(100%);
+                    font-size: 13px;
+                    vertical-align: middle;
+                    display: inline-block;
+                    margin: 0;
+                }
+
+                &:hover {
+
+                    i {
+                        color: $color-tertiary;
+                    }
+                    
+                    span {
+                        color: $color-tertiary;
+                        opacity: 1;
+                        transform: translateX(0);
+                    }
+
                 }
 
             }
