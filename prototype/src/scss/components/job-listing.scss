@@ -371,13 +371,15 @@
 
             }
 
-            .favorite {
+            .shortlist-link {
                 position: absolute;
-                right: 20px;
-                top: 22px;
+                right: 10px;
+                top: 12px;
                 color: $color-tertiary;
                 line-height: 24px;
+                padding: 10px;
                 overflow: hidden;
+                z-index: 9;
 
                 p,
                 i {
@@ -390,7 +392,7 @@
                 i {
                     background-color: white;
                     position: relative;
-                    z-index: 9;
+                    z-index: 99;
                     margin-left: 5px;
                 }
 
@@ -417,7 +419,7 @@
             }
 
             .title {
-                margin: 0 0 16px 0;
+                margin: 0 0 20px 0;
                 font-size: 21px;
                 font-weight: 600;
                 display: inline-block;
@@ -425,7 +427,7 @@
             }
 
             .info {
-                margin: 20px 0;
+                margin: 0 0 20px 0;
                 display: flex;
                 flex-wrap: nowrap;
 

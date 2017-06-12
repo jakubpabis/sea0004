@@ -1,0 +1,86 @@
+.job-detail {
+    padding: 32px 0;
+    position: relative;
+    display: block;
+    background-color: #f1f1f1;
+
+    &__container {
+        position: relative;
+        display: flex;
+		flex-wrap: nowrap;
+        align-items: flex-start;
+    }
+
+    &__description {
+        flex-basis: calc(70% - 40px);
+        padding: 20px;
+        background-color: white;
+
+        .title {
+            font-size: 32px;
+            color: $color-tertiary;
+            margin: 0 0 20px 0;
+            padding-bottom: 24px;
+            display: block;
+            position: relative;
+            font-weight: 900;
+            line-height: 1;
+            border-bottom: 1px solid rgba($color-primary, 0.1);
+        }
+        
+        .info {
+            margin: 0 0 20px 0;
+            display: flex;
+            flex-wrap: nowrap;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba($color-primary, 0.1);
+
+            &-single {
+                margin: 0 36px 0 0;
+
+                i,
+                p {
+                    display: inline-block;
+                    margin: 0;
+                    vertical-align: middle;
+                }
+
+                i {
+                    font-size: 19px;
+                    margin-right: 3px;
+                    color: $color-tertiary;
+                }
+
+                p {
+                    font-size: 14px;
+                }
+
+            }
+
+        }
+
+        .description-container {
+
+            ul {
+                list-style-type: circle;
+                margin: 16px 0 16px 32px;
+
+                li {
+                    line-height: 1.3;
+                    padding: 5px 0;
+                }
+
+            }
+
+        }
+
+    }
+
+    &__sidebar {
+        flex-basis: calc(30% - 40px);
+        padding: 20px;
+        background-color: white;
+        margin-left: 16px;
+    }
+
+}

@@ -474,6 +474,8 @@
 			height: 64px;
 			cursor: pointer;
 			margin-top: -32px;
+			-webkit-touch-callout: none;
+            user-select: none;
 			transition: all 300ms ease;
 
 			i {

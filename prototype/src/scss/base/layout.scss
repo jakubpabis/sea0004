@@ -65,6 +65,12 @@ label {
 	font-family: 'Roboto', sans-serif;
 }
 
+section {
+	width: 100%;
+	position: relative;
+	display: block;
+}
+
 #wrapper {
 	position: relative;
 	display: block;
@@ -146,12 +152,6 @@ label {
 
 }
 
-section {
-	width: 100%;
-	position: relative;
-	display: block;
-}
-
 .bg-cover {
 	display: block;
 	width: 100%;
@@ -180,4 +180,14 @@ section {
 
 .flex-item {
 	align-self: stretch;
+}
+
+.whole-element-link {
+	position: absolute;
+	display: block;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 9;
 }
