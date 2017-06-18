@@ -373,11 +373,12 @@
 
             .shortlist-link {
                 position: absolute;
-                right: 10px;
+                right: 20px;
                 top: 12px;
                 color: $color-tertiary;
                 line-height: 24px;
                 padding: 10px;
+                padding-right: 0;
                 overflow: hidden;
                 z-index: 9;
 

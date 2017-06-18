@@ -48,4 +48,19 @@
 
 	}
 
+	&-full {
+		background-color: $color-tertiary;
+		transition: all 250ms ease;
+
+		span {
+			color: white;
+		}
+
+		&:hover {
+			transform: scale(1.05);
+			-webkit-box-shadow: 0 0 8px 0 rgba($color-primary, 0.7);
+			box-shadow: 0 0 8px 0 rgba($color-primary, 0.7);
+		}
+	}
+
 }
