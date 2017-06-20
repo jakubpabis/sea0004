@@ -129,6 +129,15 @@ function loadCarousel()
 	}
 }
 
+function showForm()
+{
+	document.getElementById('jobFormModal').style.display = 'block';
+	setTimeout(function() {
+		document.getElementById('jobFormModal').classList.add('active');
+		document.getElementsByTagName('html')[0].classList.add('modal-open');
+	}, 50);
+}
+
 function initMap()
 {
 	var job_map = document.getElementById('job_map');

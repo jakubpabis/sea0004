@@ -215,7 +215,7 @@
                 <h1 class="title">
                     Technisch Applicatiebeheerder Amsterdam 
                 </h1>
-                <!--<div class="info">
+                <div class="info">
                     <div class="info-single">
                         <i class="material-icons">location_on</i>
                         <p>Amsterdam, The Netherlands</p>
@@ -228,7 +228,7 @@
                         <i class="material-icons">access_time</i>
                         <p>Fulltime employee</p>
                     </div>
-                </div>-->
+                </div>
                 <div class="description-container">
                     <p>Sta jij voor Agile, Scrum en SaFe en weet jij door jouw krachtige houding anderen mee te krijgen en het beste in hen naar boven te halen? Je bent in staat om je te verdiepen in de individuele personen in je team, zodat je met jouw energie een persoonlijk of team coachingstraject op kan zetten? Bezit jij over deze kwaliteiten? Dan zijn wij op zoek naar jou! </p>
                     <p>Onze opdrachtgever is op zoek naar een ervaren Scrum Master. Zij zijn marktleider op het gebied van online boekhouden en bieden voor zowel kleine als grote organisaties oplossingen. Met hun onlinesoftware kan op een efficiënte, veilige en directe manier een administratie worden gevoerd en informatie worden gedeeld met administratie- en/of accountantskantoren. Een product dat een slimme samenwerking tussen ondernemers en accountants mogelijk maakt. </p>
@@ -245,7 +245,7 @@
 				</a>
             </div>
             <aside class="job-detail__sidebar">
-                <a href="#" class="btn btn-default btn-top">
+                <a href="javascript:void(0)" onclick="showForm()" class="btn btn-default btn-top">
 					<span>Apply for a job</span>
 				</a>
                 <a href="#" class="shortlist-link">
@@ -253,7 +253,7 @@
                     <i class="material-icons">favorite_border</i>
                 </a>
                 <span class="title">
-                    Job details
+                    Details van de baan
                 </span>
                 <div class="info">
                     <div class="info-single">
@@ -270,7 +270,7 @@
                     </div>
                 </div>
                 <span class="title">
-                    Share this job
+                    Deel deze vacature
                 </span>
                 <div class="job-detail__social">
                     <a href="">
@@ -296,13 +296,31 @@
                     </a>
                 </div>
                 <span class="title">
-                    Job location
+                    Werklocatie
                 </span>
                 <div id="job_map"></div>
             </aside>
         </article>
     </div>
 </section>
+<div id="jobFormModal" class="modal job-detail__modal">
+    <div class="job-detail__modal-container">
+        <form>
+            <label for="applicant-name">Name *</label>
+            <input type="text" name="applicant-name" value="">
+            <label for="applicant-email">Email *</label>
+            <input type="email" name="applicant-email" value="">
+            <label for="applicant-phone">Phone</label>
+            <input type="text" name="applicant-phone" value="">
+            <label for="applicant-address">Address</label>
+            <input type="text" name="applicant-address" value="">
+            <label for="applicant-find">How did you find us?</label>
+            <select name="applicant-find">
+                <option value=""></option>
+            </select>
+        </form>
+    </div>
+</div>
 
 		<footer class="footer">
 			<div class="container">
