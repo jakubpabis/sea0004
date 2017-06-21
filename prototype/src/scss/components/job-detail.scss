@@ -311,12 +311,105 @@
         }
 
         &-container {
-            width: 640px;
+            width: 480px;
             height: 100vh;
             margin: 0 auto;
-            display: block;
+            display: flex;
             position: relative;
             overflow-y: auto;
+            align-items: center;
+            justify-content: center;
+        }
+
+        form {
+            align-self: center;
+            width: 100%;
+            height: auto;
+            display: block;
+            position: relative;
+            padding: 20px;
+            margin: 0 auto;
+            background: #f1f1f1;
+
+            label {
+                display: block;
+                color: $color-primary;
+                font-size: 15px;
+                margin-bottom: 5px;
+            }
+
+            input,
+            select,
+            textarea {
+                appearance: none;
+                border: none;
+                border-radius: 0;
+                margin: 0 0 20px 0;
+                padding: 10px;
+                width: calc(100% - 20px);
+                outline: 0;
+                display: block;
+                position: relative;
+                background-color: white;
+                font-family: 'Roboto', sans-serif;
+	            font-weight: 400;
+                font-size: 15px;
+                color: $color-primary;
+                resize: none;
+                transition: all 250ms ease;
+
+                &[type="file"] {
+                    opacity: 0;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    z-index: 9;
+                    cursor: pointer;
+                }
+
+                &:focus,
+                &:active {
+                    outline: none;
+                }
+
+            }
+
+            select {
+                width: 100%;
+                cursor: pointer;
+
+                &+i {
+                    position: absolute;
+                    margin-top: -50px;
+                    right: 25px;
+                    pointer-events: none;
+                    transition: all 200ms ease;
+                }
+
+                &:hover {
+
+                    &+i {
+                        margin-top: -47px;
+                        color: $color-tertiary;
+                    }
+
+                }
+
+            }
+
+            .cvupload {
+                display: block;
+                position: relative;
+                width: 100%;
+                height: 38px;
+                margin-bottom: 20px;
+                background-color: white;
+            }
+
         }
 
     }
