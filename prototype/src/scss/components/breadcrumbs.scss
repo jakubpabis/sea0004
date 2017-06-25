@@ -4,12 +4,24 @@
     border-top: 1px solid rgba($color-primary, 0.1);
     background-color: rgba($color-primary, 0.1);
     font-size: 13px;
+    
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
 
     ul {
         display: block;
         position: relative;
         padding: 0;
         margin: 0 0 0 -4px;
+
+        &:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
 
         li {
             float: left;
@@ -18,7 +30,11 @@
             margin: 0 4px;
 
             &:hover {
-                text-decoration: underline;
+                
+                a {
+                    text-decoration: underline;
+                }
+
             }
 
         }

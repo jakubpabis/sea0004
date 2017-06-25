@@ -12,7 +12,7 @@
     }
 
     &__description {
-        flex-basis: calc(70% - 40px);
+        flex-basis: 72%;
         padding: 20px;
         background-color: white;
 
@@ -78,12 +78,12 @@
     }
 
     &__sidebar {
-        flex-basis: calc(30% - 40px);
+        flex-basis: 28%;
         padding: 20px;
         background-color: white;
         margin-left: 16px;
         margin-top: 48px;
-        // text-align: center;
+        position: relative;
 
         .title {
             font-size: 18px;
@@ -136,9 +136,9 @@
 
         .btn-top {
             position: absolute;
-            top: 0;
+            top: -48px;
             right: 0;
-            width: calc(30% - 9px);
+            left: 0;
             height: 44px;
             line-height: 46px;
             padding-left: 0;
@@ -172,7 +172,7 @@
         .shortlist-link {
             position: absolute;
             right: 20px;
-            top: 55px;
+            top: 8px;
             color: $color-tertiary;
             line-height: 24px;
             padding: 10px;
@@ -290,62 +290,129 @@
     }
 
     &__modal {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        width: 0;
-        height: 0;
         background: rgba($color-primary, 0.5);
         opacity: 0;
         transition: all 500ms ease;
-        z-index: 999999999999;
+        height: 100%;
+        height: 100vh;
+        left: 0;
+        overflow: auto;
+        padding: 1.5em;
+        position: fixed;
+        top: 0;
+        width: 100%;
         display: none;
-        overflow: hidden;
+        z-index: 9999999999999999;
 
         &.active {
-            left: 0;
-            top: 0;
-            width: 100vw;
-            height: 100vh;
             opacity: 1;
-        }
-
-        &-container {
-            width: 480px;
-            height: 100vh;
-            margin: 0 auto;
             display: flex;
-            position: relative;
-            overflow-y: auto;
-            align-items: center;
-            justify-content: center;
+
+            form {
+                transform: translateY(0);
+            }
+
         }
 
         form {
-            align-self: center;
-            width: 100%;
-            height: auto;
-            display: block;
+            margin: auto;
+            max-width: 800px;
+            overflow: auto;
+            overflow-x: hidden;
+            padding: 20px 10px;
             position: relative;
-            padding: 20px;
-            margin: 0 auto;
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
             background: #f1f1f1;
+            box-shadow: 0 0 30px 0 $color-primary;
+            transition: all 500ms ease;
+            transform: translateY(200%);
+
+            .input-cont {
+                flex-basis: 50%;
+                padding: 0 10px;
+                position: relative;
+            }
+
+            .hidden-desktop {
+                display: none;
+            }
+
+            .title {
+                display: block;
+                position: relative;
+                flex-basis: 100%;
+                padding: 0 10px;
+                margin-bottom: 16px;
+
+                p {
+                    margin: 0 0 16px 0;
+                    font-size: 27px;
+                    border-bottom: 1px solid rgba($color-primary, 0.1);
+                    padding-bottom: 10px;
+
+                    span {
+                        color: $color-tertiary;
+                        font-weight: 700;
+                        margin: 0 0 0 5px;
+                        display: inline-block;
+                    }
+
+                }
+
+                span {
+                    font-weight: 700;
+                    margin: 24px 0 12px 0;
+                    display: block;
+                }
+
+                button {
+                    display: inline-block;
+                    width: auto;
+                    padding: 10px 40px;
+                    margin-right: 10px;
+                    font-size: 12px;
+                    font-weight: 700;
+                    letter-spacing: 0.5px;
+                    text-transform: uppercase;
+                    color: white;
+                    cursor: pointer;
+
+                    &.fb {
+                        background-color: #3b5998;
+                    }
+
+                    &.li {
+                        background-color: #007bb5;
+                    }
+
+                }
+
+            }
 
             label {
                 display: block;
                 color: $color-primary;
                 font-size: 15px;
                 margin-bottom: 5px;
+
+                span {
+                    color: red;
+                    font-weight: 700;
+                }
+
             }
 
             input,
             select,
-            textarea {
+            textarea,
+            button {
                 appearance: none;
                 border: none;
                 border-radius: 0;
                 margin: 0 0 20px 0;
-                padding: 10px;
+                padding: 10px 10px 8px 10px;
                 width: calc(100% - 20px);
                 outline: 0;
                 display: block;
@@ -371,11 +438,32 @@
                     cursor: pointer;
                 }
 
+                &[type="submit"] {
+                    width: auto;
+                    margin: 10px auto 0;
+                    display: inline-block;
+                    padding: 16px 40px;
+                    font-size: 12px;
+                    font-weight: 700;
+                    letter-spacing: 0.5px;
+                    text-transform: uppercase;
+                    color: white;
+                    cursor: pointer;
+                    background-color: $color-tertiary;
+                }
+
                 &:focus,
                 &:active {
                     outline: none;
+                    border-color: $color-tertiary;
                 }
 
+            }
+
+            input,
+            select,
+            textarea {
+                border-bottom: 2px solid transparent;
             }
 
             select {
@@ -384,8 +472,8 @@
 
                 &+i {
                     position: absolute;
-                    margin-top: -50px;
-                    right: 25px;
+                    right: 16px;
+                    top: 30px;
                     pointer-events: none;
                     transition: all 200ms ease;
                 }
@@ -393,7 +481,7 @@
                 &:hover {
 
                     &+i {
-                        margin-top: -47px;
+                        top: 33px;
                         color: $color-tertiary;
                     }
 

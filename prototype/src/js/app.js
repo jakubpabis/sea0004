@@ -131,11 +131,38 @@ function loadCarousel()
 
 function showForm()
 {
-	document.getElementById('jobFormModal').style.display = 'block';
+	document.getElementById('jobFormModal').style.display = 'flex';
 	setTimeout(function() {
 		document.getElementById('jobFormModal').classList.add('active');
 		document.getElementsByTagName('html')[0].classList.add('modal-open');
 	}, 50);
+}
+
+function hideForm() 
+{
+	document.getElementById('jobFormModal').classList.remove('active');
+	document.getElementsByTagName('html')[0].classList.remove('modal-open');
+	setTimeout(function() {
+		document.getElementById('jobFormModal').style.display = 'none';
+	}, 500);
+}
+
+function showCVForm()
+{
+	document.getElementById('uploadCvModal').style.display = 'flex';
+	setTimeout(function() {
+		document.getElementById('uploadCvModal').classList.add('active');
+		document.getElementsByTagName('html')[0].classList.add('modal-open');
+	}, 50);
+}
+
+function hideCVForm() 
+{
+	document.getElementById('uploadCvModal').classList.remove('active');
+	document.getElementsByTagName('html')[0].classList.remove('modal-open');
+	setTimeout(function() {
+		document.getElementById('uploadCvModal').style.display = 'none';
+	}, 500);
 }
 
 function initMap()
@@ -239,3 +266,20 @@ function initMap()
 }
 
 loadCarousel();
+
+// Trigger close form modal window when click on overlay
+if(document.getElementById('jobFormModal')) {
+	document.getElementById('jobFormModal').addEventListener('click', function(e) {
+		if (e.target === document.getElementById('jobFormModal')) {
+			hideForm();
+		}
+	}, false);
+}
+
+if(document.getElementById('uploadCvModal')) {
+	document.getElementById('uploadCvModal').addEventListener('click', function(e) {
+		if (e.target === document.getElementById('uploadCvModal')) {
+			hideCVForm();
+		}
+	}, false);
+}

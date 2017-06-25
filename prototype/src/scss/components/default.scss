@@ -1,0 +1,50 @@
+.default-article {
+
+    &__header {
+        max-height: 600px;
+        min-height: 50vh;
+        position: relative;
+
+        .bg-cover-abs {
+            max-height: 600px;
+            min-height: 50vh;
+
+            &:after {
+                content: '';
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                background-color: rgba(0, 0, 0, 0.3);
+            }
+
+        }
+
+        .container {
+            max-height: 600px;
+            min-height: 50vh;
+            display: flex;
+        }
+
+        h1 {
+            align-self: center;
+            margin: 50px auto;
+            color: white;
+            text-align: center;
+        }
+
+    }
+
+    &__content {
+        margin: 100px 0;
+
+        ul {
+            list-style: circle;
+            margin: 0;
+            padding: 0 0 0 18px;
+        }
+
+    }
+
+}
