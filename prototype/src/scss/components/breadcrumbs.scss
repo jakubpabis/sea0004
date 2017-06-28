@@ -24,15 +24,16 @@
         }
 
         li {
-            float: left;
+            display: inline-block;
             height: 28px;
-            line-height: 28px;
+            line-height: 26px;
             margin: 0 4px;
 
             &:hover {
                 
                 a {
                     text-decoration: underline;
+                    line-height: 1;
                 }
 
             }
