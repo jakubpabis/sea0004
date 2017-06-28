@@ -3,14 +3,13 @@
 /prototype/.sass-cache
 /.DS_Store
 /design
-/build/composer.lock
-/build/*
+/build
 !/build/themes/searchit
 !/build/themes/searchit/*
+!/build/plugins/searchit
+!/build/plugins/searchit/*
 /build/themes/searchit/content
 /build/themes/searchit/content/*
 /build/themes/searchit/meta
 /build/themes/searchit/meta/*
-!/build/plugins/searchit
-!/build/plugins/searchit/*
 !/.gitignore
