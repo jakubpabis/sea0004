@@ -170,6 +170,13 @@
 				text-transform: uppercase;
 				color: white;
 				cursor: pointer;
+				transition: all 200ms ease;
+				
+				&:hover {
+					transform: scale(1.05);
+					-webkit-box-shadow: 0 0 8px 0 rgba($color-primary, 0.6);
+					box-shadow: 0 0 8px 0 rgba($color-primary, 0.6);
+				}
 
 				&.fb {
 					background-color: #3b5998;
@@ -188,6 +195,8 @@
 			color: $color-primary;
 			font-size: 15px;
 			margin-bottom: 5px;
+			line-height: 1;
+            height: 18px;
 
 			span {
 				color: red;
@@ -245,6 +254,13 @@
 				color: white;
 				cursor: pointer;
 				background-color: $color-tertiary;
+
+				&:hover {
+					transform: scale(1.05);
+					-webkit-box-shadow: 0 0 8px 0 rgba($color-primary, 0.6);
+					box-shadow: 0 0 8px 0 rgba($color-primary, 0.6);
+				}
+
 			}
 
 			&:focus,
@@ -274,7 +290,7 @@
 			}
 
 			&.message {
-				height: 246px;
+				height: 242px;
 			}
 
 		}
