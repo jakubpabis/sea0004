@@ -456,7 +456,7 @@
 		line-height: 60px;
 		margin: 0 0 0 -15px;
 		position: relative;
-		z-index: 9;
+		z-index: 9999;
 
 		@media(max-width: 1170px) {
 			margin: 0 0 0 -10px;
@@ -605,6 +605,7 @@
 				opacity: 0;
 				visibility: hidden;
 				max-height: 0;
+				z-index: 9999;
 
 				&:before {
 					display: block;

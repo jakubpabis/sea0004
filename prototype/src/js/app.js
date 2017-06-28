@@ -15,7 +15,8 @@ if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
 else window.addEventListener('load', loadDeferredStyles);
 //-------------------- /Load some deferred styles --------------------//
 
-function hasClass(el, cls) {
+function hasClass(el, cls) 
+{
 	return el.className && new RegExp("(\\s|^)" + cls + "(\\s|$)").test(el.className);
 }
 
@@ -36,7 +37,8 @@ function hideSearch()
 	document.getElementsByClassName('search-btn')[0].classList.remove('active');
 }
 
-function showLang($el, event) {
+function showLang($el, event) 
+{
 	if(window.innerWidth <= 760 && !hasClass($el, 'active')) {
 		event.preventDefault();
 		$el.classList.add('active');
@@ -46,7 +48,8 @@ function showLang($el, event) {
 	}
 }
 
-function showMenu($el) {
+function showMenu($el) 
+{
 	if(!hasClass($el, 'active')) {
 		$el.classList.add('active');
 		document.getElementsByTagName('body')[0].classList.add('menu-active');
@@ -65,7 +68,8 @@ function showMenu($el) {
 	}
 }
 
-function hideMenu() {
+function hideMenu() 
+{
 	document.getElementById('menu-btn').classList.remove('active');
 	document.getElementsByTagName('body')[0].classList.remove('menu-active');
 	document.getElementsByTagName('html')[0].classList.remove('menu-active');
@@ -77,14 +81,17 @@ function hideMenu() {
 
 function checkboxLabel($el) 
 {
-	if(hasClass($el, 'active')) {
+	if($el.getElementsByTagName('input')[0].checked === true) {
 		$el.classList.remove('active');
+		$el.getElementsByTagName('input')[0].checked = false;
 	} else {
 		$el.classList.add('active');
+		$el.getElementsByTagName('input')[0].checked = true;
 	}
 }
 
-function siemaAutoplay($time, $siema, $carousel) {
+function siemaAutoplay($time, $siema, $carousel) 
+{
 	var timer = setInterval(function() {
 		$siema.next();
 	}, $time);
@@ -98,7 +105,8 @@ function siemaAutoplay($time, $siema, $carousel) {
 	});
 }
 
-function loadCarousel() {
+function loadCarousel() 
+{
 	var siema = document.getElementById('siema-carousel');
 	if(siema) {
 		const mySiema = new Siema({
@@ -121,4 +129,157 @@ function loadCarousel() {
 	}
 }
 
+function showForm()
+{
+	document.getElementById('jobFormModal').style.display = 'flex';
+	setTimeout(function() {
+		document.getElementById('jobFormModal').classList.add('active');
+		document.getElementsByTagName('html')[0].classList.add('modal-open');
+	}, 50);
+}
+
+function hideForm() 
+{
+	document.getElementById('jobFormModal').classList.remove('active');
+	document.getElementsByTagName('html')[0].classList.remove('modal-open');
+	setTimeout(function() {
+		document.getElementById('jobFormModal').style.display = 'none';
+	}, 500);
+}
+
+function showCVForm()
+{
+	document.getElementById('uploadCvModal').style.display = 'flex';
+	setTimeout(function() {
+		document.getElementById('uploadCvModal').classList.add('active');
+		document.getElementsByTagName('html')[0].classList.add('modal-open');
+	}, 50);
+}
+
+function hideCVForm() 
+{
+	document.getElementById('uploadCvModal').classList.remove('active');
+	document.getElementsByTagName('html')[0].classList.remove('modal-open');
+	setTimeout(function() {
+		document.getElementById('uploadCvModal').style.display = 'none';
+	}, 500);
+}
+
+function initMap()
+{
+	var job_map = document.getElementById('job_map');
+	var map = new google.maps.Map(job_map, {
+		center: {lat: 52.3702157, lng: 4.8951679},
+		zoom: 11,
+		scrollwheel: false,
+		draggable: true,
+		mapTypeControl: false,
+		scaleControl: false,
+		streetViewControl: false
+	});
+	var marker = new google.maps.Marker({
+		map: map,
+		position: new google.maps.LatLng(52.3702157,4.8951679)
+	});
+	map.set('styles', 
+		[
+			{
+				"featureType": "administrative",
+				"elementType": "labels.text.fill",
+				"stylers": [
+					{
+						"color": "#444444"
+					}
+				]
+			},
+			{
+				"featureType": "landscape",
+				"elementType": "all",
+				"stylers": [
+					{
+						"color": "#f2f2f2"
+					}
+				]
+			},
+			{
+				"featureType": "poi",
+				"elementType": "all",
+				"stylers": [
+					{
+						"visibility": "off"
+					}
+				]
+			},
+			{
+				"featureType": "road",
+				"elementType": "all",
+				"stylers": [
+					{
+						"saturation": -100
+					},
+					{
+						"lightness": 45
+					}
+				]
+			},
+			{
+				"featureType": "road.highway",
+				"elementType": "all",
+				"stylers": [
+					{
+						"visibility": "simplified"
+					}
+				]
+			},
+			{
+				"featureType": "road.arterial",
+				"elementType": "labels.icon",
+				"stylers": [
+					{
+						"visibility": "off"
+					}
+				]
+			},
+			{
+				"featureType": "transit",
+				"elementType": "all",
+				"stylers": [
+					{
+						"visibility": "off"
+					}
+				]
+			},
+			{
+				"featureType": "water",
+				"elementType": "all",
+				"stylers": [
+					{
+						"color": "#7f8ec1"
+					},
+					{
+						"visibility": "on"
+					}
+				]
+			}
+		]
+	);
+}
+
 loadCarousel();
+
+// Trigger close form modal window when click on overlay
+if(document.getElementById('jobFormModal')) {
+	document.getElementById('jobFormModal').addEventListener('click', function(e) {
+		if (e.target === document.getElementById('jobFormModal')) {
+			hideForm();
+		}
+	}, false);
+}
+
+if(document.getElementById('uploadCvModal')) {
+	document.getElementById('uploadCvModal').addEventListener('click', function(e) {
+		if (e.target === document.getElementById('uploadCvModal')) {
+			hideCVForm();
+		}
+	}, false);
+}

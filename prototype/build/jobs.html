@@ -44,7 +44,7 @@
 						</a>
 					</li>
 				</ul>
-				<a href="#" class="btn btn-default">
+				<a href="javascript:void(0)" onclick="showCVForm()" class="btn btn-default">
 					<span>Upload CV</span>
 				</a>
 			</div>
@@ -78,57 +78,57 @@
 						<a href="jobs.html" title="">Vacatures</a>
 					</li>
 					<li>
-						<a href="" title="">Kandidaten</a>
+						<a href="default.html" title="">Kandidaten</a>
 						<ul class="sub">
 							<li>
-								<a href="">Upload cv</a>
+								<a href="default.html">Upload cv</a>
 							</li>
 							<li>
-								<a href="">Waarom Search It Recruitment?</a>
+								<a href="default.html">Waarom Search It Recruitment?</a>
 							</li>
 							<li>
-								<a href="">Werkvergunning</a>
+								<a href="default.html">Werkvergunning</a>
 							</li>
 							<li>
-								<a href="">30% Regeling</a>
+								<a href="default.html">30% Regeling</a>
 							</li>
 							<li>
-								<a href="">Opdrachtgevers</a>
+								<a href="default.html">Opdrachtgevers</a>
 							</li>
 							<li>
-								<a href="">Referenties</a>
+								<a href="default.html">Referenties</a>
 							</li>
 						</ul>
 					</li>
 					<li>
-						<a href="" title="">Opdrachtgevers</a>
+						<a href="default-no-img.html" title="">Opdrachtgevers</a>
 						<ul class="sub">
 							<li>
-								<a href="">Upload vacature</a>
+								<a href="default-no-img.html">Upload vacature</a>
 							</li>
 							<li>
-								<a href="">Waarom Search It Recruitment?</a>
+								<a href="default-no-img.html">Waarom Search It Recruitment?</a>
 							</li>
 							<li>
-								<a href="">Ons Recruitment Proces</a>
+								<a href="default-no-img.html">Ons Recruitment Proces</a>
 							</li>
 							<li>
-								<a href="">Executive Search and Headhunting</a>
+								<a href="default-no-img.html">Executive Search and Headhunting</a>
 							</li>
 							<li>
-								<a href="">Recruitment Process Outsourcing - RPO</a>
+								<a href="default-no-img.html">Recruitment Process Outsourcing - RPO</a>
 							</li>
 							<li>
-								<a href="">Sourcing Process Outsourcing - SPO</a>
+								<a href="default-no-img.html">Sourcing Process Outsourcing - SPO</a>
 							</li>
 							<li>
-								<a href="">Coaching</a>
+								<a href="default-no-img.html">Coaching</a>
 							</li>
 							<li>
-								<a href="">Werkvergunning</a>
+								<a href="default-no-img.html">Werkvergunning</a>
 							</li>
 							<li>
-								<a href="">30% Regeling</a>
+								<a href="default-no-img.html">30% Regeling</a>
 							</li>
 						</ul>
 					</li>
@@ -192,46 +192,419 @@
 		</div>
 	</div>
 </nav>
+<div class="breadcrumbs">
+    <div class="container">
+        <ul>
+            <li>
+                <a href="landing.html">Home</a>
+            </li>
+            <li>
+                &rarr;
+            </li>
+            <li>
+                <a href="jobs.html">Vacatures</a>
+            </li>
+        </ul>
+    </div>
+</div>
 
 <section class="job-listing">
     <div class="container">
         <div class="job-listing__container">
             <aside class="job-listing__filters">
+    <a href="" class="shortlisted-jobs">
+        <i class="material-icons">favorite</i>
+        <p>Shortlist vacatures</p>
+    </a>
     <form>
-        <span class="title">Salary range</span>
-        <label for="">From:</label>
-        <select>
-            <option value="">Any</option>
-        </select>
-        <label for="">To:</label>
-        <select>
-            <option value="">Any</option>
-        </select>
-        <button type="reset">Reset</button>
+        <span class="title">
+            Salary range
+            <button type="reset" title="Reset filter">
+                <span>Reset</span>
+                <i class="material-icons">not_interested</i>
+            </button>
+        </span>
+        <label for="" class="select">
+            <span>From:</span>
+            <select>
+                <option value="">Any</option>
+            </select>
+            <i class="material-icons">expand_more</i>
+        </label>
+        <label for="" class="select">
+            <span>To:</span>
+            <select>
+                <option value="">Any</option>
+            </select>
+            <i class="material-icons">expand_more</i>
+        </label>
     </form>
     <form>
-        <span class="title">Job category</span>
+        <span class="title">
+            Job category
+            <button type="reset" title="Reset filter">
+                <span>Reset</span>
+                <i class="material-icons">not_interested</i>
+            </button>    
+        </span>
         <label for="IT" class="checkbox" onclick="checkboxLabel(this)">
-            <span>IT</span>
-            <input type="checkbox" name="IT" value="IT" checked>
+            <input type="checkbox" name="IT" value="IT">
+            <span>IT<i class="material-icons">cancel</i></span>
         </label>
         <label for="Online Marketing" class="checkbox" onclick="checkboxLabel(this)">
-            <span>Online Marketing</span>
             <input type="checkbox" name="Online Marketing" value="Online Marketing">
+            <span>Online Marketing<i class="material-icons">cancel</i></span>
         </label>
-        <button type="reset">Reset</button>
     </form>
     <form>
-        <span class="title">Job type</span>
-        <label for="Full-time"><input type="checkbox" name="Full-time" value="Full-time">Full-time</label>
-        <label for="Part-time"><input type="checkbox" name="Part-time" value="Part-time">Part-time</label>
-        <button type="reset">Reset</button>
+        <span class="title">
+            Job type
+            <button type="reset" title="Reset filter">
+                <span>Reset</span>
+                <i class="material-icons">not_interested</i>
+            </button>
+        </span>
+        <label for="Full-time" class="checkbox" onclick="checkboxLabel(this)">
+            <input type="checkbox" name="Full-time" value="Full-time">
+            <span>Full-time<i class="material-icons">cancel</i></span>
+        </label>
+        <label for="Part-time" class="checkbox" onclick="checkboxLabel(this)">
+            <input type="checkbox" name="Part-time" value="Part-time">
+            <span>Part-time<i class="material-icons">cancel</i></span>
+        </label>
     </form>
 </aside>
             <div class="job-listing__list">
+    <aside class="job-listing__searchbar">
+        <form>
+            <label>
+                Find a job
+            </label>
+            <input type="text" id="search__job-title" placeholder="job title - e.g. &quot;Web Developer&quot;">
+            <label for="">
+                in
+            </label>
+            <input type="text" id="search__job-location" placeholder="town - e.g. &quot;Amsterdam&quot;">
+            <input type="submit" value="Search">
+        </form>
+    </aside>
+    <div class="job-listing__job-number">
+        <span>284,038</span>
+        <p>&nbsp;jobs founded for:&nbsp;</p>
+        <span>"web developer"</span>
+        <div class="showing">
+            <span>1</span>
+            <p> - </p>
+            <span>20</span>
+            <p>of 284,103 jobs</p>
+        </div>
+    </div>
     <article class="job-listing__list-item">
-        
+        <a href="job-detail.html" class="whole-element-link"></a>
+        <a href="" class="shortlist-link">
+            <p>Shortlist</p>
+            <i class="material-icons">favorite_border</i>
+        </a>
+        <p class="title">
+            Development Manager Rotterdam
+        </p>
+        <div class="info">
+            <div class="info-single">
+                <i class="material-icons">location_on</i>
+                <p>Amsterdam, The Netherlands</p>
+            </div>
+            <div class="info-single">
+                <i class="material-icons">euro_symbol</i>
+                <p>100.000 - 120.000 p.a.</p>
+            </div>
+            <div class="info-single">
+                <i class="material-icons">access_time</i>
+                <p>Fulltime employee</p>
+            </div>
+        </div>
+        <p class="description">
+            Onze opdrachtgever is een grote multinational met ongeveer 600 medewerkers in Nederland. Ze zijn marktleider op het gebied van HR-oplossingen en nemen hiermee veel werk uit handen bij diverse organisaties. Voor hun kantoor in Rotterdam zijn ze op zoek naar een Development Manager voor de afdeling Re...
+        </p>
     </article>
+    <article class="job-listing__list-item">
+        <a href="job-detail.html" class="whole-element-link"></a>
+        <a href="" class="shortlist-link">
+            <p>Shortlisted</p>
+            <i class="material-icons">favorite</i>
+        </a>
+        <p class="title">
+            Senior Application Tester
+        </p>
+        <div class="info">
+            <div class="info-single">
+                <i class="material-icons">location_on</i>
+                <p>Amsterdam, Netherlands</p>
+            </div>
+            <div class="info-single">
+                <i class="material-icons">euro_symbol</i>
+                <p>45.000 - 55.000 p.a.</p>
+            </div>
+            <div class="info-single">
+                <i class="material-icons">access_time</i>
+                <p>Parttime employee</p>
+            </div>
+        </div>
+        <p class="description">
+            Would you like to work in an international environment that is constantly evolving? Do you feel at home in a dynamic environment where you have many opportunities to deepen and broaden your skills? Then this is the opportunity you are looking for. Our client is a looking for a Senior Application Te...
+        </p>
+    </article>
+    <article class="job-listing__list-item">
+        <a href="job-detail.html" class="whole-element-link"></a>
+        <a href="" class="shortlist-link">
+            <p>Shortlisted</p>
+            <i class="material-icons">favorite</i>
+        </a>
+        <p class="title">
+            Full-Stack Developer Amsterdam
+        </p>
+        <div class="info">
+            <div class="info-single">
+                <i class="material-icons">location_on</i>
+                <p>Amsterdam, The Netherlands</p>
+            </div>
+            <div class="info-single">
+                <i class="material-icons">euro_symbol</i>
+                <p>50.000 - 70.000 p.a.</p>
+            </div>
+            <div class="info-single">
+                <i class="material-icons">access_time</i>
+                <p>Fulltime employee</p>
+            </div>
+        </div>
+        <p class="description">
+            Onze opdrachtgever is een grote multinational met ongeveer 600 medewerkers in Nederland. Ze zijn marktleider op het gebied van HR-oplossingen en nemen hiermee veel werk uit handen bij diverse organisaties. Voor hun kantoor in Rotterdam zijn ze op zoek naar een Development Manager voor de afdeling Re...
+        </p>
+    </article>
+    <article class="job-listing__list-item">
+        <a href="job-detail.html" class="whole-element-link"></a>
+        <a href="" class="shortlist-link">
+            <p>Shortlist</p>
+            <i class="material-icons">favorite_border</i>
+        </a>
+        <p class="title">
+            Java Applicatiebeheerder Utrecht
+        </p>
+        <div class="info">
+            <div class="info-single">
+                <i class="material-icons">location_on</i>
+                <p>Utrecht, Netherlands</p>
+            </div>
+            <div class="info-single">
+                <i class="material-icons">euro_symbol</i>
+                <p>40.000 - 60.000 p.a.</p>
+            </div>
+            <div class="info-single">
+                <i class="material-icons">access_time</i>
+                <p>Fulltime employee</p>
+            </div>
+        </div>
+        <p class="description">
+            Ben jij een echte Java Specialist en wil jij werken binnen een organisatie waar genoeg doorgroeimogelijkheden zijn en je ook de mogelijkheid hebt om met de nieuwste technieken te werken? Dan is dit de uitdaging voor jou! Onze opdrachtgever biedt volop mogelijkheden om jezelf door te ontwikkelen zowe...
+        </p>
+    </article>
+    <article class="job-listing__list-item">
+        <a href="job-detail.html" class="whole-element-link"></a>
+        <a href="" class="shortlist-link">
+            <p>Shortlist</p>
+            <i class="material-icons">favorite_border</i>
+        </a>
+        <p class="title">
+            Technisch Applicatiebeheerder Amsterdam
+        </p>
+        <div class="info">
+            <div class="info-single">
+                <i class="material-icons">location_on</i>
+                <p>Amsterdam, The Netherlands</p>
+            </div>
+            <div class="info-single">
+                <i class="material-icons">euro_symbol</i>
+                <p>40.000 - 60.000 p.a.</p>
+            </div>
+            <div class="info-single">
+                <i class="material-icons">access_time</i>
+                <p>Fulltime employee</p>
+            </div>
+        </div>
+        <p class="description">
+            Wil jij werken binnen een organisatie waar genoeg doorgroeimogelijkheden zijn en je ook de mogelijkheid hebt om met de nieuwste technieken te werken? Dan is dit de uitdaging voor jou! Onze opdrachtgever biedt volop mogelijkheden om jezelf door te ontwikkelen zowel op vakinhoudelijk als op persoonlij...
+        </p>
+    </article>
+    <article class="job-listing__list-item">
+        <a href="job-detail.html" class="whole-element-link"></a>
+        <a href="" class="shortlist-link">
+            <p>Shortlist</p>
+            <i class="material-icons">favorite_border</i>
+        </a>
+        <p class="title">
+            Development Manager Rotterdam
+        </p>
+        <div class="info">
+            <div class="info-single">
+                <i class="material-icons">location_on</i>
+                <p>Amsterdam, The Netherlands</p>
+            </div>
+            <div class="info-single">
+                <i class="material-icons">euro_symbol</i>
+                <p>100.000 - 120.000 p.a.</p>
+            </div>
+            <div class="info-single">
+                <i class="material-icons">access_time</i>
+                <p>Fulltime employee</p>
+            </div>
+        </div>
+        <p class="description">
+            Onze opdrachtgever is een grote multinational met ongeveer 600 medewerkers in Nederland. Ze zijn marktleider op het gebied van HR-oplossingen en nemen hiermee veel werk uit handen bij diverse organisaties. Voor hun kantoor in Rotterdam zijn ze op zoek naar een Development Manager voor de afdeling Re...
+        </p>
+    </article>
+    <article class="job-listing__list-item">
+        <a href="job-detail.html" class="whole-element-link"></a>
+        <a href="" class="shortlist-link">
+            <p>Shortlist</p>
+            <i class="material-icons">favorite_border</i>
+        </a>
+        <p class="title">
+            Senior Application Tester
+        </p>
+        <div class="info">
+            <div class="info-single">
+                <i class="material-icons">location_on</i>
+                <p>Amsterdam, Netherlands</p>
+            </div>
+            <div class="info-single">
+                <i class="material-icons">euro_symbol</i>
+                <p>45.000 - 55.000 p.a.</p>
+            </div>
+            <div class="info-single">
+                <i class="material-icons">access_time</i>
+                <p>Parttime employee</p>
+            </div>
+        </div>
+        <p class="description">
+            Would you like to work in an international environment that is constantly evolving? Do you feel at home in a dynamic environment where you have many opportunities to deepen and broaden your skills? Then this is the opportunity you are looking for. Our client is a looking for a Senior Application Te...
+        </p>
+    </article>
+    <article class="job-listing__list-item">
+        <a href="job-detail.html" class="whole-element-link"></a>
+        <a href="" class="shortlist-link">
+            <p>Shortlist</p>
+            <i class="material-icons">favorite_border</i>
+        </a>
+        <p class="title">
+            Full-Stack Developer Amsterdam
+        </p>
+        <div class="info">
+            <div class="info-single">
+                <i class="material-icons">location_on</i>
+                <p>Amsterdam, The Netherlands</p>
+            </div>
+            <div class="info-single">
+                <i class="material-icons">euro_symbol</i>
+                <p>50.000 - 70.000 p.a.</p>
+            </div>
+            <div class="info-single">
+                <i class="material-icons">access_time</i>
+                <p>Fulltime employee</p>
+            </div>
+        </div>
+        <p class="description">
+            Onze opdrachtgever is een grote multinational met ongeveer 600 medewerkers in Nederland. Ze zijn marktleider op het gebied van HR-oplossingen en nemen hiermee veel werk uit handen bij diverse organisaties. Voor hun kantoor in Rotterdam zijn ze op zoek naar een Development Manager voor de afdeling Re...
+        </p>
+    </article>
+    <article class="job-listing__list-item">
+        <a href="job-detail.html" class="whole-element-link"></a>
+        <a href="" class="shortlist-link">
+            <p>Shortlist</p>
+            <i class="material-icons">favorite_border</i>
+        </a>
+        <p class="title">
+            Java Applicatiebeheerder Utrecht
+        </p>
+        <div class="info">
+            <div class="info-single">
+                <i class="material-icons">location_on</i>
+                <p>Utrecht, Netherlands</p>
+            </div>
+            <div class="info-single">
+                <i class="material-icons">euro_symbol</i>
+                <p>40.000 - 60.000 p.a.</p>
+            </div>
+            <div class="info-single">
+                <i class="material-icons">access_time</i>
+                <p>Fulltime employee</p>
+            </div>
+        </div>
+        <p class="description">
+            Ben jij een echte Java Specialist en wil jij werken binnen een organisatie waar genoeg doorgroeimogelijkheden zijn en je ook de mogelijkheid hebt om met de nieuwste technieken te werken? Dan is dit de uitdaging voor jou! Onze opdrachtgever biedt volop mogelijkheden om jezelf door te ontwikkelen zowe...
+        </p>
+    </article>
+    <article class="job-listing__list-item">
+        <a href="job-detail.html" class="whole-element-link"></a>
+        <a href="" class="shortlist-link">
+            <p>Shortlist</p>
+            <i class="material-icons">favorite_border</i>
+        </a>
+        <p class="title">
+            Technisch Applicatiebeheerder Amsterdam
+        </p>
+        <div class="info">
+            <div class="info-single">
+                <i class="material-icons">location_on</i>
+                <p>Amsterdam, The Netherlands</p>
+            </div>
+            <div class="info-single">
+                <i class="material-icons">euro_symbol</i>
+                <p>40.000 - 60.000 p.a.</p>
+            </div>
+            <div class="info-single">
+                <i class="material-icons">access_time</i>
+                <p>Fulltime employee</p>
+            </div>
+        </div>
+        <p class="description">
+            Wil jij werken binnen een organisatie waar genoeg doorgroeimogelijkheden zijn en je ook de mogelijkheid hebt om met de nieuwste technieken te werken? Dan is dit de uitdaging voor jou! Onze opdrachtgever biedt volop mogelijkheden om jezelf door te ontwikkelen zowel op vakinhoudelijk als op persoonlij...
+        </p>
+    </article>
+    <div class="job-listing__pagination">
+        <a href="" class="prev">
+            <i class="material-icons">chevron_left</i>
+            <span>Previous</span>
+        </a>
+        <ul>
+            <li>
+                <a href="">1</a>
+            </li>
+            <li>
+                ...
+            </li>
+            <li>
+                <a href="">4</a>
+            </li>
+            <li>
+                <a href="">5</a>
+            </li>
+            <li class="active">
+                <a href="">6</a>
+            </li>
+            <li>
+                <a href="">7</a>
+            </li>
+            <li>
+                <a href="">8</a>
+            </li>
+            <li>
+                ...
+            </li>
+        </ul>
+        <a href="" class="next">
+            <span>Next</span>
+            <i class="material-icons">chevron_right</i>
+        </a>
+    </div>
 </div>
         </div>
     </div>
@@ -329,15 +702,66 @@
 						</div>
 						<div class="footer__lower__grid right">
 							<p>
-								Made with love by <a href="#" target="_blank"><u>Sative</u></a>
+								<a href="#" target="_blank">Made by <!--<i class="fa fa-heart" aria-hidden="true"></i> by: --><span>Sative</span></a>
 							</p>
 						</div>
 					</div>
 				</div>
 			</div>
 		</footer>
+		<div id="uploadCvModal" class="modal" aria-hidden="true">
+			<form>
+				<div class="title">
+					<p><span>Upload your CV to our database!</span></p>
+					<span>
+						Fill the form using:
+					</span>
+					<button class="fb" type="button">Facebook</button>
+					<button class="li" type="button">Linkedin</button>
+				</div>
+				<div class="input-cont">
+					<label for="applicant-name">Name <span>*</span></label>
+					<input type="text" name="applicant-name" value="" required="required" placeholder="John Doe">
+					<label for="applicant-email">Email <span>*</span></label>
+					<input type="email" name="applicant-email" value="" required="required" placeholder="johndoe@example.com">
+					<label for="applicant-phone">Phone</label>
+					<input type="tel" name="applicant-phone" value="" placeholder="+31 123 456 789">
+					<label for="applicant-address">Address</label>
+					<textarea rows="3" name="applicant-address" placeholder="Prinses Beatrixlaan 23&#x0a; 2595 AK  'S-Gravenhage&#x0a; Netherlands"></textarea>
+					<label for="applicant-cv">Upload your CV <span>*</span></label>
+					<div class="cvupload">
+						<input type="file" name="applicant-cv" value="" required="required">
+					</div>
+					<div class="hidden-desktop">
+						<label for="applicant-photo">Upload your photo</label>
+						<div class="cvupload">
+							<input type="file" name="applicant-photo" value="">
+						</div>
+					</div>
+				</div>
+				<div class="input-cont">
+					<div>
+						<label for="applicant-find">How did you find us?</label>
+						<select name="applicant-find">
+							<option value="" disabled>Choose an option</option>
+						</select>
+						<i class="material-icons">expand_more</i>
+					</div>
+					<label for="applicant-message">Motivation and extra details</label>
+					<textarea rows="12" name="applicant-message" placeholder="Webtwo ipsum mobly doostang cotweet handango, mozy. Jajah shopify meebo spotify balihoo dopplr klout, vimeo dopplr tumblr chumby yoono. Mozy napster tivo kazaa, kaboodle heekya. Etsy zillow movity jajah imvu, zanga dogster. Rovio bitly insala blyve, wikia."></textarea>
+					<div class="hidden-mobile">
+						<label for="applicant-photo">Upload your photo</label>
+						<div class="cvupload">
+							<input type="file" name="applicant-photo" value="">
+						</div>
+					</div>
+				</div>
+				<input type="submit" value="Upload your CV">
+			</form>
+		</div>
 		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" defer></script> -->
 		<script type="text/javascript" src="assets/js/app.js" defer></script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_CXNi6mCASl4D3Ud9ofmUqE7Lt9Kb5ps&callback=initMap" defer></script>
 		<noscript id="deferred-styles">
 			<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900">
 			<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
