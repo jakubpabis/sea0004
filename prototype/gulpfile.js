@@ -34,8 +34,8 @@ var src = {
     buildCss: './build/assets/css',
     buildImg: './build/assets/img',
     buildFonts: './build/assets/fonts',
-    portJs: '../build/themes/maxey/assets/js',
-    portCss: '../build/themes/maxey/assets/css'
+    portJs: '../build/themes/searchit/assets/js',
+    portCss: '../build/themes/searchit/assets/css'
 };
 
 var production = false;
@@ -70,7 +70,7 @@ gulp.task('build-sass', function() {
         .pipe(plugins.minifyCss())
         .pipe(gulp.dest(src.publicCss))
         .pipe(gulp.dest(src.buildCss))
-        // .pipe(gulp.dest(src.portCss))
+        .pipe(gulp.dest(src.portCss))
 });
 
 /**
@@ -98,7 +98,7 @@ gulp.task('build-js', function () {
         .pipe(plugins.size())
         .pipe(gulp.dest(src.publicJs))
         .pipe(gulp.dest(src.buildJs))
-        // .pipe(gulp.dest(src.portJs))
+        .pipe(gulp.dest(src.portJs))
 });
 
 /**
