@@ -12,7 +12,7 @@
     &__grid {
         display: flex;
         flex-wrap: nowrap;
-        margin: 0 -15px;
+        margin: 0 -15px -50px;
         position: relative;
         transform: translateY(-50%);
 
@@ -22,7 +22,10 @@
             margin: 0 15px;
             background-color: white;
             text-align: center;
-
+            transition: all 250ms ease;
+            -webkit-box-shadow: 0 0 24px 0 rgba($color-primary, 0.15);
+            box-shadow: 0 0 24px 0 rgba($color-primary, 0.15);
+            
             * {
                 display: block;
             }
@@ -57,6 +60,31 @@
 				font-weight: 400;
 				display: block;
 			}
+
+            ul {
+                position: relative;
+                display: block;
+                margin: 20px 0 0 0;
+                padding: 0;
+
+                li {
+                    display: inline-block;
+
+                    i {
+                        font-size: 21px;
+                        color: $color-primary;
+                        padding: 3px;
+                        transition: all 200ms ease;
+
+                        &:hover {
+                            color: $color-tertiary;
+                        }
+
+                    }
+
+                }
+
+            }
 
         }
 

@@ -277,9 +277,20 @@ function initContactMap()
 		scaleControl: true,
 		streetViewControl: true
 	});
+	var image = {
+	url: 'assets/img/logo-pin.png',
+		// This marker is 20 pixels wide by 32 pixels high.
+		size: new google.maps.Size(160, 200),
+		// The origin for this image is (0, 0).
+		origin: new google.maps.Point(0, 0),
+		// The anchor for this image is the base of the flagpole at (0, 32).
+		anchor: new google.maps.Point(40, 100),
+		scaledSize: new google.maps.Size(80, 100)
+	};
 	var marker = new google.maps.Marker({
 		map: map,
-		position: new google.maps.LatLng(52.3214278,4.876879)
+		position: new google.maps.LatLng(52.3214278,4.876879),
+		icon: image
 	});
 	map.set('styles', 
 		[
