@@ -129,6 +129,54 @@ function loadCarousel()
 	}
 }
 
+function loadClientsCarousel() 
+{
+	var siema = document.getElementById('siema-carousel-clients');
+	if(siema) {
+		const mySiema = new Siema({
+			selector: '#siema-carousel-clients',
+			duration: 500,
+			easing: 'ease',
+			perPage: 1,
+			startIndex: 0,
+			draggable: true,
+			threshold: 20,
+			loop: true
+		});
+		document.getElementById('siema-prev-clients').addEventListener('click', function() {
+			mySiema.prev()
+		});
+		document.getElementById('siema-next-clients').addEventListener('click', function() {
+			mySiema.next()
+		});
+		// siemaAutoplay(5000, mySiema, siema);
+	}
+}
+
+function loadCandidatesCarousel() 
+{
+	var siema = document.getElementById('siema-carousel-candidates');
+	if(siema) {
+		const mySiema = new Siema({
+			selector: '#siema-carousel-candidates',
+			duration: 500,
+			easing: 'ease',
+			perPage: 1,
+			startIndex: 0,
+			draggable: true,
+			threshold: 20,
+			loop: true
+		});
+		document.getElementById('siema-prev-candidates').addEventListener('click', function() {
+			mySiema.prev()
+		});
+		document.getElementById('siema-next-candidates').addEventListener('click', function() {
+			mySiema.next()
+		});
+		// siemaAutoplay(5000, mySiema, siema);
+	}
+}
+
 function showForm()
 {
 	document.getElementById('jobFormModal').style.display = 'flex';
@@ -377,6 +425,8 @@ function initContactMap()
 }
 
 loadCarousel();
+loadClientsCarousel();
+loadCandidatesCarousel();
 
 // Trigger close form modal window when click on overlay
 if(document.getElementById('jobFormModal')) {
