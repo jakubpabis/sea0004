@@ -16,94 +16,9 @@ forceUrl = 1
 <section class="job-listing">
     <div class="container">
         <div class="job-listing__container">
-            <aside class="job-listing__filters">
-                <a href="" class="shortlisted-jobs">
-                    <i class="material-icons">favorite</i>
-                    <p>Shortlist vacatures</p>
-                </a>
-                <form>
-                    <span class="title">
-                        Salary range
-                        <button type="reset" title="Reset filter">
-                            <span>Reset</span>
-                            <i class="material-icons">not_interested</i>
-                        </button>
-                    </span>
-                    <label for="" class="select">
-                        <span>From:</span>
-                        <select>
-                            <option value="">Any</option>
-                        </select>
-                        <i class="material-icons">expand_more</i>
-                    </label>
-                    <label for="" class="select">
-                        <span>To:</span>
-                        <select>
-                            <option value="">Any</option>
-                        </select>
-                        <i class="material-icons">expand_more</i>
-                    </label>
-                </form>
-                <form>
-                    <span class="title">
-                        Job category
-                        <button type="reset" title="Reset filter">
-                            <span>Reset</span>
-                            <i class="material-icons">not_interested</i>
-                        </button>    
-                    </span>
-                    <label for="IT" class="checkbox" onclick="checkboxLabel(this)">
-                        <input type="checkbox" name="IT" value="IT">
-                        <span>IT<i class="material-icons">cancel</i></span>
-                    </label>
-                    <label for="Online Marketing" class="checkbox" onclick="checkboxLabel(this)">
-                        <input type="checkbox" name="Online Marketing" value="Online Marketing">
-                        <span>Online Marketing<i class="material-icons">cancel</i></span>
-                    </label>
-                </form>
-                <form>
-                    <span class="title">
-                        Job type
-                        <button type="reset" title="Reset filter">
-                            <span>Reset</span>
-                            <i class="material-icons">not_interested</i>
-                        </button>
-                    </span>
-                    <label for="Full-time" class="checkbox" onclick="checkboxLabel(this)">
-                        <input type="checkbox" name="Full-time" value="Full-time">
-                        <span>Full-time<i class="material-icons">cancel</i></span>
-                    </label>
-                    <label for="Part-time" class="checkbox" onclick="checkboxLabel(this)">
-                        <input type="checkbox" name="Part-time" value="Part-time">
-                        <span>Part-time<i class="material-icons">cancel</i></span>
-                    </label>
-                </form>
-            </aside>
+            {% partial 'job-filters' %}
             <div class="job-listing__list">
-                <aside class="job-listing__searchbar">
-                    <form>
-                        <label>
-                            Find a job
-                        </label>
-                        <input type="text" id="search__job-title" placeholder="job title - e.g. &quot;Web Developer&quot;">
-                        <label for="">
-                            in
-                        </label>
-                        <input type="text" id="search__job-location" placeholder="town - e.g. &quot;Amsterdam&quot;">
-                        <input type="submit" value="Search">
-                    </form>
-                </aside>
-                <div class="job-listing__job-number">
-                    <span>284,038</span>
-                    <p>&nbsp;jobs founded for:&nbsp;</p>
-                    <span>"web developer"</span>
-                    <div class="showing">
-                        <span>1</span>
-                        <p> - </p>
-                        <span>20</span>
-                        <p>of 284,103 jobs</p>
-                    </div>
-                </div>
+                {% partial 'job-searchbar' %}
                 <article class="job-listing__list-item">
                     <a href="job-detail.html" class="whole-element-link"></a>
                     <a href="" class="shortlist-link">
@@ -374,42 +289,7 @@ forceUrl = 1
                         Wil jij werken binnen een organisatie waar genoeg doorgroeimogelijkheden zijn en je ook de mogelijkheid hebt om met de nieuwste technieken te werken? Dan is dit de uitdaging voor jou! Onze opdrachtgever biedt volop mogelijkheden om jezelf door te ontwikkelen zowel op vakinhoudelijk als op persoonlij...
                     </p>
                 </article>
-                <div class="job-listing__pagination">
-                    <a href="" class="prev">
-                        <i class="material-icons">chevron_left</i>
-                        <span>Previous</span>
-                    </a>
-                    <ul>
-                        <li>
-                            <a href="">1</a>
-                        </li>
-                        <li>
-                            ...
-                        </li>
-                        <li>
-                            <a href="">4</a>
-                        </li>
-                        <li>
-                            <a href="">5</a>
-                        </li>
-                        <li class="active">
-                            <a href="">6</a>
-                        </li>
-                        <li>
-                            <a href="">7</a>
-                        </li>
-                        <li>
-                            <a href="">8</a>
-                        </li>
-                        <li>
-                            ...
-                        </li>
-                    </ul>
-                    <a href="" class="next">
-                        <span>Next</span>
-                        <i class="material-icons">chevron_right</i>
-                    </a>
-                </div>
+                {% partial 'job-pagination' %}
             </div>
         </div>
     </div>
