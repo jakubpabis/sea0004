@@ -3,7 +3,37 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Search It Recruitment</title>
+	<!-- Meta title -->
+	<title>
+		{% if record.meta_title %}
+			{{ record.meta_title }}
+		{% elseif record.title %}
+			{{ record.title }} | Search It Recruitment
+		{% elseif this.page.meta_title %}
+			{{ this.page.meta_title }}
+		{% else %}
+			{{ this.page.title }} | Search It Recruitment
+		{% endif %}
+	</title>
+	<!-- /Meta title -->
+	<!-- Meta description -->
+	{% if record.meta_description %}
+		<meta name="description" content="{{ record.meta_description }}">
+	{% elseif record.excerpt %}
+		<meta name="description" content="{{ record.excerpt|striptags|slice(0, 160) }}">
+	{% elseif record.summary %}
+		<meta name="description" content="{{ record.summary|striptags|slice(0, 160) }}">
+	{% elseif this.page.meta_description %}
+		<meta name="description" content="{{ this.page.meta_description }}">
+	{% endif %}
+	<!-- /Meta description -->
+	<!-- Other meta -->
+	<meta name="author" content="Search It Recruitment">
+	<meta name="generator" content="Search It Recruitment">
+	{#<link rel="alternate" hreflang="en" href="https://searchitrecruitment.com/en" />
+	<link rel="alternate" hreflang="nl" href="https://searchitrecruitment.com/nl" />
+	<link rel="alternate" hreflang="x-default" href="https://searchitrecruitment.com/en" />#}
+	<!-- /Other meta -->
 	<link rel="stylesheet" href="{{ [
         'assets/css/prototype.css',
         '@framework.extras'
