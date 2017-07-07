@@ -1,0 +1,243 @@
+description = "Home page"
+
+[staticMenu mainMenu]
+code = "main-menu"
+
+[staticPage]
+
+[localePicker]
+forceUrl = 1
+
+==
+
+{variable name="headeImg" label="Header image" tab="Header" type="mediafinder"}{/variable}
+{variable name="headerText" label="Header text" tab="Header" type="richeditor"}{/variable}
+
+{variable name="aboutImg1" label="About image first" tab="About" type="mediafinder"}{/variable}
+{variable name="AboutText1" label="About text first" tab="About" type="richeditor"}{/variable}
+
+{variable name="aboutImg2" label="About image second" tab="About" type="mediafinder"}{/variable}
+{variable name="AboutText2" label="About text second" tab="About" type="richeditor"}{/variable}
+
+{% partial 'head' %}
+{% partial 'navigation' %}
+
+<section class="home-header">
+	<div class="home-header__image">
+		<picture class="bg-cover">
+			<source media="(min-width: 768px)" srcset="{{ headeImg|media }}">
+            <!-- <source media="(min-width: 569px)" srcset="{{ feature_img|media|resize(364, 349) }}">
+            <source media="(min-width: 480px)" srcset="{{ feature_img|media|resize(538, 516) }}">
+            <source media="(min-width: 240px)" srcset="{{ feature_img|media|resize(450, 432) }}"> -->
+            <img class="bg-cover" src="{{ headeImg|media }}">
+		</picture>
+	</div>
+	<div class="home-header__text">
+		<picture class="bg-cover-abs">
+			<source media="(min-width: 768px)" srcset="{{ headeImg|media }}">
+            <!-- <source media="(min-width: 569px)" srcset="{{ feature_img|media|resize(364, 349) }}">
+            <source media="(min-width: 480px)" srcset="{{ feature_img|media|resize(538, 516) }}">
+            <source media="(min-width: 240px)" srcset="{{ feature_img|media|resize(450, 432) }}"> -->
+            <img class="bg-cover-abs" src="{{ headeImg|media }}">
+		</picture>
+		<div class="centerV-container">
+			<div class="centerV-content">
+				<div class="container__half-left">
+                    {{ headerText|raw }}
+					<form class="search-box">
+						<input type="text" class="search-box__field" placeholder="Enter a job title  -  eg. Web Developer">
+						<input type="submit" value="Search" class="search-box__submit">
+						<i class="material-icons search-box__submit-icon" aria-hidden="true">search</i>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="home-categories">
+	<div class="container">
+		<div class="home-categories__grid-container">
+			<div class="home-categories__grid">
+				<div class="home-categories__grid-content">
+					<i class="fa fa-code" aria-hidden="true"></i>
+					<p class="category-title">
+						Front-end Developer Jobs
+					</p>
+				</div>
+			</div>
+			<div class="home-categories__grid">
+				<div class="home-categories__grid-content">
+					<i class="fa fa-terminal" aria-hidden="true"></i>
+					<p class="category-title">
+						Back-end Developer Jobs
+					</p>
+				</div>
+			</div>
+			<div class="home-categories__grid">
+				<div class="home-categories__grid-content">
+					<i class="fa fa-mobile" aria-hidden="true"></i>
+					<p class="category-title">
+						Mobile Developer Jobs
+					</p>
+				</div>
+			</div>
+			<div class="home-categories__grid">
+				<div class="home-categories__grid-content">
+					<i class="fa fa-line-chart" aria-hidden="true"></i>
+					<p class="category-title">
+						Online Marketing Jobs
+					</p>
+				</div>
+			</div>
+			<div class="home-categories__grid">
+				<div class="home-categories__grid-content">
+					<i class="fa fa-sitemap" aria-hidden="true"></i>
+					<p class="category-title">
+						All Jobs
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="home-about">
+	<div class="home-about__section">
+		<div class="home-about__section-text-left">
+			<div class="centerV-container">
+				<div class="centerV-content">
+					<div class="container__half-right">
+                        {{ AboutText1|raw }}
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="home-about__section-img-right">
+			<picture class="bg-cover">
+				<source media="(min-width: 768px)" srcset="{{ aboutImg1|media }}">
+	            <!-- <source media="(min-width: 569px)" srcset="{{ feature_img|media|resize(364, 349) }}">
+	            <source media="(min-width: 480px)" srcset="{{ feature_img|media|resize(538, 516) }}">
+	            <source media="(min-width: 240px)" srcset="{{ feature_img|media|resize(450, 432) }}"> -->
+	            <img class="bg-cover" src="{{ aboutImg1|media }}">
+			</picture>
+		</div>
+		
+	</div>
+	<div class="home-about__section">
+		
+		<div class="home-about__section-img-left">
+			<picture class="bg-cover">
+				<source media="(min-width: 768px)" srcset="{{ aboutImg2|media }}">
+	            <!-- <source media="(min-width: 569px)" srcset="{{ feature_img|media|resize(364, 349) }}">
+	            <source media="(min-width: 480px)" srcset="{{ feature_img|media|resize(538, 516) }}">
+	            <source media="(min-width: 240px)" srcset="{{ feature_img|media|resize(450, 432) }}"> -->
+	            <img class="bg-cover" src="{{ aboutImg2|media }}">
+			</picture>
+		</div>
+		<div class="home-about__section-text-right">
+			<div class="centerV-container">
+				<div class="centerV-content">
+					<div class="container__half-left">
+                        {{ AboutText2|raw }}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="home-stats">
+	<div class="container">
+		<h3 class="home-stats__title">A few of our statistics</h3>
+		<div class="home-stats__grid-container">
+			<div class="home-stats__grid">
+				<div class="home-stats__grid-content">
+					<i class="material-icons">tag_faces</i>
+					<span class="stats-number">
+						32
+					</span>
+					
+					<p class="stats-title">
+						Happy Clients
+					</p>
+				</div>
+			</div>
+			<div class="home-stats__grid">
+				<div class="home-stats__grid-content">
+					<i class="material-icons">business_center</i>
+					<span class="stats-number">
+						175
+					</span>
+					<p class="stats-title">
+						Jobs Active
+					</p>
+				</div>
+			</div>
+			<div class="home-stats__grid">
+				<div class="home-stats__grid-content">
+					<i class="material-icons">transfer_within_a_station</i>
+					<span class="stats-number">
+						49
+					</span>
+					<p class="stats-title">
+						Candidates in process
+					</p>
+				</div>
+			</div>
+			<div class="home-stats__grid">
+				<div class="home-stats__grid-content">
+					<i class="material-icons">person_pin</i>
+					<span class="stats-number">
+						82
+					</span>
+					<p class="stats-title">
+						Successful placements
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="home-references">
+	<div class="container">
+		<h3 class="home-references__title">
+			What people say about <u>our passion</u>
+		</h3>
+		<div id="siema-carousel">
+			<div>
+				<p class="home-references__summary">
+					"It all started with an informal and relaxed, yet professional, phone call during which we discussed my ambitions and interests. Within the following two weeks I had my interview at the company and got an offer! That’s in a nutshell how professional Ernst Jan and Joost are.  As a candidate, my needs and ambitions were well heard and well understood without hassle. A definite recommendation from my side."
+				</p>
+				<p class="home-references__person">
+					Youssef Raji - Java Developer - candidate 
+				</p>
+			</div>
+			<div>
+				<p class="home-references__summary">
+					“My experience with Search It Recruitment couldn’t have been better. Since the first contact until the last one, they always showed interest in finding the job that best fitted my interests and desires. Moreover, they were always available and ready to help me during the searching process, and even provided me some helpful advices. Thanks to Search It Recruitment, I can now say that I’m really happy were I am, and I don’t think I could have find a better job.”
+				</p>
+				<p class="home-references__person">
+					Micael dos Reis - Front-End Developer - candidate 
+				</p>
+			</div>
+			<div>
+				<p class="home-references__summary">
+					"It all started with an informal and relaxed, yet professional, phone call during which we discussed my ambitions and interests. Within the following two weeks I had my interview at the company and got an offer! That’s in a nutshell how professional Ernst Jan and Joost are.  As a candidate, my needs and ambitions were well heard and well understood without hassle. A definite recommendation from my side."
+				</p>
+				<p class="home-references__person">
+					Youssef Raji - Java Developer - candidate 
+				</p>
+			</div>
+		</div>
+		<div id="siema-prev">
+			<i class="material-icons">chevron_left</i>
+		</div>
+		<div id="siema-next">
+			<i class="material-icons">chevron_right</i>
+		</div>
+	</div>
+</section>
+
+{% partial 'footer' %}
