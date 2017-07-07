@@ -22,12 +22,12 @@ class Breadcrumbs extends ComponentBase
     private function makeBreadcrumbs() 
     {
         $this->url = URL::to('/');
-        $this->path = Request::path();
+        $this->path = $this->url . '/' . Request::segment(1);
 
         for($i = 2; $i <= count(Request::segments()); $i++) {
             $this->segments[] = [
                 'name' => Request::segment($i),
-                'path' => Request::segment($i)
+                'path' => $this->path . '/' . Request::segment($i)
             ];
         }
 
@@ -37,7 +37,7 @@ class Breadcrumbs extends ComponentBase
         // ];
 
         $this->page['segments'] = $this->segments;
-        $this->page['url'] = $this->url;
+        $this->page['url'] = $this->path;
     } 
 
     public function onRun() 

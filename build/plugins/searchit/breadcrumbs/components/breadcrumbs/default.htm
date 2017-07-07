@@ -1,7 +1,12 @@
 <div class="breadcrumbs">
     <div class="container">
-        {{ url }}
         <ul>
+            <li>
+                <a href="{{ url('/') }}">{{ 'Home'|_ }}</a>
+            </li>
+            <li>
+                &rarr;
+            </li>
             {% for segment in segments %}
                 <li>
                     <a href="{{ segment.path }}">{{ segment.name }}</a>
