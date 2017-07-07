@@ -15,14 +15,12 @@ class Breadcrumbs extends ComponentBase
         ];
     }
 
-    private $url;
     private $path;
     private $segments = [];
 
     private function makeBreadcrumbs() 
     {
-        $this->url = URL::to('/');
-        $this->path = $this->url . '/' . Request::segment(1);
+        $this->path = URL::to('/') . '/' . Request::segment(1);
 
         for($i = 2; $i <= count(Request::segments()); $i++) {
             $this->segments[] = [
@@ -31,13 +29,8 @@ class Breadcrumbs extends ComponentBase
             ];
         }
 
-        // $this->segments = [
-        //     ['name' => 'some1', 'path' => 'something1'],
-        //     ['name' => 'some2', 'path' => 'something2'],
-        // ];
-
         $this->page['segments'] = $this->segments;
-        $this->page['url'] = $this->path;
+        $this->page['baseUrl'] = $this->path;
     } 
 
     public function onRun() 
