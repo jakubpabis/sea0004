@@ -160,17 +160,18 @@ forceUrl = 1
 
 <section class="home-stats">
 	<div class="container">
-		<h3 class="home-stats__title">A few of our statistics</h3>
+		<h3 class="home-stats__title">
+			{{ statsTitle|raw }}
+		</h3>
 		<div class="home-stats__grid-container">
 			<div class="home-stats__grid">
 				<div class="home-stats__grid-content">
 					<i class="material-icons">tag_faces</i>
 					<span class="stats-number">
-						32
+						{{ stats1Number }}
 					</span>
-					
 					<p class="stats-title">
-						Happy Clients
+						{{ stats1Title }}
 					</p>
 				</div>
 			</div>
@@ -178,10 +179,10 @@ forceUrl = 1
 				<div class="home-stats__grid-content">
 					<i class="material-icons">business_center</i>
 					<span class="stats-number">
-						175
+						{{ stats2Number }}
 					</span>
 					<p class="stats-title">
-						Jobs Active
+						{{ stats2Title }}
 					</p>
 				</div>
 			</div>
@@ -189,10 +190,10 @@ forceUrl = 1
 				<div class="home-stats__grid-content">
 					<i class="material-icons">transfer_within_a_station</i>
 					<span class="stats-number">
-						49
+						{{ stats3Number }}
 					</span>
 					<p class="stats-title">
-						Candidates in process
+						{{ stats3Title }}
 					</p>
 				</div>
 			</div>
@@ -200,10 +201,10 @@ forceUrl = 1
 				<div class="home-stats__grid-content">
 					<i class="material-icons">person_pin</i>
 					<span class="stats-number">
-						82
+						{{ stats4Number }}
 					</span>
 					<p class="stats-title">
-						Successful placements
+						{{ stats4Title }}
 					</p>
 				</div>
 			</div>
@@ -214,7 +215,7 @@ forceUrl = 1
 <section class="home-references">
 	<div class="container">
 		<h3 class="home-references__title">
-			What people say about <u>our passion</u>
+			{{ testimonialsTitle|raw }}
 		</h3>
 		<div id="siema-carousel">
 			<div>
