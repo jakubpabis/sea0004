@@ -1,0 +1,29 @@
+description = "Default article page no image"
+
+[staticMenu mainMenu]
+code = "main-menu"
+
+[staticPage]
+
+[localePicker]
+forceUrl = 1
+
+[breadcrumbs]
+
+==
+
+{variable name="defaultContent" label="Summary" tab="Content" type="richeditor"}{/variable}
+
+{% partial 'head' %}
+{% partial 'navigation' %}
+{% component 'breadcrumbs' %}
+
+<article class="default-article">
+    <div class="default-article__content">
+        <div class="container container-sml">
+            {{ defaultContent|raw }}
+        </div>
+    </div>
+</article>
+
+{% partial 'footer' %}

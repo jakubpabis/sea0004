@@ -11,9 +11,11 @@
                 <li>
                     <a href="{{ segment.path }}">{{ segment.name }}</a>
                 </li>
-                <li>
-                    &rarr;
-                </li>
+                {% if loop.index < segments|length %}
+                    <li>
+                        &rarr;
+                    </li>
+                {% endif %}
             {% endfor %}
         </ul>
     </div>
