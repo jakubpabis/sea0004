@@ -18,3 +18,9 @@
 1.0.7:
     - 'Created table searchit_jobs_types'
     - builder_table_create_searchit_jobs_types.php
+1.0.8:
+    - 'Updated table searchit_jobs_types'
+    - builder_table_update_searchit_jobs_types.php
+1.0.9:
+    - 'Updated table searchit_jobs_types'
+    - builder_table_update_searchit_jobs_types_2.php

@@ -25,4 +25,14 @@ class Category extends Model
      * @var string The database table used by the model.
      */
     public $table = 'searchit_jobs_categories';
+
+    public $belongsToMany = [
+
+        'jobs' => [
+            'Searchit\Jobs\Models\Job',
+            'table' => 'searchit_jobs_job_categories',
+            'order' => 'title'
+        ]
+
+    ];
 }

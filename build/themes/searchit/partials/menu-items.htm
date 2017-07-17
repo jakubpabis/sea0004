@@ -2,16 +2,12 @@
 ==
 <ul class="menu">
     {% for item in items %}
-        <li class="
-            {{ item.isActive or item.isChildActive ? 'active' : '' }}
-        ">
+        <li class="{{ item.isActive or item.isChildActive ? 'active' : '' }}">
             <a href="{{ item.url }}" title="{{ item.title|_ }}">{{ item.title|_ }}</a>
             {% if item.items %}
                 <ul class="sub">
                     {% for item in item.items %}
-                        <li class="
-				        	{{ item.isActive ? 'active' : '' }}
-				        ">
+                        <li class="{{ item.isActive ? 'active' : '' }}">
                             <a href="{{ item.url }}" title="{{ item.title|_ }}">
 				                {{ item.title|_ }}
 				            </a>
