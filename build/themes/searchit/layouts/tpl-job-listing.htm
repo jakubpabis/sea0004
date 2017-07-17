@@ -21,9 +21,9 @@ forceUrl = 1
 public function onStart()
 {
     if(App::getLocale() == 'en') {
-        $this['jobUrl'] = "/en/job/";
+        $this['jobUrl'] = "/en/jobs/";
     } else {
-        $this['jobUrl'] = "/nl/vacature/";
+        $this['jobUrl'] = "/nl/vacatures/";
     }
 }
 
@@ -44,7 +44,7 @@ public function onStart()
                     <article class="job-listing__list-item">
                         <a href="{{ jobUrl }}{{ record.slug }}" class="whole-element-link"></a>
                         <a href="" class="shortlist-link">
-                            <p>Shortlist</p>
+                            <p>{{ 'Shortlist'|_ }}</p>
                             <i class="material-icons">favorite_border</i>
                         </a>
                         <p class="title">
@@ -65,7 +65,7 @@ public function onStart()
                             </div>
                         </div>
                         <p class="description">
-                            {{ html_limit(record.summary|raw, 300) }}
+                            {{ record.summary|striptags|slice(0, 300) }}...
                         </p>
                     </article>
                 {% endfor %}

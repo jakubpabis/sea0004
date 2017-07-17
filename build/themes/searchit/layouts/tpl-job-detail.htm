@@ -1,0 +1,19 @@
+description = "Job detail page"
+
+[staticMenu mainMenu]
+code = "main-menu"
+
+[staticPage]
+
+[localePicker]
+forceUrl = 1
+
+[langCheck]
+==
+
+{% partial 'head' %}
+{% partial 'navigation' %}
+{% component 'breadcrumbs' %}
+{% page %}
+{% partial 'footer' %}
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_CXNi6mCASl4D3Ud9ofmUqE7Lt9Kb5ps&callback=initJobMap" defer></script>
