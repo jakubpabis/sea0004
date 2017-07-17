@@ -54,12 +54,22 @@
 
 			}
 
-			p {
+			p,
+            a {
 				margin: 0;
 				font-size: 14px;
 				font-weight: 400;
 				display: block;
 			}
+            
+            p {
+
+                a:hover {
+                    text-decoration: underline;
+                    color: $color-tertiary;
+                }
+
+            }
 
             ul {
                 position: relative;

@@ -1,0 +1,45 @@
+description = "Default article page with image"
+
+[staticMenu mainMenu]
+code = "main-menu"
+
+[staticPage]
+
+[localePicker]
+forceUrl = 1
+
+[breadcrumbs]
+
+==
+
+{variable name="defaultImg" label="Header image" tab="Content" type="mediafinder"}{/variable}
+{variable name="defaultTitle" label="Header title" tab="Content" type="text"}{/variable}
+{variable name="defaultContent" label="Summary" tab="Content" type="richeditor"}{/variable}
+
+{% partial 'head' %}
+{% partial 'navigation' %}
+{% component 'breadcrumbs' %}
+
+<article class="default-article">
+    <div class="default-article__header">
+        <picture class="bg-cover-abs">
+            <source media="(min-width: 768px)" srcset="{{ defaultImg|media }}">
+            <!-- <source media="(min-width: 569px)" srcset="{{ feature_img|media|resize(364, 349) }}">
+            <source media="(min-width: 480px)" srcset="{{ feature_img|media|resize(538, 516) }}">
+            <source media="(min-width: 240px)" srcset="{{ feature_img|media|resize(450, 432) }}"> -->
+            <img class="bg-cover-abs" src="{{ defaultImg|media }}">
+        </picture>
+        <div class="container container-sml">
+            <h1>
+                {{ defaultTitle|raw }}
+            </h1>
+        </div>
+    </div>
+    <div class="default-article__content">
+        <div class="container container-sml">
+            {{ defaultContent|raw }}
+        </div>
+    </div>
+</article>
+
+{% partial 'footer' %}

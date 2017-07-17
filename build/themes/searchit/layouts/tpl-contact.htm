@@ -1,0 +1,88 @@
+description = "Contact page"
+
+[staticMenu mainMenu]
+code = "main-menu"
+
+[staticPage]
+
+[localePicker]
+forceUrl = 1
+
+[breadcrumbs]
+
+==
+
+{% partial 'head' %}
+{% partial 'navigation' %}
+{% component 'breadcrumbs' %}
+
+<section class="contact">
+    <div id="contact_map" class="contact__map"></div>
+    <div class="container">
+        <div class="contact__grid">
+            <div class="contact__grid-content">
+                <i class="material-icons">explore</i>
+                <span class="stats-number">
+                    {{ 'Drop on in'|_ }}
+                </span>
+                <p class="stats-title">
+                    Search It Recruitment B.V.<br/>
+                    Laan van Kronenburg 14<br/>
+                    1183 AS Amstelveen<br/>
+                    Amsterdam Area, The Netherlands<br/>
+                </p>
+            </div>
+            <div class="contact__grid-content">
+                <i class="material-icons">ring_volume</i>
+                <span class="stats-number">
+                    {{ 'Contact us'|_ }}
+                </span>
+                <p class="stats-title">
+                    <a href="tel:+31207782393">+31 (0) 20 – 7782393</a>
+                    <a href="mailto:info@searchitrecruitment.com">info@searchitrecruitment.com</a>
+                </p>
+                <ul class="social">
+					<li>
+						<a href="https://www.facebook.com/searchitrecruitment/" target="_blank">
+							<i class="fa fa-facebook" aria-hidden="true"></i>
+						</a>
+					</li>
+					<li>
+						<a href="https://twitter.com/searchitjobs" target="_blank">
+							<i class="fa fa-twitter" aria-hidden="true"></i>
+						</a>
+					</li>
+					<li>
+						<a href="https://www.instagram.com/searchitjobs/" target="_blank">
+							<i class="fa fa-instagram" aria-hidden="true"></i>
+						</a>
+					</li>
+					<li>
+						<a href="https://www.linkedin.com/company/3512705?trk=tyah&trkInfo=clickedVertical%3Acompany%2CclickedEntityId%3A3512705%2Cidx%3A4-1-5%2CtarId%3A1466968939817%2Ctas%3Asearch%20it%20re" target="_blank">
+							<i class="fa fa-linkedin" aria-hidden="true"></i>
+						</a>
+					</li>
+					<li>
+						<a href="https://plus.google.com/+Searchitrecruitment" target="_blank">
+							<i class="fa fa-google-plus" aria-hidden="true"></i>
+						</a>
+					</li>
+				</ul>
+            </div>
+            <div class="contact__grid-content">
+                <i class="material-icons">public</i>
+                <span class="stats-number">
+                    {{ 'Company details'|_ }}
+                </span>
+                <p class="stats-title">
+                    KVK: 62737244<br/>
+                    BTW: NL854937274B01<br/>
+                    BANK: NL54INGB0006845114
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% partial 'footer' %}
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_CXNi6mCASl4D3Ud9ofmUqE7Lt9Kb5ps&callback=initContactMap" defer></script>

@@ -1,0 +1,96 @@
+description = "Team page"
+
+[staticMenu mainMenu]
+code = "main-menu"
+
+[staticPage]
+
+[localePicker]
+forceUrl = 1
+
+[breadcrumbs]
+
+==
+
+{variable name="headerImg" label="Header image" tab="Header" type="mediafinder"}{/variable}
+{variable name="headerText" label="Header text" tab="Header" type="richeditor"}{/variable}
+
+{repeater name="team_section" prompt="Add another team member" tab="Team"}
+    {variable type="mediafinder" name="image" label="Image"}{/variable}
+    {variable type="text" name="title" label="Work title"}{/variable}
+    {variable type="text" name="name" label="Name"}{/variable}
+    {variable type="text" name="email" label="Email"}{/variable}
+    {variable type="text" name="phone" label="Phone"}{/variable}
+    {variable type="text" name="twitter" label="Twitter"}{/variable}
+    {variable type="text" name="linkedin" label="Linkedin"}{/variable} 
+{/repeater}
+
+{% partial 'head' %}
+{% partial 'navigation' %}
+{% component 'breadcrumbs' %}
+
+<section class="team">
+    <div class="team__header">
+        <picture class="bg-cover-abs">
+            <source media="(min-width: 768px)" srcset="{{ headerImg|media }}">
+            {#<!-- <source media="(min-width: 569px)" srcset="{{ feature_img|media|resize(364, 349) }}">
+            <source media="(min-width: 480px)" srcset="{{ feature_img|media|resize(538, 516) }}">
+            <source media="(min-width: 240px)" srcset="{{ feature_img|media|resize(450, 432) }}"> -->#}
+            <img class="bg-cover-abs" src="{{ headerImg|media }}">
+        </picture>
+        <div class="container container-sml">
+            <div class="centrelize">
+                {{ headerText|raw }}
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="team__grid">
+            {% for mate in team_section %}
+                <div class="team__grid-item">
+                    <div class="image">
+                        <img src="{{ mate.image|media }}" alt="{{ mate.name }}">
+                        <div class="social">
+                            <div class="icons">
+                                {% if mate.twitter %}
+                                    <a href="{{ mate.twitter }}" target="_blank">
+                                        <i class="fa fa-twitter" aria-hidden="true"></i>
+                                    </a>
+                                {% endif %}
+                                {% if mate.linkedin %}
+                                    <a href="{{ mate.linkedin }}" target="_blank">
+                                        <i class="fa fa-linkedin" aria-hidden="true"></i>
+                                    </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text">
+                        <p class="title">
+                            {{ mate.title }}
+                        </p>
+                        <p class="name">
+                            {{ mate.name }}
+                        </p>
+                        <div class="contact">
+                            {% if mate.email %}
+                                <a href="mailto:{{ mate.email }}">
+                                    <i class="material-icons">email</i>
+                                    <span>{{ mate.email }}</span>
+                                </a>
+                            {% endif %}
+                            {% if mate.phone %}
+                                <a href="tel:{{ mate.phone }}">
+                                    <i class="material-icons">phone</i>
+                                    <span>{{ mate.phone }}</span>
+                                </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% partial 'footer' %}
