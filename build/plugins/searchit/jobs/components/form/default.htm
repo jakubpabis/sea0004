@@ -1,0 +1,48 @@
+<section class="apply-form-section">
+     <div class="row">
+          <div class="col-xs-1-of-1">
+               {% if record.job_id|length %}
+                    <h3>
+                         {{ 'Apply for this job!'|_ }}
+                    </h3>
+                    <hr class="{{ record.job_id|length ? 'job-green' : 'green' }}">
+               {% endif %}
+          </div>
+          {{ form_open({ enctype: 'multipart/form-data', class: 'apply-form', request: 'onFormSubmit' }) }}
+               <input type="hidden" name="job-id" class="job-id" value="{{ record.job_id|length ? record.job_id : 188 }}">
+               <input type="hidden" name="gender" class="gender">
+               <input type="text" name="name" class="name" required placeholder="{{ 'Name*'|_ }}">
+               <input type="file" name="photo" accept="image/*" class="photo photo-file" onchange="openFile(event)">
+               <input type="text" name="photoURL" class="photo photo-url">
+               <label for="photo" id="labelP" class="input photoLabel">{{ 'Choose your photo'|_ }}</label>
+               <input type="text" name="address" class="address" placeholder="{{ 'Address'|_ }}">
+               <input type="email" name="email" class="email" required placeholder="{{ 'Email*'|_ }}">
+               <input type="text" name="phone" class="phone" placeholder="{{ 'Phone'|_ }}">
+               <input type="file" name="cv_file" id="cv-file" accept=".pdf" class="cv">
+               <label for="cv" class="input cvLabel">{{ 'Choose your cv file'|_ }}</label>
+               <div class="applyFB" onclick="myFacebookLogin()">{{ 'Apply with Facebook'|_ }}</div>
+               <select name="source" id="source" class="source">
+                    <option value="Website SIR" selected>{{ 'How did you found us?'|_ }}</option>
+                    <option value="Website SIR">Website (direct)</option>
+                    <option value="Bing">Bing</option>
+                    <option value="Clients">Clients</option>
+                    <option value="Facebook">Facebook</option>
+                    <option value="Freelance.nl">Freelance.nl</option>
+                    <option value="Github">Github</option>
+                    <option value="Glassdoor">Glassdoor</option>
+                    <option value="Google">Google</option>
+                    <option value="Indeed">Indeed</option>
+                    <option value="Instagram">Instagram</option>
+                    <option value="Jobbird">Jobbird</option>
+                    <option value="LinkedIn">LinkedIn</option>
+                    <option value="Monsterboard">Monsterboard</option>
+                    <option value="Network">Network</option>
+                    <option value="Stackoverflow">Stackoverflow</option>
+                    <option value="Twitter">Twitter</option>
+               </select>
+               <div class="applyLI" onclick="liAuth()">{{ 'Apply with LinkedIn'|_ }}</div>
+               <textarea name="message" class="message" placeholder="{{ 'Motivation and extra details'|_ }}"></textarea>
+               <input type="submit" value="{{ 'Apply'|_ }}" class="submit">
+          {{ form_close() }}
+     </div>
+</section>

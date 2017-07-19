@@ -1,0 +1,14 @@
+<section class="apply-form-section">
+     <div class="row">
+          {{ form_open({ enctype: 'multipart/form-data', class: 'apply-form', request: 'onFormClientSubmit' }) }}
+               <input type="text" name="name" class="name" required placeholder="{{ 'Name*'|_ }}">
+               <input type="text" name="company" class="address" placeholder="{{ 'Company name'|_ }}">
+               <input type="email" name="email" class="email" required placeholder="{{ 'Email*'|_ }}">
+               <input type="text" name="phone" class="phone" placeholder="{{ 'Phone'|_ }}">
+               <input type="file" name="job_file" id="job-file" accept=".pdf" class="cv">
+               <label for="cv" class="input cvLabel">{{ 'Choose a file...'|_ }}</label>
+               <textarea name="extra" class="message" placeholder="{{ 'Extra details'|_ }}"></textarea>
+               <input type="submit" value="{{ 'Send'|_ }}" class="submit">
+          {{ form_close() }}
+     </div>
+</section>
