@@ -74,6 +74,7 @@ class JobsList extends ComponentBase
         $this->jobs = $this->jobs->where('salary_max', '<=', $salaryMax);
       }
 
+      $this->page['jobsCount'] = $this->jobs->count();
       $this->page['jobs'] = $this->jobs->orderBy('date', 'desc')->paginate(16);
       $this->page['pagination'] = $this->page['jobs']->appends($parameters);
 
@@ -129,6 +130,7 @@ class JobsList extends ComponentBase
         $this->jobs = $this->jobs->where('salary_max', '<=', $salaryMax);
       }
 
+      $this->page['jobsCount'] = $this->jobs->count();
       $this->page['jobs'] = $this->jobs->orderBy('date', 'desc')->paginate(16);
       $this->page['pagination'] = $this->page['jobs']->appends($parameters);
 
