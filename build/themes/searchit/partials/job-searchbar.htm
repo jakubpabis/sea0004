@@ -8,7 +8,7 @@
             {{ 'in'|_ }}
         </label>
         <input type="text" id="search__job-location" placeholder="{{ 'town - e.g. &quot;Amsterdam&quot;'|_ }}">
-        <input type="submit" value="Search">
+        <input type="submit" value="{{ 'Search'|_ }}">
     </form>
 </aside>
 <div class="job-listing__job-number">
@@ -17,6 +17,6 @@
     <span>"web developer"</span>
     <div class="showing">
         <p>{{ 'showing'|_ }}:&nbsp;&nbsp;</p><span>1</span><p>-</p><span>16</span>
-        <p>&nbsp;of&nbsp;{{ jobsCount }}&nbsp;jobs</p>
+        <p>&nbsp;of&nbsp;{{ jobsCount }}&nbsp;{{ 'jobs'|_ }}</p>
     </div>
 </div>
