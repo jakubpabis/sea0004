@@ -1,63 +1,73 @@
 <aside class="job-listing__filters">
     <a href="" class="shortlisted-jobs">
         <i class="material-icons">favorite</i>
-        <p>Shortlist vacatures</p>
+        <p>{{ 'Shortlist vacatures'|_ }}</p>
     </a>
     <form>
         <span class="title">
-            Salary range
-            <button type="reset" title="Reset filter">
+            {{ 'Salary range'|_ }}
+            {# <button type="reset" title="Reset filter">
                 <span>Reset</span>
                 <i class="material-icons">not_interested</i>
-            </button>
+            </button> #}
         </span>
         <label for="" class="select">
-            <span>From:</span>
+            <span>{{ 'From'|_ }}:</span>
             <select>
-                <option value="">Any</option>
+                <option value="none">{{ 'Any'|_ }}</option>
+                {% for i in 2..9 %}
+                    <option value="{{ i*5000 }}">{{ (i*5000)|number_format(0, '.', ',') }}</option>
+                {% endfor %}
+                {% for i in 5..9 %}
+                    <option value="{{ i*10000 }}">{{ (i*10000)|number_format(0, '.', ',') }}</option>
+                {% endfor %}
+                <option value="100000+">{{ (100000)|number_format(0, '.', ',') }} +</option>
             </select>
             <i class="material-icons">expand_more</i>
         </label>
         <label for="" class="select">
-            <span>To:</span>
+            <span>{{ 'To'|_ }}:</span>
             <select>
-                <option value="">Any</option>
+                <option value="none">{{ 'Any'|_ }}</option>
+                {% for i in 6..9 %}
+                    <option value="{{ i*5000 }}">{{ (i*5000)|number_format(0, '.', ',') }}</option>
+                {% endfor %}
+                {% for i in 5..14 %}
+                    <option value="{{ i*10000 }}">{{ (i*10000)|number_format(0, '.', ',') }}</option>
+                {% endfor %}
+                <option value="150000+">{{ (150000)|number_format(0, '.', ',') }} +</option>
             </select>
             <i class="material-icons">expand_more</i>
         </label>
     </form>
     <form>
         <span class="title">
-            Job category
-            <button type="reset" title="Reset filter">
+            {{ 'Job category'|_ }}
+            {# <button type="reset" title="Reset filter">
                 <span>Reset</span>
                 <i class="material-icons">not_interested</i>
-            </button>    
+            </button>     #}
         </span>
-        <label for="IT" class="checkbox" onclick="checkboxLabel(this)">
-            <input type="checkbox" name="IT" value="IT">
-            <span>IT<i class="material-icons">cancel</i></span>
-        </label>
-        <label for="Online Marketing" class="checkbox" onclick="checkboxLabel(this)">
-            <input type="checkbox" name="Online Marketing" value="Online Marketing">
-            <span>Online Marketing<i class="material-icons">cancel</i></span>
-        </label>
+        {% for cat in cats if cat.jobs|length != 0 %}
+            <label for="{{ cat.category_name }}" class="checkbox" onclick="checkboxLabel(this)">
+                <input type="checkbox" name="{{ cat.category_name }}" value="{{ cat.category_slug }}">
+                <span>{{ cat.category_name }} - <small>{{ cat.jobs|length }}</small><i class="material-icons">cancel</i></span>
+            </label>
+        {% endfor %}
     </form>
     <form>
         <span class="title">
-            Job type
-            <button type="reset" title="Reset filter">
+            {{ 'Job type'|_ }}
+            {# <button type="reset" title="Reset filter">
                 <span>Reset</span>
                 <i class="material-icons">not_interested</i>
-            </button>
+            </button> #}
         </span>
-        <label for="Full-time" class="checkbox" onclick="checkboxLabel(this)">
-            <input type="checkbox" name="Full-time" value="Full-time">
-            <span>Full-time<i class="material-icons">cancel</i></span>
-        </label>
-        <label for="Part-time" class="checkbox" onclick="checkboxLabel(this)">
-            <input type="checkbox" name="Part-time" value="Part-time">
-            <span>Part-time<i class="material-icons">cancel</i></span>
-        </label>
+        {% for type in types if type.jobs|length != 0 %}
+            <label for="{{ type.type_name }}" class="checkbox" onclick="checkboxLabel(this)">
+                <input type="checkbox" name="{{ type.type_name }}" value="{{ type.type_slug }}">
+                <span>{{ type.type_name }} - <small>{{ type.jobs|length }}</small><i class="material-icons">cancel</i></span>
+            </label>
+        {% endfor %}
     </form>
 </aside>

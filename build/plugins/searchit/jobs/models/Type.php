@@ -25,4 +25,14 @@ class Type extends Model
      * @var string The database table used by the model.
      */
     public $table = 'searchit_jobs_types';
+
+    public $belongsToMany = [
+
+        'jobs' => [
+            'Searchit\Jobs\Models\Job',
+            'table' => 'searchit_jobs_job_types',
+            'order' => 'title'
+        ]
+
+    ];
 }

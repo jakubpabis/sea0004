@@ -1,24 +1,22 @@
 <aside class="job-listing__searchbar">
     <form>
         <label>
-            Find a job
+            {{ 'Find a job'|_ }}
         </label>
-        <input type="text" id="search__job-title" placeholder="job title - e.g. &quot;Web Developer&quot;">
+        <input type="text" id="search__job-title" placeholder="{{ 'job title - e.g. &quot;Web Developer&quot;'|_ }}">
         <label for="">
-            in
+            {{ 'in'|_ }}
         </label>
-        <input type="text" id="search__job-location" placeholder="town - e.g. &quot;Amsterdam&quot;">
-        <input type="submit" value="Search">
+        <input type="text" id="search__job-location" placeholder="{{ 'town - e.g. &quot;Amsterdam&quot;'|_ }}">
+        <input type="submit" value="{{ 'Search'|_ }}">
     </form>
 </aside>
 <div class="job-listing__job-number">
-    <span>284,038</span>
-    <p>&nbsp;jobs founded for:&nbsp;</p>
+    <span>{{ jobsCount }}</span>
+    <p>&nbsp;{{ 'jobs founded for'|_ }}:&nbsp;</p>
     <span>"web developer"</span>
     <div class="showing">
-        <span>1</span>
-        <p> - </p>
-        <span>20</span>
-        <p>of 284,103 jobs</p>
+        <p>{{ 'showing'|_ }}:&nbsp;&nbsp;</p><span>1</span><p>-</p><span>16</span>
+        <p>&nbsp;of&nbsp;{{ jobsCount }}&nbsp;{{ 'jobs'|_ }}</p>
     </div>
 </div>

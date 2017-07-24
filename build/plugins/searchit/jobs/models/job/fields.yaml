@@ -1,7 +1,6 @@
 fields:
     title:
         label: Title
-        oc.commentPosition: above
         span: left
         required: 1
         type: text
