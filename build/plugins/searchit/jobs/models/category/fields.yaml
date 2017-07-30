@@ -12,3 +12,7 @@ fields:
             field: category_name
             type: slug
         type: text
+    parent:
+        label: Parent
+        span: auto
+        type: dropdown

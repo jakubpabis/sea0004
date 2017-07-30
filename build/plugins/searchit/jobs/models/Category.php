@@ -35,4 +35,15 @@ class Category extends Model
         ]
 
     ];
+
+    public function getParentOptions() {
+        $res = Category::get(['id','category_name'])->toArray();
+        $ret = [];
+        $ret[0] = 'No parent'; 
+        foreach($res as $value) {
+            $ret[$value['id']] = $value['category_name'];
+        }
+        return $ret;
+    }
+
 }

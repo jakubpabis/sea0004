@@ -16,10 +16,22 @@ class JobsList extends ComponentBase
         ];
     }
 
-    public $jobs;
-    public $cats;
-    public $types;
-    public $pagination;
+    private $jobs;
+    private $catsArr = [];
+    // public $types;
+    // public $pagination;
+
+    private function getCategories($array, $id = 0)
+    {
+      foreach($array as $cat) {
+        if($cat->parent == 0) {
+          $this->catsArr[$cat->id] = [$cat->category_name, $cat->category_slug];
+        } else {
+          $this->getCategories($array, $cat->id);
+        }
+      }
+      return $this->catsArr;
+    }
 
     public function onRun()
     {

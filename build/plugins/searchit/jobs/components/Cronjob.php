@@ -32,8 +32,7 @@ class Cronjob extends ComponentBase
         $jobs = Job::orderBy('id', 'desc')->get();
         $job_ids = [];
 
-        foreach($vacancies as $job)
-        {
+        foreach($vacancies as $job) {
             array_push($job_ids, $job->id);
             $date = date("Y-m-d H:i:s", strtotime($job->publish_date));
             $slug = $this->slugify( $job->title.'-'.$job->id );
@@ -50,10 +49,8 @@ class Cronjob extends ComponentBase
             * Run when job in XML is already in database and modification date is different than one in database.
             *
             */
-            if($this->getJobCount('job_id', $job->id) !== 0)
-            {
-                if($this->getJobVal('job_id', $job->id, 'date') !== $date)
-                {
+            if($this->getJobCount('job_id', $job->id) !== 0) {
+                if($this->getJobVal('job_id', $job->id, 'date') !== $date) {
                     Job::where('job_id', $job->id)->update(
                         [
                             'title'         => $job->title,
@@ -70,28 +67,20 @@ class Cronjob extends ComponentBase
                     $jobSingleRow = Job::where('job_id', $job->id)->first();
                     $jobSingleID = $jobSingleRow->id;
 
-                    foreach($jobCategory as $category)
-                    {
-                        if($category['group'] == '#2 Skill Area')
-                        {
-                            if($category == 'Sales' || $category == 'Recruitment')
-                            {
+                    foreach($jobCategory as $category) {
+                        if($category['group'] == '#2 Skill Area' || $category['group'] == '#3 Skill IT') {
+                            if($category == 'Sales' || $category == 'Recruitment') {
                                 $cat = 'Recruitment and Sales';
-                            } 
-                            else 
-                            {
+                            } else {
                                 $cat = $category;
                             }
-                            $jobSingleCatRow = Category::where('category_name', $cat)->first();
-                            // $jobSingleCatAllRow = Category::where('category_slug', 'all-jobs')->first();
-                            $jobSingleCatID = $jobSingleCatRow->id;
-                            // $jobSingleCatAllID = $jobSingleCatAllRow->id;
-                            $jobSingleCatPivot->where('job_id', $jobSingleID)->delete();
-                            $jobSingleCatPivot->insert([ 'job_id' => $jobSingleID, 'category_id' => $jobSingleCatID ]);
-                            // $jobSingleCatPivot->insert([ 'job_id' => $jobSingleID, 'category_id' => $jobSingleCatAllID ]);
+                            $jobSingleCatID = Category::where('category_name', $cat)->pluck('id');
+                            if($jobSingleCatID) {
+                                $jobSingleCatPivot->where('job_id', $jobSingleID)->delete();
+                                $jobSingleCatPivot->insert([ 'job_id' => $jobSingleID, 'category_id' => $jobSingleCatID ]);
+                            }
                         }
-                        if($category['group'] == '#1 Availability')
-                        {
+                        if($category['group'] == '#1 Availability') {
                             $type = $category;
                             $jobSingleTypeRow = Type::where('type_name', $type)->first();
                             $jobSingleTypeID = $jobSingleTypeRow->id;
@@ -100,9 +89,7 @@ class Cronjob extends ComponentBase
                     }
 
                 }
-            } 
-            else 
-            {
+            } else {
                 Job::insertGetId(
                     [
                         'job_id'        => $job->id,
@@ -122,25 +109,18 @@ class Cronjob extends ComponentBase
 
                 foreach($jobCategory as $category)
                 {
-                    if($category['group'] == '#2 Skill Area')
-                    {
-                        if($category == 'Sales' || $category == 'Recruitment')
-                        {
+                    if($category['group'] == '#2 Skill Area' || $category['group'] == '#3 Skill IT') {
+                        if($category == 'Sales' || $category == 'Recruitment') {
                             $cat = 'Recruitment and Sales';
-                        } 
-                        else 
-                        {
+                        } else {
                             $cat = $category;
                         }
-                        $jobSingleCatRow = Category::where('category_name', $cat)->first();
-                        // $jobSingleCatAllRow = Category::where('category_slug', 'all-jobs')->first();
-                        $jobSingleCatID = $jobSingleCatRow->id;
-                        // $jobSingleCatAllID = $jobSingleCatAllRow->id;
-                        $jobSingleCatPivot->insert([ 'job_id' => $jobSingleID, 'category_id' => $jobSingleCatID ]);
-                        // $jobSingleCatPivot->insert([ 'job_id' => $jobSingleID, 'category_id' => $jobSingleCatAllID ]);
+                        $jobSingleCatID = Category::where('category_name', $cat)->pluck('id');
+                        if($jobSingleCatID) {
+                            $jobSingleCatPivot->insert([ 'job_id' => $jobSingleID, 'category_id' => $jobSingleCatID ]);
+                        }
                     }
-                    if($category['group'] == '#1 Availability')
-                    {
+                    if($category['group'] == '#1 Availability') {
                         $type = $category;
                         $jobSingleTypeRow = Type::where('type_name', $type)->first();
                         $jobSingleTypeID = $jobSingleTypeRow->id;
@@ -164,7 +144,7 @@ class Cronjob extends ComponentBase
             if(!in_array($job->job_id, $job_ids) && $isJobFulfilled === 0) {
                 $jobSingleCatPivot->insert([ 'job_id' => $job->id, 'category_id' => $jobSingleCatID ]);
             }
-            var_dump($isJobFulfilled);
+            // var_dump($isJobFulfilled);
         }
 
         /*
@@ -214,26 +194,19 @@ class Cronjob extends ComponentBase
     {
         // replace non letter or digits by -
         $text = preg_replace('~[^\pL\d]+~u', '-', $text);
-
         // transliterate
         $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
-
         // remove unwanted characters
         $text = preg_replace('~[^-\w]+~', '', $text);
-
         // trim
         $text = trim($text, '-');
-
         // remove duplicate -
         $text = preg_replace('~-+~', '-', $text);
-
         // lowercase
         $text = strtolower($text);
-
         if (empty($text)) {
             return 'n-a';
         }
-
         return $text;
     }
 
