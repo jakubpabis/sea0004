@@ -4,6 +4,8 @@ use Cms\Classes\ComponentBase;
 use Searchit\Jobs\Models\Job;
 use Searchit\Jobs\Models\Type;
 use Searchit\Jobs\Models\Category;
+use DB;
+use Collection;
 
 class JobsList extends ComponentBase
 {
@@ -17,25 +19,29 @@ class JobsList extends ComponentBase
     }
 
     private $jobs;
-    private $catsArr = [];
+    private $catsArr;
     // public $types;
     // public $pagination;
 
-    private function getCategories($array, $id = 0)
+    private function getCategories($array)
     {
+      $this->catsArr = $array;
       foreach($array as $cat) {
-        if($cat->parent == 0) {
-          $this->catsArr[$cat->id] = [$cat->category_name, $cat->category_slug];
-        } else {
-          $this->getCategories($array, $cat->id);
+        if($cat->parent != 0) {
+          $category = $this->catsArr->where('id', $cat->parent)->first();
+          if($category['children']) {
+            $category['children'] = array_prepend($category['children'], $cat);
+          } else {
+            $category['children'] = [$cat]; 
+          }
         }
       }
-      return $this->catsArr;
+      return $this->catsArr->where('parent', 0)->all();
     }
 
     public function onRun()
     {
-      $this->page['cats'] = Category::get();
+      $this->page['cats'] = $this->getCategories(Category::get());
       $this->page['types'] = Type::get();
 
       $title = input('job-title');
