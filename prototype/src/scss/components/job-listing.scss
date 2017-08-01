@@ -160,6 +160,14 @@
                     -webkit-touch-callout: none;
                     user-select: none;
 
+                    &.sub {
+
+                        span {
+                            margin-left: 0;
+                        }
+
+                    }
+
                     input:checked {
                         
                         &+span {

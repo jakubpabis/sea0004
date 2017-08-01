@@ -52,7 +52,13 @@
             <label for="{{ cat.category_name }}" class="checkbox" onclick="checkboxLabel(this)">
                 <input type="checkbox" name="{{ cat.category_name }}" value="{{ cat.category_slug }}">
                 <span>{{ cat.category_name }} - <small>{{ cat.jobs|length }}</small><i class="material-icons">cancel</i></span>
-            </label>
+            </label>  
+            {% for sub in cat.children if sub.jobs|length != 0 %}
+                <label for="{{ sub.category_name }}" class="checkbox sub" onclick="checkboxLabel(this)">
+                    <input type="checkbox" name="{{ sub.category_name }}" value="{{ sub.category_slug }}">
+                    <span>{{ sub.category_name }} - <small>{{ sub.jobs|length }}</small><i class="material-icons">cancel</i></span>
+                </label> 
+            {% endfor %}
         {% endfor %}
     </form>
     <form>
