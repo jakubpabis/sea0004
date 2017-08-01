@@ -1,0 +1,50 @@
+description = "Job category page"
+
+[staticMenu mainMenu]
+code = "main-menu"
+
+[staticPage]
+[sidebar]
+[jobsCategory]
+
+[localePicker]
+forceUrl = 1
+
+[breadcrumbs]
+
+[langCheck]
+==
+<?php
+
+public function onStart()
+{
+    if(App::getLocale() == 'en') {
+        $this['jobUrl'] = "/en/job/";
+        $this['jobCat'] = "/en/jobs/";
+    } else {
+        $this['jobUrl'] = "/nl/vacature/";
+        $this['jobCat'] = "/nl/vacatures/";
+    }
+}
+
+?>
+==
+
+{% partial 'head' %}
+{% partial 'navigation' %}
+{% component 'breadcrumbs' %}
+
+<section class="job-listing">
+    <div class="container">
+        <div class="job-listing__container">
+            {% partial 'job-filters' %}
+            <div class="job-listing__list">
+                {% partial 'job-searchbar' %}
+                {% page %}
+                {% partial 'job-pagination' %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% partial 'footer' %}

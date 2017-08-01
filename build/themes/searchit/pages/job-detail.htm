@@ -1,5 +1,5 @@
 title = "Jobs single"
-url = "/jobs/:slug"
+url = "/job/:slug"
 layout = "tpl-job-detail"
 is_hidden = 0
 
@@ -19,7 +19,7 @@ notFoundMessage = "Record not found"
 forceUrl = 1
 
 [viewBag]
-localeUrl[nl] = "/vacatures/:slug"
+localeUrl[nl] = "/vacature/:slug"
 ==
 {% set record = builderDetails.record %}
 {% set displayColumn = builderDetails.displayColumn %}

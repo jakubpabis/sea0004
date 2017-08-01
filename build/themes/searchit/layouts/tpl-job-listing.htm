@@ -4,7 +4,6 @@ description = "Job listing page"
 code = "main-menu"
 
 [staticPage]
-
 [sidebar]
 [jobsList]
 
@@ -21,9 +20,11 @@ forceUrl = 1
 public function onStart()
 {
     if(App::getLocale() == 'en') {
-        $this['jobUrl'] = "/en/jobs/";
+        $this['jobUrl'] = "/en/job/";
+        $this['jobCat'] = "/en/jobs/";
     } else {
-        $this['jobUrl'] = "/nl/vacatures/";
+        $this['jobUrl'] = "/nl/vacature/";
+        $this['jobCat'] = "/nl/vacatures/";
     }
 }
 
