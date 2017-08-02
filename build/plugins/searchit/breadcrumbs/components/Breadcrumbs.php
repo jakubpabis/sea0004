@@ -72,6 +72,11 @@ class Breadcrumbs extends ComponentBase
                         'path' => $path . '/jobs/' . $cat2Slug
                     ];
                 }
+                $this->segments[] = [
+                    'name' => Job::where('slug', $slug)->first()->title,
+                    'path' => $path . '/' . $finalPath
+                ];
+                break;
             } elseif(Request::segment($i) == 'vacature') {
                 $this->segments[] = [
                     'name' => 'Vacatures',
@@ -100,6 +105,11 @@ class Breadcrumbs extends ComponentBase
                         'path' => $path . '/vacatures/' . $cat2Slug
                     ];
                 }
+                $this->segments[] = [
+                    'name' => Job::where('slug', $slug)->first()->title,
+                    'path' => $path . '/' . $finalPath
+                ];
+                break;
             } elseif(Request::segment($i) == 'jobs' && $this->catParent != 0) {
                 $cat = Category::where('id', $this->catParent)->first();
                 $catName = $cat->category_name;
