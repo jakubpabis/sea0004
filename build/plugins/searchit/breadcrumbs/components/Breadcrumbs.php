@@ -1,6 +1,7 @@
 <?php namespace Searchit\Breadcrumbs\Components;
 
 use Cms\Classes\ComponentBase;
+use Searchit\Jobs\Models\Job;
 use Searchit\Jobs\Models\Category;
 use Request;
 use URL;
@@ -48,11 +49,57 @@ class Breadcrumbs extends ComponentBase
                     'name' => 'Jobs',
                     'path' => $path . '/jobs'
                 ];
+
+                $slug = $this->property('jobSlug');
+                $cat1 = Category::whereHas('jobs', function($query) use ($slug) {
+                    $query->where('slug', $slug);
+                })->where('parent', 0)->first();
+                $cat1Name = $cat1->category_name;
+                $cat1Slug = $cat1->category_slug;
+                $this->segments[] = [
+                    'name' => $cat1Name,
+                    'path' => $path . '/jobs/' . $cat1Slug
+                ];
+
+                $cat2 = Category::whereHas('jobs', function($query) use ($slug) {
+                    $query->where('slug', $slug);
+                })->where('parent', $cat1->id)->first();
+                if($cat2) {
+                    $cat2Name = $cat2->category_name;
+                    $cat2Slug = $cat2->category_slug;
+                    $this->segments[] = [
+                        'name' => $cat2Name,
+                        'path' => $path . '/jobs/' . $cat2Slug
+                    ];
+                }
             } elseif(Request::segment($i) == 'vacature') {
                 $this->segments[] = [
                     'name' => 'Vacatures',
                     'path' => $path . '/vacatures'
                 ];
+
+                $slug = $this->property('jobSlug');
+                $cat1 = Category::whereHas('jobs', function($query) use ($slug) {
+                    $query->where('slug', $slug);
+                })->where('parent', 0)->first();
+                $cat1Name = $cat1->category_name;
+                $cat1Slug = $cat1->category_slug;
+                $this->segments[] = [
+                    'name' => $cat1Name,
+                    'path' => $path . '/vacatures/' . $cat1Slug
+                ];
+                
+                $cat2 = Category::whereHas('jobs', function($query) use ($slug) {
+                    $query->where('slug', $slug);
+                })->where('parent', $cat1->id)->first();
+                if($cat2) {
+                    $cat2Name = $cat2->category_name;
+                    $cat2Slug = $cat2->category_slug;
+                    $this->segments[] = [
+                        'name' => $cat2Name,
+                        'path' => $path . '/vacatures/' . $cat2Slug
+                    ];
+                }
             } elseif(Request::segment($i) == 'jobs' && $this->catParent != 0) {
                 $cat = Category::where('id', $this->catParent)->first();
                 $catName = $cat->category_name;

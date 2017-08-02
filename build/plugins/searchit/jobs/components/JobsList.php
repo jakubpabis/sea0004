@@ -93,7 +93,7 @@ class JobsList extends ComponentBase
       }
 
       $this->page['jobsCount'] = $this->jobs->count();
-      $this->page['jobs'] = $this->jobs->orderBy('date', 'desc')->paginate(16);
+      $this->page['jobs'] = $this->jobs->orderBy('date', 'desc')->paginate(20);
       $this->page['pagination'] = $this->page['jobs']->appends($parameters);
 
     }
@@ -149,7 +149,7 @@ class JobsList extends ComponentBase
       }
 
       $this->page['jobsCount'] = $this->jobs->count();
-      $this->page['jobs'] = $this->jobs->orderBy('date', 'desc')->paginate(16);
+      $this->page['jobs'] = $this->jobs->orderBy('date', 'desc')->paginate(20);
       $this->page['pagination'] = $this->page['jobs']->appends($parameters);
 
     }

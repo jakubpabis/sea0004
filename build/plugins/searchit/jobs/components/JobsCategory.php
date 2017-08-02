@@ -40,7 +40,7 @@ class JobsCategory extends ComponentBase
         $this->page['types'] = Type::get();
 
         $this->page['jobsCount'] = $this->jobs->count();
-        $this->page['jobs'] = $this->loadResults()->orderBy('date', 'desc')->paginate(16);
+        $this->page['jobs'] = $this->loadResults()->orderBy('date', 'desc')->paginate(20);
         $this->page['pagination'] = $this->page['jobs'];
     }
 
