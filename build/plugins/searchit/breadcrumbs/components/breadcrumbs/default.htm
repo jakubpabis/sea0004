@@ -9,7 +9,11 @@
             </li>
             {% for segment in segments %}
                 <li>
-                    <a href="{{ segment.path }}">{{ segment.name }}</a>
+                    {% if loop.index < segments|length %}
+                        <a href="{{ segment.path }}">{{ segment.name }}</a>
+                    {% else %}
+                        {{ segment.name }}
+                    {% endif %}
                 </li>
                 {% if loop.index < segments|length %}
                     <li>

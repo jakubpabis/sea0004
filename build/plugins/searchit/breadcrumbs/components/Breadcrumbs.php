@@ -19,6 +19,9 @@ class Breadcrumbs extends ComponentBase
 
     private $segments = [];
     private $catParent = 0;
+    private $catFirst = null;
+    private $catSecond = null;
+    private $jobName;
 
     private function recursiveSegments($number)
     {
@@ -38,78 +41,110 @@ class Breadcrumbs extends ComponentBase
             $cat = Category::where('category_slug', $this->property('categorySlug'))->first();
             if($cat->parent != 0){
                 $this->catParent = $cat->parent;
+                $this->catSecond = Category::where('category_slug', $this->property('categorySlug'))->first();
+                $this->catFirst = Category::where('id', $this->catSecond->parent)->first();
+            } else {
+                $this->catFirst = Category::where('category_slug', $this->property('categorySlug'))->first();
             }
+            
+        }
+
+        if($this->property('jobSlug')) {
+            $slug = $this->property('jobSlug');
+            // First level category object
+            $this->catFirst = Category::whereHas('jobs', function($query) use ($slug) {
+                $query->where('slug', $slug);
+            })->where('parent', 0)->first();
+            // Second level category object
+            $this->catSecond = Category::whereHas('jobs', function($query) use ($slug) {
+                $query->where('slug', $slug);
+            })->where('parent', $this->catFirst->id)->first();
+            // Job title
+            $this->jobName = Job::where('slug', $slug)->first()->title;
         }
 
         for($i = 2; $i <= count(Request::segments()); $i++) {
             $finalPath = $this->recursiveSegments($i);
-            // Check if page is job detail page in both languages
-            if(Request::segment($i) == 'job') {
-                $this->segments[] = [
-                    'name' => 'Jobs',
-                    'path' => $path . '/jobs'
-                ];
-
-                $slug = $this->property('jobSlug');
-                $cat1 = Category::whereHas('jobs', function($query) use ($slug) {
-                    $query->where('slug', $slug);
-                })->where('parent', 0)->first();
-                $cat1Name = $cat1->category_name;
-                $cat1Slug = $cat1->category_slug;
-                $this->segments[] = [
-                    'name' => $cat1Name,
-                    'path' => $path . '/jobs/' . $cat1Slug
-                ];
-
-                $cat2 = Category::whereHas('jobs', function($query) use ($slug) {
-                    $query->where('slug', $slug);
-                })->where('parent', $cat1->id)->first();
-                if($cat2) {
-                    $cat2Name = $cat2->category_name;
-                    $cat2Slug = $cat2->category_slug;
+            if($this->property('jobSlug')) {
+                if(Request::segment($i) == 'job') {
                     $this->segments[] = [
-                        'name' => $cat2Name,
-                        'path' => $path . '/jobs/' . $cat2Slug
+                        'name' => 'Jobs',
+                        'path' => $path . '/jobs'
                     ];
-                }
-                $this->segments[] = [
-                    'name' => Job::where('slug', $slug)->first()->title,
-                    'path' => $path . '/' . $finalPath
-                ];
-                break;
-            } elseif(Request::segment($i) == 'vacature') {
-                $this->segments[] = [
-                    'name' => 'Vacatures',
-                    'path' => $path . '/vacatures'
-                ];
-
-                $slug = $this->property('jobSlug');
-                $cat1 = Category::whereHas('jobs', function($query) use ($slug) {
-                    $query->where('slug', $slug);
-                })->where('parent', 0)->first();
-                $cat1Name = $cat1->category_name;
-                $cat1Slug = $cat1->category_slug;
-                $this->segments[] = [
-                    'name' => $cat1Name,
-                    'path' => $path . '/vacatures/' . $cat1Slug
-                ];
-                
-                $cat2 = Category::whereHas('jobs', function($query) use ($slug) {
-                    $query->where('slug', $slug);
-                })->where('parent', $cat1->id)->first();
-                if($cat2) {
-                    $cat2Name = $cat2->category_name;
-                    $cat2Slug = $cat2->category_slug;
                     $this->segments[] = [
-                        'name' => $cat2Name,
-                        'path' => $path . '/vacatures/' . $cat2Slug
+                        'name' => $this->catFirst->category_name,
+                        'path' => $path . '/jobs/' . $this->catFirst->category_slug
                     ];
+                    if($this->catSecond !== null) {
+                        $this->segments[] = [
+                            'name' => $this->catSecond->category_name,
+                            'path' => $path . '/jobs/' . $this->catSecond->category_slug
+                        ];
+                    }
+                    $this->segments[] = [
+                        'name' => $this->jobName
+                    ];
+                    break;
+                } elseif(Request::segment($i) == 'vacature') {
+                    $this->segments[] = [
+                        'name' => 'Vacatures',
+                        'path' => $path . '/vacatures'
+                    ];
+                    $this->segments[] = [
+                        'name' => $this->catFirst->category_name,
+                        'path' => $path . '/vacatures/' . $this->catFirst->category_slug
+                    ];
+                    if($this->catSecond !== null) {
+                        $this->segments[] = [
+                            'name' => $this->catSecond->category_name,
+                            'path' => $path . '/vacatures/' . $this->catSecond->category_slug
+                        ];
+                    }
+                    $this->segments[] = [
+                        'name' => $this->jobName
+                    ];
+                    break;
                 }
-                $this->segments[] = [
-                    'name' => Job::where('slug', $slug)->first()->title,
-                    'path' => $path . '/' . $finalPath
-                ];
-                break;
+            } elseif($this->property('categorySlug')) {
+                if(Request::segment($i) == 'jobs') {
+                    $this->segments[] = [
+                        'name' => 'Jobs',
+                        'path' => $path . '/jobs'
+                    ];
+                    if($this->catParent != 0) {
+                        $this->segments[] = [
+                            'name' => $this->catFirst->category_name,
+                            'path' => $path . '/jobs/' . $this->catFirst->category_slug
+                        ];
+                        $this->segments[] = [
+                            'name' => $this->catSecond->category_name
+                        ];
+                    } else {
+                        $this->segments[] = [
+                            'name' => $this->catFirst->category_name
+                        ];
+                    }
+                    break;
+                } elseif(Request::segment($i) == 'vacatures') {
+                    $this->segments[] = [
+                        'name' => 'Vacatures',
+                        'path' => $path . '/vacatures'
+                    ];
+                    if($this->catParent != 0) {
+                        $this->segments[] = [
+                            'name' => $this->catFirst->category_name,
+                            'path' => $path . '/vacatures/' . $this->catFirst->category_slug
+                        ];
+                        $this->segments[] = [
+                            'name' => $this->catSecond->category_name
+                        ];
+                    } else {
+                        $this->segments[] = [
+                            'name' => $this->catFirst->category_name
+                        ];
+                    }
+                    break;
+                }
             } elseif(Request::segment($i) == 'jobs' && $this->catParent != 0) {
                 $cat = Category::where('id', $this->catParent)->first();
                 $catName = $cat->category_name;
