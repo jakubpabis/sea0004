@@ -145,30 +145,6 @@ class Breadcrumbs extends ComponentBase
                     }
                     break;
                 }
-            } elseif(Request::segment($i) == 'jobs' && $this->catParent != 0) {
-                $cat = Category::where('id', $this->catParent)->first();
-                $catName = $cat->category_name;
-                $catSlug = $cat->category_slug;
-                $this->segments[] = [
-                    'name' => 'Jobs',
-                    'path' => $path . '/jobs'
-                ];
-                $this->segments[] = [
-                    'name' => $catName,
-                    'path' => $path . '/jobs/' . $catSlug
-                ];
-            } elseif(Request::segment($i) == 'vacatures' && $this->catParent != 0) {
-                $cat = Category::where('id', $this->catParent)->first();
-                $catName = $cat->category_name;
-                $catSlug = $cat->category_slug;
-                $this->segments[] = [
-                    'name' => 'Vacatures',
-                    'path' => $path . '/vacatures'
-                ];
-                $this->segments[] = [
-                    'name' => $catName,
-                    'path' => $path . '/vacatures/' . $catSlug
-                ];
             } else {
                 $this->segments[] = [
                     'name' => title_case(str_replace("-", " ", Request::segment($i))),
