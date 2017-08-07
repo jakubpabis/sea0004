@@ -164,6 +164,19 @@
 
                         span {
                             margin-left: 0;
+
+                            &:hover {
+                                margin-left: 8px;
+                            }
+
+                        }
+
+                        input:checked {
+                        
+                            &+span {
+                                margin-left: 8px;
+                            }
+
                         }
 
                     }
