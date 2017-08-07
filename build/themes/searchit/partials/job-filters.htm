@@ -3,7 +3,10 @@
         <i class="material-icons">favorite</i>
         <p>{{ 'Shortlist vacatures'|_ }}</p>
     </a>
-    <form>
+    <form
+        data-request="onFilterSearch"
+        data-request-update="'ajax/search': '#load-more-collection-container', 'pagination': '#jobs-pagination'"
+    >
         <span class="title">
             {{ 'Salary range'|_ }}
             {# <button type="reset" title="Reset filter">
@@ -40,7 +43,10 @@
             <i class="material-icons">expand_more</i>
         </label>
     </form>
-    <form>
+    <form
+        data-request="onFilterSearch"
+        data-request-update="'ajax/search': '#load-more-collection-container', 'pagination': '#jobs-pagination'"
+    >
         <span class="title">
             {{ 'Job category'|_ }}
             {# <button type="reset" title="Reset filter">
@@ -69,7 +75,10 @@
             {% endfor %} 
         {% endfor %}
     </form>
-    <form>
+    <form
+        data-request="onFilterSearch"
+        data-request-update="'ajax/search': '#load-more-collection-container', 'pagination': '#jobs-pagination'"
+    >
         <span class="title">
             {{ 'Job type'|_ }}
             {# <button type="reset" title="Reset filter">
