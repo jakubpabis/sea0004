@@ -49,6 +49,8 @@ class JobsList extends ComponentBase
       $salaryMin = input('job-salary-min');
       $salaryMax = input('job-salary-max');
 
+      $this->page['search'] = $title;
+
       $parameters = [];
       $params = [
 	        'job-title',
@@ -105,6 +107,8 @@ class JobsList extends ComponentBase
         $salaryMin = input('job-salary-min');
         $salaryMax = input('job-salary-max');
 
+        $this->page['search'] = $title;
+
         $parameters = [];
         $params = [
   	        'job-title',
@@ -114,7 +118,7 @@ class JobsList extends ComponentBase
   	        'job-salary-min',
   	        'job-salary-max'
   	    ];
-        
+
         foreach ($params as $param) {
           if(!empty(input($param))) {
             $parameters[$param] = input($param);

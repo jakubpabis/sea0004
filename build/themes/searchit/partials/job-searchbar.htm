@@ -13,8 +13,12 @@
 </aside>
 <div class="job-listing__job-number">
     <span>{{ jobsCount }}</span>
-    <p>&nbsp;{{ 'jobs founded for'|_ }}:&nbsp;</p>
-    <span>"web developer"</span>
+    {% if search %}
+        <p>&nbsp;{{ 'jobs founded for'|_ }}:&nbsp;</p>
+        <span>"{{ search }}"</span>
+    {% else %}
+        <p>&nbsp;{{ 'jobs founded'|_ }}</p>
+    {% endif %}
     <div class="showing">
         <p>{{ 'showing'|_ }}:&nbsp;&nbsp;</p><span>{{ pagination.currentPage == 1 ? '1' : (pagination.currentPage - 1) * 20 + 1 }}</span><p>-</p><span>{{ pagination.currentPage * 20 }}</span>
         <p>&nbsp;of&nbsp;{{ jobsCount }}&nbsp;{{ 'jobs'|_ }}</p>
