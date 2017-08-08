@@ -4,8 +4,9 @@
         <p>{{ 'Shortlist vacatures'|_ }}</p>
     </a>
     <form
+        id="job-filter-salary"
         data-request="onFilterSearch"
-        data-request-update="'ajax/search': '#load-more-collection-container', 'pagination': '#jobs-pagination'"
+        data-request-update="'ajax/job-search': '.job-listing__list-container', 'job-pagination': '.job-listing__pagination-container'"
     >
         <span class="title">
             {{ 'Salary range'|_ }}
@@ -16,7 +17,7 @@
         </span>
         <label for="" class="select">
             <span>{{ 'From'|_ }}:</span>
-            <select>
+            <select name="job-salary-min" onchange="document.getElementById('job-filter-salary').submit();">
                 <option value="none">{{ 'Any'|_ }}</option>
                 {% for i in 2..9 %}
                     <option value="{{ i*5000 }}">{{ (i*5000)|number_format(0, '.', ',') }}</option>
@@ -30,7 +31,7 @@
         </label>
         <label for="" class="select">
             <span>{{ 'To'|_ }}:</span>
-            <select>
+            <select name="job-salary-max" onchange="document.getElementById('job-filter-salary').submit();">
                 <option value="none">{{ 'Any'|_ }}</option>
                 {% for i in 6..9 %}
                     <option value="{{ i*5000 }}">{{ (i*5000)|number_format(0, '.', ',') }}</option>
@@ -44,8 +45,9 @@
         </label>
     </form>
     <form
+        id="job-filter-category"
         data-request="onFilterSearch"
-        data-request-update="'ajax/search': '#load-more-collection-container', 'pagination': '#jobs-pagination'"
+        data-request-update="'ajax/job-search': '.job-listing__list-container', 'job-pagination': '.job-listing__pagination-container'"
     >
         <span class="title">
             {{ 'Job category'|_ }}
@@ -63,21 +65,22 @@
                     <span><a href="{{ jobCat }}{{ sub.category_slug }}">{{ sub.category_name }} - <small>{{ sub.jobs|length }}</small><i class="material-icons">cancel</i></a></span>
                 </label> 
             {% endfor %} #}
-             <label for="{{ cat.category_name }}" class="checkbox" onclick="checkboxLabel(this)">
-                <input type="checkbox" name="{{ cat.category_name }}" value="{{ cat.category_slug }}">
+             <label for="{{ cat.category_name }}" class="checkbox" onclick="checkboxLabel(this, 'job-filter-category')">
+                <input type="checkbox" name="job-category" value="{{ cat.category_slug }}">
                 <span>{{ cat.category_name }} - <small>{{ cat.jobs|length }}</small><i class="material-icons">cancel</i></span>
             </label>  
             {% for sub in cat.children if sub.jobs|length != 0 %}
-                <label for="{{ sub.category_name }}" class="checkbox sub" onclick="checkboxLabel(this)">
-                    <input type="checkbox" name="{{ sub.category_name }}" value="{{ sub.category_slug }}">
+                <label for="{{ sub.category_name }}" class="checkbox sub" onclick="checkboxLabel(this, 'job-filter-category'">
+                    <input type="checkbox" name="job-category" value="{{ sub.category_slug }}">
                     <span>{{ sub.category_name }} - <small>{{ sub.jobs|length }}</small><i class="material-icons">cancel</i></span>
                 </label> 
             {% endfor %} 
         {% endfor %}
     </form>
-    <form
+    <form 
+        id="job-filter-type"
         data-request="onFilterSearch"
-        data-request-update="'ajax/search': '#load-more-collection-container', 'pagination': '#jobs-pagination'"
+        data-request-update="'ajax/job-search': '.job-listing__list-container', 'job-pagination': '.job-listing__pagination-container'"
     >
         <span class="title">
             {{ 'Job type'|_ }}
@@ -87,8 +90,8 @@
             </button> #}
         </span>
         {% for type in types if type.jobs|length != 0 %}
-            <label for="{{ type.type_name }}" class="checkbox" onclick="checkboxLabel(this)">
-                <input type="checkbox" name="{{ type.type_name }}" value="{{ type.type_slug }}">
+            <label for="{{ type.type_name }}" class="checkbox" onclick="checkboxLabel(this, 'job-filter-type')">
+                <input type="checkbox" name="job-type" value="{{ type.type_slug }}">
                 <span>{{ type.type_name }} - <small>{{ type.jobs|length }}</small><i class="material-icons">cancel</i></span>
             </label>
         {% endfor %}

@@ -20,8 +20,6 @@ class JobsList extends ComponentBase
 
     private $jobs;
     private $catsArr;
-    // public $types;
-    // public $pagination;
 
     private function getCategories($array)
     {
