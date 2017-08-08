@@ -114,11 +114,12 @@ class JobsList extends ComponentBase
   	        'job-salary-min',
   	        'job-salary-max'
   	    ];
+        
         foreach ($params as $param) {
-        if(!empty(input($param))) {
-          $parameters[$param] = input($param);
+          if(!empty(input($param))) {
+            $parameters[$param] = input($param);
+          }
         }
-      }
 
       $this->jobs = new Job;
 
