@@ -79,7 +79,7 @@ function hideMenu()
 	});
 }
 
-function checkboxLabel($el, $form) 
+function checkboxLabel($el) 
 {
 	if($el.getElementsByTagName('input')[0].checked === true) {
 		$el.classList.remove('active');
@@ -88,7 +88,6 @@ function checkboxLabel($el, $form)
 		$el.classList.add('active');
 		$el.getElementsByTagName('input')[0].checked = true;
 	}
-	document.getElementById($form).submit();
 }
 
 function siemaAutoplay($time, $siema, $carousel) 
