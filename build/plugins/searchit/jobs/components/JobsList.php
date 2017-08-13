@@ -68,16 +68,16 @@ class JobsList extends ComponentBase
 
       $this->jobs = new Job;
 
+      if(!empty($location)) {
+        $this->jobs = $this->jobs->where('location', 'LIKE', "%{$location}%");
+      }
       if(!empty($title)) {
-        $this->jobs = $this->jobs->where('summary', 'LIKE', "%{$title}%")->orWhere('title', 'LIKE', "%{$title}%");
+        $this->jobs = $this->jobs->where('title', 'LIKE', "%{$title}%")->orWhere('summary', 'LIKE', "%{$title}%");
       }
       if(!empty($type)) {
         $this->jobs = $this->jobs->whereHas('types', function($query) use ($type) {
             $query->where('type_slug', 'LIKE', "%{$type}%");
         });
-      }
-      if(!empty($location)) {
-        $this->jobs = $this->jobs->where('location', 'LIKE', "%{$location}%");
       }
       if(!empty($category)) {
         $this->jobs = $this->jobs->whereHas('categories', function($query) use ($category) {
@@ -127,16 +127,16 @@ class JobsList extends ComponentBase
 
       $this->jobs = new Job;
 
+      if(!empty($location)) {
+        $this->jobs = $this->jobs->where('location', 'LIKE', "%{$location}%");
+      }
       if(!empty($title)) {
-        $this->jobs = $this->jobs->where('summary', 'LIKE', "%{$title}%")->orWhere('title', 'LIKE', "%{$title}%");
+        $this->jobs = $this->jobs->where('title', 'LIKE', "%{$title}%")->orWhere('summary', 'LIKE', "%{$title}%");
       }
       if(!empty($type)) {
         $this->jobs = $this->jobs->whereHas('types', function($query) use ($type) {
             $query->where('type_slug', 'LIKE', "%{$type}%");
         });
-      }
-      if(!empty($location)) {
-        $this->jobs = $this->jobs->where('location', 'LIKE', "%{$location}%");
       }
       if(!empty($category)) {
         $this->jobs = $this->jobs->whereHas('categories', function($query) use ($category) {

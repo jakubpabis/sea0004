@@ -1,3 +1,18 @@
+[recentJobs]
+==
+<?php
+
+public function onStart()
+{
+    if(App::getLocale() == 'en') {
+        $this['jobUrl'] = "/en/job/";
+    } else {
+        $this['jobUrl'] = "/nl/vacature/";
+    }
+}
+
+?>
+==
 		<footer class="footer">
 			<div class="container">
 				<div class="footer__grid-container">
@@ -12,8 +27,8 @@
 									Amsterdam Area, The Netherlands
 								</p>
 								<p>
-									Phone: +31 (0) 20 - 7782393<br/>
-									Email: info@searchitrecruitment.com
+									Phone: <a href="tel:+31207782393">+31 (0) 20 - 7782393</a><br/>
+									Email: <a href="mailto:info@searchitrecruitment.com">info@searchitrecruitment.com</a>
 								</p>
 								<p>
 									KVK: 62737244<br/>
@@ -28,18 +43,11 @@
 							<h5 class="footer__title">Recent Jobs</h5>
 							<div class="footer__content">
 								<ul>
-									<li>Full-Stack Developer Amsterdam</li>
-									<li>Drupal Developer </li>
-									<li>Digital Solution Architect </li>
-									<li>Junior .NET Developer </li>
-									<li>Content Specialist </li>
-									<li>Java Applicatiebeheerder Utrecht </li>
-									<li>.NET Developer Amsterdam </li>
-									<li>Technisch Applicatiebeheerder Amsterdam </li>
-									<li>Senior / Lead Scheduler Rotterdam </li>
-									<li>Ruby on Rails Developer </li>
-									<li>Salesforce Lead Developer </li>
-									<li>Technisch Applicatiebeheerder Microsoft Den Haag </li>
+									{% for job in recent %}
+										<li>
+											<a href="{{ jobUrl }}{{ job.slug }}">{{ job.title }}</a>
+										</li>
+									{% endfor %}
 								</ul>
 							</div>
 						</div>
