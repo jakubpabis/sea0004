@@ -65,6 +65,7 @@ class JobsList extends ComponentBase
       $this->salaryMax = input('job-salary-max');
 
       $this->page['search'] = $this->title;
+      $this->page['location'] = $this->location;
 
       foreach ($this->params as $param) {
         if(!empty(input($param))) {
@@ -118,6 +119,7 @@ class JobsList extends ComponentBase
       // dd($this->category);
 
       $this->page['search'] = $this->title;
+      $this->page['location'] = $this->location;
 
       foreach ($this->params as $param) {
         if(!empty(input($param))) {
