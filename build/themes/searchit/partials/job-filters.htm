@@ -11,10 +11,6 @@
     >
         <span class="title">
             {{ 'Salary range'|_ }}
-            {# <button type="reset" title="Reset filter">
-                <span>Reset</span>
-                <i class="material-icons">not_interested</i>
-            </button> #}
         </span>
         <label for="" class="select">
             <span>{{ 'From'|_ }}:</span>
@@ -46,20 +42,8 @@
         </label>
         <span class="title">
             {{ 'Job category'|_ }}
-            {# <button type="reset" title="Reset filter">
-                <span>Reset</span>
-                <i class="material-icons">not_interested</i>
-            </button>     #}
         </span>
         {% for cat in cats if cat.jobs|length != 0 %}
-            {# <label for="{{ cat.category_name }}" class="checkbox">
-                <span><a href="{{ jobCat }}{{ cat.category_slug }}">{{ cat.category_name }} - <small>{{ cat.jobs|length }}</small><i class="material-icons">cancel</i></a></span>
-            </label>  
-            {% for sub in cat.children if sub.jobs|length != 0 %}
-                <label for="{{ sub.category_name }}" class="checkbox sub">
-                    <span><a href="{{ jobCat }}{{ sub.category_slug }}">{{ sub.category_name }} - <small>{{ sub.jobs|length }}</small><i class="material-icons">cancel</i></a></span>
-                </label> 
-            {% endfor %} #}
              <label for="{{ cat.category_name }}" class="checkbox" onclick="checkboxLabel(this); document.getElementById('jobFilterSearch').click();">
                 <input type="checkbox" name="job-category[]" value="{{ cat.category_slug }}">
                 <span>{{ cat.category_name }} - <small>{{ cat.jobs|length }}</small><i class="material-icons">cancel</i></span>
@@ -73,10 +57,6 @@
         {% endfor %}
         <span class="title">
             {{ 'Job type'|_ }}
-            {# <button type="reset" title="Reset filter">
-                <span>Reset</span>
-                <i class="material-icons">not_interested</i>
-            </button> #}
         </span>
         {% for type in types if type.jobs|length != 0 %}
             <label for="{{ type.type_name }}" class="checkbox" onclick="checkboxLabel(this); document.getElementById('jobFilterSearch').click();">

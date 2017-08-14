@@ -92,7 +92,6 @@ class JobsList extends ComponentBase
         $this->jobs = $this->jobs->whereHas('categories', function($query) use ($category) {
           $query->whereIn('category_slug', $category);
         });  
-        // $this->page['category_display'] =  Category::where('category_slug', 'LIKE', "%{$category}%")->first();
       }
       if(!empty($this->salaryMin)) {
         $this->jobs = $this->jobs->where('salary_min', '>=', $this->salaryMin);
@@ -146,7 +145,6 @@ class JobsList extends ComponentBase
         $this->jobs = $this->jobs->whereHas('categories', function($query) use ($category) {
           $query->whereIn('category_slug', $category);
         });     
-        // $this->page['category_display'] =  Category::where('category_slug', 'LIKE', "%{$category}%")->first();
       }
       if(!empty($this->salaryMin)) {
         $this->jobs = $this->jobs->where('salary_min', '>=', $this->salaryMin);
