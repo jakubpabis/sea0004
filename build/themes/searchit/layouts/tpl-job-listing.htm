@@ -41,6 +41,9 @@ public function onStart()
             {% partial 'job-filters' %}
             <div class="job-listing__list">
                 {% partial 'job-searchbar' %}
+                <div class="job-listing__job-number">
+                    {% partial 'job-searchquery' %}
+                </div>
                 <div class="job-listing__list-container">
                     {% for record in jobs %}
                         <article class="job-listing__list-item">

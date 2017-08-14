@@ -1,8 +1,9 @@
 <aside class="job-listing__searchbar">
     <form
         id="job-search"
+        enctype="multipart/form-data"
         data-request="onFilterSearch"
-        data-request-update="'ajax/job-search': '.job-listing__list-container', 'job-pagination': '.job-listing__pagination-container'"
+        data-request-update="'ajax/job-search': '.job-listing__list-container', 'job-pagination': '.job-listing__pagination-container', 'job-searchquery': '.job-listing__job-number'"
     >
         <label>
             {{ 'Find a job'|_ }}
@@ -15,16 +16,3 @@
         <input type="submit" value="{{ 'Search'|_ }}">
     </form>
 </aside>
-<div class="job-listing__job-number">
-    <span>{{ jobsCount }}</span>
-    {% if search %}
-        <p>&nbsp;{{ 'jobs founded for'|_ }}:&nbsp;</p>
-        <span>"{{ search }}"</span>
-    {% else %}
-        <p>&nbsp;{{ 'jobs founded'|_ }}</p>
-    {% endif %}
-    <div class="showing">
-        <p>{{ 'showing'|_ }}:&nbsp;&nbsp;</p><span>{{ pagination.currentPage == 1 ? '1' : (pagination.currentPage - 1) * 20 + 1 }}</span><p>&nbsp;-&nbsp;</p><span>{{ pagination.lastPage == pagination.currentPage ? (pagination.currentPage - 1) * 20 + jobs|length : pagination.currentPage * 20 }}</span>
-        <p>of&nbsp;{{ jobsCount }}&nbsp;{{ 'jobs'|_ }}</p>
-    </div>
-</div>
