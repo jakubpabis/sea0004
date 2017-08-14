@@ -20,6 +20,21 @@ class JobsList extends ComponentBase
 
     private $jobs;
     private $catsArr;
+    private $title;
+    private $type;
+    private $location;
+    private $category;
+    private $salaryMin;
+    private $salaryMax;
+    private $parameters = [];
+    private $params = [
+      'job-title',
+      'job-type',
+      'job-location',
+      'job-category',
+      'job-salary-min',
+      'job-salary-max'
+    ];
 
     private function getCategories($array)
     {
@@ -42,118 +57,105 @@ class JobsList extends ComponentBase
       $this->page['cats'] = $this->getCategories(Category::get());
       $this->page['types'] = Type::get();
 
-      $title = input('job-title');
-      $type = input('job-type');
-      $location = input('job-location');
-      $category = input('job-category');
-      $salaryMin = input('job-salary-min');
-      $salaryMax = input('job-salary-max');
+      $this->title = input('job-title');
+      $this->type = input('job-type');
+      $this->location = input('job-location');
+      $this->category = input('job-category');
+      $this->salaryMin = input('job-salary-min');
+      $this->salaryMax = input('job-salary-max');
 
-      $this->page['search'] = $title;
+      $this->page['search'] = $this->title;
 
-      $parameters = [];
-      $params = [
-	        'job-title',
-	        'job-type',
-	        'job-location',
-	        'job-category',
-	        'job-salary-min',
-	        'job-salary-max'
-	    ];
-      foreach ($params as $param) {
+      foreach ($this->params as $param) {
         if(!empty(input($param))) {
-          $parameters[$param] = input($param);
+          $this->parameters[$param] = input($param);
         }
 	    }
 
       $this->jobs = new Job;
 
-      if(!empty($location)) {
-        $this->jobs = $this->jobs->where('location', 'LIKE', "%{$location}%");
+      if(!empty($this->location)) {
+        $this->jobs = $this->jobs->where('location', 'LIKE', "%{$this->location}%");
       }
-      if(!empty($title)) {
-        $this->jobs = $this->jobs->where('title', 'LIKE', "%{$title}%")->orWhere('summary', 'LIKE', "%{$title}%");
+      if(!empty($this->title)) {
+        $this->jobs = $this->jobs->where('title', 'LIKE', "%{$this->title}%")->orWhere('summary', 'LIKE', "%{$this->title}%");
       }
-      if(!empty($type)) {
+      if(!empty($this->type)) {
+        $type = $this->type;
         $this->jobs = $this->jobs->whereHas('types', function($query) use ($type) {
             $query->where('type_slug', 'LIKE', "%{$type}%");
         });
       }
-      if(!empty($category)) {
+      if(!empty($this->category)) {
+        $category = $this->category;
         $this->jobs = $this->jobs->whereHas('categories', function($query) use ($category) {
             $query->where('category_slug', 'LIKE', "%{$category}%");
         });   
         $this->page['category_display'] =  Category::where('category_slug', 'LIKE', "%{$category}%")->first();
       }
-      if(!empty($salaryMin)) {
-        $this->jobs = $this->jobs->where('salary_min', '>=', $salaryMin);
+      if(!empty($this->salaryMin)) {
+        $this->jobs = $this->jobs->where('salary_min', '>=', $this->salaryMin);
       }
-      if(!empty($salaryMax)) {
-        $this->jobs = $this->jobs->where('salary_max', '<=', $salaryMax);
+      if(!empty($this->salaryMax)) {
+        $this->jobs = $this->jobs->where('salary_max', '<=', $this->salaryMax);
       }
 
       $this->page['jobsCount'] = $this->jobs->count();
       $this->page['jobs'] = $this->jobs->orderBy('date', 'desc')->paginate(20);
-      $this->page['pagination'] = $this->page['jobs']->appends($parameters);
+      $this->page['pagination'] = $this->page['jobs']->appends($this->parameters);
 
     }
 
     public function onFilterSearch()
     {
-        $title = input('job-title');
-        $type = input('job-type');
-        $location = input('job-location');
-        $category = input('job-category');
-        $salaryMin = input('job-salary-min');
-        $salaryMax = input('job-salary-max');
+      $this->title = input('job-title');
+      $this->type = input('job-type');
+      $this->location = input('job-location');
+      $this->category = input('job-category');
+      $this->salaryMin = input('job-salary-min');
+      $this->salaryMax = input('job-salary-max');
 
-        $this->page['search'] = $title;
+      // dd($this->category);
 
-        $parameters = [];
-        $params = [
-  	        'job-title',
-  	        'job-type',
-  	        'job-location',
-  	        'job-category',
-  	        'job-salary-min',
-  	        'job-salary-max'
-  	    ];
+      $this->page['search'] = $this->title;
 
-        foreach ($params as $param) {
-          if(!empty(input($param))) {
-            $parameters[$param] = input($param);
-          }
+      foreach ($this->params as $param) {
+        if(!empty(input($param))) {
+          $this->parameters[$param] = input($param);
         }
+      }
 
       $this->jobs = new Job;
 
-      if(!empty($location)) {
-        $this->jobs = $this->jobs->where('location', 'LIKE', "%{$location}%");
+      if(!empty($this->location)) {
+        $this->jobs = $this->jobs->where('location', 'LIKE', "%{$this->location}%");
       }
-      if(!empty($title)) {
-        $this->jobs = $this->jobs->where('title', 'LIKE', "%{$title}%")->orWhere('summary', 'LIKE', "%{$title}%");
+      if(!empty($this->title)) {
+        $this->jobs = $this->jobs->where('title', 'LIKE', "%{$this->title}%")->orWhere('summary', 'LIKE', "%{$this->title}%");
       }
-      if(!empty($type)) {
+      if(!empty($this->type)) {
+        $type = $this->type;
         $this->jobs = $this->jobs->whereHas('types', function($query) use ($type) {
             $query->where('type_slug', 'LIKE', "%{$type}%");
         });
       }
-      if(!empty($category)) {
+      if(!empty($this->category)) {
+        $category = $this->category;
         $this->jobs = $this->jobs->whereHas('categories', function($query) use ($category) {
             $query->where('category_slug', 'LIKE', "%{$category}%");
         });    
         $this->page['category_display'] =  Category::where('category_slug', 'LIKE', "%{$category}%")->first();
       }
-      if(!empty($salaryMin)) {
-        $this->jobs = $this->jobs->where('salary_min', '>=', $salaryMin);
+      if(!empty($this->salaryMin)) {
+        $this->jobs = $this->jobs->where('salary_min', '>=', $this->salaryMin);
       }
-      if(!empty($salaryMax)) {
-        $this->jobs = $this->jobs->where('salary_max', '<=', $salaryMax);
+      if(!empty($this->salaryMax)) {
+        $this->jobs = $this->jobs->where('salary_max', '<=', $this->salaryMax);
       }
 
       $this->page['jobsCount'] = $this->jobs->count();
       $this->page['jobs'] = $this->jobs->orderBy('date', 'desc')->paginate(20);
-      $this->page['pagination'] = $this->page['jobs']->appends($parameters);
+      $this->page['pagination'] = $this->page['jobs']->appends($this->parameters);
 
     }
 
