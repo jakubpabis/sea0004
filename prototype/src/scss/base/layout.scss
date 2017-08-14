@@ -216,3 +216,15 @@ section {
 	}
 
 }
+
+.stripe-loading-indicator {
+	height: 16px!important;
+	display: none!important;
+
+	.stripe,
+	.stripe-loaded {
+		height: 16px!important;
+		background-color: $color-tertiary!important;
+	}
+
+}
