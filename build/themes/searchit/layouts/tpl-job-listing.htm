@@ -70,8 +70,7 @@ public function onStart()
                                 {{ record.summary|striptags|slice(0, 300) }}...
                             </p>
                         </article>
-                    {% endfor %}
-                    <div id="jobs-loading-indicator"></div>   
+                    {% endfor %} 
                 </div>
                 <div class="job-listing__pagination-container">
                     {% partial 'job-pagination' %}

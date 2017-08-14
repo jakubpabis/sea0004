@@ -377,6 +377,12 @@
 
         &-container {
             position: relative;
+            transition: all 500ms ease;
+
+            &.loading {
+                opacity: 0.25;
+            }
+
         }
 
         &-item {
@@ -586,17 +592,4 @@
 
     }
 
-}
-
-#jobs-loading-indicator {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: #f1f1f1;
-    display: none;
-    opacity: 0;
-    z-index: 9999999;
-    transition: all 250ms ease;
 }

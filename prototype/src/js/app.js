@@ -30,6 +30,16 @@ function hasClass(el, cls)
 	return el.className && new RegExp("(\\s|^)" + cls + "(\\s|$)").test(el.className);
 }
 
+function jobsLoadingIndicator()
+{
+	var loader = document.getElementsByClassName('job-listing__list-container')[0];
+	if(hasClass(loader, 'loading')) {
+		loader.classList.remove('loading');
+	} else {
+		loader.classList.add('loading');
+	}
+}
+
 function openSearch($el) 
 {
 	$el.classList.add('active');
