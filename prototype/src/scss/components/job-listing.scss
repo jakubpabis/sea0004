@@ -467,7 +467,8 @@
 
                     i {
                         font-size: 19px;
-                        margin-right: 3px;
+                        margin-right: 5px;
+                        margin-left: -20px;
                         vertical-align: -4px;
                         color: $color-tertiary;
                     }
@@ -475,6 +476,7 @@
                     p {
                         font-size: 14px;
                         margin: 0.2em auto;
+                        padding-left: 20px;
                     }
 
                 }
