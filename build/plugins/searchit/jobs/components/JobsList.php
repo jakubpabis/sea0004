@@ -84,15 +84,15 @@ class JobsList extends ComponentBase
       if(!empty($this->type)) {
         $type = $this->type;
         $this->jobs = $this->jobs->whereHas('types', function($query) use ($type) {
-            $query->where('type_slug', 'LIKE', "%{$type}%");
+            $query->whereIn('type_slug', $type);
         });
       }
       if(!empty($this->category)) {
         $category = $this->category;
         $this->jobs = $this->jobs->whereHas('categories', function($query) use ($category) {
-            $query->where('category_slug', 'LIKE', "%{$category}%");
-        });   
-        $this->page['category_display'] =  Category::where('category_slug', 'LIKE', "%{$category}%")->first();
+          $query->whereIn('category_slug', $category);
+        });  
+        // $this->page['category_display'] =  Category::where('category_slug', 'LIKE', "%{$category}%")->first();
       }
       if(!empty($this->salaryMin)) {
         $this->jobs = $this->jobs->where('salary_min', '>=', $this->salaryMin);
@@ -138,15 +138,15 @@ class JobsList extends ComponentBase
       if(!empty($this->type)) {
         $type = $this->type;
         $this->jobs = $this->jobs->whereHas('types', function($query) use ($type) {
-            $query->where('type_slug', 'LIKE', "%{$type}%");
+            $query->whereIn('type_slug', $type);
         });
       }
       if(!empty($this->category)) {
         $category = $this->category;
         $this->jobs = $this->jobs->whereHas('categories', function($query) use ($category) {
-            $query->where('category_slug', 'LIKE', "%{$category}%");
-        });    
-        $this->page['category_display'] =  Category::where('category_slug', 'LIKE', "%{$category}%")->first();
+          $query->whereIn('category_slug', $category);
+        });     
+        // $this->page['category_display'] =  Category::where('category_slug', 'LIKE', "%{$category}%")->first();
       }
       if(!empty($this->salaryMin)) {
         $this->jobs = $this->jobs->where('salary_min', '>=', $this->salaryMin);

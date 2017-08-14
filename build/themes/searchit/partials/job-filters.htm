@@ -61,12 +61,12 @@
                 </label> 
             {% endfor %} #}
              <label for="{{ cat.category_name }}" class="checkbox" onclick="checkboxLabel(this); document.getElementById('jobFilterSearch').click();">
-                <input type="checkbox" name="job-category" value="{{ cat.category_slug }}">
+                <input type="checkbox" name="job-category[]" value="{{ cat.category_slug }}">
                 <span>{{ cat.category_name }} - <small>{{ cat.jobs|length }}</small><i class="material-icons">cancel</i></span>
             </label>  
             {% for sub in cat.children if sub.jobs|length != 0 %}
                 <label for="{{ sub.category_name }}" class="checkbox sub" onclick="checkboxLabel(this); document.getElementById('jobFilterSearch').click();">
-                    <input type="checkbox" name="job-category" value="{{ sub.category_slug }}">
+                    <input type="checkbox" name="job-category[]" value="{{ sub.category_slug }}">
                     <span>{{ sub.category_name }} - <small>{{ sub.jobs|length }}</small><i class="material-icons">cancel</i></span>
                 </label> 
             {% endfor %} 
@@ -80,7 +80,7 @@
         </span>
         {% for type in types if type.jobs|length != 0 %}
             <label for="{{ type.type_name }}" class="checkbox" onclick="checkboxLabel(this); document.getElementById('jobFilterSearch').click();">
-                <input type="checkbox" name="job-type" value="{{ type.type_slug }}">
+                <input type="checkbox" name="job-type[]" value="{{ type.type_slug }}">
                 <span>{{ type.type_name }} - <small>{{ type.jobs|length }}</small><i class="material-icons">cancel</i></span>
             </label>
         {% endfor %}
