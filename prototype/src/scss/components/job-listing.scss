@@ -457,22 +457,24 @@
                 &-single {
                     flex-basis: 33%;
                     margin: 0;
+                    padding-right: 5px;
 
                     i,
                     p {
                         display: inline-block;
                         margin: 0;
-                        vertical-align: middle;
                     }
 
                     i {
                         font-size: 19px;
                         margin-right: 3px;
+                        vertical-align: -4px;
                         color: $color-tertiary;
                     }
 
                     p {
                         font-size: 14px;
+                        margin: 0.2em auto;
                     }
 
                 }

@@ -57,16 +57,13 @@ public function onStart()
                             </p>
                             <div class="info">
                                 <div class="info-single">
-                                    <i class="material-icons">location_on</i>
-                                    <p>{{ record.location }}</p>
+                                    <p><i class="material-icons">location_on</i>{{ record.location }}</p>
                                 </div>
                                 <div class="info-single">
-                                    <i class="material-icons">euro_symbol</i>
-                                    <p>{{ record.salary_min|number_format(0, '.', '.') }} - {{ record.salary_max|number_format(0, '.', '.') }} p.a.</p>
+                                    <p><i class="material-icons">euro_symbol</i>{{ record.salary_min|number_format(0, '.', '.') }} - {{ record.salary_max|number_format(0, '.', '.') }} p.a.</p>
                                 </div>
                                 <div class="info-single">
-                                    <i class="material-icons">access_time</i>
-                                    <p>{{ record.types[0].type_name }}</p>
+                                    <p><i class="material-icons">access_time</i>{{ record.types[0].type_name }}</p>
                                 </div>
                             </div>
                             <p class="description">
