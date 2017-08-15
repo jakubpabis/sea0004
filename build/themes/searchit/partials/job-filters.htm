@@ -6,9 +6,9 @@
     <span class="title">
         {{ 'Salary range'|_ }}
     </span>
-    <label for="job-salary-min" class="select">
+    <label for="salary-min" class="select">
         <span>{{ 'From'|_ }}:</span>
-        <select name="job-salary-min" onchange="document.getElementById('jobFilterSearch').click();">
+        <select name="salary-min" onchange="document.getElementById('jobFilterSearch').click();">
             <option value="">{{ 'Any'|_ }}</option>
             {% for i in 2..9 %}
                 <option value="{{ i*5000 }}">{{ (i*5000)|number_format(0, '.', ',') }}</option>
@@ -20,9 +20,9 @@
         </select>
         <i class="material-icons">expand_more</i>
     </label>
-    <label for="job-salary-max" class="select">
+    <label for="salary-max" class="select">
         <span>{{ 'To'|_ }}:</span>
-        <select name="job-salary-max" onchange="document.getElementById('jobFilterSearch').click();">
+        <select name="salary-max" onchange="document.getElementById('jobFilterSearch').click();">
             <option value="">{{ 'Any'|_ }}</option>
             {% for i in 6..9 %}
                 <option value="{{ i*5000 }}">{{ (i*5000)|number_format(0, '.', ',') }}</option>
@@ -39,12 +39,12 @@
     </span>
     {% for cat in cats if cat.jobs|length != 0 %}
             <label for="{{ cat.category_name }}" class="checkbox" onclick="checkboxLabel(this); document.getElementById('jobFilterSearch').click();">
-            <input type="checkbox" name="job-category[]" value="{{ cat.id }}">
+            <input type="checkbox" name="category[]" value="{{ cat.id }}">
             <span>{{ cat.category_name }} - <small>{{ cat.jobs|length }}</small><i class="material-icons">cancel</i></span>
         </label>  
         {% for sub in cat.children if sub.jobs|length != 0 %}
             <label for="{{ sub.category_name }}" class="checkbox sub" onclick="checkboxLabel(this); document.getElementById('jobFilterSearch').click();">
-                <input type="checkbox" name="job-category[]" value="{{ sub.id }}">
+                <input type="checkbox" name="category[]" value="{{ sub.id }}">
                 <span>{{ sub.category_name }} - <small>{{ sub.jobs|length }}</small><i class="material-icons">cancel</i></span>
             </label> 
         {% endfor %} 
@@ -54,7 +54,7 @@
     </span>
     {% for type in types if type.jobs|length != 0 %}
         <label for="{{ type.type_name }}" class="checkbox" onclick="checkboxLabel(this); document.getElementById('jobFilterSearch').click();">
-            <input type="checkbox" name="job-type[]" value="{{ type.id }}">
+            <input type="checkbox" name="type[]" value="{{ type.id }}">
             <span>{{ type.type_name }} - <small>{{ type.jobs|length }}</small><i class="material-icons">cancel</i></span>
         </label>
     {% endfor %}
