@@ -42,13 +42,21 @@ class Cronjob extends ComponentBase
      */
     protected $jobSingleTypePivot;
 
-    public $vacancy; // ????????
-
+    /*
+    *
+    * Runs when cron job is being activated
+    *
+    */
     public function onRun() 
     {
         $this->readFile();
     }
 
+    /*
+    *
+    * Parsing XML and update, delete or add new job to database, alongside with proper categories and type
+    *
+    */
     protected function readFile() 
     {
         $xml = simplexml_load_file($this->file) or die("Error: Cannot create object");
