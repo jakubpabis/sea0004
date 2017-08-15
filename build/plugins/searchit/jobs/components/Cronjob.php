@@ -17,30 +17,54 @@ class Cronjob extends ComponentBase
         ];
     }
 
+    /**
+     * @var string URL address of XML file to parse
+     */
+    protected $file = 'http://external.srch20.com/searchit/xml/jobs';
+
+    /**
+     * @var object of jobs
+     */
+    protected $jobs;
+
+    /**
+     * @var array of job IDs
+     */
+    protected $job_ids = [];
+
+    /**
+     * @var object of job categories pivot table
+     */
+    protected $jobSingleCatPivot;
+
+    /**
+     * @var object of job types pivot table
+     */
+    protected $jobSingleTypePivot;
+
+    public $vacancy; // ????????
+
     public function onRun() 
     {
         $this->readFile();
     }
 
-    public $vacancy;
-
     protected function readFile() 
     {
-        $file = 'http://external.srch20.com/searchit/xml/jobs';
-        $xml = simplexml_load_file($file) or die("Error: Cannot create object");
+        $xml = simplexml_load_file($this->file) or die("Error: Cannot create object");
         $vacancies = $xml->vacancy;
-        $jobs = Job::orderBy('id', 'desc')->get();
-        $job_ids = [];
+        $this->jobs = new Job;
+        $this->jobs = $this->jobs->orderBy('id', 'desc')->get();
 
         foreach($vacancies as $job) {
-            array_push($job_ids, $job->id);
+            array_push($this->job_ids, $job->id);
             $date = date("Y-m-d H:i:s", strtotime($job->publish_date));
             $slug = $this->slugify( $job->title.'-'.$job->id );
             $salary_min = preg_replace("/\./", "", $job->salary_fixed);
             $salary_max = preg_replace("/\./", "", $job->salary_bonus);
 
-            $jobSingleCatPivot = DB::table('searchit_jobs_job_categories');
-            $jobSingleTypePivot = DB::table('searchit_jobs_job_types');
+            $this->jobSingleCatPivot = DB::table('searchit_jobs_job_categories');
+            $this->jobSingleTypePivot = DB::table('searchit_jobs_job_types');
 
             $jobCategory = $job->categories->category;
 
@@ -76,15 +100,15 @@ class Cronjob extends ComponentBase
                             }
                             $jobSingleCatID = Category::where('category_name', $cat)->pluck('id');
                             if($jobSingleCatID) {
-                                $jobSingleCatPivot->where('job_id', $jobSingleID)->delete();
-                                $jobSingleCatPivot->insert([ 'job_id' => $jobSingleID, 'category_id' => $jobSingleCatID ]);
+                                $this->jobSingleCatPivot->where('job_id', $jobSingleID)->delete();
+                                $this->jobSingleCatPivot->insert([ 'job_id' => $jobSingleID, 'category_id' => $jobSingleCatID ]);
                             }
                         }
                         if($category['group'] == '#1 Availability') {
                             $type = $category;
                             $jobSingleTypeRow = Type::where('type_name', $type)->first();
                             $jobSingleTypeID = $jobSingleTypeRow->id;
-                            $jobSingleTypePivot->where('job_id', $jobSingleID)->update(['type_id' => $jobSingleTypeID ]);
+                            $this->jobSingleTypePivot->where('job_id', $jobSingleID)->update(['type_id' => $jobSingleTypeID ]);
                         }
                     }
 
@@ -117,14 +141,14 @@ class Cronjob extends ComponentBase
                         }
                         $jobSingleCatID = Category::where('category_name', $cat)->pluck('id');
                         if($jobSingleCatID) {
-                            $jobSingleCatPivot->insert([ 'job_id' => $jobSingleID, 'category_id' => $jobSingleCatID ]);
+                            $this->jobSingleCatPivot->insert([ 'job_id' => $jobSingleID, 'category_id' => $jobSingleCatID ]);
                         }
                     }
                     if($category['group'] == '#1 Availability') {
                         $type = $category;
                         $jobSingleTypeRow = Type::where('type_name', $type)->first();
                         $jobSingleTypeID = $jobSingleTypeRow->id;
-                        $jobSingleTypePivot->insert([ 'job_id' => $jobSingleID, 'type_id' => $jobSingleTypeID ]);
+                        $this->jobSingleTypePivot->insert([ 'job_id' => $jobSingleID, 'type_id' => $jobSingleTypeID ]);
                     }
                 }
             }
@@ -137,12 +161,11 @@ class Cronjob extends ComponentBase
         *
         */
         foreach($jobs as $job) {
-            $jobSingleCatPivot = DB::table('searchit_jobs_job_categories');
             $jobSingleCatID = Category::where('category_slug', 'fulfilled')->pluck('id');
             $jobSingleCatIDAll = Category::where('category_slug', 'all-jobs')->pluck('id');
-            $isJobFulfilled = $jobSingleCatPivot->where('job_id', $job->id)->where('category_id', $jobSingleCatID)->count();
-            if(!in_array($job->job_id, $job_ids) && $isJobFulfilled === 0) {
-                $jobSingleCatPivot->insert([ 'job_id' => $job->id, 'category_id' => $jobSingleCatID ]);
+            $isJobFulfilled = $this->jobSingleCatPivot->where('job_id', $job->id)->where('category_id', $jobSingleCatID)->count();
+            if(!in_array($job->job_id, $this->job_ids) && $isJobFulfilled === 0) {
+                $this->jobSingleCatPivot->insert([ 'job_id' => $job->id, 'category_id' => $jobSingleCatID ]);
             }
             // var_dump($isJobFulfilled);
         }
