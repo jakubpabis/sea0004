@@ -166,7 +166,7 @@ class Cronjob extends ComponentBase
         * Check if job id from database is present in XML, if not, add "fulfilled" category to it.
         *
         */
-        foreach($jobs as $job) {
+        foreach($this->jobs as $job) {
             $jobSingleCatID = Category::where('category_slug', 'fulfilled')->pluck('id');
             $jobSingleCatIDAll = Category::where('category_slug', 'all-jobs')->pluck('id');
             $isJobFulfilled = $this->jobSingleCatPivot->where('job_id', $job->id)->where('category_id', $jobSingleCatID)->count();
