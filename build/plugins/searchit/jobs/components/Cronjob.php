@@ -55,6 +55,8 @@ class Cronjob extends ComponentBase
         $vacancies = $xml->vacancy;
         $this->jobs = new Job;
         $this->jobs = $this->jobs->orderBy('id', 'desc')->get();
+        $this->jobSingleCatPivot = DB::table('searchit_jobs_job_categories');
+        $this->jobSingleTypePivot = DB::table('searchit_jobs_job_types');
 
         foreach($vacancies as $job) {
             array_push($this->job_ids, $job->id);
@@ -62,10 +64,6 @@ class Cronjob extends ComponentBase
             $slug = $this->slugify( $job->title.'-'.$job->id );
             $salary_min = preg_replace("/\./", "", $job->salary_fixed);
             $salary_max = preg_replace("/\./", "", $job->salary_bonus);
-
-            $this->jobSingleCatPivot = DB::table('searchit_jobs_job_categories');
-            $this->jobSingleTypePivot = DB::table('searchit_jobs_job_types');
-
             $jobCategory = $job->categories->category;
 
             /*
