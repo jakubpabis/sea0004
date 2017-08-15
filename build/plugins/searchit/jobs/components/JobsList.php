@@ -18,7 +18,7 @@ class JobsList extends ComponentBase
         ];
     }
 
-    public $jobs;
+    private $jobs;
     private $catsArr;
     private $parameters = [];
     private $params = [
@@ -72,20 +72,20 @@ class JobsList extends ComponentBase
       if(!empty($location)) {
         $this->jobs = $this->jobs->where('location', 'LIKE', "%{$location}%");
       }
-      if(!empty($this->type)) {
+      if(!empty($type)) {
         $this->jobs = $this->jobs->whereHas('types', function($query) use ($type) {
             $query->whereIn('id', $type);
         });
       }
-      if(!empty($this->category)) {
+      if(!empty($category)) {
         $this->jobs = $this->jobs->whereHas('categories', function($query) use ($category) {
           $query->whereIn('id', $category);
         });     
       }
-      if(!empty($this->salaryMin)) {
+      if(!empty($salaryMin)) {
         $this->jobs = $this->jobs->where('salary_min', '>=', $salaryMin);
       }
-      if(!empty($this->salaryMax)) {
+      if(!empty($salaryMax)) {
         $this->jobs = $this->jobs->where('salary_max', '<=', $salaryMax);
       }
 

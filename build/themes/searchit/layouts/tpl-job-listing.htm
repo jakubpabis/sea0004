@@ -20,10 +20,8 @@ forceUrl = 1
 public function onStart()
 {
     if(App::getLocale() == 'en') {
-        $this['jobUrl'] = "/en/job/";
         $this['jobCat'] = "/en/jobs/";
     } else {
-        $this['jobUrl'] = "/nl/vacature/";
         $this['jobCat'] = "/nl/vacatures/";
     }
 }
@@ -60,7 +58,6 @@ public function onStart()
                     </div>
                 </div>
             </div>
-            <input id="jobFilterSearch" type="submit" style="display:none;">
         </form>
     </div>
 </section>
