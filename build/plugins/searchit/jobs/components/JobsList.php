@@ -5,6 +5,7 @@ use Searchit\Jobs\Models\Job;
 use Searchit\Jobs\Models\Type;
 use Searchit\Jobs\Models\Category;
 use DB;
+use Lang;
 use Collection;
 
 class JobsList extends ComponentBase
@@ -111,6 +112,13 @@ class JobsList extends ComponentBase
         $this->jobs = $this->jobs->where('salary_max', '<=', $salaryMax);
       }
 
+      if(Lang::getLocale() == 'en') {
+        $this->page['jobCat'] = "/en/jobs/";
+        $this->page['jobUrl'] = "/en/job/";
+      } else {
+        $this->page['jobCat'] = "/nl/vacatures/";
+        $this->page['jobUrl'] = "/nl/vacature/";
+      }
       $this->page['search'] = $title;
       $this->page['location'] = $location;
       $this->page['jobsCount'] = $this->jobs->count();

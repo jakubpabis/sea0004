@@ -11,22 +11,7 @@ code = "main-menu"
 forceUrl = 1
 
 [breadcrumbs]
-
 [langCheck]
-
-==
-<?php
-
-public function onStart()
-{
-    if(App::getLocale() == 'en') {
-        $this['jobCat'] = "/en/jobs/";
-    } else {
-        $this['jobCat'] = "/nl/vacatures/";
-    }
-}
-
-?>
 ==
 
 {% partial 'head' %}

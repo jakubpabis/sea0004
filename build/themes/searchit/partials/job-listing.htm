@@ -1,17 +1,5 @@
 ==
-<?php
 
-public function onStart()
-{
-    if(App::getLocale() == 'en') {
-        $this['jobUrl'] = "/en/job/";
-    } else {
-        $this['jobUrl'] = "/nl/vacature/";
-    }
-}
-
-?>
-==
 {% for record in jobs %}
     <article class="job-listing__list-item">
         <a href="{{ jobUrl }}{{ record.slug }}" class="whole-element-link"></a>

@@ -17,16 +17,16 @@ class LangCheck extends ComponentBase
 
     public function onRun() 
     {
-
+        
     }
 
     public function onSearchRedirect()
     {
         $input = input('search-input');
         if(Lang::getLocale() == 'en') {
-            $url = "/en/jobs?job-title=$input";
+            $url = "/en/jobs?title=$input";
         } else {
-            $url = "/nl/vacatures?job-title=$input";
+            $url = "/nl/vacatures?title=$input";
         }
         return Redirect::to($url);
     }
