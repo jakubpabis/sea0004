@@ -6,7 +6,7 @@
     <span class="title">
         {{ 'Salary range'|_ }}
     </span>
-    <label for="" class="select">
+    <label for="job-salary-min" class="select">
         <span>{{ 'From'|_ }}:</span>
         <select name="job-salary-min" onchange="document.getElementById('jobFilterSearch').click();">
             <option value="">{{ 'Any'|_ }}</option>
@@ -20,7 +20,7 @@
         </select>
         <i class="material-icons">expand_more</i>
     </label>
-    <label for="" class="select">
+    <label for="job-salary-max" class="select">
         <span>{{ 'To'|_ }}:</span>
         <select name="job-salary-max" onchange="document.getElementById('jobFilterSearch').click();">
             <option value="">{{ 'Any'|_ }}</option>
