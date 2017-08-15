@@ -13,7 +13,7 @@
     &__filters {
         flex-basis: 25%;
         background-color: white;
-        padding: 0 20px;
+        padding: 0 20px 25px 20px;
         transition: all 250ms ease;
 
         &:hover {
@@ -56,11 +56,11 @@
 
         }
 
-        form {
-            width: 100%;
-            position: relative;
-            display: block;
-            margin: 0px 0 25px 0;
+        // form {
+        //     width: 100%;
+        //     position: relative;
+        //     display: block;
+        //     margin: 0px 0 25px 0;
 
             // &:nth-child(1) {
             //     margin-top: 20px;
@@ -272,7 +272,7 @@
                 display: none;
             }
 
-        }
+        // }
 
     }
 
@@ -282,6 +282,8 @@
         background-color: white;
         padding: 20px;
         transition: all 250ms ease;
+        display: flex;
+        justify-content: space-between;
 
         &:hover {
             -webkit-box-shadow: 0 0 24px 0 rgba($color-primary, 0.15);
@@ -289,8 +291,7 @@
         }
 
         form {
-            display: flex;
-            justify-content: space-between;
+            
         }
 
         label,

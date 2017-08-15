@@ -52,61 +52,7 @@ class JobsList extends ComponentBase
       return $this->catsArr->where('parent', 0)->all();
     }
 
-    public function onRun()
-    {
-      $this->page['cats'] = $this->getCategories(Category::get());
-      $this->page['types'] = Type::get();
-
-      $this->title = input('job-title');
-      $this->type = input('job-type');
-      $this->location = input('job-location');
-      $this->category = input('job-category');
-      $this->salaryMin = input('job-salary-min');
-      $this->salaryMax = input('job-salary-max');
-
-      $this->page['search'] = $this->title;
-      $this->page['location'] = $this->location;
-
-      foreach ($this->params as $param) {
-        if(!empty(input($param))) {
-          $this->parameters[$param] = input($param);
-        }
-	    }
-
-      $this->jobs = new Job;
-
-      if(!empty($this->location)) {
-        $this->jobs = $this->jobs->where('location', 'LIKE', "%{$this->location}%");
-      }
-      if(!empty($this->title)) {
-        $this->jobs = $this->jobs->where('title', 'LIKE', "%{$this->title}%")->orWhere('summary', 'LIKE', "%{$this->title}%");
-      }
-      if(!empty($this->type)) {
-        $type = $this->type;
-        $this->jobs = $this->jobs->whereHas('types', function($query) use ($type) {
-            $query->whereIn('type_slug', $type);
-        });
-      }
-      if(!empty($this->category)) {
-        $category = $this->category;
-        $this->jobs = $this->jobs->whereHas('categories', function($query) use ($category) {
-          $query->whereIn('category_slug', $category);
-        });  
-      }
-      if(!empty($this->salaryMin)) {
-        $this->jobs = $this->jobs->where('salary_min', '>=', $this->salaryMin);
-      }
-      if(!empty($this->salaryMax)) {
-        $this->jobs = $this->jobs->where('salary_max', '<=', $this->salaryMax);
-      }
-
-      $this->page['jobsCount'] = $this->jobs->count();
-      $this->page['jobs'] = $this->jobs->orderBy('date', 'desc')->paginate(20);
-      $this->page['pagination'] = $this->page['jobs']->appends($this->parameters);
-
-    }
-
-    public function onFilterSearch()
+    private function prepareJobs()
     {
       $this->title = input('job-title');
       $this->type = input('job-type');
@@ -114,8 +60,6 @@ class JobsList extends ComponentBase
       $this->category = input('job-category');
       $this->salaryMin = input('job-salary-min');
       $this->salaryMax = input('job-salary-max');
-
-      // dd($this->category);
 
       $this->page['search'] = $this->title;
       $this->page['location'] = $this->location;
@@ -137,13 +81,13 @@ class JobsList extends ComponentBase
       if(!empty($this->type)) {
         $type = $this->type;
         $this->jobs = $this->jobs->whereHas('types', function($query) use ($type) {
-            $query->whereIn('type_slug', $type);
+            $query->whereIn('id', $type);
         });
       }
       if(!empty($this->category)) {
         $category = $this->category;
         $this->jobs = $this->jobs->whereHas('categories', function($query) use ($category) {
-          $query->whereIn('category_slug', $category);
+          $query->whereIn('id', $category);
         });     
       }
       if(!empty($this->salaryMin)) {
@@ -156,7 +100,19 @@ class JobsList extends ComponentBase
       $this->page['jobsCount'] = $this->jobs->count();
       $this->page['jobs'] = $this->jobs->orderBy('date', 'desc')->paginate(20);
       $this->page['pagination'] = $this->page['jobs']->appends($this->parameters);
+    }
 
+    public function onRun()
+    {
+      $this->page['cats'] = $this->getCategories(Category::get());
+      $this->page['types'] = Type::get();
+
+      $this->prepareJobs();
+    }
+
+    protected function onFilterSearch()
+    {
+      $this->prepareJobs();
     }
 
 }
