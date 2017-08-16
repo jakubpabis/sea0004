@@ -8,9 +8,19 @@
         {% endif %}
         <ul>
             {% for page in 1..pagination.lastPage %}
-                <li {{ pagination.currentPage == page ? 'class="active"' : null }} >
-                    <a href="{{ pagination.url(page) }}">{{ page }}</a>
-                </li>
+                {% if page == 1 or page == pagination.lastPage or pagination.currentPage == page %}
+                    <li {{ pagination.currentPage == page ? 'class="active"' : null }} >
+                        <a href="{{ pagination.url(page) }}">{{ page }}</a>
+                    </li>
+                {% elseif page == pagination.currentPage - 3 or page == pagination.currentPage + 3 %}
+                    <li>
+                        ...
+                    </li>
+                {% elseif page == pagination.currentPage - 2 or page == pagination.currentPage + 2 or page == pagination.currentPage - 1 or page == pagination.currentPage + 1 %}
+                    <li>
+                        <a href="{{ pagination.url(page) }}">{{ page }}</a>
+                    </li>
+                {% endif %}
             {% endfor %}
         </ul>
         {% if pagination.lastPage > pagination.currentPage %}

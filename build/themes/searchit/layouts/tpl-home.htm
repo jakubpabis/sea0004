@@ -8,6 +8,7 @@ code = "main-menu"
 [localePicker]
 forceUrl = 1
 
+[langCheck]
 ==
 
 {variable name="headerImg" label="Header image" tab="Header" type="mediafinder"}{/variable}
@@ -55,8 +56,11 @@ forceUrl = 1
 			<div class="centerV-content">
 				<div class="container__half-left">
                     {{ headerText|raw }}
-					<form class="search-box">
-						<input type="text" class="search-box__field" placeholder="Enter a job title  -  eg. Web Developer">
+					<form 
+						class="search-box"
+						data-request="onSearchRedirect"
+					>
+						<input type="text" name="search-input" class="search-box__field" placeholder="Enter a job title  -  eg. Web Developer">
 						<input type="submit" value="Search" class="search-box__submit">
 						<i class="material-icons search-box__submit-icon" aria-hidden="true">search</i>
 					</form>

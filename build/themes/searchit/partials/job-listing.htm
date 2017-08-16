@@ -1,17 +1,5 @@
 ==
-<?php
 
-public function onStart()
-{
-    if(App::getLocale() == 'en') {
-        $this['jobUrl'] = "/en/job/";
-    } else {
-        $this['jobUrl'] = "/nl/vacature/";
-    }
-}
-
-?>
-==
 {% for record in jobs %}
     <article class="job-listing__list-item">
         <a href="{{ jobUrl }}{{ record.slug }}" class="whole-element-link"></a>
@@ -23,15 +11,21 @@ public function onStart()
             {{ record.title|raw }}
         </p>
         <div class="info">
-            <div class="info-single">
-                <p><i class="material-icons">location_on</i>{{ record.location }}</p>
-            </div>
-            <div class="info-single">
-                <p><i class="material-icons">euro_symbol</i>{{ record.salary_min|number_format(0, '.', '.') }} - {{ record.salary_max|number_format(0, '.', '.') }} p.a.</p>
-            </div>
-            <div class="info-single">
-                <p><i class="material-icons">access_time</i>{{ record.types[0].type_name }}</p>
-            </div>
+            {% if record.location %}
+                <div class="info-single">
+                    <p><i class="material-icons">location_on</i>{{ record.location }}</p>
+                </div>
+            {% endif %}
+            {% if record.salary_min and record.salary_max %}
+                <div class="info-single">
+                    <p><i class="material-icons">euro_symbol</i>{{ record.salary_min|number_format(0, '.', '.') }} - {{ record.salary_max|number_format(0, '.', '.') }} p.a.</p>
+                </div>
+            {% endif %}
+            {% if record.types|last.type_name %}
+                <div class="info-single">
+                    <p><i class="material-icons">access_time</i>{{ record.types|last.type_name }}</p>
+                </div>
+            {% endif %}
         </div>
         <p class="description">
             {{ record.summary|striptags|slice(0, 300) }}...
