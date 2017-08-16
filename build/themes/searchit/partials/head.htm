@@ -30,10 +30,18 @@
 	<!-- Other meta -->
 	<meta name="author" content="Search It Recruitment">
 	<meta name="generator" content="Search It Recruitment">
-	{#<link rel="alternate" hreflang="en" href="https://searchitrecruitment.com/en" />
-	<link rel="alternate" hreflang="nl" href="https://searchitrecruitment.com/nl" />
-	<link rel="alternate" hreflang="x-default" href="https://searchitrecruitment.com/en" />#}
 	<!-- /Other meta -->
+	<!-- hreflangs -->
+	{% if hreflang_en and hreflang_nl %}
+		<link rel="alternate" hreflang="en" href="{{ url('/') }}/en/{{ hreflang_en }}" />
+		<link rel="alternate" hreflang="nl" href="{{ url('/') }}/nl/{{ hreflang_nl }}" />
+		<link rel="alternate" hreflang="x-default" href="{{ url('/') }}/en/{{ hreflang_en }}" />
+	{% else %}
+		<link rel="alternate" hreflang="en" href="{{ url('/') }}/en" />
+		<link rel="alternate" hreflang="nl" href="{{ url('/') }}/nl" />
+		<link rel="alternate" hreflang="x-default" href="{{ url('/') }}/en" />
+	{% endif %}
+	<!-- /hreflangs -->
 	<link rel="stylesheet" href="{{ [
         'assets/css/prototype.css',
         '@framework.extras'

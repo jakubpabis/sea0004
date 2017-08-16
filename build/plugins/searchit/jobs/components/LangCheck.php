@@ -17,7 +17,13 @@ class LangCheck extends ComponentBase
 
     public function onRun() 
     {
-        
+        if(Lang::getLocale() == 'en') {
+            $this->page['jobCat'] = "/en/jobs/";
+            $this->page['jobUrl'] = "/en/job/";
+        } else {
+            $this->page['jobCat'] = "/nl/vacatures/";
+            $this->page['jobUrl'] = "/nl/vacature/";
+        }
     }
 
     public function onSearchRedirect()

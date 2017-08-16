@@ -17,13 +17,13 @@ class Breadcrumbs extends ComponentBase
         ];
     }
 
-    private $segments = [];
-    private $catParent = 0;
-    private $catFirst = null;
-    private $catSecond = null;
-    private $jobName;
+    protected $segments = [];
+    protected $catParent = 0;
+    protected $catFirst = null;
+    protected $catSecond = null;
+    protected $jobName;
 
-    private function recursiveSegments($number)
+    protected function recursiveSegments($number)
     {
         if($number > 2) {
             $finalPath = $this->recursiveSegments($number-1) . '/' . Request::segment($number);
@@ -33,13 +33,13 @@ class Breadcrumbs extends ComponentBase
         return $finalPath;
     }
 
-    private function makeBreadcrumbs() 
+    protected function makeBreadcrumbs() 
     {
         $path = URL::to('/') . '/' . Request::segment(1);
 
         if($this->property('categorySlug')) {
             $cat = Category::where('category_slug', $this->property('categorySlug'))->first();
-            if($cat->parent != 0){
+            if($cat && $cat->parent != 0){
                 $this->catParent = $cat->parent;
                 $this->catSecond = Category::where('category_slug', $this->property('categorySlug'))->first();
                 $this->catFirst = Category::where('id', $this->catSecond->parent)->first();

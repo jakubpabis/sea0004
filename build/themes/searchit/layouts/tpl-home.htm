@@ -74,44 +74,54 @@ forceUrl = 1
 	<div class="container">
 		<div class="home-categories__grid-container">
 			<div class="home-categories__grid">
-				<div class="home-categories__grid-content">
-					<i class="fa fa-code" aria-hidden="true"></i>
-					<p class="category-title">
-						Front-end Developer Jobs
-					</p>
-				</div>
+				<a href="{{ url('/') }}{{ jobCat }}front-end-development">
+					<div class="home-categories__grid-content">
+						<i class="fa fa-code" aria-hidden="true"></i>
+						<p class="category-title">
+							{{ 'Front-end Development Jobs'|_ }}
+						</p>
+					</div>
+				</a>
 			</div>
 			<div class="home-categories__grid">
-				<div class="home-categories__grid-content">
-					<i class="fa fa-terminal" aria-hidden="true"></i>
-					<p class="category-title">
-						Back-end Developer Jobs
-					</p>
-				</div>
+				<a href="{{ url('/') }}{{ jobCat }}back-end-development">
+					<div class="home-categories__grid-content">
+						<i class="fa fa-terminal" aria-hidden="true"></i>
+						<p class="category-title">
+							{{ 'Back-end Development Jobs'|_ }}
+						</p>
+					</div>
+				</a>
 			</div>
 			<div class="home-categories__grid">
-				<div class="home-categories__grid-content">
-					<i class="fa fa-mobile" aria-hidden="true"></i>
-					<p class="category-title">
-						Mobile Developer Jobs
-					</p>
-				</div>
+				<a href="{{ url('/') }}{{ jobCat }}mobile-development">
+					<div class="home-categories__grid-content">
+						<i class="fa fa-mobile" aria-hidden="true"></i>
+						<p class="category-title">
+							{{ 'Mobile Development Jobs'|_ }}
+						</p>
+					</div>
+				</a>
 			</div>
 			<div class="home-categories__grid">
-				<div class="home-categories__grid-content">
-					<i class="fa fa-line-chart" aria-hidden="true"></i>
-					<p class="category-title">
-						Online Marketing Jobs
-					</p>
-				</div>
+				<a href="{{ url('/') }}{{ jobCat }}online-marketing">
+					<div class="home-categories__grid-content">
+						<i class="fa fa-line-chart" aria-hidden="true"></i>
+						<p class="category-title">
+							{{ 'Online Marketing Jobs'|_ }}
+						</p>
+					</div>
+				</a>
 			</div>
 			<div class="home-categories__grid">
-				<div class="home-categories__grid-content">
-					<i class="fa fa-sitemap" aria-hidden="true"></i>
-					<p class="category-title">
-						All Jobs
-					</p>
-				</div>
+				<a href="{{ url('/') }}{{ jobCat }}">
+					<div class="home-categories__grid-content">
+						<i class="fa fa-sitemap" aria-hidden="true"></i>
+						<p class="category-title">
+							{{ 'All Jobs'|_ }}
+						</p>
+					</div>
+				</a>
 			</div>
 		</div>
 	</div>

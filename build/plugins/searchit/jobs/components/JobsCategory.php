@@ -29,8 +29,8 @@ class JobsCategory extends ComponentBase
         ];
     }
     
-    private $jobs;
-    private $catsArr;
+    protected $jobs;
+    protected $catsArr;
 
     public function onRun()
     {
@@ -44,7 +44,7 @@ class JobsCategory extends ComponentBase
         $this->page['pagination'] = $this->page['jobs'];
     }
 
-    public function loadResults()
+    protected function loadResults()
     {
         $category = $this->property('categorySlug');
         return Job::whereHas('categories', function($query) use ($category) {
@@ -52,7 +52,12 @@ class JobsCategory extends ComponentBase
         });
     }
 
-    private function getCategories($array)
+    /**
+     *
+     * Getting categories without parents
+     *
+     */
+    protected function getCategories($array)
     {
       $this->catsArr = $array;
       foreach($array as $cat) {
