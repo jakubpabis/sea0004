@@ -90,10 +90,10 @@ class JobsList extends ComponentBase
       }
 
       if(!empty($title)) {
-        $this->jobs = $this->jobs->where('title', 'like', "%{$title}%")->orWhere('summary', 'like', "%{$title}%");
-      }
-      if(!empty($location)) {
-        $this->jobs = $this->jobs->where('location', 'like', "%{$location}%");
+        $this->jobs = $this->jobs->where(function($query) use ($title) {
+            $query->where('title', 'like', "%{$title}%")
+            ->orWhere('summary', 'like', "%{$title}%");
+        });
       }
       if(!empty($type)) {
         $this->jobs = $this->jobs->whereHas('types', function($query) use ($type) {
@@ -110,6 +110,9 @@ class JobsList extends ComponentBase
       }
       if(!empty($salaryMax)) {
         $this->jobs = $this->jobs->where('salary_max', '<=', $salaryMax);
+      }
+      if(!empty($location)) {
+        $this->jobs = $this->jobs->where('location', 'like', "%{$location}%");
       }
 
       if(Lang::getLocale() == 'en') {

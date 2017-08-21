@@ -121,7 +121,10 @@ class JobsCategory extends ComponentBase
       }
 
       if(!empty($title)) {
-        $this->jobs = $this->jobs->where('title', 'like', "%{$title}%")->orWhere('summary', 'like', "%{$title}%");
+        $this->jobs = $this->jobs->where(function($query) use ($title) {
+            $query->where('title', 'like', "%{$title}%")
+            ->orWhere('summary', 'like', "%{$title}%");
+        });
       }
       if(!empty($location)) {
         $this->jobs = $this->jobs->where('location', 'like', "%{$location}%");

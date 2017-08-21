@@ -38,7 +38,7 @@
         {{ 'Job category'|_ }}
     </span>
     {% for cat in cats if cat.jobs|length != 0 %}
-            <label for="{{ cat.category_name }}" class="checkbox" onclick="checkboxLabel(this); document.getElementById('jobFilterSearch').click();">
+        <label for="{{ cat.category_name }}" class="checkbox" onclick="checkboxLabel(this); document.getElementById('jobFilterSearch').click();">
             <input type="checkbox" name="category[]" value="{{ cat.id }}">
             <span>{{ cat.category_name }} - <small>{{ cat.jobs|length }}</small><i class="material-icons">cancel</i></span>
         </label>  
