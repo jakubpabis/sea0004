@@ -5,6 +5,7 @@ use Searchit\Jobs\Models\Job;
 use Searchit\Jobs\Models\Type;
 use Searchit\Jobs\Models\Category;
 use DB;
+use Lang;
 use Collection;
 
 class JobsCategory extends ComponentBase
@@ -18,6 +19,33 @@ class JobsCategory extends ComponentBase
         ];
     }
 
+    /**
+     * @var object of jobs
+     */
+    protected $jobs;
+    
+    /**
+     * @var array of categories without parent to display
+     */
+    protected $catsArr;
+    
+    /**
+     * @var array of parameters from inputs
+     */
+    protected $parameters = [];
+
+    /**
+     * @var array of parameters used during filtering and for pagination after filtering
+     */
+    protected $params = [
+        'title',
+        'type',
+        'location',
+        'category',
+        'salary-min',
+        'salary-max'
+    ];
+
     public function defineProperties()
     {
         return [
@@ -28,9 +56,6 @@ class JobsCategory extends ComponentBase
             ],
         ];
     }
-    
-    protected $jobs;
-    protected $catsArr;
 
     public function onRun()
     {
@@ -39,8 +64,8 @@ class JobsCategory extends ComponentBase
         $this->page['cats'] = $this->getCategories(Category::get());
         $this->page['types'] = Type::get();
 
-        $this->page['jobsCount'] = $this->jobs->count();
         $this->page['jobs'] = $this->loadResults()->orderBy('date', 'desc')->paginate(20);
+        $this->page['jobsCount'] = $this->page['jobs']->count();
         $this->page['pagination'] = $this->page['jobs'];
     }
 
@@ -71,6 +96,75 @@ class JobsCategory extends ComponentBase
         }
       }
       return $this->catsArr->where('parent', 0)->all();
+    }
+
+    /**
+     *
+     * Querying jobs from DB
+     *
+     */
+    protected function prepareJobs()
+    {
+      $this->jobs = new Job;
+
+      $title = input('title');
+      $type = input('type');
+      $location = input('location');
+      $category = input('category');
+      $salaryMin = input('salary-min');
+      $salaryMax = input('salary-max');
+
+      foreach ($this->params as $param) {
+        if(!empty(input($param))) {
+          $this->parameters[$param] = input($param);
+        }
+      }
+
+      if(!empty($title)) {
+        $this->jobs = $this->jobs->where('title', 'like', "%{$title}%")->orWhere('summary', 'like', "%{$title}%");
+      }
+      if(!empty($location)) {
+        $this->jobs = $this->jobs->where('location', 'like', "%{$location}%");
+      }
+      if(!empty($type)) {
+        $this->jobs = $this->jobs->whereHas('types', function($query) use ($type) {
+            $query->whereIn('id', $type);
+        });
+      }
+      if(!empty($category)) {
+        $this->jobs = $this->jobs->whereHas('categories', function($query) use ($category) {
+          $query->whereIn('id', $category);
+        });     
+      }
+      if(!empty($salaryMin)) {
+        $this->jobs = $this->jobs->where('salary_min', '>=', $salaryMin);
+      }
+      if(!empty($salaryMax)) {
+        $this->jobs = $this->jobs->where('salary_max', '<=', $salaryMax);
+      }
+
+      if(Lang::getLocale() == 'en') {
+        $this->page['jobCat'] = "/en/jobs/";
+        $this->page['jobUrl'] = "/en/job/";
+      } else {
+        $this->page['jobCat'] = "/nl/vacatures/";
+        $this->page['jobUrl'] = "/nl/vacature/";
+      }
+      $this->page['search'] = $title;
+      $this->page['location'] = $location;
+      $this->page['jobsCount'] = $this->jobs->count();
+      $this->page['jobs'] = $this->jobs->orderBy('date', 'desc')->paginate(20);
+      $this->page['pagination'] = $this->page['jobs']->appends($this->parameters);
+    }
+
+    /**
+     *
+     * Function to run when filtering jobs
+     *
+     */
+    protected function onFilterSearch()
+    {
+      $this->prepareJobs();
     }
 
 }
