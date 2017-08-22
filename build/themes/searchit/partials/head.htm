@@ -50,6 +50,33 @@
 		<link rel="alternate" hreflang="x-default" href="{{ url('/') }}/en/jobs" />
 	{% endif %}
 	<!-- /hreflangs -->
+	<!-- OG Tags -->
+		<meta property="og:site_name" content="Search It Recruitment"/>
+		{% if record.meta_title %}
+			<meta property="og:title" content="{{ record.meta_title }}"/>
+		{% elseif record.title %}
+			<meta property="og:title" content="{{ record.title }} | Search It Recruitment"/>
+		{% elseif this.page.meta_title %}
+			<meta property="og:title" content="{{ this.page.meta_title }}"/>
+		{% else %}
+			<meta property="og:title" content="{{ this.page.title }} | Search It Recruitment"/>
+		{% endif %}
+		<meta property="og:url" content="{{ url('/') }}/{{ activeLocale }}{{ this.page.url }}"/>
+		<meta property="og:type" content="website" />
+		{% if record.meta_description %}
+			<meta property="og:description" content="{{ record.meta_description }}"/>
+		{% elseif record.excerpt %}
+			<meta property="og:description" content="{{ record.excerpt|striptags|slice(0, 160) }}"/>
+		{% elseif record.summary %}
+			<meta property="og:description" content="{{ record.summary|striptags|slice(0, 160) }}"/>
+		{% elseif this.page.meta_description %}
+			<meta property="og:description" content="{{ this.page.meta_description }}"/>
+		{% endif %}
+		<meta property="og:image" content="{{ 'assets/img/logo.png'|theme }}"/>
+		<meta property="og:image:type" content="image/png" />
+		<meta property="og:image:width" content="850" />
+		<meta property="og:image:height" content="300" />
+	<!-- /OG Tags -->
 	<link rel="stylesheet" href="{{ [
         'assets/css/prototype.css',
         '@framework.extras'
