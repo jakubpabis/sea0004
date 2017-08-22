@@ -20,7 +20,7 @@
             <xhtml:link rel="alternate" hreflang="nl" href="{{ url('/nl/vacatures') ~ '/' ~ category.category_slug }}"/>
             <xhtml:link rel="alternate" hreflang="en" href="{{ url('/en/jobs') ~ '/' ~ category.category_slug }}"/> 
             <changefreq>yearly</changefreq>
-            <priority>0.9</priority>
+            <priority>0.7</priority>
         </url>
     {% endfor %}
     {% for page in pages %}
@@ -32,7 +32,7 @@
                 <xhtml:link rel="alternate" hreflang="en" href="{{ url('/en/') ~ page.en }}"/> 
                 <xhtml:link rel="alternate" hreflang="nl" href="{{ url('/nl/') ~ page.nl }}"/> 
             {% endif %}
-            <changefreq>monthly</changefreq>
+            <changefreq>yearly</changefreq>
             <priority>0.5</priority>
         </url>
     {% endfor %}
