@@ -129,7 +129,7 @@ class Form extends ComponentBase
 
         // $newURL = 'https://www.searchitrecruitment.com/form-success-page/';
         // header('Location: ' . $newURL);
-        return Redirect::to('upload-cv-success');
+        return Redirect::to('upload-cv-success'); // ??????
         die();
 
     }
