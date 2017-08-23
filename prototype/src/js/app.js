@@ -233,6 +233,12 @@ function hideCVForm()
 	}, 500);
 }
 
+function getFileName($input, $el)
+{
+	$text = $input.value;
+	document.getElementById($el).innerHTML = $text.split('\\')[2];
+}
+
 function initContactMap()
 {
 	var contact_map = document.getElementById('contact_map');

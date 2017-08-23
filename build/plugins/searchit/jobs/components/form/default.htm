@@ -10,7 +10,7 @@
     </div>
     <div class="input-cont">
         <input type="hidden" name="job-id" class="job-id" value="{{ record.job_id|length ? record.job_id : 188 }}">
-        <input type="hidden" name="gender" class="gender">
+        <input type="hidden" name="applicant-gender">
         <label for="applicant-name">{{ 'Name'|_ }} <span>*</span></label>
         <input type="text" name="applicant-name" value="" required="required" placeholder="John Doe">
         <label for="applicant-email">{{ 'Email'|_ }} <span>*</span></label>
@@ -21,12 +21,14 @@
         <textarea class="address" name="applicant-address" placeholder="Prinses Beatrixlaan 23 &#x0a;2595 AK  'S-Gravenhage &#x0a;Netherlands"></textarea>
         <label for="applicant-cv">{{ 'Upload your CV'|_ }} <span>*</span></label>
         <div class="cvupload">
-            <input type="file" name="applicant-cv" value="" required="required">
+            <p id="applicant-cv"></p>
+            <input type="file" name="applicant-cv" value="" required="required" onchange="getFileName(this, 'applicant-cv')">
         </div>
         <div class="hidden-desktop">
             <label for="applicant-photo">{{ 'Upload your photo'|_ }}</label>
             <div class="cvupload">
-                <input type="file" name="applicant-photo" value="">
+                <p id="applicant-photo-mobile"></p>
+                <input type="file" name="applicant-photo" value="" onchange="getFileName(this, 'applicant-photo-mobile')">
             </div>
         </div>
     </div>
@@ -59,7 +61,10 @@
         <div class="hidden-mobile">
             <label for="applicant-photo">{{ 'Upload your photo'|_ }}</label>
             <div class="cvupload">
-                <input type="file" name="applicant-photo" value="">
+                <p id="applicant-photo-desktop">
+
+                </p>
+                <input type="file" name="applicant-photo" value="" onchange="getFileName(this, 'applicant-photo-desktop')">
             </div>
         </div>
     </div>
