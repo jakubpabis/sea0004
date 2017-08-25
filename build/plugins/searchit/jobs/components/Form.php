@@ -79,11 +79,11 @@ class Form extends ComponentBase
         $uri = "http://api.searchsoftware.nl/{$endpoint}?api_key={$key}&signature={$signature}";
 
         $application_data = array(
-            'name' => Input::get('applicatn-name'),
-            'email' => Input::get('applicatn-email'),
-            'gender' => Input::get('applicatn-gender'),
-            'address' => Input::get('applicatn-address'),
-            'phone' => Input::get('applicatn-phone'),
+            'name' => Input::get('applicant-name'),
+            'email' => Input::get('applicant-email'),
+            'gender' => Input::get('applicant-gender'),
+            'address' => Input::get('applicant-address'),
+            'phone' => Input::get('applicant-phone'),
             'note' => array(
                 'text' => Input::get('applicant-message')
             ),
@@ -114,23 +114,23 @@ class Form extends ComponentBase
         }
 
         // initialise the curl request
-        $request = curl_init();
+        // $request = curl_init();
 
-        curl_setopt($request, CURLOPT_URL, $uri);
-        curl_setopt($request, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($request, CURLOPT_POST, 1);
-        curl_setopt($request, CURLOPT_POSTFIELDS, $data);
+        // curl_setopt($request, CURLOPT_URL, $uri);
+        // curl_setopt($request, CURLOPT_RETURNTRANSFER, 1);
+        // curl_setopt($request, CURLOPT_POST, 1);
+        // curl_setopt($request, CURLOPT_POSTFIELDS, $data);
 
-        $reply = curl_exec($request);
-        // close the session
-        curl_close($request);
+        // $reply = curl_exec($request);
+        // // close the session
+        // curl_close($request);
 
         // dump($reply);
 
         // $newURL = 'https://www.searchitrecruitment.com/form-success-page/';
         // header('Location: ' . $newURL);
-        return Redirect::to('upload-cv-success'); // ??????
-        die();
+        // return Redirect::to('upload-cv-success'); // ??????
+        
 
     }
 
