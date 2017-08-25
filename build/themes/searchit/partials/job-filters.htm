@@ -11,12 +11,12 @@
         <select name="salary-min" onchange="document.getElementById('jobFilterSearch').click();">
             <option value="">{{ 'Any'|_ }}</option>
             {% for i in 2..9 %}
-                <option value="{{ i*5000 }}">{{ (i*5000)|number_format(0, '.', ',') }}</option>
+                <option value="{{ i*5000 }}">{{ (i*5000)|number_format(0, '.', '.') }}</option>
             {% endfor %}
             {% for i in 5..9 %}
-                <option value="{{ i*10000 }}">{{ (i*10000)|number_format(0, '.', ',') }}</option>
+                <option value="{{ i*10000 }}">{{ (i*10000)|number_format(0, '.', '.') }}</option>
             {% endfor %}
-            <option value="100000+">{{ (100000)|number_format(0, '.', ',') }} +</option>
+            <option value="100000+">{{ (100000)|number_format(0, '.', '.') }} +</option>
         </select>
         <i class="material-icons">expand_more</i>
     </label>
@@ -25,12 +25,12 @@
         <select name="salary-max" onchange="document.getElementById('jobFilterSearch').click();">
             <option value="">{{ 'Any'|_ }}</option>
             {% for i in 6..9 %}
-                <option value="{{ i*5000 }}">{{ (i*5000)|number_format(0, '.', ',') }}</option>
+                <option value="{{ i*5000 }}">{{ (i*5000)|number_format(0, '.', '.') }}</option>
             {% endfor %}
             {% for i in 5..14 %}
-                <option value="{{ i*10000 }}">{{ (i*10000)|number_format(0, '.', ',') }}</option>
+                <option value="{{ i*10000 }}">{{ (i*10000)|number_format(0, '.', '.') }}</option>
             {% endfor %}
-            <option value="150000+">{{ (150000)|number_format(0, '.', ',') }} +</option>
+            <option value="150000+">{{ (150000)|number_format(0, '.', '.') }} +</option>
         </select>
         <i class="material-icons">expand_more</i>
     </label>

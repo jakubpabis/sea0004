@@ -1,4 +1,4 @@
-{{ form_open({ enctype: 'multipart/form-data', request: 'onFormSubmit' }) }}
+{{ form_open({ enctype: 'multipart/form-data', data-request: 'onFormSubmit' }) }}
     <i class="material-icons close" onclick="hideForm()">close</i>
     <div class="title">
         <p>{{ 'Applying for'|_ }}: <span>{{ record.title|raw }}</span></p>
