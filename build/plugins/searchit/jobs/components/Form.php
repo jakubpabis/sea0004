@@ -23,14 +23,14 @@ class Form extends ComponentBase
     */
     protected function onFormSubmit()
     {
-        if(Input::hasFile('cv_file')) {
+        if(Input::hasFile('applicant-cv')) {
             // $ftp_server = "173.236.146.18";
             // $ftp_username   = "admin_searchit";
             // $ftp_password   = "Uv9-JNe-LG2-rxD";
             // // setup of connection
             // $conn_id = ftp_connect($ftp_server) or die("could not connect to the server ;(");
 
-            if(Input::file('cv_file')->getSize() < (2097152)) { //can't be larger than 2 MB
+            if(Input::file('applicant-cv')->getSize() < (2097152)) { //can't be larger than 2 MB
                 // login
                 // if (@ftp_login($conn_id, $ftp_username, $ftp_password)) {
                 //   echo "conected as current user\n";
@@ -39,7 +39,7 @@ class Form extends ComponentBase
                 //   echo "could not connect as current user\n";
                 // }
                 $file = new FileSys;
-                $file->data = Input::file('cv_file');
+                $file->data = Input::file('applicant-cv');
                 $file->save();
                 // $upload_file = Input::file('cv_file')->getRealPath();
 
@@ -79,29 +79,29 @@ class Form extends ComponentBase
         $uri = "http://api.searchsoftware.nl/{$endpoint}?api_key={$key}&signature={$signature}";
 
         $application_data = array(
-            'name' => Input::get('name'),
-            'email' => Input::get('email'),
-            'gender' => Input::get('gender'),
-            'address' => Input::get('address'),
-            'phone' => Input::get('phone'),
+            'name' => Input::get('applicatn-name'),
+            'email' => Input::get('applicatn-email'),
+            'gender' => Input::get('applicatn-gender'),
+            'address' => Input::get('applicatn-address'),
+            'phone' => Input::get('applicatn-phone'),
             'note' => array(
-                'text' => Input::get('message')
+                'text' => Input::get('applicant-message')
             ),
             'job' => array(
                 'id' => Input::get('job-id')
             ),
             'sources' => array(
                 array(
-                    'parent_source_id' => Input::get('source'),
+                    'parent_source_id' => Input::get('applicant-find'),
                     'name' => 'Applicant'
                 )
             )
         );
 
-        if(Input::hasFile('cv_file')){
-            $uploaded_file = Input::file('cv_file')->getRealPath();
-            $file_ext = Input::file('cv_file')->getMimeType();
-            $file_name = Input::file('cv_file')->getClientOriginalName();
+        if(Input::hasFile('applicant-cv')){
+            $uploaded_file = Input::file('applicant-cv')->getRealPath();
+            $file_ext = Input::file('applicant-cv')->getMimeType();
+            $file_name = Input::file('applicant-cv')->getClientOriginalName();
             $file_cv = curl_file_create($uploaded_file, $file_ext, $file_name);
             $data = array(
                 'json' => json_encode($application_data),
