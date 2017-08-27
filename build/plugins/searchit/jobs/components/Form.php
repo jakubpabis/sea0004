@@ -16,6 +16,15 @@ class Form extends ComponentBase
         ];
     }
 
+    public function onStart()
+    {
+        if($this->job) {
+            $this->page['job'] = true;
+        } elseif($this->cv) {
+            $this->page['cv'] = true;
+        }
+    }
+
     /*
     *
     * Form submit script
@@ -113,6 +122,8 @@ class Form extends ComponentBase
             );
         }
 
+        $this->page['job_title'] = Input::get('job_title');
+
         // initialise the curl request
         // $request = curl_init();
 
@@ -127,10 +138,10 @@ class Form extends ComponentBase
 
         // dump($reply);
 
-        // $newURL = 'https://www.searchitrecruitment.com/form-success-page/';
-        // header('Location: ' . $newURL);
-        // return Redirect::to('upload-cv-success'); // ??????
-        
+        // // $newURL = 'https://www.searchitrecruitment.com/form-success-page/';
+        // // header('Location: ' . $newURL);
+        // // return Redirect::to('upload-cv-success'); // ??????
+        // die();
 
     }
 

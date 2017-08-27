@@ -1,5 +1,13 @@
-<i class="material-icons close" onclick="hideForm()">close</i>
-<div class="title">
-    <p>{{ 'Applying for'|_ }}: <span>{{ record.title|raw }}</span></p>
-</div>
-<h1>Success!</h1>
+<form>
+    {% if job_title %}
+        <i class="material-icons close" onclick="hideForm()">close</i>
+        <div class="title">
+            <p>{{ 'Applying for'|_ }}: <span>{{ job_title|raw }}</span></p>
+        </div>
+    {% else %}
+        <i class="material-icons close" onclick="hideCVForm()">close</i>
+        <div class="title">
+            <p><span>{{ 'Upload your CV to our database'|_ }}!</span></p>
+        </div>
+    {% endif %}
+</form>

@@ -1,4 +1,4 @@
-{{ form_ajax( 'onFormSubmit', { update: { 'job-form-message': '#jobFormModal' } }) }}
+{{ form_ajax( 'onFormSubmit', { data: {'job_title': record.title}, update: { 'job-form-message': '#jobFormModal' } }) }}
     <i class="material-icons close" onclick="hideForm()">close</i>
     <div class="title">
         <p>{{ 'Applying for'|_ }}: <span>{{ record.title|raw }}</span></p>

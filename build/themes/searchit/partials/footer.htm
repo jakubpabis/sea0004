@@ -1,4 +1,5 @@
 [recentJobs]
+[form]
 ==
 <?php
 
@@ -106,7 +107,7 @@ public function onStart()
 			</div>
 		</footer>
 		<div id="uploadCvModal" class="modal" aria-hidden="true">
-			<form>
+			{{ form_ajax( 'onFormSubmit', { update: { 'job-form-message': '#uploadCvModal' } }) }}
 				<i class="material-icons close" onclick="hideCVForm()">close</i>
 				<div class="title">
 					<p><span>{{ 'Upload your CV to our database'|_ }}!</span></p>
@@ -117,6 +118,8 @@ public function onStart()
 					<button class="li" type="button">Linkedin</button>
 				</div>
 				<div class="input-cont">
+					<input type="hidden" name="job-id" class="job-id" value="188">
+					<input type="hidden" name="applicant-gender">
 					<label for="applicant-name">{{ 'Name'|_ }} <span>*</span></label>
 					<input type="text" name="applicant-name" value="" required="required" placeholder="John Doe">
 					<label for="applicant-email">{{ 'Email'|_ }} <span>*</span></label>
@@ -154,7 +157,7 @@ public function onStart()
 					</div>
 				</div>
 				<input type="submit" value="Upload your CV">
-			</form>
+			{{ form_close() }}
 		</div>
         <!-- Scripts -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" defer></script>

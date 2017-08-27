@@ -15,7 +15,8 @@ class Plugin extends PluginBase
             'Searchit\Jobs\Components\Sidebar' => 'sidebar',
             'Searchit\Jobs\Components\Form' => 'form',
             'Searchit\Jobs\Components\FormClient' => 'formClient',
-            'Searchit\Jobs\Components\LangCheck' => 'langCheck'
+            'Searchit\Jobs\Components\LangCheck' => 'langCheck',
+            'Searchit\Jobs\Components\Shortlist' => 'shortlist'
         ];
     }
 
