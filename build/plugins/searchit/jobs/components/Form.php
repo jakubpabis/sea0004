@@ -122,19 +122,17 @@ class Form extends ComponentBase
             );
         }
 
-        $this->page['job_title'] = Input::get('job_title');
+        //initialise the curl request
+        $request = curl_init();
 
-        // initialise the curl request
-        // $request = curl_init();
+        curl_setopt($request, CURLOPT_URL, $uri);
+        curl_setopt($request, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($request, CURLOPT_POST, 1);
+        curl_setopt($request, CURLOPT_POSTFIELDS, $data);
 
-        // curl_setopt($request, CURLOPT_URL, $uri);
-        // curl_setopt($request, CURLOPT_RETURNTRANSFER, 1);
-        // curl_setopt($request, CURLOPT_POST, 1);
-        // curl_setopt($request, CURLOPT_POSTFIELDS, $data);
-
-        // $reply = curl_exec($request);
-        // // close the session
-        // curl_close($request);
+        $reply = curl_exec($request);
+        // close the session
+        curl_close($request);
 
         // dump($reply);
 
@@ -142,6 +140,7 @@ class Form extends ComponentBase
         // // header('Location: ' . $newURL);
         // // return Redirect::to('upload-cv-success'); // ??????
         // die();
+        $this->page['job_title'] = Input::get('job_title');
 
     }
 
