@@ -41,7 +41,7 @@ public function onStart()
 					</div>
 					<div class="footer__grid">
 						<div class="footer__grid-content">
-							<h5 class="footer__title">Recent Jobs</h5>
+							<h5 class="footer__title">{{ 'Recent Jobs'|_ }}</h5>
 							<div class="footer__content">
 								<ul>
 									{% for job in recent %}
@@ -55,34 +55,21 @@ public function onStart()
 					</div>
 					<div class="footer__grid">
 						<div class="footer__grid-content">
-							<h5 class="footer__title">Hot Skills</h5>
+							<h5 class="footer__title">{{ 'Hot Skills'|_ }}</h5>
 							<div class="footer__content">
-								<ul>
-									<li>Scala Development </li>
-									<li>Java Development </li>
-									<li>Android Development </li>
-									<li>iOS Development </li>
-									<li>Sitecore Development </li>
-									<li>.NET Development </li>
-									<li>PHP Development </li>
-									<li>Front-End Development </li>
-									<li>JavaScript Development </li>
-									<li>Conversion Optimalisation </li>
-									<li>Search Engine Advertising </li>
-									<li>Search Engine Optimization</li>
-								</ul>
+								{% content 'hot-skills.htm' %}
 							</div>
 						</div>
 					</div>
 					<div class="footer__grid">
 						<div class="footer__grid-content">
-							<h5 class="footer__title">Newsletter</h5>
+							<h5 class="footer__title">{{ 'Newsletter'|_ }}</h5>
 							<div class="footer__content">
 								<p>
-									Interested in instantly receiving the latest Search It Recruitment jobs within your are of expertise?
+									{{ 'Interested in instantly receiving the latest Search It Recruitment jobs within your are of expertise?'|_ }}
 								</p>
 								<a href="http://jobs.searchsoftware.nl/searchit/subscribe" class="btn btn-default" target="_blank">
-									<span>Subscribe</span>
+									<span>{{ 'Subscribe'|_ }}</span>
 								</a>
 							</div>
 						</div>
@@ -130,12 +117,15 @@ public function onStart()
 					<textarea class="address" name="applicant-address" placeholder="Prinses Beatrixlaan 23&#x0a; 2595 AK  'S-Gravenhage&#x0a; Netherlands"></textarea>
 					<label for="applicant-cv">{{ 'Upload your CV'|_ }} <span>*</span></label>
 					<div class="cvupload">
-						<input type="file" name="applicant-cv" value="" required="required">
+						<p id="cv-cv"><i>{{ 'Accepted formats: .doc | .docx | .pdf'|_ }}</i></p>
+						<input type="file" accept="application/pdf,application/msword,
+						application/vnd.openxmlformats-officedocument.wordprocessingml.document" name="applicant-cv" value="" required="required" onchange="getFileName(this, 'cv-cv')">
 					</div>
 					<div class="hidden-desktop">
 						<label for="applicant-photo">{{ 'Upload your photo'|_ }}</label>
 						<div class="cvupload">
-							<input type="file" name="applicant-photo" value="">
+							<p id="cv-photo-mobile"><i>{{ 'Accepted formats: .jpg | .png | .gif'|_ }}</i></p>
+							<input type="file" accept="image/*" name="applicant-photo" value="" onchange="getFileName(this, 'cv-photo-mobile')">
 						</div>
 					</div>
 				</div>
@@ -152,7 +142,8 @@ public function onStart()
 					<div class="hidden-mobile">
 						<label for="applicant-photo">{{ 'Upload your photo'|_ }}</label>
 						<div class="cvupload">
-							<input type="file" name="applicant-photo" value="">
+							<p id="cv-photo-desktop"><i>{{ 'Accepted formats: .jpg | .png | .gif'|_ }}</i></p>
+							<input type="file" accept="image/*" name="applicant-photo" value="" onchange="getFileName(this, 'cv-photo-desktop')">
 						</div>
 					</div>
 				</div>

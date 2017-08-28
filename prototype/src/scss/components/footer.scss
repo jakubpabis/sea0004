@@ -342,6 +342,20 @@
 			height: 38px;
 			margin-bottom: 20px;
 			background-color: white;
+
+			p {
+				margin: 0;
+				padding: 0 10px;
+				font-size: 15px;
+				line-height: 38px;
+
+				i {
+					opacity: 0.5;
+					font-style: normal;
+				}
+
+			}
+				
 		}
 
 	}
