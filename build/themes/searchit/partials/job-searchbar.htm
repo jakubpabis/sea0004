@@ -2,10 +2,10 @@
     <label>
         {{ 'Find a job'|_ }}
     </label>
-    <input type="text" name="title" id="search__job-title" placeholder="{{ 'job title - e.g. &quot;Web Developer&quot;'|_ }}">
+    <input type="text" name="title" id="search__job-title" placeholder="{{ 'job title - e.g. &quot;Web Developer&quot;'|_ }}" value="{{ linkQuery['title'] }}">
     <label for="">
         {{ 'in'|_ }}
     </label>
-    <input type="text" name="location" id="search__job-location" placeholder="{{ 'town - e.g. &quot;Amsterdam&quot;'|_ }}">
+    <input type="text" name="location" id="search__job-location" placeholder="{{ 'town - e.g. &quot;Amsterdam&quot;'|_ }}" value="{{ linkQuery['location'] }}">
     <input id="jobFilterSearch" type="submit" value="{{ 'Search'|_ }}">
 </aside>

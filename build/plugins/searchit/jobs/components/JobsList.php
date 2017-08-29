@@ -4,6 +4,7 @@ use Cms\Classes\ComponentBase;
 use Searchit\Jobs\Models\Job;
 use Searchit\Jobs\Models\Type;
 use Searchit\Jobs\Models\Category;
+use Illuminate\Pagination\Paginator;
 use DB;
 use Lang;
 use Collection;
@@ -45,6 +46,16 @@ class JobsList extends ComponentBase
       'salary-min',
       'salary-max'
     ];
+
+    /**
+     * @var int currentPage (used when filter)
+     */
+    protected $currentPage = 1;
+
+    /**
+     * @var array of parameters in URL
+     */
+    protected $linkQuery = [];
 
     /**
      *
@@ -127,6 +138,28 @@ class JobsList extends ComponentBase
       $this->page['jobsCount'] = $this->jobs->count();
       $this->page['jobs'] = $this->jobs->orderBy('date', 'desc')->paginate(20);
       $this->page['pagination'] = $this->page['jobs']->appends($this->parameters);
+
+      $link = $this->page['pagination']->url($this->page['pagination']->currentPage());
+      $this->page['hrefQuery'] = preg_split("/(\?)/", $link)[1];
+      $link_query_arr = preg_split("/(\&)/", $this->page['hrefQuery']);
+      
+      foreach($link_query_arr as $bit) {
+        $items = preg_split("/(\=)/", $bit);
+        if($items[0] !== 'page') {
+          if(preg_match('/category/', $items[0])) {
+            $this->linkQuery['category'][] = $items[1];
+          } elseif(preg_match('/type/', $items[0])) {
+            $this->linkQuery['type'][] = $items[1];
+          } else {
+            $this->linkQuery[$items[0]] = $items[1];
+          }
+        }
+      }
+
+      // dd($this->linkQuery);
+
+      $this->page['linkQuery'] = $this->linkQuery;
+
     }
 
     /**
@@ -136,6 +169,12 @@ class JobsList extends ComponentBase
      */
     protected function onFilterSearch()
     {
+
+      $currentPage = $this->currentPage;
+	    Paginator::currentPageResolver(function () use ($currentPage) {
+	        return $this->currentPage;
+	    });
+
       $this->prepareJobs();
     }
 
