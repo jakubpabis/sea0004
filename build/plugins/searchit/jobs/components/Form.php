@@ -2,6 +2,7 @@
 
 use Cms\Classes\ComponentBase;
 use Input;
+use Flash;
 use Redirect;
 use System\Models\File as FileSys;
 
@@ -134,14 +135,14 @@ class Form extends ComponentBase
         // close the session
         curl_close($request);
 
-        // dump($reply);
-
-        // // $newURL = 'https://www.searchitrecruitment.com/form-success-page/';
-        // // header('Location: ' . $newURL);
-        // // return Redirect::to('upload-cv-success'); // ??????
-        // die();
-        $this->page['job_title'] = Input::get('job_title');
-
+        if(Input::get('form_type') == 'application') {
+            Flash::success('app');
+        } else {
+            Flash::success('cv');
+        }
+        
+        return Redirect::back();
+        die();
     }
 
 }

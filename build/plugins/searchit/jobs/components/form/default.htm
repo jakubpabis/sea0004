@@ -1,5 +1,15 @@
-{{ form_ajax( 'onFormSubmit', { data: {'job_title': record.title}, update: { 'job-form-message': '#jobFormModal' } }) }}
+{{ form_open({ method: 'POST', files: 'true', request: 'onFormSubmit',  }) }}
     <i class="material-icons close" onclick="hideForm()">close</i>
+    {% flash success %}
+        {% if message == 'app' %}
+            <p
+                data-control="flash-message"
+                class="flash-message fade info"
+                data-interval="10">
+                {{ 'Application submitted!'|_ }}
+            </p>
+        {% endif %}
+    {% endflash %}
     <div class="title">
         <p>{{ 'Applying for'|_ }}: <span>{{ record.title|raw }}</span></p>
         <span>
@@ -9,8 +19,11 @@
         <button class="li" type="button" onclick="liAuth()">Linkedin</button>
     </div>
     <div class="input-cont">
+        {{ form_token() }}
+        {{ form_sessionKey() }}
         <input type="hidden" name="job-id" class="job-id" value="{{ record.job_id|length ? record.job_id : 188 }}">
         <input type="hidden" name="applicant-gender">
+        <input type="hidden" name="form_type" value="application">
         <label for="applicant-name">{{ 'Name'|_ }} <span>*</span></label>
         <input type="text" name="applicant-name" value="" required="required" placeholder="John Doe">
         <label for="applicant-email">{{ 'Email'|_ }} <span>*</span></label>
