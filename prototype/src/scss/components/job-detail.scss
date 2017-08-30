@@ -109,18 +109,21 @@
                 i,
                 p {
                     display: inline-block;
-                    margin: 4px 0;
-                    vertical-align: middle;
+                    margin: 0;
                 }
 
                 i {
-                    font-size: 20px;
-                    margin-right: 5px;
+                    font-size: 19px;
+                    margin-right: 8px;
+                    margin-left: -27px;
+                    vertical-align: -4px;
                     color: $color-tertiary;
                 }
 
                 p {
                     font-size: 14px;
+                    margin: 0.2em auto;
+                    padding-left: 27px;
                 }
 
             }
