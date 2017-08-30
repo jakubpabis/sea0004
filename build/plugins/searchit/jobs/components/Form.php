@@ -17,15 +17,6 @@ class Form extends ComponentBase
         ];
     }
 
-    public function onStart()
-    {
-        if($this->job) {
-            $this->page['job'] = true;
-        } elseif($this->cv) {
-            $this->page['cv'] = true;
-        }
-    }
-
     /*
     *
     * Form submit script
@@ -34,31 +25,11 @@ class Form extends ComponentBase
     protected function onFormSubmit()
     {
         if(Input::hasFile('applicant-cv')) {
-            // $ftp_server = "173.236.146.18";
-            // $ftp_username   = "admin_searchit";
-            // $ftp_password   = "Uv9-JNe-LG2-rxD";
-            // // setup of connection
-            // $conn_id = ftp_connect($ftp_server) or die("could not connect to the server ;(");
 
             if(Input::file('applicant-cv')->getSize() < (2097152)) { //can't be larger than 2 MB
-                // login
-                // if (@ftp_login($conn_id, $ftp_username, $ftp_password)) {
-                //   echo "conected as current user\n";
-                // }
-                // else {
-                //   echo "could not connect as current user\n";
-                // }
                 $file = new FileSys;
                 $file->data = Input::file('applicant-cv');
                 $file->save();
-                // $upload_file = Input::file('cv_file')->getRealPath();
-
-                // $remote_file_path = "/storage/app/uploads/public/" . $upload_file;
-                // $remote_file_path = "/uploads/public/";
-                // Input::file('cv_file')->move($remote_file_path);
-                // ftp_put($conn_id, $remote_file_path, $_FILES["cv_file"]["tmp_name"], FTP_BINARY);
-                // ftp_close($conn_id);
-                // echo "\n\nconnection closed \n\r file upload end with success! :D";
             } else {
                 dump('Oops!  Your file\'s size is to large.');
             }

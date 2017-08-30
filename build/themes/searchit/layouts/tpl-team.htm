@@ -5,6 +5,15 @@ code = "main-menu"
 
 [staticPage]
 
+[builderList teamListing]
+modelClass = "Searchit\Team\Models\Team"
+scope = "-"
+displayColumn = "name"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+
 [localePicker]
 forceUrl = 1
 
@@ -13,21 +22,17 @@ forceUrl = 1
 [breadcrumbs]
 [langCheck]
 ==
+{% set records = teamListing.records %}
+{% set displayColumn = teamListing.displayColumn %}
+{% set noRecordsMessage = teamListing.noRecordsMessage %}
+{% set detailsPage = teamListing.detailsPage %}
+{% set detailsKeyColumn = teamListing.detailsKeyColumn %}
+{% set detailsUrlParameter = teamListing.detailsUrlParameter %}
 
 {variable name="headerImg" label="Header image" tab="Header" type="mediafinder"}{/variable}
 {variable name="headerText" label="Header text" tab="Header" type="richeditor"}{/variable}
 {variable name="hreflang_en" label="hreflang - EN - URL" tab="hreflang" type="text"}{/variable}
 {variable name="hreflang_nl" label="hreflang - NL - URL" tab="hreflang" type="text"}{/variable}
-
-{repeater name="team_section" prompt="Add another team member" tab="Team"}
-    {variable type="mediafinder" name="image" label="Image"}{/variable}
-    {variable type="text" name="title" label="Work title"}{/variable}
-    {variable type="text" name="name" label="Name"}{/variable}
-    {variable type="text" name="email" label="Email"}{/variable}
-    {variable type="text" name="phone" label="Phone"}{/variable}
-    {variable type="text" name="twitter" label="Twitter"}{/variable}
-    {variable type="text" name="linkedin" label="Linkedin"}{/variable} 
-{/repeater}
 
 {% partial 'head' %}
 {% partial 'navigation' %}
@@ -50,19 +55,19 @@ forceUrl = 1
     </div>
     <div class="container">
         <div class="team__grid">
-            {% for mate in team_section %}
+            {% for record in records %}
                 <div class="team__grid-item">
                     <div class="image">
-                        <img src="{{ mate.image|media }}" alt="{{ mate.name }}">
+                        <img src="{{ record.photo|media }}" alt="{{ record.name }}">
                         <div class="social">
                             <div class="icons">
-                                {% if mate.twitter %}
-                                    <a href="{{ mate.twitter }}" target="_blank">
+                                {% if record.social_twitter %}
+                                    <a href="{{ record.social_twitter }}" target="_blank">
                                         <i class="fa fa-twitter" aria-hidden="true"></i>
                                     </a>
                                 {% endif %}
-                                {% if mate.linkedin %}
-                                    <a href="{{ mate.linkedin }}" target="_blank">
+                                {% if record.social_linked %}
+                                    <a href="{{ record.social_linked }}" target="_blank">
                                         <i class="fa fa-linkedin" aria-hidden="true"></i>
                                     </a>
                                 {% endif %}
@@ -70,23 +75,25 @@ forceUrl = 1
                         </div>
                     </div>
                     <div class="text">
-                        <p class="title">
-                            {{ mate.title }}
-                        </p>
+                        {% if record.position %}
+                            <p class="title">
+                                {{ record.position }}
+                            </p>
+                        {% endif %}
                         <p class="name">
-                            {{ mate.name }}
+                            {{ record.name }}
                         </p>
                         <div class="contact">
-                            {% if mate.email %}
-                                <a href="mailto:{{ mate.email }}">
+                            {% if record.email %}
+                                <a href="mailto:{{ record.email }}">
                                     <i class="material-icons">email</i>
-                                    <span>{{ mate.email }}</span>
+                                    <span>{{ record.email }}</span>
                                 </a>
                             {% endif %}
-                            {% if mate.phone %}
-                                <a href="tel:{{ mate.phone }}">
+                            {% if record.phone %}
+                                <a href="tel:{{ record.phone }}">
                                     <i class="material-icons">phone</i>
-                                    <span>{{ mate.phone }}</span>
+                                    <span>{{ record.phone }}</span>
                                 </a>
                             {% endif %}
                         </div>
