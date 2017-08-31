@@ -1,8 +1,9 @@
 <?php namespace Searchit\Jobs\Components;
 
 use Cms\Classes\ComponentBase;
-use Input;
 use Redirect;
+use Flash;
+use Input;
 use Mail;
 
 class FormClient extends ComponentBase
@@ -32,8 +33,6 @@ class FormClient extends ComponentBase
             'extra'     => Input::get('extra'),
         ];  
 
-
-       
         Mail::send('searchit.jobs::mail.message', $inputs, function($message){
 
             $message->from('searchit@recruitment.com', 'Searchit VPS');
@@ -48,7 +47,9 @@ class FormClient extends ComponentBase
 
         });
 
-        return Redirect::to('upload-job-success');
+        Flash::success('job');
+
+        return Redirect::back();
         die();
 
     }

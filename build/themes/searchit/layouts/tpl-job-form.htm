@@ -1,0 +1,37 @@
+description = "Default page with job form"
+
+[staticMenu mainMenu]
+code = "main-menu"
+
+[staticPage]
+
+[localePicker]
+forceUrl = 1
+
+[form]
+[formClient]
+
+[breadcrumbs]
+[langCheck]
+==
+
+{variable name="defaultContent" label="Summary" tab="Content" type="richeditor"}{/variable}
+{variable name="hreflang_en" label="hreflang - EN - URL" tab="hreflang" type="text"}{/variable}
+{variable name="hreflang_nl" label="hreflang - NL - URL" tab="hreflang" type="text"}{/variable}
+
+{% partial 'head' %}
+{% partial 'navigation' %}
+{% component 'breadcrumbs' %}
+
+<article class="default-article">
+    <div class="default-article__content">
+        <div class="container container-sml">
+            {{ defaultContent|raw }}
+        </div>
+        <div class="container container-sml">
+            {% component 'formClient' %}
+        </div>
+    </div>
+</article>
+
+{% partial 'footer' %}
