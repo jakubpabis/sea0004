@@ -85,6 +85,10 @@
 
                     .icons {
                         position: absolute;
+                        display: flex;
+                        flex-wrap: nowrap;
+                        align-items: center;
+                        justify-content: center;
                         width: 120px;
                         height: 60px;
                         top: 50%;
@@ -94,11 +98,11 @@
                     }
 
                     a {
-                        display: inline-block;
+                        display: block;
+                        align-self: center;
                         width: 44px;
                         height: 44px;
                         padding: 8px;
-                        float: left;
 
                         i {
                             color: white;
