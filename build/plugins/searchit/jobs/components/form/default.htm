@@ -1,4 +1,4 @@
-{{ form_open({ method: 'POST', files: 'true', request: 'onFormSubmit',  }) }}
+{{ form_open({ enctype: 'multipart/form-data', method: 'POST', files: 'true', request: 'onFormSubmit',  }) }}
     <i class="material-icons close" onclick="hideForm()">close</i>
     {% flash success %}
         {% if message == 'app' %}
