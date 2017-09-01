@@ -99,6 +99,15 @@ function hideMenu()
 	});
 }
 
+function showSubMenu($el)
+{
+	if(hasClass($el.nextSibling, 'active')) {
+		$el.nextSibling.classList.remove('active');
+	} else {
+		$el.nextSibling.classList.add('active');
+	}
+}
+
 function checkboxLabel($el) 
 {
 	if($el.getElementsByTagName('input')[0].checked === true) {

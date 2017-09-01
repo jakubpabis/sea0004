@@ -63,6 +63,18 @@
 			line-height: 79px;
 		}
 
+		@media(max-width: 480px) {
+
+			.right {
+
+				.btn {
+					display: none;
+				}
+
+			}
+
+		}
+
 	}
 
 	.bottom {
@@ -176,12 +188,12 @@
 		height: 60px;
 		line-height: 60px;
 		border-left: 1px solid rgba($color-primary, 0.1);
-		background-color: $color-light;
 		text-align: center;
 		font-size: 24px;
 		color: $color-primary;
 		cursor: pointer;
-		z-index: 9;
+		background-color: $color-light;
+		z-index: 9999;
 		position: relative;
 		transition: all 200ms ease;
 
@@ -208,7 +220,7 @@
 		height: 60px;
 		line-height: 60px;
 		background-color: $color-light;
-		z-index: 9;
+		z-index: 9999;
 		position: relative;
 		transition: all 250ms ease;
 
@@ -226,6 +238,11 @@
 				opacity: 1;
 			}
 
+		}
+
+		form {
+			background-color: $color-light;
+			z-index: 9999;
 		}
 
 		input {
@@ -532,6 +549,14 @@
 				z-index: 9;
 				transition: all 250ms ease;
 
+				&.has-children {
+
+					@media(max-width: 1200px) {
+						padding-right: 0;
+					}
+
+				}
+
 				@media(max-width: 1170px) {
 					padding: 0 10px;
 				}
@@ -543,7 +568,7 @@
 				@media(max-width: 660px) {
 					height: 44px;
 					line-height: 44px;
-					display: block;
+					display: inline-block;
 					color: $color-light;
 					padding: 0 15px;
 				}
@@ -594,6 +619,28 @@
 
 			}
 
+			i {
+				vertical-align: middle;
+				display: none;
+				width: 30px;
+				height: 58px;
+				line-height: 56px;
+				text-align: center;
+
+				@media(max-width: 1200px) {
+					display: inline-block;
+				}
+
+				@media(max-width: 660px) {
+					width: 44px;
+					height: 44px;
+					line-height: 44px;
+					float: right;
+					color: $color-light;
+				}
+
+			}
+
 			.sub {
 				position: absolute;
 				top: 58px;
@@ -607,6 +654,14 @@
 				visibility: hidden;
 				max-height: 0;
 				z-index: 9999;
+
+				@media(max-width: 720px) {
+					position: relative;
+					top: auto;
+					width: 100%;
+					background-color: black;
+					transition: all 500ms ease;
+				}
 
 				&:before {
 					display: block;
@@ -676,7 +731,7 @@
 
 			&:hover {
 
-				@media(min-width: 661px) {
+				@media(min-width: 721px) {
 
 					.sub {
 						opacity: 1;
@@ -694,6 +749,48 @@
 							width: 100%;
 							height: 100%;
 							bottom: 0;
+						}
+
+					}
+
+				}
+
+				@media(min-width: 320px) {
+					
+					.sub {
+						opacity: 0;
+						max-height: 0;
+						visibility: hidden;
+
+						&:before {
+							display: none;
+						}
+
+						&:after {
+							display: none;
+						}
+
+					}
+
+				}
+
+			}
+
+			&.active {
+				
+				@media(min-width: 320px) {
+					
+					.sub {
+						opacity: 1;
+						max-height: 420px;
+						visibility: visible;
+
+						&:before {
+							display: none;
+						}
+
+						&:after {
+							display: none;
 						}
 
 					}
