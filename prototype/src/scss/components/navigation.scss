@@ -6,7 +6,7 @@
 	background-color: $color-light;
 	padding: 0;
 
-	@media(max-width: 660px) {
+	@media(max-width: 800px) {
 		height: 130px;
 	}
 
@@ -27,7 +27,7 @@
 			width: auto;
 			pointer-events: none;
 
-			@media(max-width: 660px) {
+			@media(max-width: 800px) {
 				height: 58px;
 			}
 
@@ -52,13 +52,13 @@
 				padding-right: 30px;
 			}
 
-			@media(max-width: 660px) {
+			@media(max-width: 800px) {
 				display: none;
 			}
 
 		}
 
-		@media(max-width: 660px) {
+		@media(max-width: 800px) {
 			height: 79px;
 			line-height: 79px;
 		}
@@ -96,7 +96,7 @@
 		
 		}
 
-		@media(max-width: 660px) {
+		@media(max-width: 800px) {
 			height: 50px;
 			line-height: 50px;
 
@@ -128,7 +128,7 @@
 		z-index: 9;
 		background-color: $color-light;
 
-		@media(max-width: 660px) {
+		@media(max-width: 800px) {
 			height: 50px;
 			line-height: 50px;
 		}
@@ -140,7 +140,7 @@
 			float: left;
 			transition: all 250ms ease;
 
-			@media(max-width: 660px) {
+			@media(max-width: 800px) {
 				line-height: 50px;
 			}
 
@@ -197,7 +197,7 @@
 		position: relative;
 		transition: all 200ms ease;
 
-		@media(max-width: 660px) {
+		@media(max-width: 800px) {
 			height: 50px;
 			width: 50px;
 			line-height: 50px;
@@ -224,7 +224,7 @@
 		position: relative;
 		transition: all 250ms ease;
 
-		@media(max-width: 660px) {
+		@media(max-width: 800px) {
 			height: 50px;
 			line-height: 50px;
 		}
@@ -305,7 +305,7 @@
 			display: none;
 		}
 
-		@media(max-width: 660px) {
+		@media(max-width: 800px) {
 			height: 50px;
 			line-height: 50px;
 			display: block;
@@ -315,7 +315,7 @@
 			float: left;
 			line-height: 60px;
 
-			@media(max-width: 660px) {
+			@media(max-width: 800px) {
 				line-height: 50px;
 			}
 
@@ -340,7 +340,7 @@
 					font-size: 18px;
 					transition: all 200ms ease;
 
-					@media(max-width: 660px) {
+					@media(max-width: 800px) {
 						height: 50px;
 						line-height: 50px;
 					}
@@ -388,7 +388,7 @@
 
 		}
 
-		@media(max-width: 660px) {
+		@media(max-width: 800px) {
 			display: block;
 		
 			&.active {
@@ -484,7 +484,7 @@
 			margin: 0 0 0 -7px;
 		}
 
-		@media(max-width: 660px) {
+		@media(max-width: 800px) {
 			display: block;
 			float: none;
 			position: fixed;
@@ -528,7 +528,7 @@
 			position: relative;
 			z-index: 9;
 
-			@media(max-width: 660px) {
+			@media(max-width: 800px) {
 				height: auto;
 				line-height: 44px;
 				float: none;
@@ -565,7 +565,7 @@
 					padding: 0 7px;
 				}
 
-				@media(max-width: 660px) {
+				@media(max-width: 800px) {
 					height: 44px;
 					line-height: 44px;
 					display: inline-block;
@@ -626,12 +626,18 @@
 				height: 58px;
 				line-height: 56px;
 				text-align: center;
+				transition: all 300ms ease;
+
+				&.active {
+					transform: rotate(180deg);
+					color: $color-tertiary;
+				}
 
 				@media(max-width: 1200px) {
 					display: inline-block;
 				}
 
-				@media(max-width: 660px) {
+				@media(max-width: 800px) {
 					width: 44px;
 					height: 44px;
 					line-height: 44px;
@@ -655,7 +661,7 @@
 				max-height: 0;
 				z-index: 9999;
 
-				@media(max-width: 720px) {
+				@media(max-width: 800px) {
 					position: relative;
 					top: auto;
 					width: 100%;
@@ -687,6 +693,41 @@
 					height: 3px;
 					background-color: $color-tertiary;
 					z-index: 0;
+				}
+
+				&.active {
+					opacity: 1;
+					max-height: 420px;
+					visibility: visible;
+
+					&:before {
+						width: 100%;
+						height: calc(100% - 6px);
+						left: 3px;
+						bottom: 3px;
+					}
+
+					&:after {
+						width: 100%;
+						height: 100%;
+						bottom: 0;
+					}
+
+					@media(max-width: 800px) {
+						opacity: 1;
+						max-height: 420px;
+						visibility: visible;
+
+						&:before {
+							display: none;
+						}
+
+						&:after {
+							display: none;
+						}
+	
+					}
+
 				}
 
 				li {
@@ -731,7 +772,7 @@
 
 			&:hover {
 
-				@media(min-width: 721px) {
+				@media(min-width: 801px) {
 
 					.sub {
 						opacity: 1;
@@ -755,35 +796,12 @@
 
 				}
 
-				@media(min-width: 320px) {
+				@media(max-width: 800px) {
 					
 					.sub {
 						opacity: 0;
 						max-height: 0;
 						visibility: hidden;
-
-						&:before {
-							display: none;
-						}
-
-						&:after {
-							display: none;
-						}
-
-					}
-
-				}
-
-			}
-
-			&.active {
-				
-				@media(min-width: 320px) {
-					
-					.sub {
-						opacity: 1;
-						max-height: 420px;
-						visibility: visible;
 
 						&:before {
 							display: none;

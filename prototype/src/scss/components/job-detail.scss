@@ -98,6 +98,14 @@
                 margin-top: 0;
             }
 
+            &.social {
+
+                @media(max-width: 1170px) {
+                    margin-bottom: 11px;
+                }
+
+            }
+
         }
 
         .info {
@@ -225,9 +233,19 @@
     &__social {
         display: block;
         position: relative;
+        margin: 0 -2px;
+
+        @media(max-width: 1170px) {
+            margin: 0 -5px;
+        }
 
         a {
             display: inline-block;
+            margin: 0 2px 2px 2px;
+
+            @media(max-width: 1170px) {
+                margin: 5px;
+            }
 
             i {
                 font-size: 20px;
@@ -236,7 +254,7 @@
                 line-height: 36px;
                 border-radius: 36px;
                 text-align: center;
-                margin-right: 3px;
+                margin: 0;
                 color: white;
                 transition: all 200ms ease;
                 

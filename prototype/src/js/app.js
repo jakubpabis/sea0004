@@ -101,10 +101,12 @@ function hideMenu()
 
 function showSubMenu($el)
 {
-	if(hasClass($el.nextSibling, 'active')) {
-		$el.nextSibling.classList.remove('active');
+	if(hasClass($el.nextElementSibling, 'active')) {
+		$el.classList.remove('active');
+		$el.nextElementSibling.classList.remove('active');
 	} else {
-		$el.nextSibling.classList.add('active');
+		$el.classList.add('active');
+		$el.nextElementSibling.classList.add('active');
 	}
 }
 

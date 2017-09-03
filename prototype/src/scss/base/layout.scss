@@ -83,7 +83,7 @@ section {
 	position: relative;
 	display: block;
 
-	@media(max-width: 660px) {
+	@media(max-width: 800px) {
 		transition: all 250ms ease;
 
 		&.menu-active {
