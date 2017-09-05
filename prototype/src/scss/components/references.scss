@@ -183,6 +183,46 @@
         right: -45px;
     }
 
+    @media(max-width: 1280px) {
+
+        #siema-prev-clients {
+            left: -35px;
+        }
+    
+        #siema-next-clients {
+            right: 20px;
+        }
+    
+        #siema-prev-candidates {
+            left: 20px;
+        }
+    
+        #siema-next-candidates {
+            right: -35px;
+        }
+
+    }
+
+    @media(max-width: 1170px) {
+        
+        #siema-prev-clients {
+            left: -35px;
+        }
+    
+        #siema-next-clients {
+            right: 5px;
+        }
+    
+        #siema-prev-candidates {
+            left: 5px;
+        }
+    
+        #siema-next-candidates {
+            right: -35px;
+        }
+
+    }
+
     #siema-prev-clients,
     #siema-prev-candidates {
 
