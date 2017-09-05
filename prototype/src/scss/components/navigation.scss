@@ -497,12 +497,14 @@
 			min-height: 100%;
 			min-height: 100vh;
 			height: 100%;
+			max-height: calc(100vh - 50px);
 			background-color: $color-primary;
 			transition: all 250ms ease;
 			z-index: 9999;
 			-webkit-box-shadow: 0 0 0 0 $color-primary;
 			box-shadow: 0 0 0 0 $color-primary;
 			overflow-x: hidden;
+			overflow-y: auto;
 
 			// &:after {
 			// 	content: '';
@@ -597,20 +599,19 @@
 			&.active {
 
 				a {
-					color: $color-tertiary;
+					@media(min-width: 801px) {
+						color: $color-tertiary;
+					}
 
 					&:after {
-						width: calc(100% - 30px);
-						left: 15px;
-
-						@media(max-width: 1170px) {
-							width: calc(100% - 20px);
-							left: 10px;
+						@media(min-width: 1171px) {
+							width: calc(100% - 30px);
+							left: 15px;
 						}
 
-						@media(max-width: 760px) {
-							width: calc(100% - 14px);
-							left: 7px;
+						@media(min-width: 801px) {
+							width: calc(100% - 20px);
+							left: 10px;
 						}
 
 					}
@@ -665,6 +666,10 @@
 					position: relative;
 					top: auto;
 					width: 100%;
+					max-width: 270px;
+					display: block;
+					overflow: auto;
+					padding: 0px;
 					background-color: black;
 					transition: all 500ms ease;
 				}
@@ -736,6 +741,10 @@
 					z-index: 9;
 					background-color: $color-light;
 
+					@media(max-width: 800px) {
+						background-color: $color-tertiary;
+					}
+
 					&:first-of-type {
 						padding-top: 5px;
 					}
@@ -759,9 +768,21 @@
 						transition: all 250ms ease;
 						white-space: nowrap;
 
+						@media(max-width: 800px) {
+							white-space: normal;
+							height: auto;
+							padding: 12px 12px 12px 24px;
+							line-height: 1.1;
+							color: $color-light;
+						}
+
 						&:hover {
-							color: $color-tertiary;
-							transform: translateX(7px);
+
+							@media(min-width: 801px) {
+								color: $color-tertiary;
+								transform: translateX(7px);
+							}
+
 						}
 
 					}
@@ -796,24 +817,24 @@
 
 				}
 
-				@media(max-width: 800px) {
+				// @media(max-width: 800px) {
 					
-					.sub {
-						opacity: 0;
-						max-height: 0;
-						visibility: hidden;
+				// 	.sub {
+				// 		opacity: 0;
+				// 		max-height: 0;
+				// 		visibility: hidden;
 
-						&:before {
-							display: none;
-						}
+				// 		&:before {
+				// 			display: none;
+				// 		}
 
-						&:after {
-							display: none;
-						}
+				// 		&:after {
+				// 			display: none;
+				// 		}
 
-					}
+				// 	}
 
-				}
+				// }
 
 			}
 

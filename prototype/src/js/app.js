@@ -70,33 +70,28 @@ function showLang($el, event)
 
 function showMenu($el) 
 {
-	if(!hasClass($el, 'active')) {
+	if(hasClass($el, 'active')) {
+		hideMenu();
+	} else {
 		$el.classList.add('active');
 		document.getElementsByTagName('body')[0].classList.add('menu-active');
 		document.getElementsByTagName('html')[0].classList.add('menu-active');
 		document.getElementById('wrapper').classList.add('menu-active');
 		setTimeout(function() {
-			document.querySelectorAll('*:not(.menu)').forEach(function(elem) {
-				elem.addEventListener('click', hideMenu);
-			});
+			document.getElementById('wrapper').insertAdjacentHTML('afterend', '<div id="menuCloserButton"></div>');
+			document.getElementById('menuCloserButton').addEventListener('click', hideMenu);
 		}, 300);
-	} else {
-		$el.classList.remove('active');
-		document.getElementsByTagName('body')[0].classList.remove('menu-active');
-		document.getElementsByTagName('html')[0].classList.remove('menu-active');
-		document.getElementById('wrapper').classList.remove('menu-active');
 	}
 }
 
 function hideMenu() 
 {
+	var elem = document.getElementById('menuCloserButton');
 	document.getElementById('menu-btn').classList.remove('active');
 	document.getElementsByTagName('body')[0].classList.remove('menu-active');
 	document.getElementsByTagName('html')[0].classList.remove('menu-active');
 	document.getElementById('wrapper').classList.remove('menu-active');
-	document.querySelectorAll('*:not(.menu)').forEach(function(elem) {
-		elem.removeEventListener('click', hideMenu);
-	});
+	elem.parentNode.removeChild(elem);
 }
 
 function showSubMenu($el)
