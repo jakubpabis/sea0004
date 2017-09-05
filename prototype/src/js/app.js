@@ -249,7 +249,7 @@ function initContactMap()
 {
 	var contact_map = document.getElementById('contact_map');
 	var map = new google.maps.Map(contact_map, {
-		center: {lat: 52.3214278, lng: 4.876879},
+		center: {lat: 52.3214064, lng: 4.8788931},
 		zoom: 14,
 		scrollwheel: false,
 		draggable: true,
@@ -257,8 +257,12 @@ function initContactMap()
 		scaleControl: true,
 		streetViewControl: true
 	});
+	var pathArray = location.href.split( '/' );
+	var protocol = pathArray[0];
+	var host = pathArray[2];
+	var $url = protocol + '//' + host;
 	var image = {
-	url: 'assets/img/logo-pin.png',
+		url: $url+'/themes/searchit/assets/img/logo-pin.png',
 		// This marker is 20 pixels wide by 32 pixels high.
 		size: new google.maps.Size(160, 200),
 		// The origin for this image is (0, 0).
@@ -269,7 +273,7 @@ function initContactMap()
 	};
 	var marker = new google.maps.Marker({
 		map: map,
-		position: new google.maps.LatLng(52.3214278,4.876879),
+		position: new google.maps.LatLng(52.3214064,4.8788931),
 		icon: image
 	});
 	map.set('styles', 

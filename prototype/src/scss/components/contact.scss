@@ -20,6 +20,16 @@
             margin: 0 -10px -40px;
         }
 
+        @media(max-width: 760px) {
+            flex-wrap: wrap;
+            transform: translateY(0);
+            margin: 20px -10px;
+        }
+
+        @media(max-width: 480px) {
+            margin: 10px -10px;
+        }
+
         &-content {
             flex-basis: 33.33333%;
             padding: 50px;
@@ -33,6 +43,15 @@
             @media(max-width: 960px) {
                 padding: 40px 30px;
                 margin: 0 10px;
+            }
+
+            @media(max-width: 760px) {
+                flex-basis: 100%;
+                margin: 10px 20px;
+            }
+
+            @media(max-width: 480px) {
+                margin: 10px;
             }
             
             * {
