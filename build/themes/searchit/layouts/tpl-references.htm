@@ -65,7 +65,7 @@ forceUrl = 1
                             {% for record in records if record.type == 'client' %}
                                 <div>
                                     <p class="references__summary">
-                                        {{ html_limit(record.summary|raw, 1100, '..."') }}
+                                        {{ html_limit(record.summary|striptags, 1100, '..."') }}
                                     </p>
                                     <p class="references__person">
                                         {{ record.who }} - {{ record.type }}
@@ -114,7 +114,7 @@ forceUrl = 1
                             {% for record in records if record.type == 'candidate' %}
                                 <div>
                                     <p class="references__summary">
-                                        {{ html_limit(record.summary|raw, 1000) }}
+                                        {{ html_limit(record.summary|striptags, 1000) }}
                                     </p>
                                     <p class="references__person">
                                         {{ record.who }} - {{ record.type }}

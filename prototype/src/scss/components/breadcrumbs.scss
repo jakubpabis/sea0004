@@ -28,6 +28,17 @@
             height: 28px;
             line-height: 26px;
             margin: 0 4px;
+            font-size: 13px;
+            font-weight: 400;
+            letter-spacing: 0;
+
+            h1 {
+                margin: 0;
+                font-size: inherit;
+                font-weight: inherit;
+                letter-spacing: inherit;
+                line-height: inherit;
+            }
 
             &:hover {
                 

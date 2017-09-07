@@ -12,7 +12,11 @@
                     {% if loop.index < segments|length %}
                         <a href="{{ segment.path }}">{{ segment.name }}</a>
                     {% else %}
-                        {{ segment.name }}
+                        {% if this.page.id == 'job-categories' %}
+                            <h1>{{ segment.name }}</h1>
+                        {% else %}
+                            {{ segment.name }}
+                        {% endif %}
                     {% endif %}
                 </li>
                 {% if loop.index < segments|length %}

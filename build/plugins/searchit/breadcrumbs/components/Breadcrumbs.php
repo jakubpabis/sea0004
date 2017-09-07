@@ -46,7 +46,6 @@ class Breadcrumbs extends ComponentBase
             } else {
                 $this->catFirst = Category::where('category_slug', $this->property('categorySlug'))->first();
             }
-            
         }
 
         if($this->property('jobSlug')) {
