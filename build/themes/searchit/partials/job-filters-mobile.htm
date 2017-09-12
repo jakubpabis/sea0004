@@ -3,9 +3,11 @@
         <i class="material-icons">favorite</i>
         <p>{{ 'Shortlist vacatures'|_ }}</p>
     </a> #}
-    <span class="shortlisted-jobs">
+    <span class="shortlisted-jobs" onclick="openFilters(this)">
         <i class="material-icons">filter_list</i>
         <p>{{ 'Job filters'|_ }}</p>
+        <i class="material-icons">keyboard_arrow_down</i>
+        <p>Open</p>
     </span>
     <span class="title">
         {{ 'Salary range'|_ }}

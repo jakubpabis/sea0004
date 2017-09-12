@@ -50,6 +50,11 @@ function openSearch($el)
 	}, 500);
 }
 
+function openFilters($el) 
+{
+	$el.parentNode.classList.toggle('active');
+}
+
 function hideSearch() 
 {
 	document.getElementById('search-field-general').classList.remove('active');

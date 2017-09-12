@@ -29,6 +29,25 @@
             padding: 0 10px 15px 10px;
         }
 
+        @media(max-width: 767px) {
+            display: none;
+
+            &.mobile {
+                display: block;
+                flex-basis: 100%;
+                max-height: 40px;
+                padding: 0 10px;
+                overflow: hidden;
+
+                &.active {
+                    max-height: 999px;
+                    padding: 0 10px 15px;
+                }
+
+            }
+
+        }
+
         &:hover {
             -webkit-box-shadow: 0 0 24px 0 rgba($color-primary, 0.15);
             box-shadow: 0 0 24px 0 rgba($color-primary, 0.15);
@@ -42,12 +61,22 @@
             width: 100%;
             margin-left: -20px;
             margin-bottom: 16px;
+            position: relative;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
 
             @media(max-width: 900px) {
                 padding: 8px 10px;
                 margin-left: -10px;
             }
 
+            @media(max-width: 767px) {
+                padding: 4px 10px;
+            }
             
             i,
             p {
@@ -59,16 +88,43 @@
                 display: inline-block;
             }
 
+            @media(max-width: 767px) {
+                
+                p:last-of-type {
+                    font-size: 12px;
+                    text-transform: uppercase;
+                    font-weight: 500;
+                    position: absolute;
+                    right: 36px;
+                }
+
+            }
+
             i {
                 font-size: 24px;
                 margin-right: 5px;
                 transition: all 250ms ease;
+
+                @media(max-width: 767px) {
+
+                    &:last-of-type {
+                        margin: 0;
+                        position: absolute;
+                        right: 10px;
+                    }
+
+                }
+                
             }
 
-            &:hover {
+            @media(min-width: 767px) {
 
-                i {
-                    font-size: 32px;
+                &:hover {
+                    
+                    i {
+                        font-size: 32px;
+                    }
+    
                 }
 
             }
@@ -384,6 +440,11 @@
         @media(max-width: 900px) {
             flex-basis: 65%;
             padding-left: 10px;
+        }
+
+        @media(max-width: 767px) {
+            flex-basis: 100%;
+            padding-left: 0;
         }
 
         &-container {
