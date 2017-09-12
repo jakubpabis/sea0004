@@ -18,6 +18,7 @@
 
         &.mobile {
             display: none;
+            transition: all 500ms ease;
         }
 
         @media(max-width: 1170px) {
