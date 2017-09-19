@@ -115,6 +115,10 @@ section {
 		max-width: 990px;
 	}
 
+	@media(max-width: 767px) {
+		padding: 0 10px;
+	}
+
 	&-sml {
 		max-width: 900px;
 

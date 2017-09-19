@@ -30,20 +30,67 @@ localeUrl[nl] = "/vacature/:slug"
                 <h1 class="title">
                     {{ record.title|raw }}
                 </h1>
-                <div class="info">
-                    <div class="info-single">
-                        <i class="material-icons">location_on</i>
-                        <p>{{ record.location }}</p>
+                <aside class="job-detail__sidebar mobile">
+                    <a href="javascript:void(0)" onclick="showForm()" class="btn btn-default btn-top">
+                        <span>{{ 'Apply for a job'|_ }}</span>
+                    </a>
+                    {# <a href="#" class="shortlist-link">
+                        <p>{{ 'Shortlist'|_ }}</p>
+                        <i class="material-icons">favorite_border</i>
+                    </a> #}
+                    <div class="sidebar-tile-container">
+                        <div class="sidebar-tile">
+                            <span class="title">
+                                {{ 'Job details'|_ }}
+                            </span>
+                            <div class="info">
+                                <div class="info-single">
+                                    <p><i class="material-icons">location_on</i>{{ record.location }}</p>
+                                </div>
+                                <div class="info-single">
+                                    <p><i class="material-icons">euro_symbol</i>{{ record.salary_min|number_format(0, '.', '.') }} - {{ record.salary_max|number_format(0, '.', '.') }} p.a.</p>
+                                </div>
+                                <div class="info-single">
+                                    <p><i class="material-icons">access_time</i>{{ record.types[0].type_name }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sidebar-tile">
+                            <span class="title social">
+                                {{ 'Share this job'|_ }}
+                            </span>
+                            <div class="job-detail__social">
+                                <a href="https://www.facebook.com/sharer/sharer.php?u={{ this.page.id | page }}&t={{ record.title }}" target="_blank">
+                                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                                </a>
+                                <a href="https://twitter.com/intent/tweet?source={{ this.page.id | page }}&text={{ record.title }}" target="_blank">
+                                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                                </a>
+                                <a href="http://www.linkedin.com/shareArticle?mini=true&url={{ this.page.id | page }}&title={{ record.title }}&summary=Checkout%20this%20job%20offer!&source={{ this.page.id | page }}" target="_blank">
+                                    <i class="fa fa-linkedin" aria-hidden="true"></i>
+                                </a>
+                                <a href="https://plus.google.com/share?url={{ this.page.id | page }}" target="_blank">
+                                    <i class="fa fa-google-plus" aria-hidden="true"></i>
+                                </a>
+                                <a href="https://getpocket.com/save?url={{ this.page.id | page }}&title={{ record.title }}" target="_blank">
+                                    <i class="fa fa-get-pocket" aria-hidden="true"></i>
+                                </a>
+                                <a href="whatsapp://send?text={{ record.title }}&nbsp;&nbsp;{{ this.page.id | page }}" target="_blank">
+                                    <i class="fa fa-whatsapp" aria-hidden="true"></i>
+                                </a>
+                                <a href="mailto:?subject={{ record.title }}&body=Checkout%20this%20job%20offer: {{ this.page.id | page }}" target="_blank">
+                                    <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="sidebar-tile">
+                            <span class="title">
+                                {{ 'Job location'|_ }}
+                            </span>
+                            <div id="job_map_mobile"></div>
+                        </div>
                     </div>
-                    <div class="info-single">
-                        <i class="material-icons">euro_symbol</i>
-                        <p>{{ record.salary_min|number_format(0, '.', '.') }} - {{ record.salary_max|number_format(0, '.', '.') }} p.a.</p>
-                    </div>
-                    <div class="info-single">
-                        <i class="material-icons">access_time</i>
-                        <p>{{ record.types[0].type_name }}</p>
-                    </div>
-                </div>
+                </aside>
                 <div class="description-container">
                     {{ record.summary|raw }}
                 </div>
@@ -51,7 +98,7 @@ localeUrl[nl] = "/vacature/:slug"
 					<span>{{ 'Apply for a job'|_ }}</span>
 				</a>
             </div>
-            <aside class="job-detail__sidebar">
+            <aside class="job-detail__sidebar desktop">
                 <a href="javascript:void(0)" onclick="showForm()" class="btn btn-default btn-top">
 					<span>{{ 'Apply for a job'|_ }}</span>
 				</a>
