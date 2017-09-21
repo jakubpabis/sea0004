@@ -73,6 +73,17 @@
 
             @media(max-width: 960px) {
                 height: 720px;
+                flex-basis: 65%;
+
+                .container__half-left,
+                .container__half-right {
+                    padding: 0 50px;
+                    max-width: 550px;
+                    margin: 0 auto;
+                    text-align: center;
+                    float: none;
+                }
+
             }
 
             @media(max-width: 768px) {
@@ -91,12 +102,38 @@
 
             }
 
+            @media(max-width: 545px) {
+                padding: 40px 0;
+
+                .container__half-left,
+                .container__half-right {
+                    padding: 0 30px;
+                    max-width: 380px;
+                }
+
+            }
+
+            @media(max-width: 420px) {
+                padding: 30px 0;
+
+                .container__half-left,
+                .container__half-right {
+                    padding: 0 30px;
+                    max-width: 300px;
+                }
+
+            }
+
             h2,
             h3 {
                 margin-top: 0;
 
                 @media(max-width: 1170px) {
                     margin-bottom: 10px;
+                }
+                
+                @media(max-width: 420px) {
+                    margin-bottom: 0;
                 }
 
             }
@@ -114,7 +151,12 @@
         &-img-left,
         &-img-right {
 
+            @media(max-width: 960px) {
+                flex-basis: 35%;
+            }
+
             @media(max-width: 768px) {
+                flex-basis: 100%;
                 height: 420px;
                 padding: 0;
             }
@@ -129,7 +171,7 @@
             
         }
 
-        &-img-right  {
+        &-text-right  {
             
             @media(max-width: 768px) {
                 order: 1;
@@ -233,6 +275,48 @@
     
         #siema-next-candidates {
             right: -35px;
+        }
+
+    }
+
+    @media(max-width: 960px) {
+        
+        #siema-prev-clients,
+        #siema-prev-candidates {
+            left: 0;
+        }
+
+        #siema-next-clients,
+        #siema-next-candidates {
+            right: 0;
+        }
+
+    }
+
+    @media(max-width: 768px) {
+        
+        #siema-prev-clients,
+        #siema-prev-candidates {
+            left: -20px;
+        }
+
+        #siema-next-clients,
+        #siema-next-candidates {
+            right: -20px;
+        }
+
+    }
+
+    @media(max-width: 545px) {
+        
+        #siema-prev-clients,
+        #siema-prev-candidates {
+            left: -10px;
+        }
+
+        #siema-next-clients,
+        #siema-next-candidates {
+            right: -10px;
         }
 
     }
