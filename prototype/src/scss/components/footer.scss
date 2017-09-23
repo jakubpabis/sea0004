@@ -171,6 +171,10 @@
 	display: none;
 	z-index: 9999999999999999;
 
+	@media(max-width: 768px) {
+		padding: 10px;
+	}
+
 	&.active {
 		opacity: 1;
 		display: flex;
@@ -201,6 +205,10 @@
 		transition: all 500ms ease;
 		transform: translateY(200%);
 
+		@media(max-width: 768px) {
+			padding: 15px 0;
+		}
+
 		.close {
 			position: absolute;
 			top: 0;
@@ -217,10 +225,29 @@
 			flex-basis: 50%;
 			padding: 0 10px;
 			position: relative;
+
+			@media(max-width: 600px) {
+				flex-basis: 100%;
+			}
+
 		}
 
 		.hidden-desktop {
 			display: none;
+
+			@media(max-width: 600px) {
+				display: block;
+			}
+
+		}
+
+		.hidden-mobile {
+			display: block;
+			
+			@media(max-width: 600px) {
+				display: none;
+			}
+
 		}
 
 		.title {
@@ -239,8 +266,12 @@
 				span {
 					color: $color-tertiary;
 					font-weight: 700;
-					margin: 0;
 					display: inline-block;
+
+					@media(max-width: 768px) {
+						margin: 0 20px 0 0;
+					}
+
 				}
 
 			}
@@ -263,7 +294,12 @@
 				color: white;
 				cursor: pointer;
 				transition: all 200ms ease;
-				
+
+				@media(max-width: 350px) {
+					margin: 0 0 10px 0;
+					display: block;
+				}
+
 				&:hover {
 					transform: scale(1.05);
 					-webkit-box-shadow: 0 0 8px 0 rgba($color-primary, 0.6);
@@ -288,7 +324,7 @@
 			font-size: 15px;
 			margin-bottom: 5px;
 			line-height: 1;
-            height: 18px;
+			height: 18px;
 
 			span {
 				color: red;
@@ -316,7 +352,7 @@
 			font-size: 15px;
 			color: $color-primary;
 			resize: none;
-			transition: all 250ms ease;
+			transition: all 200ms ease;
 
 			&[type="file"] {
 				opacity: 0;
@@ -336,7 +372,7 @@
 				margin: 10px auto 0;
 				display: inline-block;
 				padding: 16px 40px!important;
-                height: auto!important;
+				height: auto!important;
 				border: none!important;
 				font-size: 12px;
 				font-weight: 700;
@@ -387,8 +423,8 @@
 
 		}
 
-        select {
-            height: 38px;
+		select {
+			height: 38px;
 			width: 100%;
 			cursor: pointer;
 
