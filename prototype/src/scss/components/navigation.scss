@@ -10,6 +10,10 @@
 		height: 130px;
 	}
 
+	@media(max-width: 480px) {
+		height: 121px;
+	}
+
 	.logo {
 		height: 64px;
 		width: auto;
@@ -21,6 +25,11 @@
 			line-height: 58px;
 		}
 
+		@media(max-width: 480px) {
+			height: 52px;
+			line-height: 52px;
+		}
+
 		object,
 		svg {
 			height: 64px;
@@ -29,6 +38,10 @@
 
 			@media(max-width: 800px) {
 				height: 58px;
+			}
+
+			@media(max-width: 480px) {
+				height: 52px;
 			}
 
 		}
@@ -64,11 +77,15 @@
 		}
 
 		@media(max-width: 480px) {
+			height: 71px;
+			line-height: 71px;
 
 			.right {
 
 				.btn {
-					display: none;
+					height: 30px;
+					line-height: 30px;
+					padding: 0 20px;
 				}
 
 			}
