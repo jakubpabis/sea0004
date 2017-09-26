@@ -159,6 +159,25 @@ class Cronjob extends ComponentBase
                 }
             }
 
+
+            // $jobSingleRow = Job::where('job_id', $job->id)->first();
+            // $jobSingleID = $jobSingleRow->id;
+            // foreach($jobCategory as $category)
+            // {
+            //     if($category['group'] == '#2 Skill Area' || $category['group'] == '#3 Skill IT') {
+            //         if($category == 'Sales' || $category == 'Recruitment') {
+            //             $cat = 'Recruitment and Sales';
+            //         } else {
+            //             $cat = $category;
+            //         }
+            //         $jobSingleCatID = Category::where('category_name', $cat)->pluck('id');
+            //         if($jobSingleCatID) {
+            //             $this->jobSingleCatPivot->where('job_id', $jobSingleID)->delete();
+            //             $this->jobSingleCatPivot->insert([ 'job_id' => $jobSingleID, 'category_id' => $jobSingleCatID ]);
+            //         }
+            //     }
+            // }
+
         }
 
         /*
@@ -169,7 +188,8 @@ class Cronjob extends ComponentBase
         foreach($this->jobs as $job) {
             $jobSingleCatID = Category::where('category_slug', 'fulfilled')->pluck('id');
             $jobSingleCatIDAll = Category::where('category_slug', 'all-jobs')->pluck('id');
-            $isJobFulfilled = $this->jobSingleCatPivot->where('job_id', $job->id)->where('category_id', $jobSingleCatID)->count();
+            $isJobFulfilled = DB::table('searchit_jobs_job_categories')->where('job_id', $job->id)->where('category_id', $jobSingleCatID)->count();
+            
             if(!in_array($job->job_id, $this->job_ids) && $isJobFulfilled === 0) {
                 $this->jobSingleCatPivot->insert([ 'job_id' => $job->id, 'category_id' => $jobSingleCatID ]);
             }

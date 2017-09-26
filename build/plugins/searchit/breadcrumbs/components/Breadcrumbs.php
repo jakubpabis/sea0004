@@ -55,9 +55,11 @@ class Breadcrumbs extends ComponentBase
                 $query->where('slug', $slug);
             })->where('parent', 0)->first();
             // Second level category object
-            $this->catSecond = Category::whereHas('jobs', function($query) use ($slug) {
-                $query->where('slug', $slug);
-            })->where('parent', $this->catFirst->id)->first();
+            if($this->catFirst) {
+                $this->catSecond = Category::whereHas('jobs', function($query) use ($slug) {
+                    $query->where('slug', $slug);
+                })->where('parent', $this->catFirst->id)->first();
+            }
             // Job title
             $this->jobName = Job::where('slug', $slug)->first()->title;
         }
@@ -70,10 +72,12 @@ class Breadcrumbs extends ComponentBase
                         'name' => 'Jobs',
                         'path' => $path . '/jobs'
                     ];
-                    $this->segments[] = [
-                        'name' => $this->catFirst->category_name,
-                        'path' => $path . '/jobs/' . $this->catFirst->category_slug
-                    ];
+                    if($this->catFirst) {
+                        $this->segments[] = [
+                            'name' => $this->catFirst->category_name,
+                            'path' => $path . '/jobs/' . $this->catFirst->category_slug
+                        ];
+                    }
                     if($this->catSecond !== null) {
                         $this->segments[] = [
                             'name' => $this->catSecond->category_name,
@@ -89,10 +93,12 @@ class Breadcrumbs extends ComponentBase
                         'name' => 'Vacatures',
                         'path' => $path . '/vacatures'
                     ];
-                    $this->segments[] = [
-                        'name' => $this->catFirst->category_name,
-                        'path' => $path . '/vacatures/' . $this->catFirst->category_slug
-                    ];
+                    if($this->catFirst) {
+                        $this->segments[] = [
+                            'name' => $this->catFirst->category_name,
+                            'path' => $path . '/vacatures/' . $this->catFirst->category_slug
+                        ];
+                    }
                     if($this->catSecond !== null) {
                         $this->segments[] = [
                             'name' => $this->catSecond->category_name,
