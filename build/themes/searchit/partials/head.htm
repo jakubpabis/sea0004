@@ -28,6 +28,9 @@
 	{% endif %}
 	<!-- /Meta description -->
 	<!-- Other meta -->
+	{% if record.meta_keywords %}
+		<meta name="keywords" content"{{ record.meta_keywords }}">
+	{% endif %}
 	<meta name="author" content="Search It Recruitment">
 	<meta name="generator" content="Search It Recruitment">
 	<!-- /Other meta -->
