@@ -9,3 +9,9 @@
     <input type="text" name="location" id="search__job-location" placeholder="{{ 'town - e.g. &quot;Amsterdam&quot;'|_ }}" value="{{ linkQuery['location'] }}">
     <input id="jobFilterSearch" type="submit" value="{{ 'Search'|_ }}">
 </aside>
+<a href="javascript:void(0)" onclick="showFilterForm()" class="btn-show-filter">
+    <span class="shortlisted-jobs">
+        <i class="material-icons">filter_list</i>
+        <p>{{ 'Job filters'|_ }}</p>
+    </span>
+</a>

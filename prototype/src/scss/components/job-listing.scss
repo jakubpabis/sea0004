@@ -16,9 +16,8 @@
         padding: 0 20px 25px 20px;
         transition: all 250ms ease;
 
-        &.mobile {
+        .close {
             display: none;
-            transition: all 500ms ease;
         }
 
         @media(max-width: 1170px) {
@@ -31,20 +30,68 @@
         }
 
         @media(max-width: 767px) {
+            background: rgba($color-primary, 0.75);
+            opacity: 0;
+            transition: all 500ms ease;
+            height: 100%;
+            height: calc(100vh - 20px);
+            left: 0;
+            overflow: auto;
+            padding: 10px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            width: calc(100vw - 20px);
             display: none;
+            z-index: 9999999999999999;
 
-            &.mobile {
+            .job-listing__filters-container {
+                margin: auto;
+                overflow: auto;
+                overflow-x: hidden;
+                padding: 0 10px 15px;
+                position: relative;
                 display: block;
-                flex-basis: 100%;
-                max-height: 40px;
-                padding: 0 10px;
-                overflow: hidden;
+                width: 100%;
+                background: white;
+                box-shadow: 0 0 30px 0 $color-primary;
+                transform: translateY(200%);
+                transition: all 500ms ease;
 
-                &.active {
-                    max-height: 999px;
-                    padding: 0 10px 15px;
+                .close {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    font-size: 32px;
+                    padding: 3px;
+                    background-color: $color-tertiary;
+                    color: white;
+                    cursor: pointer;
+                    display: block;
+                    z-index: 9999;
                 }
 
+                .btn-default {
+                    display: block;
+                    margin-top: 40px;
+                    background-color: $color-tertiary;
+            
+                    span {
+                        color: white;
+                    }
+
+                }
+
+            }
+
+            &.active {
+                opacity: 1;
+                display: block;
+        
+                .job-listing__filters-container {
+                    transform: translateY(0);
+                }
+        
             }
 
         }
@@ -77,6 +124,7 @@
 
             @media(max-width: 767px) {
                 padding: 4px 10px;
+                display: none;
             }
             
             i,
@@ -325,6 +373,38 @@
         transition: all 250ms ease;
         display: flex;
         justify-content: space-between;
+
+        &+.btn-show-filter {
+            width: 100%;
+            background-color: $color-tertiary;
+            height: 40px;
+            line-height: 40px;
+            color: white;
+            text-align: center;
+            position: relative;
+            display: none;
+
+            @media(max-width: 767px) {
+                display: block;
+            }
+
+            span {
+                line-height: 40px;
+                
+                * {
+                    vertical-align: middle;
+                    display: inline-block;
+                    margin: 0;
+                }
+
+                i {
+                    vertical-align: -8px;
+                    font-size: 28px;
+                }
+                
+            }
+
+        }
 
         @media(max-width: 900px) {
             padding: 15px 10px;

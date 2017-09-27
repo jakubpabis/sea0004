@@ -244,6 +244,24 @@ function hideCVForm()
 	}, 500);
 }
 
+function showFilterForm()
+{
+	document.getElementById('filterModal').style.display = 'flex';
+	setTimeout(function() {
+		document.getElementById('filterModal').classList.add('active');
+		document.getElementsByTagName('html')[0].classList.add('modal-open');
+	}, 50);
+}
+
+function hideFilterForm() 
+{
+	document.getElementById('filterModal').classList.remove('active');
+	document.getElementsByTagName('html')[0].classList.remove('modal-open');
+	setTimeout(function() {
+		document.getElementById('filterModal').style.display = 'none';
+	}, 500);
+}
+
 function getFileName($input, $el)
 {
 	$text = $input.value;
