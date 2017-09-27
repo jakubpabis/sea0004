@@ -7,7 +7,8 @@ class Plugin extends PluginBase
     public function registerComponents()
     {
     	return [
-    		'Searchit\Breadcrumbs\Components\Breadcrumbs' => 'breadcrumbs'
+            'Searchit\Breadcrumbs\Components\Breadcrumbs' => 'breadcrumbs',
+            'Searchit\Breadcrumbs\Components\HomeRedirect' => 'homeRedirect'
     	];
     }
 
