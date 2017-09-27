@@ -3,6 +3,7 @@
 use Cms\Classes\ComponentBase;
 use Searchit\Jobs\Models\Job;
 use Searchit\Jobs\Models\Category;
+use Redirect;
 use Request;
 use URL;
 
@@ -61,7 +62,13 @@ class Breadcrumbs extends ComponentBase
                 })->where('parent', $this->catFirst->id)->first();
             }
             // Job title
-            $this->jobName = Job::where('slug', $slug)->first()->title;
+            if(Job::where('slug', $slug)->first()) {
+                $this->jobName = Job::where('slug', $slug)->first()->title;
+            } else {
+                return Redirect::to('/jobs');
+                exit;
+            }
+            
         }
 
         for($i = 2; $i <= count(Request::segments()); $i++) {
