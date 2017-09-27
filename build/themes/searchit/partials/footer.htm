@@ -196,10 +196,10 @@ public function onStart()
 			var $formCont;
 
 			$(document).ready(function() {
-				if() {
+				if($('#jobFormModal').length) {
 					$formCont = $('#uploadCvModal, #jobFormModal');
 				} else {
-					$formCont = $('#jobFormModal');
+					$formCont = $('#uploadCvModal');
 				}
 			});
 
