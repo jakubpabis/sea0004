@@ -219,7 +219,7 @@ jobSlug = "{{ :slug }}"
 		);
 	}
 </script>
-<script type="text/javascript" src="//platform.linkedin.com/in.js" defer>
+<script type="text/javascript" src="//platform.linkedin.com/in.js">
 	$(window).on('load', function() {
 		api_key: 77dug7ogaz4ouh
 		onLoad: OnLinkedInFrameworkLoad
@@ -257,7 +257,7 @@ jobSlug = "{{ :slug }}"
 					$('#jobFormModal').find('input[name="applicant-name"]').val(response1['name']);
 					$('#jobFormModal').find('input[name="applicant-email"]').val(response1['email']);
 					$('#jobFormModal').find('textarea[name="applicant-address"]').val(response1['location']);
-					$('#jobFormModal').find('input.[name="applicant-gender"]').val(response1['gender']);
+					$('#jobFormModal').find('input[name="applicant-gender"]').val(response1['gender']);
 				});
 				FB.api('/me/picture',{"redirect": false, "height": 200, "width": 200, "type": "normal"}, function(response2){
 					// console.log(response2['data']['url']);
