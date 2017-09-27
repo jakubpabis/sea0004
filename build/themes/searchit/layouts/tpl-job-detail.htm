@@ -22,200 +22,306 @@ jobSlug = "{{ :slug }}"
 {% page %}
 {% partial 'footer' %}
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_CXNi6mCASl4D3Ud9ofmUqE7Lt9Kb5ps&callback=initJobMap" defer></script>
-<script defer>
-function initJobMap()
-{
-	var job_map = document.getElementById('job_map');
-	var job_map_mobile = document.getElementById('job_map_mobile');
-	var map = new google.maps.Map(job_map, {
-		center: {lat: {{ record.lat }}, lng: {{ record.lng }}},
-		zoom: 13,
-		scrollwheel: false,
-		draggable: true,
-		mapTypeControl: false,
-		scaleControl: false,
-		streetViewControl: false
+<script type="text/javascript" defer>
+	function initJobMap()
+	{
+		var job_map = document.getElementById('job_map');
+		var job_map_mobile = document.getElementById('job_map_mobile');
+		var map = new google.maps.Map(job_map, {
+			center: {lat: {{ record.lat }}, lng: {{ record.lng }}},
+			zoom: 13,
+			scrollwheel: false,
+			draggable: true,
+			mapTypeControl: false,
+			scaleControl: false,
+			streetViewControl: false
+		});
+		var map_mobile = new google.maps.Map(job_map_mobile, {
+			center: {lat: {{ record.lat }}, lng: {{ record.lng }}},
+			zoom: 13,
+			scrollwheel: false,
+			draggable: true,
+			mapTypeControl: false,
+			scaleControl: false,
+			streetViewControl: false
+		});
+		var marker = new google.maps.Marker({
+			map: map,
+			position: new google.maps.LatLng({{ record.lat }}, {{ record.lng }})
+		});
+		var marker = new google.maps.Marker({
+			map: map_mobile,
+			position: new google.maps.LatLng({{ record.lat }}, {{ record.lng }})
+		});
+		map.set('styles', 
+			[
+				{
+					"featureType": "administrative",
+					"elementType": "labels.text.fill",
+					"stylers": [
+						{
+							"color": "#444444"
+						}
+					]
+				},
+				{
+					"featureType": "landscape",
+					"elementType": "all",
+					"stylers": [
+						{
+							"color": "#f2f2f2"
+						}
+					]
+				},
+				{
+					"featureType": "poi",
+					"elementType": "all",
+					"stylers": [
+						{
+							"visibility": "off"
+						}
+					]
+				},
+				{
+					"featureType": "road",
+					"elementType": "all",
+					"stylers": [
+						{
+							"saturation": -100
+						},
+						{
+							"lightness": 45
+						}
+					]
+				},
+				{
+					"featureType": "road.highway",
+					"elementType": "all",
+					"stylers": [
+						{
+							"visibility": "simplified"
+						}
+					]
+				},
+				{
+					"featureType": "road.arterial",
+					"elementType": "labels.icon",
+					"stylers": [
+						{
+							"visibility": "off"
+						}
+					]
+				},
+				{
+					"featureType": "transit",
+					"elementType": "all",
+					"stylers": [
+						{
+							"visibility": "off"
+						}
+					]
+				},
+				{
+					"featureType": "water",
+					"elementType": "all",
+					"stylers": [
+						{
+							"color": "#7f8ec1"
+						},
+						{
+							"visibility": "on"
+						}
+					]
+				}
+			]
+		);
+		map_mobile.set('styles', 
+			[
+				{
+					"featureType": "administrative",
+					"elementType": "labels.text.fill",
+					"stylers": [
+						{
+							"color": "#444444"
+						}
+					]
+				},
+				{
+					"featureType": "landscape",
+					"elementType": "all",
+					"stylers": [
+						{
+							"color": "#f2f2f2"
+						}
+					]
+				},
+				{
+					"featureType": "poi",
+					"elementType": "all",
+					"stylers": [
+						{
+							"visibility": "off"
+						}
+					]
+				},
+				{
+					"featureType": "road",
+					"elementType": "all",
+					"stylers": [
+						{
+							"saturation": -100
+						},
+						{
+							"lightness": 45
+						}
+					]
+				},
+				{
+					"featureType": "road.highway",
+					"elementType": "all",
+					"stylers": [
+						{
+							"visibility": "simplified"
+						}
+					]
+				},
+				{
+					"featureType": "road.arterial",
+					"elementType": "labels.icon",
+					"stylers": [
+						{
+							"visibility": "off"
+						}
+					]
+				},
+				{
+					"featureType": "transit",
+					"elementType": "all",
+					"stylers": [
+						{
+							"visibility": "off"
+						}
+					]
+				},
+				{
+					"featureType": "water",
+					"elementType": "all",
+					"stylers": [
+						{
+							"color": "#7f8ec1"
+						},
+						{
+							"visibility": "on"
+						}
+					]
+				}
+			]
+		);
+	}
+</script>
+<script type="text/javascript" src="//platform.linkedin.com/in.js" defer>
+	$(window).on('load', function() {
+		api_key: 77dug7ogaz4ouh
+		onLoad: OnLinkedInFrameworkLoad
+		authorize: false
 	});
-	var map_mobile = new google.maps.Map(job_map_mobile, {
-		center: {lat: {{ record.lat }}, lng: {{ record.lng }}},
-		zoom: 13,
-		scrollwheel: false,
-		draggable: true,
-		mapTypeControl: false,
-		scaleControl: false,
-		streetViewControl: false
-	});
-	var marker = new google.maps.Marker({
-		map: map,
-		position: new google.maps.LatLng({{ record.lat }}, {{ record.lng }})
-	});
-	var marker = new google.maps.Marker({
-		map: map_mobile,
-		position: new google.maps.LatLng({{ record.lat }}, {{ record.lng }})
-	});
-	map.set('styles', 
-		[
-			{
-				"featureType": "administrative",
-				"elementType": "labels.text.fill",
-				"stylers": [
-					{
-						"color": "#444444"
-					}
-				]
-			},
-			{
-				"featureType": "landscape",
-				"elementType": "all",
-				"stylers": [
-					{
-						"color": "#f2f2f2"
-					}
-				]
-			},
-			{
-				"featureType": "poi",
-				"elementType": "all",
-				"stylers": [
-					{
-						"visibility": "off"
-					}
-				]
-			},
-			{
-				"featureType": "road",
-				"elementType": "all",
-				"stylers": [
-					{
-						"saturation": -100
-					},
-					{
-						"lightness": 45
-					}
-				]
-			},
-			{
-				"featureType": "road.highway",
-				"elementType": "all",
-				"stylers": [
-					{
-						"visibility": "simplified"
-					}
-				]
-			},
-			{
-				"featureType": "road.arterial",
-				"elementType": "labels.icon",
-				"stylers": [
-					{
-						"visibility": "off"
-					}
-				]
-			},
-			{
-				"featureType": "transit",
-				"elementType": "all",
-				"stylers": [
-					{
-						"visibility": "off"
-					}
-				]
-			},
-			{
-				"featureType": "water",
-				"elementType": "all",
-				"stylers": [
-					{
-						"color": "#7f8ec1"
-					},
-					{
-						"visibility": "on"
-					}
-				]
+</script>
+<script type="text/javascript" defer>
+	window.fbAsyncInit = function() {
+		FB.init({
+			appId      : '382574281913074',
+			xfbml      : true,
+			version    : 'v2.5'
+		});
+	};
+
+	(function(d, s, id){
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) {return;}
+		js = d.createElement(s); js.id = id;
+		js.src = "//connect.facebook.net/en_US/sdk.js";
+		fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
+
+	function myFacebookLogin() {
+		FB.init({
+			appId      : '382574281913074',
+			xfbml      : true,
+			version    : 'v2.5'
+		});
+		FB.login(function(response){
+			if (response.status === 'connected') {
+				console.log('Logged in.');
+				FB.api('/me', {fields: 'name, email, location, gender'}, function(response1){
+					// console.log(response1['name']);
+					$('#jobFormModal').find('input[name="applicant-name"]').val(response1['name']);
+					$('#jobFormModal').find('input[name="applicant-email"]').val(response1['email']);
+					$('#jobFormModal').find('textarea[name="applicant-address"]').val(response1['location']);
+					$('#jobFormModal').find('input.[name="applicant-gender"]').val(response1['gender']);
+				});
+				FB.api('/me/picture',{"redirect": false, "height": 200, "width": 200, "type": "normal"}, function(response2){
+					// console.log(response2['data']['url']);
+					$('#jobFormModal').find('input[name="applicant-photo"]').val(response2['data']['url']);
+					//if((response2['data']['url']).length){
+					//	$('#jobFormModal').find('#labelP').css('background-image', 'url('+response2['data']['url']+')');
+					//	$('.photoLabel').text('');
+					//	$('#jobFormModal').find('.photo-file').val('');
+					//}
+				});
+			} else {
+				FB.login();
 			}
-		]
-	);
-	map_mobile.set('styles', 
-		[
-			{
-				"featureType": "administrative",
-				"elementType": "labels.text.fill",
-				"stylers": [
-					{
-						"color": "#444444"
-					}
-				]
-			},
-			{
-				"featureType": "landscape",
-				"elementType": "all",
-				"stylers": [
-					{
-						"color": "#f2f2f2"
-					}
-				]
-			},
-			{
-				"featureType": "poi",
-				"elementType": "all",
-				"stylers": [
-					{
-						"visibility": "off"
-					}
-				]
-			},
-			{
-				"featureType": "road",
-				"elementType": "all",
-				"stylers": [
-					{
-						"saturation": -100
-					},
-					{
-						"lightness": 45
-					}
-				]
-			},
-			{
-				"featureType": "road.highway",
-				"elementType": "all",
-				"stylers": [
-					{
-						"visibility": "simplified"
-					}
-				]
-			},
-			{
-				"featureType": "road.arterial",
-				"elementType": "labels.icon",
-				"stylers": [
-					{
-						"visibility": "off"
-					}
-				]
-			},
-			{
-				"featureType": "transit",
-				"elementType": "all",
-				"stylers": [
-					{
-						"visibility": "off"
-					}
-				]
-			},
-			{
-				"featureType": "water",
-				"elementType": "all",
-				"stylers": [
-					{
-						"color": "#7f8ec1"
-					},
-					{
-						"visibility": "on"
-					}
-				]
-			}
-		]
-	);
-}
+		}, {scope: 'publish_actions'} );
+	}
+
+	function liAuth(){
+		IN.User.authorize(function(){
+			onLinkedInLoad();
+		});
+	}
+
+	function OnLinkedInFrameworkLoad() {
+		IN.Event.on(IN, "auth", onLinkedInLoad);
+	}
+	// Setup an event listener to make an API call once auth is complete
+	function onLinkedInLoad() {
+		IN.API.Profile("me").result(getProfileData);
+	}
+
+	// Handle the successful return from the API call
+	function onSuccess(data) {
+		console.log(data);
+		$('#jobFormModal').find('input[name="applicant-name"]').val(data['firstName']+' '+data['lastName']);
+		$('#jobFormModal').find('input[name="applicant-email"]').val(data['emailAddress']);
+		$('#jobFormModal').find('textarea[name="applicant-address"]').val(data['location']['name']);
+		$('#jobFormModal').find('input[name="applicant-photo"]').val(data['pictureUrl']);
+		//if((data['pictureUrl']).length){
+		//	$('#jobFormModal').find('#labelP').css('background-image', 'url('+data['pictureUrl']+')');
+		//	$('.photoLabel').text('');
+		//	$('#jobFormModal').find('.photo-file').val('');
+		//}
+	}
+
+	// Handle an error response from the API call
+	function onError(error) {
+		console.log(error);
+	}
+
+	// Use the API call wrapper to request the member's basic profile data
+	function getProfileData() {
+		IN.API.Raw("/people/~:(first-name,last-name,picture-url,email-address,location)").result(onSuccess);
+	}
+
+	//var openFile = function(event) {
+	//	var input = event.target;
+//
+//		var reader = new FileReader();
+//		reader.onload = function(){
+//			var dataURL = reader.result;
+//			$('#labelP').css('background-image', 'url('+dataURL+')');
+//			$('.photoLabel').text('');
+//			$('#jobFormModal').find('input.photo-url').val('');
+//		};
+//		reader.readAsDataURL(input.files[0]);
+//	};
 </script>
