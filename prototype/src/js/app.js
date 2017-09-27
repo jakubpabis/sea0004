@@ -246,7 +246,7 @@ function hideCVForm()
 
 function showFilterForm()
 {
-	document.getElementById('filterModal').style.display = 'flex';
+	document.getElementById('filterModal').style.display = 'block';
 	setTimeout(function() {
 		document.getElementById('filterModal').classList.add('active');
 		document.getElementsByTagName('html')[0].classList.add('modal-open');
