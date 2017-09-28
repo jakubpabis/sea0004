@@ -1,7 +1,6 @@
 fields:
     type:
         label: Type
-        oc.commentPosition: above
         options:
             candidate: candidate
             client: client
@@ -15,9 +14,18 @@ fields:
         type: text
     featured:
         label: 'Featured on home page?'
-        span: auto
+        span: left
         required: 1
         type: switch
+    lang:
+        label: Language
+        options:
+            en: English
+            nl: Dutch
+        span: auto
+        required: 1
+        default: en
+        type: dropdown
     summary:
         label: Summary
         span: full

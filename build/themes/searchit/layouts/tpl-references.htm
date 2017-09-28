@@ -5,14 +5,7 @@ code = "main-menu"
 
 [staticPage]
 
-[builderList testimonialsListing]
-modelClass = "Searchit\Testimonials\Models\Testimonials"
-scope = "-"
-displayColumn = "name"
-noRecordsMessage = "No records found"
-detailsPage = "-"
-detailsUrlParameter = "id"
-pageNumber = "{{ :page }}"
+[listingTestimonials]
 
 [localePicker]
 forceUrl = 1
@@ -22,12 +15,6 @@ forceUrl = 1
 [breadcrumbs]
 [langCheck]
 ==
-{% set records = testimonialsListing.records %}
-{% set displayColumn = testimonialsListing.displayColumn %}
-{% set noRecordsMessage = testimonialsListing.noRecordsMessage %}
-{% set detailsPage = testimonialsListing.detailsPage %}
-{% set detailsKeyColumn = testimonialsListing.detailsKeyColumn %}
-{% set detailsUrlParameter = testimonialsListing.detailsUrlParameter %}
 
 {variable name="headerImg" label="Header image" tab="Header" type="mediafinder"}{/variable}
 {variable name="headerText" label="Header text" tab="Header" type="richeditor"}{/variable}
@@ -62,7 +49,7 @@ forceUrl = 1
 							{{ 'References from our clients.'|_ }}
 						</h3>
 						<div id="siema-carousel-clients">
-                            {% for record in records if record.type == 'client' %}
+                            {% for record in testimonials if record.type == 'client' %}
                                 <div>
                                     <p class="references__summary">
                                         {{ html_limit(record.summary|striptags, 1100, '..."') }}
@@ -111,7 +98,7 @@ forceUrl = 1
 							{{ 'References from candidates.'|_ }}
 						</h3>
 						<div id="siema-carousel-candidates">
-                            {% for record in records if record.type == 'candidate' %}
+                            {% for record in testimonials if record.type == 'candidate' %}
                                 <div>
                                     <p class="references__summary">
                                         {{ html_limit(record.summary|striptags, 1000) }}
