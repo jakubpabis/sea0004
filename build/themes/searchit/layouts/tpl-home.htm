@@ -239,7 +239,7 @@ forceUrl = 1
 			{% for testimonial in testimonials %}
 				<div>
 					<p class="home-references__summary">
-						{{ testimonial.summary|striptags }}
+						{{ html_limit(testimonial.summary|striptags, 800, '..."') }}
 					</p>
 					<p class="home-references__person">
 						 {{ testimonial.who }} - {{ testimonial.type }}

@@ -101,7 +101,7 @@ forceUrl = 1
                             {% for record in testimonials if record.type == 'candidate' %}
                                 <div>
                                     <p class="references__summary">
-                                        {{ html_limit(record.summary|striptags, 1000) }}
+                                        {{ html_limit(record.summary|striptags, 1000, '..."') }}
                                     </p>
                                     <p class="references__person">
                                         {{ record.who }} - {{ record.type }}
