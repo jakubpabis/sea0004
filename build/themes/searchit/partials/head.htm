@@ -9,6 +9,8 @@
 			{{ record.meta_title }}
 		{% elseif record.title %}
 			{{ record.title }} | Search It Recruitment
+		{% elseif categoryName.category_name %}
+			{{ categoryName.category_name }} {{ 'jobs'|_ }} | Search It Recruitment
 		{% elseif this.page.meta_title %}
 			{{ this.page.meta_title }}
 		{% else %}

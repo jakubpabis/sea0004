@@ -67,6 +67,7 @@ class JobsCategory extends ComponentBase
         $this->page['jobs'] = $this->loadResults()->orderBy('date', 'desc')->paginate(20);
         $this->page['jobsCount'] = $this->page['jobs']->count();
         $this->page['pagination'] = $this->page['jobs'];
+        $this->page['categoryName'] = Category::where('category_slug', $this->property('categorySlug'))->first();        
     }
 
     protected function loadResults()
