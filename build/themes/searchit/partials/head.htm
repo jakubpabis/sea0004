@@ -42,6 +42,11 @@
 	{% endif %}
 	<meta name="author" content="Search It Recruitment">
 	<meta name="generator" content="Search It Recruitment">
+	{% if ''|page %}
+		<link rel="canonical" href="{{ ''|page }}" />
+	{% else %}
+		<link rel="canonical" href="{{ url('/') }}/{{ activeLocale }}{{ this.page.url }}" />
+	{% endif %}
 	<!-- /Other meta -->
 	<!-- hreflangs -->
 	{% if hreflang_en and hreflang_nl %}
