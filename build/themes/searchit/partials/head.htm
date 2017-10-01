@@ -47,6 +47,14 @@
 	{% else %}
 		<link rel="canonical" href="{{ url('/') }}/{{ activeLocale }}{{ this.page.url }}" />
 	{% endif %}
+	{% if pagination.lastPage > 1 %}
+		{% if pagination.currentPage > 1 %}
+			<link rel="prev" href="{{ pagination.url(pagination.currentPage-1) }}">
+		{% endif %}
+		{% if pagination.lastPage > pagination.currentPage %}
+			<link rel="next" href="{{ pagination.url(pagination.currentPage+1) }}">
+		{% endif %}
+	{% endif %}
 	<!-- /Other meta -->
 	<!-- hreflangs -->
 	{% if hreflang_en and hreflang_nl %}
