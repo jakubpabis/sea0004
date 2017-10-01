@@ -162,3 +162,42 @@ localeUrl[nl] = "/vacature/:slug"
 <div id="jobFormModal" class="modal job-detail__modal" aria-hidden="true">
     {% component 'form' %}
 </div>
+<script type="application/ld+json"> 
+{
+    "@context" : "http://schema.org/",
+    "@type" : "JobPosting",
+    "title" : "{{ record.title|raw }}",
+    "description" : "{{ record.summary|raw }}",
+    "identifier": {
+        "@type": "PropertyValue",
+        "name": "Search It Recruitment",
+        "value": "{{ record.job_id }}"
+    },
+    "datePosted" : "{{ record.date|date('Y-m-d') }}",
+    "validThrough" : "{{ record.date|date_modify('+1 year')|date('Y-m-d') }}T00:00",
+    "employmentType" : "{{ record.types[0].type_slug == 'fulltime-employee' ? 'FULL_TIME' : null }}{{ record.types[0].type_slug == 'parttime-employee' ? 'PART_TIME' : null }}{{ record.types[0].type_slug == 'intern-study-sponsor' ? 'INTERN' : null }}",
+    "hiringOrganization" : {
+        "@type" : "Organization",
+        "name" : "Search It Recruitment",
+        "sameAs" : "https://searchitrecruitment.com"
+    },
+    "jobLocation" : {
+        "@type" : "Place",
+        "address" : {
+            "@type" : "PostalAddress",
+            "addressLocality" : "{{ record.location|split(', ')[-0] }}",
+            "addressCountry": "NL"
+        }
+    },
+    "baseSalary": {
+        "@type": "MonetaryAmount",
+        "currency": "EUR",
+        "value": {
+            "@type": "QuantitativeValue",
+            "minValue": {{ record.salary_min }}
+            "maxValue": {{ record.salary_max }}
+            "unitText": "YEAR"
+        }
+    }
+}
+</script>
