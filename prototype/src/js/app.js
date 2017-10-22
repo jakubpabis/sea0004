@@ -383,6 +383,14 @@ function initContactMap()
 	);
 }
 
+function cvFormOpen() 
+{
+	if(window.location.hash === '#uploadcv') {
+		showCVForm();
+	}
+}
+
+cvFormOpen();
 loadCarousel();
 loadClientsCarousel();
 loadCandidatesCarousel();
