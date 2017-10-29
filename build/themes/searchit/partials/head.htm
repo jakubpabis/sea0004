@@ -113,8 +113,6 @@
 		<meta property="og:type" content="website" />
 		{% if record.meta_description %}
 			<meta property="og:description" content="{{ record.meta_description }}"/>
-		{% elseif record.excerpt %}
-			<meta property="og:description" content="{{ record.excerpt|striptags|slice(0, 160) }}"/>
 		{% elseif record.summary %}
 			<meta property="og:description" content="{{ record.summary|striptags|slice(0, 160) }}"/>
 		{% elseif this.page.meta_description %}
