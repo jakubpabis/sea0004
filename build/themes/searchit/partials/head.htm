@@ -123,7 +123,8 @@
 		{% elseif this.page.meta_description %}
 			<meta property="og:description" content="{{ this.page.meta_description }}"/>
 		{% endif %}
-		<meta property="og:image" content="{{ 'assets/img/logo.png'|theme }}"/>
+		<meta property="og:image:url" content="{{ 'assets/img/logo.png'|theme }}"/>
+		<meta property="og:image:secure_url" content="{{ 'assets/img/logo.png'|theme }}"/>
 		<meta property="og:image:type" content="image/png" />
 		<meta property="og:image:width" content="850" />
 		<meta property="og:image:height" content="300" />
