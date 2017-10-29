@@ -111,7 +111,6 @@
 		{% endif %}
 		<meta property="og:url" content="{{ url('/') }}/{{ activeLocale }}{{ this.page.url }}"/>
 		<meta property="og:type" content="website" />
-		<meta property="og:description" content="{{ record.summary|striptags|slice(0, 160) }}"/>
 		{% if record.meta_description %}
 			<meta property="og:description" content="{{ record.meta_description }}"/>
 		{% elseif record.summary %}
