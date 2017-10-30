@@ -46,3 +46,9 @@ Route::get('sitemap.xml', function() {
     ])->header('Content-type', 'text/xml; charset="utf-8"');
 
 });
+
+Route::get('sitemap.xml', function() {
+
+    return Response::view('searchit.breadcrumbs::robots')->header('Content-type', 'text/plain; charset="utf-8"');
+
+});
