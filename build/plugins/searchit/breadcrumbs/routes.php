@@ -47,7 +47,7 @@ Route::get('sitemap.xml', function() {
 
 });
 
-Route::get('sitemap.xml', function() {
+Route::get('robots.txt', function() {
 
     return Response::view('searchit.breadcrumbs::robots')->header('Content-type', 'text/plain; charset="utf-8"');
 
