@@ -274,5 +274,19 @@ public function onStart()
 			}
 		</script>
 	</div> <!-- /#wrapper -->
+	<div id="cookieMessage">
+		<div class="container">
+			<div class="message">
+				{{ 'By continuing to use this site you consent to the use of cookies on your device, unless you have disabled them. You can change your cookie settings at any time but parts of our site will not function correctly without them.'|_ }}
+				<!-- By continuing to use this site you consent to the use of cookies on your device as described in our cookie policy unless you have disabled them. You can change your cookie settings at any time but parts of our site will not function correctly without them. -->
+			</div>
+			<div class="agree" onclick="cookieAgree()">
+				{{ 'Accept'|_ }}
+			</div>
+			<!-- <div class="close" onclick="document.getElementById('cookieMessage').classList.remove('show')">
+				<i class="material-icons">close</i>
+			</div> -->
+		</div>
+	</div>
 </body>
 </html>
