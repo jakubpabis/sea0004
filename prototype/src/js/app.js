@@ -437,11 +437,30 @@ function cvFormOpen()
 	}
 }
 
+function searchbarText()
+{
+	var $text = [
+		"Java Developer",
+		"SEO Specialist",
+		"Jakies inne stanowisko"
+	];
+	var $box = document.getElementById('searchboxtextchange');
+	var $rand = $text[Math.floor(Math.random() * $text.length)];
+	$box.placeholder = '';
+	for(var j = 0; j < $rand.length; j++) {
+		setTimeout(function(j) {
+			$box.placeholder = $box.placeholder + $rand.charAt(j);
+		}, j * 200, j);
+	}
+
+}
+
 cvFormOpen();
 loadCarousel();
 loadClientsCarousel();
 loadCandidatesCarousel();
 checkCookieMessage();
+searchbarText();
 
 // Trigger close form modal window when click on overlay
 if(document.getElementById('jobFormModal')) {
