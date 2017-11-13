@@ -64,7 +64,8 @@ forceUrl = 1
 						class="search-box"
 						data-request="onSearchRedirect"
 					>
-						<input id="searchboxtextchange" type="text" name="search-input" class="search-box__field" placeholder="">
+						<div style="display:none;" id="placeholdertext">{{ 'Search from'|_ }} {{ jobsCount }} {{ 'new jobs'|_ }}</div>
+						<input id="searchboxtextchange" type="text" name="search-input" class="search-box__field" placeholder="" onfocus="stopTyping()" onblur="startTyping()">
 						<input type="submit" value="Search" class="search-box__submit">
 						<i class="material-icons search-box__submit-icon" aria-hidden="true">search</i>
 					</form>

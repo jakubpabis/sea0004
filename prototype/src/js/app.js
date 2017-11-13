@@ -478,19 +478,13 @@ function searchbarText()
 	$box.placeholder = '';
 	for(var j = 0; j < $rand.length; j++) {
 		setTimeout(function(j) {
-			$box.placeholder = $box.placeholder + $rand.charAt(j);
+			if($box === document.activeElement) {
+				return false;
+			} else {
+				$box.placeholder = $box.placeholder + $rand.charAt(j);
+			}
 		}, j * 75, j);
 	}
-	setInterval(function() {
-		var $box = document.getElementById('searchboxtextchange');
-		var $rand = $text[Math.floor(Math.random() * $text.length)];
-		$box.placeholder = '';
-		for(var j = 0; j < $rand.length; j++) {
-			setTimeout(function(j) {
-				$box.placeholder = $box.placeholder + $rand.charAt(j);
-			}, j * 75, j);
-		}
-	}, 3500);
 }
 
 cvFormOpen();
@@ -499,6 +493,23 @@ loadClientsCarousel();
 loadCandidatesCarousel();
 checkCookieMessage();
 searchbarText();
+
+var searchbarTyping = setInterval(function(){ searchbarText() }, 3500);
+
+function stopTyping() {
+	document.getElementById('searchboxtextchange').placeholder = '';
+	clearInterval(searchbarTyping);
+	searchbarTyping = null;
+	document.getElementById('searchboxtextchange').placeholder = '';
+	document.getElementById('searchboxtextchange').placeholder = document.getElementById('placeholdertext').textContent;
+}
+
+function startTyping() {
+	clearInterval(searchbarTyping);
+	searchbarText();
+	searchbarTyping = null;
+	searchbarTyping = setInterval(function(){ searchbarText() }, 3500);
+}
 
 // Trigger close form modal window when click on overlay
 if(document.getElementById('jobFormModal')) {
