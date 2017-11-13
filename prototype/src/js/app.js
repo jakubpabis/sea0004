@@ -490,7 +490,7 @@ function searchbarText()
 				$box.placeholder = $box.placeholder + $rand.charAt(j);
 			}, j * 75, j);
 		}
-	}, 3000);
+	}, 3500);
 }
 
 cvFormOpen();
