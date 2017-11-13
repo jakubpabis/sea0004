@@ -440,9 +440,38 @@ function cvFormOpen()
 function searchbarText()
 {
 	var $text = [
+		"CTO ",
+		"Technical Teamlead",
+		"PHP Developer",
 		"Java Developer",
+		"JavaScript Developer",
+		"Front-End Developer",
+		"Scrum Master",
+		"Agile Coach",
+		"Python Developer",
+		"Scala Developer",
+		".NET Developer",
+		"Tester",
+		"DevOps Engineer",
+		"Solution Architect",
+		"QA Engineer",
+		"Product Owner",
+		"Lead Developer",
+		"Online Marketeer",
 		"SEO Specialist",
-		"Jakies inne stanowisko"
+		"SEA Specialist",
+		"Recruitment Consultant",
+		"Test Automation Consultant",
+		"Data Scientist",
+		"Android Developer",
+		"iOS Developer",
+		"Mobile Solution Architect",
+		"Sitecore Developer",
+		"Hybris Developer",
+		"Talent Sourcer",
+		"Game Developer",
+		"Digital Consultant",
+		"Digital Analytics Consultant"
 	];
 	var $box = document.getElementById('searchboxtextchange');
 	var $rand = $text[Math.floor(Math.random() * $text.length)];
@@ -450,9 +479,18 @@ function searchbarText()
 	for(var j = 0; j < $rand.length; j++) {
 		setTimeout(function(j) {
 			$box.placeholder = $box.placeholder + $rand.charAt(j);
-		}, j * 200, j);
+		}, j * 75, j);
 	}
-
+	setInterval(function() {
+		var $box = document.getElementById('searchboxtextchange');
+		var $rand = $text[Math.floor(Math.random() * $text.length)];
+		$box.placeholder = '';
+		for(var j = 0; j < $rand.length; j++) {
+			setTimeout(function(j) {
+				$box.placeholder = $box.placeholder + $rand.charAt(j);
+			}, j * 75, j);
+		}
+	}, 3000);
 }
 
 cvFormOpen();
@@ -460,7 +498,7 @@ loadCarousel();
 loadClientsCarousel();
 loadCandidatesCarousel();
 checkCookieMessage();
-// searchbarText();
+searchbarText();
 
 // Trigger close form modal window when click on overlay
 if(document.getElementById('jobFormModal')) {
