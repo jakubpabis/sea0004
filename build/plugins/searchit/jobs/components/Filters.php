@@ -59,56 +59,6 @@ class Filters extends ComponentBase
 
         $this->page['jobs'] = $jobs->orderBy('date', 'desc')->paginate(16);
 
-        // if(!empty($salaryMin) && !empty($salaryMax)) {
-        //     $this->page['jobs'] = Job::where('title', 'LIKE', "%{$title}%")
-        //     ->where('location', 'LIKE', "%{$location}%")
-        //     ->whereHas('categories', function($query) use ($category) {
-        //         $query->where('category_name', 'LIKE', "%{$category}%");
-        //     })
-        //     ->whereHas('types', function($query) use ($type) {
-        //         $query->where('type_name', 'LIKE', "%{$type}%");
-        //     })
-        //     ->where('salary_min', '>=', $salaryMin)
-        //     ->where('salary_max', '<=', $salaryMax)
-        //     ->orderBy('date', 'desc')
-        //     ->paginate(16);
-        // } elseif(!empty($salaryMin)) {
-        //     $this->page['jobs'] = Job::where('title', 'LIKE', "%{$title}%")
-        //     ->where('location', 'LIKE', "%{$location}%")
-        //     ->whereHas('categories', function($query) use ($category) {
-        //         $query->where('category_name', 'LIKE', "%{$category}%");
-        //     })
-        //     ->whereHas('types', function($query) use ($type) {
-        //         $query->where('type_name', 'LIKE', "%{$type}%");
-        //     })
-        //     ->where('salary_min', '>=', $salaryMin)
-        //     ->orderBy('date', 'desc')
-        //     ->paginate(16);
-        // } elseif(!empty($salaryMax)) {
-        //     $this->page['jobs'] = Job::where('title', 'LIKE', "%{$title}%")
-        //     ->where('location', 'LIKE', "%{$location}%")
-        //     ->whereHas('categories', function($query) use ($category) {
-        //         $query->where('category_name', 'LIKE', "%{$category}%");
-        //     })
-        //     ->whereHas('types', function($query) use ($type) {
-        //         $query->where('type_name', 'LIKE', "%{$type}%");
-        //     })
-        //     ->where('salary_max', '<=', $salaryMax)
-        //     ->orderBy('date', 'desc')
-        //     ->paginate(16);
-        // } else {
-        //     $this->page['jobs'] = Job::where('title', 'LIKE', "%{$title}%")
-        //     ->where('location', 'LIKE', "%{$location}%")
-        //     ->whereHas('categories', function($query) use ($category) {
-        //         $query->where('category_name', 'LIKE', "%{$category}%");
-        //     })
-        //     ->whereHas('types', function($query) use ($type) {
-        //         $query->where('type_name', 'LIKE', "%{$type}%");
-        //     })
-        //     ->orderBy('date', 'desc')
-        //     ->paginate(16);
-        // }
-
     }
 
 }

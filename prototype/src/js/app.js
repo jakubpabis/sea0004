@@ -474,16 +474,18 @@ function searchbarText()
 		"Digital Analytics Consultant"
 	];
 	var $box = document.getElementById('searchboxtextchange');
-	var $rand = $text[Math.floor(Math.random() * $text.length)];
-	$box.placeholder = '';
-	for(var j = 0; j < $rand.length; j++) {
-		setTimeout(function(j) {
-			if($box === document.activeElement) {
-				return false;
-			} else {
-				$box.placeholder = $box.placeholder + $rand.charAt(j);
-			}
-		}, j * 75, j);
+	if($box) {
+		var $rand = $text[Math.floor(Math.random() * $text.length)];
+		$box.placeholder = '';
+		for(var j = 0; j < $rand.length; j++) {
+			setTimeout(function(j) {
+				if($box === document.activeElement) {
+					return false;
+				} else {
+					$box.placeholder = $box.placeholder + $rand.charAt(j);
+				}
+			}, j * 75, j);
+		}
 	}
 }
 

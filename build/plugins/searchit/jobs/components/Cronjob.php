@@ -187,12 +187,15 @@ class Cronjob extends ComponentBase
         */
         foreach($this->jobs as $job) {
             $jobSingleCatID = Category::where('category_slug', 'fulfilled')->pluck('id');
-            $jobSingleCatIDAll = Category::where('category_slug', 'all-jobs')->pluck('id');
             $isJobFulfilled = DB::table('searchit_jobs_job_categories')->where('job_id', $job->id)->where('category_id', $jobSingleCatID)->count();
             
             if(!in_array($job->job_id, $this->job_ids) && $isJobFulfilled === 0) {
                 $this->jobSingleCatPivot->insert([ 'job_id' => $job->id, 'category_id' => $jobSingleCatID ]);
             }
+            // if($isJobFulfilled !== 0) {
+            //     $this->jobSingleCatPivot->where('job_id', $job->id)->delete(); 
+            //     $this->jobSingleCatPivot->insert([ 'job_id' => $job->id, 'category_id' => $jobSingleCatID ]);
+            // }
             // var_dump($isJobFulfilled);
         }
 
