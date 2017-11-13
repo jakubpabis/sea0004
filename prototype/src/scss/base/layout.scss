@@ -266,7 +266,7 @@ section {
 		display: flex;
 		flex-wrap: nowrap;
 		align-items: flex-start;
-		justify-content: flex-start;
+		justify-content: space-between;
 
 		@media(max-width: 640px) {
 			flex-wrap: wrap;

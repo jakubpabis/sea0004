@@ -460,7 +460,7 @@ loadCarousel();
 loadClientsCarousel();
 loadCandidatesCarousel();
 checkCookieMessage();
-searchbarText();
+// searchbarText();
 
 // Trigger close form modal window when click on overlay
 if(document.getElementById('jobFormModal')) {
