@@ -26,11 +26,6 @@ body {
 * {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-}
-
-div,
-form,
-section {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
@@ -82,14 +77,20 @@ section {
 #wrapper {
 	position: relative;
 	display: block;
+	padding-top: 160px;
 
 	@media(max-width: 800px) {
 		transition: all 250ms ease;
+		padding-top: 130px;
 
 		&.menu-active {
 			transform: translateX(270px);
 		}
 
+	}
+
+	@media(max-width: 480px) {
+		padding-top: 121px;
 	}
 
 }
