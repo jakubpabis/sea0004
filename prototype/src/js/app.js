@@ -25,6 +25,42 @@ window.smartsupp||(function(d) {
   c.src='//www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
 })(document);
 
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires="+ d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+function checkCookieMessage()
+{
+	if(getCookie('cookieConfirm') !== 'yes') {
+		document.getElementById('cookieMessage').classList.add('show');
+	}
+}
+
+function cookieAgree()
+{
+	setCookie('cookieConfirm', 'yes', 365);
+	document.getElementById('cookieMessage').classList.remove('show');
+}
+
 function hasClass(el, cls) 
 {
 	return el.className && new RegExp("(\\s|^)" + cls + "(\\s|$)").test(el.className);
@@ -383,9 +419,91 @@ function initContactMap()
 	);
 }
 
+<<<<<<< HEAD
+=======
+function cvFormOpen() 
+{
+	if(window.location.hash === '#uploadcv') {
+		showCVForm();
+	}
+}
+
+function searchbarText()
+{
+	var $text = [
+		"CTO ",
+		"Technical Teamlead",
+		"PHP Developer",
+		"Java Developer",
+		"JavaScript Developer",
+		"Front-End Developer",
+		"Scrum Master",
+		"Agile Coach",
+		"Python Developer",
+		"Scala Developer",
+		".NET Developer",
+		"Tester",
+		"DevOps Engineer",
+		"Solution Architect",
+		"QA Engineer",
+		"Product Owner",
+		"Lead Developer",
+		"Online Marketeer",
+		"SEO Specialist",
+		"SEA Specialist",
+		"Recruitment Consultant",
+		"Test Automation Consultant",
+		"Data Scientist",
+		"Android Developer",
+		"iOS Developer",
+		"Mobile Solution Architect",
+		"Sitecore Developer",
+		"Hybris Developer",
+		"Talent Sourcer",
+		"Game Developer",
+		"Digital Consultant",
+		"Digital Analytics Consultant"
+	];
+	var $box = document.getElementById('searchboxtextchange');
+	if($box) {
+		var $rand = $text[Math.floor(Math.random() * $text.length)];
+		$box.placeholder = '';
+		for(var j = 0; j < $rand.length; j++) {
+			setTimeout(function(j) {
+				if($box === document.activeElement) {
+					return false;
+				} else {
+					$box.placeholder = $box.placeholder + $rand.charAt(j);
+				}
+			}, j * 75, j);
+		}
+	}
+}
+
+cvFormOpen();
+>>>>>>> cd38abe9935b24aa0a9b05a23f24a483561bdcb2
 loadCarousel();
 loadClientsCarousel();
 loadCandidatesCarousel();
+checkCookieMessage();
+searchbarText();
+
+var searchbarTyping = setInterval(function(){ searchbarText() }, 3500);
+
+function stopTyping() {
+	document.getElementById('searchboxtextchange').placeholder = '';
+	clearInterval(searchbarTyping);
+	searchbarTyping = null;
+	document.getElementById('searchboxtextchange').placeholder = '';
+	document.getElementById('searchboxtextchange').placeholder = document.getElementById('placeholdertext').textContent;
+}
+
+function startTyping() {
+	clearInterval(searchbarTyping);
+	searchbarText();
+	searchbarTyping = null;
+	searchbarTyping = setInterval(function(){ searchbarText() }, 3500);
+}
 
 // Trigger close form modal window when click on overlay
 if(document.getElementById('jobFormModal')) {
@@ -403,3 +521,4 @@ if(document.getElementById('uploadCvModal')) {
 		}
 	}, false);
 }
+

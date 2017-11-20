@@ -26,11 +26,6 @@ body {
 * {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-}
-
-div,
-form,
-section {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
@@ -82,14 +77,20 @@ section {
 #wrapper {
 	position: relative;
 	display: block;
+	padding-top: 160px;
 
 	@media(max-width: 800px) {
 		transition: all 250ms ease;
+		padding-top: 130px;
 
 		&.menu-active {
 			transform: translateX(270px);
 		}
 
+	}
+
+	@media(max-width: 480px) {
+		padding-top: 121px;
 	}
 
 }
@@ -239,6 +240,81 @@ section {
 	.stripe-loaded {
 		height: 16px!important;
 		background-color: $color-tertiary!important;
+	}
+
+}
+
+#cookieMessage {
+	position: fixed;
+	background-color: $color-tertiary;
+	color: white;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 9999999999999999999999999999999999;
+	padding: 61px 0;
+	display: none;
+
+	@media(max-width: 640px) {
+		padding: 20px 0;
+	}
+
+	&.show {
+		display: block;
+	}
+
+	.container {
+		display: flex;
+		flex-wrap: nowrap;
+		align-items: flex-start;
+		justify-content: space-between;
+
+		@media(max-width: 640px) {
+			flex-wrap: wrap;
+			justify-content: center;
+		}
+
+	}
+
+	.message {
+		padding-right: 50px;
+		font-size: 16px;
+		line-height: 1.4;
+
+		@media(max-width: 640px) {
+			padding-right: 0;
+			text-align: center;
+		}
+
+	}
+
+	.agree {
+		// padding-right: 30px;
+		font-size: 14px;
+		text-transform: uppercase;
+		font-weight: 700;
+		cursor: pointer;
+		padding: 12px 30px;
+		border: 2px solid white;
+		display: inline-block;
+
+		@media(max-width: 640px) {
+			align-self: flex-end;
+			margin-top: 20px;
+		}
+
+	}
+	
+	.close {
+		width: 40px;
+		height: 40px;
+		margin-top: -40px;
+		cursor: pointer;
+
+		i {
+			font-size: 40px;
+		}
+
 	}
 
 }

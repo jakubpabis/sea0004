@@ -35,35 +35,27 @@ forceUrl = 1
 {variable name="testimonialsTitle" label="Title" tab="Testimonials" type="text"}{/variable}
 
 {% partial 'head' %}
-{% partial 'navigation' %}
 
 <section class="home-header">
-	<div class="home-header__image">
-		<picture class="bg-cover">
-			<source media="(min-width: 768px)" srcset="{{ headerImg|media }}">
-            <!-- <source media="(min-width: 569px)" srcset="{{ feature_img|media|resize(364, 349) }}">
-            <source media="(min-width: 480px)" srcset="{{ feature_img|media|resize(538, 516) }}">
-            <source media="(min-width: 240px)" srcset="{{ feature_img|media|resize(450, 432) }}"> -->
-            <img class="bg-cover" src="{{ headerImg|media }}">
-		</picture>
-	</div>
 	<div class="home-header__text">
 		<picture class="bg-cover-abs">
-			<source media="(min-width: 768px)" srcset="{{ headerImg|media }}">
-            <!-- <source media="(min-width: 569px)" srcset="{{ feature_img|media|resize(364, 349) }}">
-            <source media="(min-width: 480px)" srcset="{{ feature_img|media|resize(538, 516) }}">
-            <source media="(min-width: 240px)" srcset="{{ feature_img|media|resize(450, 432) }}"> -->
-            <img class="bg-cover-abs" src="{{ headerImg|media }}">
+			<source media="(min-width: 1440px)" srcset="{{ headerImg|media|resize(1920) }}">
+            <source media="(min-width: 1024px)" srcset="{{ headerImg|media|resize(1440) }}">
+            <source media="(min-width: 768px)" srcset="{{ headerImg|media|resize(1024) }}">
+			<source media="(min-width: 480px)" srcset="{{ headerImg|media|resize(768) }}">
+			<source media="(min-width: 1px)" srcset="{{ headerImg|media|resize(480) }}">
+            <img class="bg-cover-abs" src="{{ headerImg|media|resize(1920) }}">
 		</picture>
 		<div class="centerV-container">
 			<div class="centerV-content">
-				<div class="container__half-left">
+				<div class="container">
                     {{ headerText|raw }}
 					<form 
 						class="search-box"
 						data-request="onSearchRedirect"
 					>
-						<input type="text" name="search-input" class="search-box__field" placeholder="{{ 'Enter a job title  -  eg. Web Developer'|_ }}">
+						<div style="display:none;" id="placeholdertext">{{ 'Search from'|_ }} {{ jobsCount }} {{ 'new jobs'|_ }}</div>
+						<input id="searchboxtextchange" type="text" name="search-input" class="search-box__field" placeholder="" onfocus="stopTyping()" onblur="startTyping()">
 						<input type="submit" value="Search" class="search-box__submit">
 						<i class="material-icons search-box__submit-icon" aria-hidden="true">search</i>
 					</form>
@@ -143,11 +135,10 @@ forceUrl = 1
 		</div>
 		<div class="home-about__section-img-right">
 			<picture class="bg-cover">
-				<source media="(min-width: 768px)" srcset="{{ aboutImg1|media }}">
-	            <!-- <source media="(min-width: 569px)" srcset="{{ feature_img|media|resize(364, 349) }}">
-	            <source media="(min-width: 480px)" srcset="{{ feature_img|media|resize(538, 516) }}">
-	            <source media="(min-width: 240px)" srcset="{{ feature_img|media|resize(450, 432) }}"> -->
-	            <img class="bg-cover" src="{{ aboutImg1|media }}">
+				<source media="(min-width: 1440px)" srcset="{{ aboutImg1|media|resize(1000) }}">
+				<source media="(min-width: 480px)" srcset="{{ aboutImg1|media|resize(768) }}">
+				<source media="(min-width: 1px)" srcset="{{ aboutImg1|media|resize(480) }}">
+	            <img class="bg-cover" src="{{ aboutImg1|media|resize(1000) }}">
 			</picture>
 		</div>
 		
@@ -156,11 +147,10 @@ forceUrl = 1
 		
 		<div class="home-about__section-img-left">
 			<picture class="bg-cover">
-				<source media="(min-width: 768px)" srcset="{{ aboutImg2|media }}">
-	            <!-- <source media="(min-width: 569px)" srcset="{{ feature_img|media|resize(364, 349) }}">
-	            <source media="(min-width: 480px)" srcset="{{ feature_img|media|resize(538, 516) }}">
-	            <source media="(min-width: 240px)" srcset="{{ feature_img|media|resize(450, 432) }}"> -->
-	            <img class="bg-cover" src="{{ aboutImg2|media }}">
+				<source media="(min-width: 1440px)" srcset="{{ aboutImg2|media|resize(1000) }}">
+				<source media="(min-width: 480px)" srcset="{{ aboutImg2|media|resize(768) }}">
+				<source media="(min-width: 1px)" srcset="{{ aboutImg2|media|resize(480) }}">
+				<img class="bg-cover" src="{{ aboutImg2|media|resize(1000) }}">
 			</picture>
 		</div>
 		<div class="home-about__section-text-right">

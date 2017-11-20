@@ -1,10 +1,16 @@
 .main-navigation {
 	display: block;
 	position: relative;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
 	height: 160px;
 	width: 100%;
 	background-color: $color-light;
 	padding: 0;
+	z-index: 99999999999999999;
+	box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
 
 	@media(max-width: 800px) {
 		height: 130px;
@@ -84,7 +90,7 @@
 
 				.btn {
 					height: 30px;
-					line-height: 30px;
+					line-height: 26px;
 					padding: 0 20px;
 				}
 
@@ -423,8 +429,9 @@
 				}
 
 				&+.menu {
-					-webkit-box-shadow: 5px 0 20px 5px #222;
-					box-shadow: 5px 0 20px 5px #222;
+					-webkit-box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.75);
+					box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.75);
+					left: 0;
 				}
 
 			}
@@ -457,22 +464,24 @@
 			float: none;
 			position: fixed;
 			margin: 0;
-			left: 0;
-			top: 0;
+			left: -270px;
+			top: 130px;
 			bottom: 0;
-			transform: translateX(-270px);
 			width: 270px;
 			min-height: 100%;
-			min-height: 100vh;
-			height: 100%;
-			max-height: calc(100vh - 50px);
+			min-height: calc(100vh - 120px);
+			max-height: calc(100vh - 150px);
 			background-color: $color-primary;
 			transition: all 250ms ease;
-			z-index: 9999;
+			z-index: 9;
 			-webkit-box-shadow: 0 0 0 0 $color-primary;
 			box-shadow: 0 0 0 0 $color-primary;
 			overflow-x: hidden;
 			overflow-y: auto;
+		}
+
+		@media(max-width: 480px) {
+			top: 121px;
 		}
 
 		> li {

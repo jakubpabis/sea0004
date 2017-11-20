@@ -21,17 +21,17 @@ forceUrl = 1
 {variable name="hreflang_nl" label="hreflang - NL - URL" tab="hreflang" type="text"}{/variable}
 
 {% partial 'head' %}
-{% partial 'navigation' %}
 {% component 'breadcrumbs' %}
 
 <article class="default-article">
     <div class="default-article__header">
         <picture class="bg-cover-abs">
-            <source media="(min-width: 768px)" srcset="{{ defaultImg|media }}">
-            <!-- <source media="(min-width: 569px)" srcset="{{ feature_img|media|resize(364, 349) }}">
-            <source media="(min-width: 480px)" srcset="{{ feature_img|media|resize(538, 516) }}">
-            <source media="(min-width: 240px)" srcset="{{ feature_img|media|resize(450, 432) }}"> -->
-            <img class="bg-cover-abs" src="{{ defaultImg|media }}">
+            <source media="(min-width: 1440px)" srcset="{{ defaultImg|media|resize(1920) }}">
+            <source media="(min-width: 1024px)" srcset="{{ defaultImg|media|resize(1440) }}">
+            <source media="(min-width: 768px)" srcset="{{ defaultImg|media|resize(1024) }}">
+            <source media="(min-width: 480px)" srcset="{{ defaultImg|media|resize(768) }}">
+            <source media="(min-width: 1px)" srcset="{{ defaultImg|media|resize(480) }}">
+            <img class="bg-cover-abs" src="{{ defaultImg|media|resize(1920) }}">
         </picture>
         <div class="container container-sml">
             <h1>
