@@ -419,8 +419,6 @@ function initContactMap()
 	);
 }
 
-<<<<<<< HEAD
-=======
 function cvFormOpen() 
 {
 	if(window.location.hash === '#uploadcv') {
@@ -481,7 +479,6 @@ function searchbarText()
 }
 
 cvFormOpen();
->>>>>>> cd38abe9935b24aa0a9b05a23f24a483561bdcb2
 loadCarousel();
 loadClientsCarousel();
 loadCandidatesCarousel();
