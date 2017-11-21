@@ -11,7 +11,7 @@
     }
 
     &__filters {
-        flex-basis: 25%;
+        flex-basis: 28%;
         background-color: white;
         padding: 0 20px 25px 20px;
         transition: all 250ms ease;
@@ -117,8 +117,8 @@
             background-color: $color-tertiary;
             display: block;
             line-height: 32px;
-            width: 100%;
             margin-left: -20px;
+            margin-right: -20px;
             margin-bottom: 16px;
             position: relative;
             -webkit-touch-callout: none;
@@ -131,6 +131,7 @@
             @media(max-width: 900px) {
                 padding: 8px 10px;
                 margin-left: -10px;
+                margin-right: -10px;
             }
 
             @media(max-width: 767px) {
@@ -551,7 +552,7 @@
     }
 
     &__list {
-        flex-basis: 75%;
+        flex-basis: 72%;
         padding-left: 16px;
 
         @media(max-width: 1170px) {

@@ -65,7 +65,7 @@ class JobsCategory extends ComponentBase
         $this->page['types'] = Type::get();
 
         $this->page['jobs'] = $this->loadResults()->orderBy('date', 'desc')->paginate(20);
-        $this->page['jobsCount'] = $this->page['jobs']->count();
+        $this->page['jobsCount'] = $this->loadResults()->orderBy('date', 'desc')->count();
         $this->page['pagination'] = $this->page['jobs'];
     }
 
@@ -73,7 +73,7 @@ class JobsCategory extends ComponentBase
     {
         $category = $this->property('categorySlug');
         return Job::whereHas('categories', function($query) use ($category) {
-            $query->where('category_slug', 'LIKE', "%{$category}%");
+            $query->where('category_slug', $category);
         });
     }
 
@@ -138,6 +138,11 @@ class JobsCategory extends ComponentBase
         $this->jobs = $this->jobs->whereHas('categories', function($query) use ($category) {
           $query->whereIn('id', $category);
         });     
+      } elseif(empty($category)) {
+        $fulfilledCategory = Category::where('category_slug', 'fulfilled')->pluck('id');
+        $this->jobs = $this->jobs->whereHas('categories', function($query) use ($fulfilledCategory) {
+          $query->where('category_id', '!=', $fulfilledCategory);
+        });  
       }
       if(!empty($salaryMin)) {
         $this->jobs = $this->jobs->where('salary_min', '>=', $salaryMin);

@@ -54,6 +54,35 @@
 
 	}
 
+	.telephone-no {
+		font-size: 14px;
+		font-weight: 500;
+		margin-right: 20px;
+		transition: all 250ms ease;
+
+		i {
+			vertical-align: middle;
+			font-size: 22px;
+			margin-right: 5px;
+			transition: all 250ms ease
+		}
+
+		&:hover {
+			color: $color-tertiary;
+
+			i {
+				color: $color-tertiary;
+				transform: scale(1.25);
+			}
+
+		}
+
+		@media(max-width: 560px) {
+			display: none;
+		}
+
+	}
+
 	.top {
 		height: 99px;
 		width: 100%;
@@ -185,7 +214,7 @@
 			font-weight: 500;
 			text-transform: uppercase;
 
-			@media(max-width: 760px) {
+			@media(max-width: 440px) {
 				font-size: 0;
 				padding: 0;
 			}

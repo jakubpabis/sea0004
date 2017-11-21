@@ -75,7 +75,7 @@ class Sidebar extends ComponentBase
     */
     protected function getCatCount($value)
     {
-        return Job::where('category', 'LIKE', "%{$value}%")->count();
+        return Job::where('category', $value)->count();
     }
 
     /*
@@ -85,7 +85,7 @@ class Sidebar extends ComponentBase
     */
     protected function getTypeCount($value)
     {
-        return Job::where('type', 'LIKE', "%{$value}%")->count();
+        return Job::where('type', $value)->count();
     }
 
 }

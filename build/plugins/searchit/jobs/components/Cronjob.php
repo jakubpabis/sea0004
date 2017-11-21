@@ -190,13 +190,23 @@ class Cronjob extends ComponentBase
             $isJobFulfilled = DB::table('searchit_jobs_job_categories')->where('job_id', $job->id)->where('category_id', $jobSingleCatID)->count();
             
             if(!in_array($job->job_id, $this->job_ids) && $isJobFulfilled === 0) {
-                $this->jobSingleCatPivot->insert([ 'job_id' => $job->id, 'category_id' => $jobSingleCatID ]);
+                DB::table('searchit_jobs_job_categories')->insert([ 'job_id' => $job->id, 'category_id' => $jobSingleCatID ]);
             }
+
             // if($isJobFulfilled !== 0) {
             //     $this->jobSingleCatPivot->where('job_id', $job->id)->delete(); 
             //     $this->jobSingleCatPivot->insert([ 'job_id' => $job->id, 'category_id' => $jobSingleCatID ]);
             // }
             // var_dump($isJobFulfilled);
+        }
+
+        $fulfilledJobs = DB::table('searchit_jobs_job_categories')->where('category_id', Category::where('category_slug', 'fulfilled')->pluck('id'))->get();
+        $fulfilledCategory = Category::where('category_slug', 'fulfilled')->pluck('id');
+
+        foreach($fulfilledJobs as $job) {
+            DB::table('searchit_jobs_job_categories')->where('job_id', $job->job_id)->delete();
+            DB::table('searchit_jobs_job_categories')->insert([ 'job_id' => $job->job_id, 'category_id' => $fulfilledCategory ]);
+            DB::table('searchit_jobs_job_types')->where('job_id', $job->job_id)->delete();
         }
 
         /*
