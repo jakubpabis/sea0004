@@ -44,7 +44,8 @@ class JobsList extends ComponentBase
       'location',
       'category',
       'salary-min',
-      'salary-max'
+      'salary-max',
+      'gclid'
     ];
 
     /**
@@ -93,6 +94,7 @@ class JobsList extends ComponentBase
       $category = input('category');
       $salaryMin = input('salary-min');
       $salaryMax = input('salary-max');
+      $adwords = input('gclid'); // does completelly nothing in code, have to be here in order for adwords counter to work
 
       foreach ($this->params as $param) {
         if(!empty(input($param))) {

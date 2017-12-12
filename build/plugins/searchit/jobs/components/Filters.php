@@ -34,6 +34,7 @@ class Filters extends ComponentBase
         $category = input('job-category');
         $salaryMin = input('job-salary-min');
         $salaryMax = input('job-salary-max');
+        $adwords = input('gclid'); // does completelly nothing in code, have to be here in order for adwords counter to work
 
         $jobs = Job::where('title', 'LIKE', "%{$title}%");
 
@@ -57,7 +58,7 @@ class Filters extends ComponentBase
             });
         }
 
-        $this->page['jobs'] = $jobs->orderBy('date', 'desc')->paginate(16);
+        $this->page['jobs'] = $jobs->orderBy('date', 'desc')->paginate(20);
 
     }
 
