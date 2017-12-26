@@ -49,7 +49,10 @@ class Cronjob extends ComponentBase
     */
     public function onRun() 
     {
-        $this->readFile();
+        if(env('APP_ENV') === 'dev') {
+            echo env('APP_ENV');
+        }
+        // $this->readFile();
     }
 
     /*
