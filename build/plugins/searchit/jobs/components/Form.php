@@ -110,7 +110,7 @@ class Form extends ComponentBase
         }
         
         return Redirect::back();
-        // die();
+        die();
     }
 
 }

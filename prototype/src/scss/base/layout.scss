@@ -244,6 +244,17 @@ section {
 
 }
 
+.flash-message {
+	z-index: 9999999999999999999999999999999999!important;
+	font-size: 16px!important;
+	font-weight: 700!important;
+
+	&.info {
+		background-color: $color-tertiary!important;
+	}
+		
+}
+
 #cookieMessage {
 	position: fixed;
 	background-color: $color-tertiary;
