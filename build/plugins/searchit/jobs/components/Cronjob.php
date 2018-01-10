@@ -116,8 +116,10 @@ class Cronjob extends ComponentBase
                         if($category['group'] == '#1 Availability') {
                             $type = $category;
                             $jobSingleTypeRow = Type::where('type_name', $type)->first();
-                            $jobSingleTypeID = $jobSingleTypeRow->id;
-                            $this->jobSingleTypePivot->where('job_id', $jobSingleID)->update(['type_id' => $jobSingleTypeID ]);
+                            if($jobSingleTypeRow) {
+                                $jobSingleTypeID = $jobSingleTypeRow->id;
+                                $this->jobSingleTypePivot->where('job_id', $jobSingleID)->update(['type_id' => $jobSingleTypeID ]);
+                            } // add else to create new type 
                         }
                     }
 
@@ -156,8 +158,10 @@ class Cronjob extends ComponentBase
                     if($category['group'] == '#1 Availability') {
                         $type = $category;
                         $jobSingleTypeRow = Type::where('type_name', $type)->first();
-                        $jobSingleTypeID = $jobSingleTypeRow->id;
-                        $this->jobSingleTypePivot->insert([ 'job_id' => $jobSingleID, 'type_id' => $jobSingleTypeID ]);
+                        if($jobSingleTypeRow) {
+                            $jobSingleTypeID = $jobSingleTypeRow->id;
+                            $this->jobSingleTypePivot->insert([ 'job_id' => $jobSingleID, 'type_id' => $jobSingleTypeID ]);
+                        } // add else to create new type 
                     }
                 }
             }
@@ -203,14 +207,14 @@ class Cronjob extends ComponentBase
             // var_dump($isJobFulfilled);
         }
 
-        $fulfilledJobs = DB::table('searchit_jobs_job_categories')->where('category_id', Category::where('category_slug', 'fulfilled')->pluck('id'))->get();
-        $fulfilledCategory = Category::where('category_slug', 'fulfilled')->pluck('id');
+        // $fulfilledJobs = DB::table('searchit_jobs_job_categories')->where('category_id', Category::where('category_slug', 'fulfilled')->pluck('id'))->get();
+        // $fulfilledCategory = Category::where('category_slug', 'fulfilled')->pluck('id');
 
-        foreach($fulfilledJobs as $job) {
-            DB::table('searchit_jobs_job_categories')->where('job_id', $job->job_id)->delete();
-            DB::table('searchit_jobs_job_categories')->insert([ 'job_id' => $job->job_id, 'category_id' => $fulfilledCategory ]);
-            DB::table('searchit_jobs_job_types')->where('job_id', $job->job_id)->delete();
-        }
+        // foreach($fulfilledJobs as $job) {
+        //     DB::table('searchit_jobs_job_categories')->where('job_id', $job->job_id)->delete();
+        //     DB::table('searchit_jobs_job_categories')->insert([ 'job_id' => $job->job_id, 'category_id' => $fulfilledCategory ]);
+        //     DB::table('searchit_jobs_job_types')->where('job_id', $job->job_id)->delete();
+        // }
 
         /*
         *
