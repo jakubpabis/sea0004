@@ -216,22 +216,6 @@ class Cronjob extends ComponentBase
         //     DB::table('searchit_jobs_job_types')->where('job_id', $job->job_id)->delete();
         // }
 
-        /*
-        *
-        * Check if job with id X is in category "all-jobs", if not, add it.
-        *
-        */
-        // foreach($jobs as $job) {
-        //     $jobSingleCatPivot = DB::table('searchit_jobs_job_categories');
-        //     $jobSingleCatID = Category::where('category_slug', 'fulfilled')->pluck('id');
-        //     $jobSingleCatIDAll = Category::where('category_slug', 'all-jobs')->pluck('id');
-        //     $isJobAll = $jobSingleCatPivot->where('job_id', $job->id)->where('category_id', $jobSingleCatIDAll)->count();
-        //     if($isJobAll === 0) {
-        //         $jobSingleCatPivot->insert([ 'job_id' => $job->id, 'category_id' => $jobSingleCatIDAll ]);
-        //     }
-        //     var_dump($isJobAll);
-        // }
-
     }
 
     /*
