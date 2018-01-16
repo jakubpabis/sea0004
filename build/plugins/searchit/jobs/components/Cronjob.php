@@ -71,11 +71,11 @@ class Cronjob extends ComponentBase
             $slug = $this->slugify( $job->title.'-'.$job->id );
             $salary_min = preg_replace("/\./", "", $job->salary_fixed);
             $salary_max = preg_replace("/\./", "", $job->salary_bonus);
-            if($job->url_title) {
-                $keywords = preg_replace("/-/", " ", $job->url_title);
-            } else {
-                $keywords = null;
-            }
+            // if($job->url_title) {
+            //     $keywords = preg_replace("/-/", " ", $job->url_title);
+            // } else {
+            //     $keywords = null;
+            // }
 
             /*
             *
@@ -96,7 +96,7 @@ class Cronjob extends ComponentBase
                             'lat'           => $job->lat,
                             'lng'           => $job->lng,
                             'slug'          => $slug,
-                            'meta_keywords' => $keywords
+                            // 'meta_keywords' => $keywords
                         ]
                     );
 
@@ -115,7 +115,7 @@ class Cronjob extends ComponentBase
                         'lat'           => $job->lat,
                         'lng'           => $job->lng,
                         'slug'          => $slug,
-                        'meta_keywords' => $keywords
+                        // 'meta_keywords' => $keywords
                     ]
                 );
                 
