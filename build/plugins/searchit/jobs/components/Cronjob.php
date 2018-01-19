@@ -222,7 +222,7 @@ class Cronjob extends ComponentBase
     */
     protected function getFulfilledJobs()
     {
-        Job::orderBy('id', 'desc')->chunk(20, function($jobs) {
+        Job::orderBy('id', 'desc')->chunk(50, function($jobs) {
             foreach($jobs as $job) {
                 $jobSingleCatID = Category::where('category_slug', 'fulfilled')->value('id');
                 $isJobFulfilled = DB::table('searchit_jobs_job_categories')
@@ -238,12 +238,6 @@ class Cronjob extends ComponentBase
                     DB::table('searchit_jobs_job_categories')
                         ->insert([ 'job_id' => $job->id, 'category_id' => $jobSingleCatID ]);
                 }
-    
-                // if($isJobFulfilled !== 0) {
-                //     $jobSingleCatPivot->where('job_id', $job->id)->delete(); 
-                //     $jobSingleCatPivot->insert([ 'job_id' => $job->id, 'category_id' => $jobSingleCatID ]);
-                // }
-                // var_dump($isJobFulfilled);
             }
         });
     }
@@ -255,7 +249,7 @@ class Cronjob extends ComponentBase
     */
     protected function removeDuplicateEntries()
     {
-        Job::orderBy('id', 'desc')->chunk(20, function($jobs) {
+        Job::orderBy('id', 'desc')->chunk(50, function($jobs) {
             foreach($jobs as $job) {
                 $jobCategories = DB::table('searchit_jobs_job_categories')
                 ->where('job_id', $job->id)
