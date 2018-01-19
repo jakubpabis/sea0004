@@ -49,9 +49,6 @@ class Cronjob extends ComponentBase
     */
     public function onRun() 
     {
-        // if(env('APP_ENV') === 'dev') {
-        //     echo env('APP_ENV');
-        // }
         $this->readFile();
     }
 
@@ -237,6 +234,12 @@ class Cronjob extends ComponentBase
 
                     DB::table('searchit_jobs_job_categories')
                         ->insert([ 'job_id' => $job->id, 'category_id' => $jobSingleCatID ]);
+                } elseif(in_array($job->job_id, $this->job_ids) && $isJobFulfilled === 1) {
+                    DB::table('searchit_jobs_job_categories')
+                        ->where('job_id', $job->id)
+                        ->where('category_id', $jobSingleCatID)
+                        ->delete();
+                    var_dump($job->job_id);
                 }
             }
         });
