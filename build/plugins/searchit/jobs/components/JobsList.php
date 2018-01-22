@@ -190,7 +190,7 @@ class JobsList extends ComponentBase
      * Functions to run on page init
      *
      */
-    public function onRun()
+    public function init()
     {
       $this->page['cats'] = $this->getCategories(Category::get());
       $this->page['types'] = Type::get();
