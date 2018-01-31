@@ -101,16 +101,31 @@ class Form extends ComponentBase
             // close the session
             curl_close($request);
 
-        }
+            
 
-        if(Input::get('form_type') == 'application') {
-            Flash::success('app');
-        } else {
-            Flash::success('cv');
+            if(Input::get('form_type') == 'application') {
+                Flash::success('app');
+                //$this->sendMail($application_data, $subject, $template);
+            } else {
+                Flash::success('cv');
+                //$this->sendMail($application_data, $subject, $template);
+            }
+
         }
         
         return Redirect::back();
         die();
+    }
+
+    protected function sendMail($inputs, $subject, $template)
+    {
+        Mail::send('searchit.jobs::mail.message', $inputs, function($message){
+
+            $message->from('info@searchitrecruitment.com', 'Searchit It Recruitment');
+            $message->to($inputs->email, $inputs->name);
+            $message->subject($subject);
+
+        });
     }
 
 }
