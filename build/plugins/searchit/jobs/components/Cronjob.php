@@ -68,21 +68,21 @@ class Cronjob extends ComponentBase
             $slug = $this->slugify( $job->title.'-'.$job->id );
             $salary_min = preg_replace("/\./", "", $job->salary_fixed);
             $salary_max = preg_replace("/\./", "", $job->salary_bonus);
-            // if($job->meta) {
-            //     $meta_title = $job->meta;
-            // } else {
-            //     $meta_title = null;
-            // }
-            // if($job->custom_apply_text) {
-            //     $meta_keywords = $job->custom_apply_text;
-            // } else {
-            //     $meta_keywords = null;
-            // }
-            // if($job->custom_callback_button) {
-            //     $meta_description = $job->custom_callback_button;
-            // } else {
-            //     $meta_description = null;
-            // }
+            if($job->meta) {
+                $meta_title = $job->meta;
+            } else {
+                $meta_title = null;
+            }
+            if($job->custom_apply_text) {
+                $meta_keywords = $job->custom_apply_text;
+            } else {
+                $meta_keywords = null;
+            }
+            if($job->custom_callback_button) {
+                $meta_description = $job->custom_callback_button;
+            } else {
+                $meta_description = null;
+            }
 
             /*
             *
@@ -103,9 +103,9 @@ class Cronjob extends ComponentBase
                             'lat'           => $job->lat,
                             'lng'           => $job->lng,
                             'slug'          => $slug,
-                            // 'meta_title'    => $meta_title,
-                            // 'meta_keywords' => $meta_keywords,
-                            // 'meta_description' => $meta_description
+                            'meta_title'    => $meta_title,
+                            'meta_keywords' => $meta_keywords,
+                            'meta_description' => $meta_description
                         ]
                     );
 
@@ -124,9 +124,9 @@ class Cronjob extends ComponentBase
                         'lat'           => $job->lat,
                         'lng'           => $job->lng,
                         'slug'          => $slug,
-                        // 'meta_title'    => $meta_title,
-                        // 'meta_keywords' => $meta_keywords,
-                        // 'meta_description' => $meta_description
+                        'meta_title'    => $meta_title,
+                        'meta_keywords' => $meta_keywords,
+                        'meta_description' => $meta_description
                     ]
                 );
                 
