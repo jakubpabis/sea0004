@@ -5,6 +5,7 @@ recordUrl: 'searchit/team/team/update/:id'
 noRecordsMessage: 'backend::lang.list.no_records'
 showSetup: true
 showCheckboxes: true
+showSorting: 1
 toolbar:
     buttons: list_toolbar
     search:
