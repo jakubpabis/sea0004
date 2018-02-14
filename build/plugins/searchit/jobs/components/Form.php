@@ -4,6 +4,8 @@ use Cms\Classes\ComponentBase;
 use Input;
 use Flash;
 use Redirect;
+use Lang;
+use Mail;
 use System\Models\File as FileSys;
 
 class Form extends ComponentBase
@@ -105,10 +107,64 @@ class Form extends ComponentBase
 
             if(Input::get('form_type') == 'application') {
                 Flash::success('app');
-                //$this->sendMail($application_data, $subject, $template);
+
+                // if(Lang::getLocale() == 'en') {
+                //     $this->sendMail($application_data, 'Job application', 'application_en');
+                // } else {
+                //     $this->sendMail($application_data, 'Job application', 'application_nl');
+                // }
+                
             } else {
                 Flash::success('cv');
-                //$this->sendMail($application_data, $subject, $template);
+
+                // if(Lang::getLocale() == 'en') {
+                //     $this->sendMail($application_data, $subject, 'cv_en');
+                // } else {
+                //     $this->sendMail($application_data, $subject, 'cv_nl');
+                // }
+
+            }
+
+        } else {
+
+            $application_data = array(
+                'name' => Input::get('applicant-name'),
+                'email' => Input::get('applicant-email'),
+                'gender' => Input::get('applicant-gender'),
+                'address' => Input::get('applicant-address'),
+                'phone' => Input::get('applicant-phone'),
+                'note' => array(
+                    'text' => Input::get('applicant-message')
+                ),
+                'job' => array(
+                    'id' => Input::get('job-id')
+                ),
+                'sources' => array(
+                    array(
+                        'parent_source_id' => Input::get('applicant-find'),
+                        'name' => 'Applicant'
+                    )
+                )
+            );
+
+            if(Input::get('form_type') == 'application') {
+                Flash::success('app');
+                
+                if(Lang::getLocale() == 'en') {
+                    $this->sendMail($application_data, 'Job application', 'application_en');
+                } else {
+                    $this->sendMail($application_data, 'Job application', 'application_nl');
+                }
+
+            } else {
+                Flash::success('cv');
+                
+                if(Lang::getLocale() == 'en') {
+                    $this->sendMail($application_data, 'CV upload', 'application_en');
+                } else {
+                    $this->sendMail($application_data, 'CV upload', 'application_nl');
+                }
+
             }
 
         }
@@ -119,10 +175,10 @@ class Form extends ComponentBase
 
     protected function sendMail($inputs, $subject, $template)
     {
-        Mail::send('searchit.jobs::mail.message', $inputs, function($message){
+        Mail::send('searchit.jobs::mail.'.$template, $inputs, function($message) use ($inputs, $subject){
 
             $message->from('info@searchitrecruitment.com', 'Searchit It Recruitment');
-            $message->to($inputs->email, $inputs->name);
+            $message->to($inputs['email'], $inputs['name']);
             $message->subject($subject);
 
         });
