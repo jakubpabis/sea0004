@@ -3,20 +3,20 @@
         <tr>
             <td>
                 <h1 style="font-size: 12pt!important;">
-                    Hartelijk dank voor je sollicitatie op de functie van <a href="{{ job_link }}" style="color: #425CBB; font-size: 12pt!important;">{{ job_title|raw }}</a>.<br/>
-                    Je ontvangt spoedig van ons bericht over het verdere verloop van de procedure.
+                    Thank you for your application for the position of <a href="{{ job_link }}" style="color: #425CBB; font-size: 12pt!important;">{{ job_title|raw }}</a>.<br/>
+                    We will carefully consider your application and contact you if you are selected to continue in the recruitment process.
                 </h1>
                 <p style="font-size: 10pt!important;">
-                    <strong>Naam:</strong> {{ name }}<br/>
-                    <strong>E-mail:</strong> {{ email }}<br/>
-                    <strong>Telefoon: </strong> {{ phone }}<br/>
-                    <strong>Adres:</strong> {{ address }}<br/>
-                    <strong>Hoe heb je ons gevonden?</strong> {{ sources[0]['parent_source_id'] }}<br/>
-                    <strong>Motivatie en extra details:</strong><br/> 
+                    <strong>Name:</strong> {{ name }}<br/>
+                    <strong>Email:</strong> {{ email }}<br/>
+                    <strong>Phone: </strong> {{ phone }}<br/>
+                    <strong>Address:</strong> {{ address }}<br/>
+                    <strong>How did you find us? </strong> {{ sources[0]['parent_source_id'] }}<br/>
+                    <strong>Motivation and extra details: </strong><br/> 
                     {{ note['text'] }}
                 </p>
                 <p style="font-size: 10pt!important;">
-                    Vacaturelink: <a href="{{ job_link }}">{{ job_link }}</a>
+                    Job link: <a href="{{ job_link }}">{{ job_link }}</a>
                 </p>
             </td>
         </tr>
