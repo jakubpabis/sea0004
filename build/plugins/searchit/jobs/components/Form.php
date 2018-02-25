@@ -4,6 +4,10 @@ use Cms\Classes\ComponentBase;
 use Input;
 use Flash;
 use Redirect;
+use Request;
+use Lang;
+use Mail;
+use Searchit\Jobs\Models\Job;
 use System\Models\File as FileSys;
 
 class Form extends ComponentBase
@@ -101,14 +105,82 @@ class Form extends ComponentBase
             // close the session
             curl_close($request);
 
-            
+            $application_data = array(
+                'name' => Input::get('applicant-name'),
+                'email' => Input::get('applicant-email'),
+                'address' => Input::get('applicant-address'),
+                'phone' => Input::get('applicant-phone'),
+                'note' => array(
+                    'text' => Input::get('applicant-message')
+                ),
+                'sources' => array(
+                    array(
+                        'parent_source_id' => Input::get('applicant-find'),
+                        'name' => 'Applicant'
+                    )
+                ),
+                'job_title' => Job::where('job_id', Input::get('job-id'))->value('title'),
+                'job_link' => Request::url()
+            );
 
             if(Input::get('form_type') == 'application') {
+                
+                if(Lang::getLocale() == 'en') {
+                    $this->sendMail($application_data, 'Thanks for applying for a job at Search It Recruitment', 'application_en');
+                } else {
+                    $this->sendMail($application_data, 'Bedankt voor solliciteren bij Search It Recruitment', 'application_nl');
+                }
                 Flash::success('app');
-                //$this->sendMail($application_data, $subject, $template);
+
             } else {
+                
+                if(Lang::getLocale() == 'en') {
+                    $this->sendMail($application_data, 'Thanks for uploading your resume at Search It Recruitment', 'resume_en');
+                } else {
+                    $this->sendMail($application_data, 'Bedankt voor het uploaden van jouw cv bij Search It Recruitment', 'resume_nl');
+                }
                 Flash::success('cv');
-                //$this->sendMail($application_data, $subject, $template);
+
+            }
+
+        } else {
+
+            $application_data = array(
+                'name' => Input::get('applicant-name'),
+                'email' => Input::get('applicant-email'),
+                'address' => Input::get('applicant-address'),
+                'phone' => Input::get('applicant-phone'),
+                'note' => array(
+                    'text' => Input::get('applicant-message')
+                ),
+                'sources' => array(
+                    array(
+                        'parent_source_id' => Input::get('applicant-find'),
+                        'name' => 'Applicant'
+                    )
+                ),
+                'job_title' => Job::where('job_id', Input::get('job-id'))->value('title'),
+                'job_link' => Request::url()
+            );
+
+            if(Input::get('form_type') == 'application') {
+                
+                if(Lang::getLocale() == 'en') {
+                    $this->sendMail($application_data, 'Thanks for applying for a job at Search It Recruitment', 'application_en');
+                } else {
+                    $this->sendMail($application_data, 'Bedankt voor solliciteren bij Search It Recruitment', 'application_nl');
+                }
+                Flash::success('app');
+
+            } else {
+                
+                if(Lang::getLocale() == 'en') {
+                    $this->sendMail($application_data, 'Thanks for uploading your resume at Search It Recruitment', 'resume_en');
+                } else {
+                    $this->sendMail($application_data, 'Bedankt voor het uploaden van jouw cv bij Search It Recruitment', 'resume_nl');
+                }
+                Flash::success('cv');
+
             }
 
         }
@@ -119,10 +191,10 @@ class Form extends ComponentBase
 
     protected function sendMail($inputs, $subject, $template)
     {
-        Mail::send('searchit.jobs::mail.message', $inputs, function($message){
+        Mail::send('searchit.jobs::mail.'.$template, $inputs, function($message) use ($inputs, $subject){
 
             $message->from('info@searchitrecruitment.com', 'Searchit It Recruitment');
-            $message->to($inputs->email, $inputs->name);
+            $message->to($inputs['email'], $inputs['name']);
             $message->subject($subject);
 
         });
