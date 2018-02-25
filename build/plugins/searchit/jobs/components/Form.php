@@ -32,7 +32,7 @@ class Form extends ComponentBase
     */
     protected function onFormSubmit()
     {
-        if(env('APP_ENV') !== 'dev') {
+        if(env('APP_ENV') !== 'dev' || env('APP_ENV') !== 'development') {
 
             if(Input::hasFile('applicant-cv')) {
 
