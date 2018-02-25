@@ -1,30 +1,29 @@
-<table style="max-width: 480px; width: 100%; margin: 30px;" cellspacing="0" cellpadding="0" border="0">
+<table style="max-width: 100%; width: 100%; margin: 15px;" cellspacing="0" cellpadding="0" border="0">
     <tbody>
         <tr>
             <td>
                 <h1 style="font-size: 12pt!important;">
-                    Thank you for submitting your application!
+                    Thank you for your application for the position of <a href="{{ job_link }}" style="color: #425CBB; font-size: 12pt!important;">{{ job_title|raw }}</a>.<br/>
+                    We will carefully consider your application and contact you if you are selected to continue in the recruitment process.
                 </h1>
-                <p style="font-size: 10pt!important;">
-                    Your submitted information:
-                </p>
                 <p style="font-size: 10pt!important;">
                     <strong>Name:</strong> {{ name }}<br/>
                     <strong>Email:</strong> {{ email }}<br/>
+                    <strong>Phone: </strong> {{ phone }}<br/>
                     <strong>Address:</strong> {{ address }}<br/>
-                    <strong>Phone:</strong> {{ phone }}<br/>
-                    <strong>Motivation and extra details:</strong><br/> 
+                    <strong>How did you find us? </strong> {{ sources[0]['parent_source_id'] }}<br/>
+                    <strong>Motivation and extra details: </strong><br/> 
                     {{ note['text'] }}
                 </p>
                 <p style="font-size: 10pt!important;">
-                    We will contact you shortly!
+                    Job link: <a href="{{ job_link }}">{{ job_link }}</a>
                 </p>
             </td>
         </tr>
     </tbody>
 </table>
 
-<table style="max-width: 320px; width: 100%; margin: 0 30px;" cellspacing="0" cellpadding="0" border="0">
+<table style="max-width: 320px; width: 100%; margin: 0 15px;" cellspacing="0" cellpadding="0" border="0">
     <tbody>
         <tr>
             <td>
