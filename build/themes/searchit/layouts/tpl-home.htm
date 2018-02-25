@@ -41,7 +41,7 @@ forceUrl = 1
 		<picture class="bg-cover-abs">
 			<source media="(min-width: 768px)" srcset="{{ headerImg|media }}">
 			{% set img = headerImg|split('.') %}
-			<source media="(min-width: 1px)" srcset="{{ (img[0]~'_768'~img[1])|media }}">
+			<source media="(min-width: 1px)" srcset="{{ (img[0]~'_768.'~img[1])|media }}">
             <img class="bg-cover-abs" src="{{ headerImg|media }}">
 		</picture>
 		<div class="centerV-container">
