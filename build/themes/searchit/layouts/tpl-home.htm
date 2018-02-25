@@ -37,10 +37,11 @@ forceUrl = 1
 {% partial 'head' %}
 
 <section class="home-header">
-	<div class="home-header__text">
+	<header class="home-header__text">
 		<picture class="bg-cover-abs">
-            <source media="(min-width: 768px)" srcset="{{ headerImg|media }}">
-			<source media="(min-width: 1px)" srcset="{{ (headerImg~'_768') }}">
+			<source media="(min-width: 768px)" srcset="{{ headerImg|media }}">
+			{% set img = headerImg|split('.') %}
+			<source media="(min-width: 1px)" srcset="{{ (img[0]~'_768'~img[1])|media }}">
             <img class="bg-cover-abs" src="{{ headerImg|media }}">
 		</picture>
 		<div class="centerV-container">
@@ -59,7 +60,7 @@ forceUrl = 1
 				</div>
 			</div>
 		</div>
-	</div>
+	</header>
 </section>
 
 <section class="home-categories">
