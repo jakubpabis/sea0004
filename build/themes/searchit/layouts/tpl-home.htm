@@ -1,124 +1,248 @@
-description = "References page"
+description = "Home page"
 
 [staticMenu mainMenu]
 code = "main-menu"
 
 [staticPage]
 
-[builderList testimonialsListing]
-modelClass = "Searchit\Testimonials\Models\Testimonials"
-scope = "-"
-displayColumn = "name"
-noRecordsMessage = "No records found"
-detailsPage = "-"
-detailsUrlParameter = "id"
-pageNumber = "{{ :page }}"
-
 [localePicker]
 forceUrl = 1
 
 [form]
+[jobsList]
 
-[breadcrumbs]
 [langCheck]
 ==
-{% set records = testimonialsListing.records %}
-{% set displayColumn = testimonialsListing.displayColumn %}
-{% set noRecordsMessage = testimonialsListing.noRecordsMessage %}
-{% set detailsPage = testimonialsListing.detailsPage %}
-{% set detailsKeyColumn = testimonialsListing.detailsKeyColumn %}
-{% set detailsUrlParameter = testimonialsListing.detailsUrlParameter %}
 
 {variable name="headerImg" label="Header image" tab="Header" type="mediafinder"}{/variable}
-{variable name="refsImg1" label="Right image" tab="Header" type="mediafinder"}{/variable}
-{variable name="refsImg2" label="Left image" tab="Header" type="mediafinder"}{/variable}
 {variable name="headerText" label="Header text" tab="Header" type="richeditor"}{/variable}
-{variable name="hreflang_en" label="hreflang - EN - URL" tab="hreflang" type="text"}{/variable}
-{variable name="hreflang_nl" label="hreflang - NL - URL" tab="hreflang" type="text"}{/variable}
+
+{variable name="aboutImg1" label="About image first" tab="About" type="mediafinder"}{/variable}
+{variable name="AboutText1" label="About text first" tab="About" type="richeditor"}{/variable}
+{variable name="aboutImg2" label="About image second" tab="About" type="mediafinder"}{/variable}
+{variable name="AboutText2" label="About text second" tab="About" type="richeditor"}{/variable}
+
+{variable name="statsTitle" label="Title" tab="Statistics" type="text"}{/variable}
+{variable name="stats1Title" label="Stat 1 Title" tab="Statistics" type="text"}{/variable}
+{variable name="stats1Number" label="Stat 1 Number" tab="Statistics" type="text"}{/variable}
+{variable name="stats2Title" label="Stat 2 Title" tab="Statistics" type="text"}{/variable}
+{variable name="stats2Number" label="Stat 2 Number" tab="Statistics" type="text"}{/variable}
+{variable name="stats3Title" label="Stat 3 Title" tab="Statistics" type="text"}{/variable}
+{variable name="stats3Number" label="Stat 3 Number" tab="Statistics" type="text"}{/variable}
+{variable name="stats4Title" label="Stat 4 Title" tab="Statistics" type="text"}{/variable}
+{variable name="stats4Number" label="Stat 4 Number" tab="Statistics" type="text"}{/variable}
+
+{variable name="testimonialsTitle" label="Title" tab="Testimonials" type="text"}{/variable}
 
 {% partial 'head' %}
-{% component 'breadcrumbs' %}
 
-<section class="references">
-    <div class="references__header">
-        <picture class="bg-cover-abs">
-            <source media="(min-width: 768px)" srcset="{{ headerImg|media }}">
-            {% set img = headerImg|split('.') %}
+<section class="home-header">
+	<header class="home-header__text">
+		<picture class="bg-cover-abs">
+			<source media="(min-width: 768px)" srcset="{{ headerImg|media }}">
+			{% set img = headerImg|split('.') %}
 			<source media="(min-width: 1px)" srcset="{{ (img[0]~'_768.'~img[1])|media }}">
             <img class="bg-cover-abs" src="{{ headerImg|media }}">
-        </picture>
-        <div class="container container-sml">
-            <div class="centrelize">
-                {{ headerText|raw }}
-            </div>
-        </div>
-    </div>
-	<div class="references__section" id="clients">
-		<div class="references__section-text-left">
+		</picture>
+		<div class="centerV-container">
+			<div class="centerV-content">
+				<div class="container">
+                    {{ headerText|raw }}
+					<form 
+						class="search-box"
+						data-request="onSearchRedirect"
+					>
+						<div style="display:none;" id="placeholdertext">{{ 'Search from'|_ }} {{ jobsCount }} {{ 'new jobs'|_ }}</div>
+						<input id="searchboxtextchange" type="text" name="search-input" class="search-box__field" placeholder="" onfocus="stopTyping()" onblur="startTyping()">
+						<input type="submit" value="Search" class="search-box__submit">
+						<i class="material-icons search-box__submit-icon" aria-hidden="true">search</i>
+					</form>
+				</div>
+			</div>
+		</div>
+	</header>
+</section>
+
+<section class="home-categories">
+	<div class="container">
+		<div class="home-categories__grid-container">
+			<div class="home-categories__grid">
+				<a href="{{ url('/') }}{{ jobCat }}front-end-development">
+					<div class="home-categories__grid-content">
+						<i class="fa fa-code" aria-hidden="true"></i>
+						<p class="category-title">
+							{{ 'Front-end Development Jobs'|_ }}
+						</p>
+					</div>
+				</a>
+			</div>
+			<div class="home-categories__grid">
+				<a href="{{ url('/') }}{{ jobCat }}back-end-development">
+					<div class="home-categories__grid-content">
+						<i class="fa fa-terminal" aria-hidden="true"></i>
+						<p class="category-title">
+							{{ 'Back-end Development Jobs'|_ }}
+						</p>
+					</div>
+				</a>
+			</div>
+			<div class="home-categories__grid">
+				<a href="{{ url('/') }}{{ jobCat }}mobile-development">
+					<div class="home-categories__grid-content">
+						<i class="fa fa-mobile" aria-hidden="true"></i>
+						<p class="category-title">
+							{{ 'Mobile Development Jobs'|_ }}
+						</p>
+					</div>
+				</a>
+			</div>
+			<div class="home-categories__grid">
+				<a href="{{ url('/') }}{{ jobCat }}online-marketing">
+					<div class="home-categories__grid-content">
+						<i class="fa fa-line-chart" aria-hidden="true"></i>
+						<p class="category-title">
+							{{ 'Online Marketing Jobs'|_ }}
+						</p>
+					</div>
+				</a>
+			</div>
+			<div class="home-categories__grid">
+				<a href="{{ url('/') }}{{ jobCat }}">
+					<div class="home-categories__grid-content">
+						<i class="fa fa-sitemap" aria-hidden="true"></i>
+						<p class="category-title">
+							{{ 'All Jobs'|_ }}
+						</p>
+					</div>
+				</a>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="home-about">
+	<div class="home-about__section">
+		<div class="home-about__section-text-left">
 			<div class="centerV-container">
 				<div class="centerV-content">
 					<div class="container__half-right">
-						<h3>
-							{{ 'References from our clients.'|_ }}
-						</h3>
-						<div id="siema-carousel-clients">
-                            {% for record in records if record.type == 'client' %}
-                                <div>
-                                    <p class="references__summary">
-                                        {{ html_limit(record.summary|striptags, 1100, '..."') }}
-                                    </p>
-                                    <p class="references__person">
-                                        {{ record.who }} - {{ record.type }}
-                                    </p>
-                                </div>
-                            {% endfor %}
-                        </div>
-                        <div id="siema-prev-clients">
-                            <i class="material-icons">chevron_left</i>
-                        </div>
-                        <div id="siema-next-clients">
-                            <i class="material-icons">chevron_right</i>
-                        </div>
+                        {{ AboutText1|raw }}
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="references__section-img-right">
-	        <img class="bg-cover" src="{{ refsImg1|media }}">
+		<div class="home-about__section-img-right">
+			<img class="bg-cover" src="{{ aboutImg1|media }}">
 		</div>
+		
 	</div>
-	<div class="references__section" id="candidates">
-		<div class="references__section-img-left">
-			<img class="bg-cover" src="{{ refsImg2|media }}">
+	<div class="home-about__section">
+		
+		<div class="home-about__section-img-left">
+			<img class="bg-cover" src="{{ aboutImg2|media }}">
 		</div>
-		<div class="references__section-text-right">
+		<div class="home-about__section-text-right">
 			<div class="centerV-container">
 				<div class="centerV-content">
 					<div class="container__half-left">
-						<h3>
-							{{ 'References from candidates.'|_ }}
-						</h3>
-						<div id="siema-carousel-candidates">
-                            {% for record in records if record.type == 'candidate' %}
-                                <div>
-                                    <p class="references__summary">
-                                        {{ html_limit(record.summary|striptags, 1000) }}
-                                    </p>
-                                    <p class="references__person">
-                                        {{ record.who }} - {{ record.type }}
-                                    </p>
-                                </div>
-                            {% endfor %}
-                        </div>
-                        <div id="siema-prev-candidates">
-                            <i class="material-icons">chevron_left</i>
-                        </div>
-                        <div id="siema-next-candidates">
-                            <i class="material-icons">chevron_right</i>
-                        </div>
+                        {{ AboutText2|raw }}
 					</div>
 				</div>
 			</div>
+		</div>
+	</div>
+</section>
+
+<section class="home-stats">
+	<div class="container">
+		<h3 class="home-stats__title">
+			{{ statsTitle|raw }}
+		</h3>
+		<div class="home-stats__grid-container">
+			<div class="home-stats__grid">
+				<div class="home-stats__grid-content">
+					<i class="material-icons">tag_faces</i>
+					<span class="stats-number">
+						{{ stats1Number }}
+					</span>
+					<p class="stats-title">
+						{{ stats1Title }}
+					</p>
+				</div>
+			</div>
+			<div class="home-stats__grid">
+				<div class="home-stats__grid-content">
+					<i class="material-icons">business_center</i>
+					<span class="stats-number">
+						{{ jobsCount }}
+					</span>
+					<p class="stats-title">
+						{{ stats2Title }}
+					</p>
+				</div>
+			</div>
+			<div class="home-stats__grid">
+				<div class="home-stats__grid-content">
+					<i class="material-icons">transfer_within_a_station</i>
+					<span class="stats-number">
+						{{ stats3Number }}
+					</span>
+					<p class="stats-title">
+						{{ stats3Title }}
+					</p>
+				</div>
+			</div>
+			<div class="home-stats__grid">
+				<div class="home-stats__grid-content">
+					<i class="material-icons">person_pin</i>
+					<span class="stats-number">
+						{{ stats4Number }}
+					</span>
+					<p class="stats-title">
+						{{ stats4Title }}
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="home-references">
+	<div class="container">
+		<h3 class="home-references__title">
+			{{ testimonialsTitle|raw }}
+		</h3>
+		<div id="siema-carousel">
+			<div>
+				<p class="home-references__summary">
+					"It all started with an informal and relaxed, yet professional, phone call during which we discussed my ambitions and interests. Within the following two weeks I had my interview at the company and got an offer! That’s in a nutshell how professional Ernst Jan and Joost are.  As a candidate, my needs and ambitions were well heard and well understood without hassle. A definite recommendation from my side."
+				</p>
+				<p class="home-references__person">
+					Youssef Raji - Java Developer - candidate 
+				</p>
+			</div>
+			<div>
+				<p class="home-references__summary">
+					“My experience with Search It Recruitment couldn’t have been better. Since the first contact until the last one, they always showed interest in finding the job that best fitted my interests and desires. Moreover, they were always available and ready to help me during the searching process, and even provided me some helpful advices. Thanks to Search It Recruitment, I can now say that I’m really happy were I am, and I don’t think I could have find a better job.”
+				</p>
+				<p class="home-references__person">
+					Micael dos Reis - Front-End Developer - candidate 
+				</p>
+			</div>
+			<div>
+				<p class="home-references__summary">
+					"It all started with an informal and relaxed, yet professional, phone call during which we discussed my ambitions and interests. Within the following two weeks I had my interview at the company and got an offer! That’s in a nutshell how professional Ernst Jan and Joost are.  As a candidate, my needs and ambitions were well heard and well understood without hassle. A definite recommendation from my side."
+				</p>
+				<p class="home-references__person">
+					Youssef Raji - Java Developer - candidate 
+				</p>
+			</div>
+		</div>
+		<div id="siema-prev">
+			<i class="material-icons">chevron_left</i>
+		</div>
+		<div id="siema-next">
+			<i class="material-icons">chevron_right</i>
 		</div>
 	</div>
 </section>
