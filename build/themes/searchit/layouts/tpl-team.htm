@@ -40,12 +40,10 @@ forceUrl = 1
 <section class="team">
     <div class="team__header">
         <picture class="bg-cover-abs">
-            <source media="(min-width: 1440px)" srcset="{{ headerImg|media|resize(1920) }}">
-            <source media="(min-width: 1024px)" srcset="{{ headerImg|media|resize(1440) }}">
-            <source media="(min-width: 768px)" srcset="{{ headerImg|media|resize(1024) }}">
-			<source media="(min-width: 480px)" srcset="{{ headerImg|media|resize(768) }}">
-			<source media="(min-width: 1px)" srcset="{{ headerImg|media|resize(480) }}">
-            <img class="bg-cover-abs" src="{{ headerImg|media|resize(1920) }}">
+            <source media="(min-width: 768px)" srcset="{{ headerImg|media }}">
+            {# {% set img = headerImg|split('.') %} #}
+			{# <source media="(min-width: 1px)" srcset="{{ (img[0]~'_768.'~img[1])|media }}"> #}
+            <img class="bg-cover-abs" src="{{ headerImg|media }}">
         </picture>
         <div class="container container-sml">
             <div class="centrelize">
