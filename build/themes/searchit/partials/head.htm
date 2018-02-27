@@ -44,6 +44,34 @@
 	<meta name="author" content="Search It Recruitment">
 	<meta name="generator" content="Search It Recruitment">
 	<!-- /Other meta -->
+	<!-- OG Tags -->
+		<meta property="fb:app_id" content="382574281913074">
+		<meta property="og:site_name" content="Search It Recruitment"/>
+		{% if record.meta_title %}
+			<meta property="og:title" content="{{ record.meta_title }}"/>
+		{% elseif record.title %}
+			<meta property="og:title" content="{{ record.title }} | Search It Recruitment"/>
+		{% elseif this.page.meta_title %}
+			<meta property="og:title" content="{{ this.page.meta_title }}"/>
+		{% else %}
+			<meta property="og:title" content="{{ this.page.title }} | Search It Recruitment"/>
+		{% endif %}
+		<meta property="og:url" content="{{ url('/') }}/{{ activeLocale }}{{ this.page.url }}"/>
+		<meta property="og:type" content="website" />
+		{% if record.meta_description %}
+			<meta property="og:description" content="{{ record.meta_description }}"/>
+		{% elseif record.excerpt %}
+			<meta property="og:description" content="{{ record.excerpt|striptags|slice(0, 160) }}"/>
+		{% elseif record.summary %}
+			<meta property="og:description" content="{{ record.summary|striptags|slice(0, 160) }}"/>
+		{% elseif this.page.meta_description %}
+			<meta property="og:description" content="{{ this.page.meta_description }}"/>
+		{% endif %}
+		<meta property="og:image" content="{{ 'assets/img/logo.png'|theme }}"/>
+		<meta property="og:image:type" content="image/png" />
+		<meta property="og:image:width" content="850" />
+		<meta property="og:image:height" content="300" />
+	<!-- /OG Tags -->
 	<!-- hreflangs and prefetching -->
 	{% if hreflang_en and hreflang_nl %}
 		<link rel="alternate" hreflang="en" href="{{ url('/') }}/en/{{ hreflang_en }}" />
@@ -97,52 +125,24 @@
 	{% endif %}
 	<!-- /hreflangs and prefetching -->
 	<!-- Favicons -->
-	<link rel="apple-touch-icon" sizes="57x57" href="{{ 'assets/img/favicon/apple-icon-57x57.png'|theme }}">
-	<link rel="apple-touch-icon" sizes="60x60" href="{{ 'assets/img/favicon/apple-icon-60x60.png'|theme }}">
-	<link rel="apple-touch-icon" sizes="72x72" href="{{ 'assets/img/favicon/apple-icon-72x72.png'|theme }}">
-	<link rel="apple-touch-icon" sizes="76x76" href="{{ 'assets/img/favicon/apple-icon-76x76.png'|theme }}">
-	<link rel="apple-touch-icon" sizes="114x114" href="{{ 'assets/img/favicon/apple-icon-114x114.png'|theme }}">
-	<link rel="apple-touch-icon" sizes="120x120" href="{{ 'assets/img/favicon/apple-icon-120x120.png'|theme }}">
-	<link rel="apple-touch-icon" sizes="144x144" href="{{ 'assets/img/favicon/apple-icon-144x144.png'|theme }}">
-	<link rel="apple-touch-icon" sizes="152x152" href="{{ 'assets/img/favicon/apple-icon-152x152.png'|theme }}">
-	<link rel="apple-touch-icon" sizes="180x180" href="{{ 'assets/img/favicon/apple-icon-180x180.png'|theme }}">
-	<link rel="icon" type="image/png" sizes="192x192"  href="{{ 'assets/img/favicon/android-icon-192x192.png'|theme }}">
-	<link rel="icon" type="image/png" sizes="32x32" href="{{ 'assets/img/favicon/favicon-32x32.png'|theme }}">
-	<link rel="icon" type="image/png" sizes="96x96" href="{{ 'assets/img/favicon/favicon-96x96.png'|theme }}">
-	<link rel="icon" type="image/png" sizes="16x16" href="{{ 'assets/img/favicon/favicon-16x16.png'|theme }}">
-	<link rel="manifest" href="{{ 'assets/img/favicon/manifest.json'|theme }}">
-	<meta name="msapplication-TileColor" content="#ffffff">
-	<meta name="msapplication-TileImage" content="{{ 'assets/img/favicon/ms-icon-144x144.png'|theme }}">
-	<meta name="theme-color" content="#ffffff">
+		<link rel="apple-touch-icon" sizes="57x57" href="{{ 'assets/img/favicon/apple-icon-57x57.png'|theme }}">
+		<link rel="apple-touch-icon" sizes="60x60" href="{{ 'assets/img/favicon/apple-icon-60x60.png'|theme }}">
+		<link rel="apple-touch-icon" sizes="72x72" href="{{ 'assets/img/favicon/apple-icon-72x72.png'|theme }}">
+		<link rel="apple-touch-icon" sizes="76x76" href="{{ 'assets/img/favicon/apple-icon-76x76.png'|theme }}">
+		<link rel="apple-touch-icon" sizes="114x114" href="{{ 'assets/img/favicon/apple-icon-114x114.png'|theme }}">
+		<link rel="apple-touch-icon" sizes="120x120" href="{{ 'assets/img/favicon/apple-icon-120x120.png'|theme }}">
+		<link rel="apple-touch-icon" sizes="144x144" href="{{ 'assets/img/favicon/apple-icon-144x144.png'|theme }}">
+		<link rel="apple-touch-icon" sizes="152x152" href="{{ 'assets/img/favicon/apple-icon-152x152.png'|theme }}">
+		<link rel="apple-touch-icon" sizes="180x180" href="{{ 'assets/img/favicon/apple-icon-180x180.png'|theme }}">
+		<link rel="icon" type="image/png" sizes="192x192"  href="{{ 'assets/img/favicon/android-icon-192x192.png'|theme }}">
+		<link rel="icon" type="image/png" sizes="32x32" href="{{ 'assets/img/favicon/favicon-32x32.png'|theme }}">
+		<link rel="icon" type="image/png" sizes="96x96" href="{{ 'assets/img/favicon/favicon-96x96.png'|theme }}">
+		<link rel="icon" type="image/png" sizes="16x16" href="{{ 'assets/img/favicon/favicon-16x16.png'|theme }}">
+		<link rel="manifest" href="{{ 'assets/img/favicon/manifest.json'|theme }}">
+		<meta name="msapplication-TileColor" content="#ffffff">
+		<meta name="msapplication-TileImage" content="{{ 'assets/img/favicon/ms-icon-144x144.png'|theme }}">
+		<meta name="theme-color" content="#ffffff">
 	<!-- /Favicons -->
-	<!-- OG Tags -->
-		<meta property="fb:app_id" content="382574281913074">
-		<meta property="og:site_name" content="Search It Recruitment"/>
-		{% if record.meta_title %}
-			<meta property="og:title" content="{{ record.meta_title }}"/>
-		{% elseif record.title %}
-			<meta property="og:title" content="{{ record.title }} | Search It Recruitment"/>
-		{% elseif this.page.meta_title %}
-			<meta property="og:title" content="{{ this.page.meta_title }}"/>
-		{% else %}
-			<meta property="og:title" content="{{ this.page.title }} | Search It Recruitment"/>
-		{% endif %}
-		<meta property="og:url" content="{{ url('/') }}/{{ activeLocale }}{{ this.page.url }}"/>
-		<meta property="og:type" content="website" />
-		{% if record.meta_description %}
-			<meta property="og:description" content="{{ record.meta_description }}"/>
-		{% elseif record.excerpt %}
-			<meta property="og:description" content="{{ record.excerpt|striptags|slice(0, 160) }}"/>
-		{% elseif record.summary %}
-			<meta property="og:description" content="{{ record.summary|striptags|slice(0, 160) }}"/>
-		{% elseif this.page.meta_description %}
-			<meta property="og:description" content="{{ this.page.meta_description }}"/>
-		{% endif %}
-		<meta property="og:image" content="{{ 'assets/img/logo.png'|theme }}"/>
-		<meta property="og:image:type" content="image/png" />
-		<meta property="og:image:width" content="850" />
-		<meta property="og:image:height" content="300" />
-	<!-- /OG Tags -->
 	<link rel="stylesheet" href="{{ [
         'assets/css/prototype.css',
         '@framework.extras'
