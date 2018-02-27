@@ -30,6 +30,8 @@ forceUrl = 1
 {% set detailsUrlParameter = testimonialsListing.detailsUrlParameter %}
 
 {variable name="headerImg" label="Header image" tab="Header" type="mediafinder"}{/variable}
+{variable name="refsImg1" label="Right image" tab="Header" type="mediafinder"}{/variable}
+{variable name="refsImg2" label="Left image" tab="Header" type="mediafinder"}{/variable}
 {variable name="headerText" label="Header text" tab="Header" type="richeditor"}{/variable}
 {variable name="hreflang_en" label="hreflang - EN - URL" tab="hreflang" type="text"}{/variable}
 {variable name="hreflang_nl" label="hreflang - NL - URL" tab="hreflang" type="text"}{/variable}
@@ -40,12 +42,10 @@ forceUrl = 1
 <section class="references">
     <div class="references__header">
         <picture class="bg-cover-abs">
-            <source media="(min-width: 1440px)" srcset="{{ headerImg|media|resize(1920) }}">
-            <source media="(min-width: 1024px)" srcset="{{ headerImg|media|resize(1440) }}">
-            <source media="(min-width: 768px)" srcset="{{ headerImg|media|resize(1024) }}">
-			<source media="(min-width: 480px)" srcset="{{ headerImg|media|resize(768) }}">
-			<source media="(min-width: 1px)" srcset="{{ headerImg|media|resize(480) }}">
-            <img class="bg-cover-abs" src="{{ headerImg|media|resize(1920) }}">
+            <source media="(min-width: 768px)" srcset="{{ headerImg|media }}">
+            {% set img = headerImg|split('.') %}
+			<source media="(min-width: 1px)" srcset="{{ (img[0]~'_768.'~img[1])|media }}">
+            <img class="bg-cover-abs" src="{{ headerImg|media }}">
         </picture>
         <div class="container container-sml">
             <div class="centrelize">
@@ -84,22 +84,12 @@ forceUrl = 1
 			</div>
 		</div>
 		<div class="references__section-img-right">
-			<picture class="bg-cover">
-				<source media="(min-width: 1440px)" srcset="{{ 'assets/img/hero3.jpg'|theme|resize(1000) }}">
-	            <source media="(min-width: 480px)" srcset="{{ 'assets/img/hero3.jpg'|theme|resize(768) }}">
-				<source media="(min-width: 1px)" srcset="{{ 'assets/img/hero3.jpg'|theme|resize(480) }}">
-	            <img class="bg-cover" src="{{ 'assets/img/hero3.jpg'|theme }}">
-			</picture>
+	        <img class="bg-cover" src="{{ refsImg1|media }}">
 		</div>
 	</div>
 	<div class="references__section" id="candidates">
 		<div class="references__section-img-left">
-			<picture class="bg-cover">
-				<source media="(min-width: 1440px)" srcset="{{ 'assets/img/hero5.jpg'|theme }}">
-	            <source media="(min-width: 480px)" srcset="{{ 'assets/img/hero5.jpg'|theme|resize(768) }}">
-				<source media="(min-width: 1px)" srcset="{{ 'assets/img/hero5.jpg'|theme|resize(480) }}">
-	            <img class="bg-cover" src="{{ 'assets/img/hero5.jpg'|theme }}">
-			</picture>
+			<img class="bg-cover" src="{{ refsImg2|media }}">
 		</div>
 		<div class="references__section-text-right">
 			<div class="centerV-container">
