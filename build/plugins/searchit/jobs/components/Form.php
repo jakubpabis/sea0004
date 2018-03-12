@@ -105,40 +105,40 @@ class Form extends ComponentBase
             // close the session
             curl_close($request);
 
-            // $application_data = array(
-            //     'name' => Input::get('applicant-name'),
-            //     'email' => Input::get('applicant-email'),
-            //     'address' => Input::get('applicant-address'),
-            //     'phone' => Input::get('applicant-phone'),
-            //     'note' => array(
-            //         'text' => Input::get('applicant-message')
-            //     ),
-            //     'sources' => array(
-            //         array(
-            //             'parent_source_id' => Input::get('applicant-find'),
-            //             'name' => 'Applicant'
-            //         )
-            //     ),
-            //     'job_title' => Job::where('job_id', Input::get('job-id'))->value('title'),
-            //     'job_link' => Request::url()
-            // );
+            $form_data = array(
+                'name' => Input::get('applicant-name'),
+                'email' => Input::get('applicant-email'),
+                'address' => Input::get('applicant-address'),
+                'phone' => Input::get('applicant-phone'),
+                'note' => array(
+                    'text' => Input::get('applicant-message')
+                ),
+                'sources' => array(
+                    array(
+                        'parent_source_id' => Input::get('applicant-find'),
+                        'name' => 'Applicant'
+                    )
+                ),
+                'job_title' => Job::where('job_id', Input::get('job-id'))->value('title'),
+                'job_link' => Request::url()
+            );
 
             if(Input::get('form_type') == 'application') {
                 
-                // if(Lang::getLocale() == 'en') {
-                //     $this->sendMail($application_data, 'Thanks for applying for a job at Search It Recruitment', 'application_en');
-                // } else {
-                //     $this->sendMail($application_data, 'Bedankt voor solliciteren bij Search It Recruitment', 'application_nl');
-                // }
+                if(Lang::getLocale() == 'en') {
+                    $this->sendMail($form_data, 'Thanks for applying for a job at Search It Recruitment', 'application_en');
+                } else {
+                    $this->sendMail($form_data, 'Bedankt voor solliciteren bij Search It Recruitment', 'application_nl');
+                }
                 Flash::success('app');
 
             } else {
                 
-                // if(Lang::getLocale() == 'en') {
-                //     $this->sendMail($application_data, 'Thanks for uploading your resume at Search It Recruitment', 'resume_en');
-                // } else {
-                //     $this->sendMail($application_data, 'Bedankt voor het uploaden van jouw cv bij Search It Recruitment', 'resume_nl');
-                // }
+                if(Lang::getLocale() == 'en') {
+                    $this->sendMail($form_data, 'Thanks for uploading your resume at Search It Recruitment', 'resume_en');
+                } else {
+                    $this->sendMail($form_data, 'Bedankt voor het uploaden van jouw cv bij Search It Recruitment', 'resume_nl');
+                }
                 Flash::success('cv');
 
             }
