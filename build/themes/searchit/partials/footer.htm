@@ -183,12 +183,18 @@ public function onStart()
 		</div>
 		<!-- Scripts -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-		<script type="text/javascript" src="//platform.linkedin.com/in.js" defer></script>
         <script src="{{ [
             'assets/js/app.js',
             '@framework',
             '@framework.extras'
-        ]|theme }}" defer></script>
+		]|theme }}" defer></script>
+		<script type="text/javascript" src="//platform.linkedin.com/in.js" defer>
+			$(window).on('load', function() {
+				api_key: 77dug7ogaz4ouh
+				onLoad: OnLinkedInFrameworkLoad
+				authorize: false
+			});
+		</script>
 	</div> <!-- /#wrapper -->
 	<div id="cookieMessage">
 		<div class="container">

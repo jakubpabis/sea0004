@@ -584,9 +584,3 @@ $(document).ready(function() {
 	}
 	console.log(document.referrer);
 });
-
-$(window).on('load', function() {
-	api_key: '77dug7ogaz4ouh'
-	onLoad: OnLinkedInFrameworkLoad
-	authorize: false
-});
