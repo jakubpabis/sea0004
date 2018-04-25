@@ -327,27 +327,27 @@ function getReferrer()
 		
 		$host = urlParser($url)['host'];
 		$list = [
-			/Bing/i,
-			/Facebook/i,
-			/Freelance/i,
-			/Github/i,
-			/Glassdoor/i,
-			/Google/i,
-			/Indeed/i,
-			/Instagram/i,
-			/Jobbird/i,
-			/LinkedIn/i,
-			/Monsterboard/i,
-			/Stackoverflow/i,
-			/Twitter/i,
-			/sea0004/i
+			'Bing',
+			'Facebook',
+			'Freelance',
+			'Github',
+			'Glassdoor',
+			'Google',
+			'Indeed',
+			'Instagram',
+			'Jobbird',
+			'LinkedIn',
+			'Monsterboard',
+			'Stackoverflow',
+			'Twitter',
+			'sea0004'
 		];
 
 		if($host !== window.location.hostname) {
 
 			console.log('from:'+ $host +' yay!');
 			for(var $i = 0; $i < $list.length; $i++) {
-				if( $host.match($list[$i]) !== null ) {
+				if( $host.match(/$list[$i]/i) !== null ) {
 					console.log($list[$i] + ' yay!');
 					$('#uploadCvModal, #jobFormModal').find('select[name="applicant-find"]').val($list[$i]);
 					break;
