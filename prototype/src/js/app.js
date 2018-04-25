@@ -347,8 +347,9 @@ function getReferrer()
 
 			console.log('from:'+ $host +' yay!');
 			for(var $i = 0; $i < $list.length; $i++) {
-				if( $host.match(/$list[$i]/i) !== null ) {
-					console.log($list[$i] + ' yay!');
+				$string = $list[$i].toLowerCase();
+				if( $host.match($string) !== null ) {
+					console.log($string + ' yay!');
 					$('#uploadCvModal, #jobFormModal').find('select[name="applicant-find"]').val($list[$i]);
 					break;
 				} else if($i === $list.length) {
