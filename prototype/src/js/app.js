@@ -348,7 +348,7 @@ function getReferrer()
 			for(var $i = 0; $i < $list.length; $i++) {
 				if( $host.match($list[$i]) !== null ) {
 					console.log($list[$i] + ' yay!');
-					$('#uploadCvModal, #jobFormModal').find('select[name="applicant-find"][value="'+$list[$i]+'"]').select();
+					$('#uploadCvModal, #jobFormModal').find('select[name="applicant-find"]').val($list[$i]);
 					break;
 				} else if($i === $list.length) {
 					$('#uploadCvModal, #jobFormModal').find('select[name="applicant-find"]').append($('<option>', {
@@ -359,6 +359,8 @@ function getReferrer()
 				}
 			}
 			
+		} else {
+			$('#uploadCvModal, #jobFormModal').find('select[name="applicant-find"]').val('Website SIR');
 		}
 
 	}
