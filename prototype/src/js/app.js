@@ -343,7 +343,7 @@ function getReferrer()
 			'sea0004'
 		];
 
-		if($host !== window.location.hostname) {
+		if($host !== window.location.hostname || true) {
 
 			for(var $i = 0; $i < $list.length; $i++) {
 				if( $host.match($list[$i]) !== null ) {
