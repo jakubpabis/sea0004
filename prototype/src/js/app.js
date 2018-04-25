@@ -327,24 +327,25 @@ function getReferrer()
 		
 		$host = urlParser($url)['host'];
 		$list = [
-			'Bing',
-			'Facebook',
-			'Freelance',
-			'Github',
-			'Glassdoor',
-			'Google',
-			'Indeed',
-			'Instagram',
-			'Jobbird',
-			'LinkedIn',
-			'Monsterboard',
-			'Stackoverflow',
-			'Twitter',
-			'sea0004'
+			/Bing/i,
+			/Facebook/i,
+			/Freelance/i,
+			/Github/i,
+			/Glassdoor/i,
+			/Google/i,
+			/Indeed/i,
+			/Instagram/i,
+			/Jobbird/i,
+			/LinkedIn/i,
+			/Monsterboard/i,
+			/Stackoverflow/i,
+			/Twitter/i,
+			/sea0004/i
 		];
 
-		if($host !== window.location.hostname || true) {
+		if($host !== window.location.hostname) {
 
+			console.log('from:'+ $host +' yay!');
 			for(var $i = 0; $i < $list.length; $i++) {
 				if( $host.match($list[$i]) !== null ) {
 					console.log($list[$i] + ' yay!');
