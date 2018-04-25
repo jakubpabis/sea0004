@@ -48,6 +48,12 @@ pageNumber = "{{ :page }}"
 {variable name="stats4Title" label="Stat 4 Title" tab="Statistics" type="text"}{/variable}
 {variable name="stats4Number" label="Stat 4 Number" tab="Statistics" type="text"}{/variable}
 
+{variable name="clientsTitle" label="Title" tab="Clients" type="text"}{/variable}
+{repeater name="clients" prompt="Add client logo" tab="Clients"}
+  {variable type="mediafinder" name="logo" label="Logo" type="mediafinder" mode="image"}{/variable}
+  {variable type="text" name="logo_alt" label="Alt text"}Alt{/variable}
+{/repeater}
+
 {variable name="testimonialsTitle" label="Title" tab="Testimonials" type="text"}{/variable}
 
 {% partial 'head' %}
@@ -222,6 +228,25 @@ pageNumber = "{{ :page }}"
 		</div>
 	</div>
 </section>
+
+{% if clients %}
+	<section class="home-clients">
+		<div class="container">
+			<h3>
+				{{ clientsTitle|raw }}
+			</h3>
+			<div class="home-clients__container">
+
+				{% for fields in clients %}
+					<div class="home-clients__item">
+						<img src="{{ fields.logo|media }}" width="180" alt="{{ fields.logo_alt|raw }}">
+					</div>
+				{% endfor %}
+
+			</div>
+		</div>
+	</section>
+{% endif %}
 
 <section class="home-references">
 	<div class="container">
