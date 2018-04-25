@@ -321,9 +321,6 @@ function getReferrer()
 	var $url = document.referrer;
 
 	if($url.length > 0) {
-
-		// console.log(urlParser($url)['host']);
-		// console.log(window.location.hostname);
 		
 		$host = urlParser($url)['host'];
 		$list = [
@@ -371,10 +368,12 @@ function getReferrer()
 
 var $formCont;
 $(document).ready(function() {
+	
 	if($('#jobFormModal').length) {
 		$formCont = $('#uploadCvModal, #jobFormModal');
 	} else {
 		$formCont = $('#uploadCvModal');
 	}
+
 	getReferrer();
 });

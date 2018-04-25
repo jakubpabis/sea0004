@@ -193,7 +193,7 @@ class Form extends ComponentBase
     {
         Mail::send('searchit.jobs::mail.'.$template, $inputs, function($message) use ($inputs, $subject){
 
-            $message->from('info@searchitrecruitment.com', 'Searchit It Recruitment');
+            $message->from('info@searchitrecruitment.com', 'Search It Recruitment');
             $message->to($inputs['email'], $inputs['name']);
             $message->subject($subject);
 
