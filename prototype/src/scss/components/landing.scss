@@ -617,6 +617,10 @@
 		&__item {
 			flex-basis: 16.6666%;
 			padding: 30px;
+			display: flex;
+			justify-content: center;
+			align-content: center;
+			align-items: center;
 
 			@media(max-width: 1024px) {
 				flex-basis: 20%;
