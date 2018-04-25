@@ -327,19 +327,19 @@ function getReferrer()
 		
 		$host = urlParser($url)['host'];
 		$list = [
-			'bing',
-			'facebook',
-			'freelance',
-			'github',
-			'glassdoor',
-			'google',
-			'indeed',
-			'instagram',
-			'jobbird',
-			'linkedin',
-			'monsterboard',
-			'stackoverflow',
-			'twitter',
+			'Bing',
+			'Facebook',
+			'Freelance',
+			'Github',
+			'Glassdoor',
+			'Google',
+			'Indeed',
+			'Instagram',
+			'Jobbird',
+			'LinkedIn',
+			'Monsterboard',
+			'Stackoverflow',
+			'Twitter',
 			'sea0004'
 		];
 
