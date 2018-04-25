@@ -293,6 +293,78 @@ if(document.getElementById('uploadCvModal')) {
 	}, false);
 }
 
+/**
+ * Parse url
+ */
+function urlParser($url)
+{	
+	//Create a new link with the url as its href:
+    var a = $('<a>', {
+        href: $url
+    });
+
+	var $result = {
+		'protocol': a.prop('protocol'),
+		'host': a.prop('hostname'),
+		'path': a.prop('pathname'),
+		'query': a.prop('search')
+	};
+
+	return $result;
+}
+
+/**
+ * Get referrer address
+ */
+function getReferrer()
+{
+	var $url = document.referrer;
+
+	if($url.length > 0) {
+
+		// console.log(urlParser($url)['host']);
+		// console.log(window.location.hostname);
+		
+		$host = urlParser($url)['host'];
+		$list = [
+			'bing',
+			'facebook',
+			'freelance',
+			'github',
+			'glassdoor',
+			'google',
+			'indeed',
+			'instagram',
+			'jobbird',
+			'linkedin',
+			'monsterboard',
+			'stackoverflow',
+			'twitter',
+			'sea0004'
+		];
+
+		if($host !== window.location.hostname || true) {
+
+			for(var $i = 0; $i < $list.length; $i++) {
+				if( $host.match($list[$i]) !== null ) {
+					console.log($list[$i] + ' yay!');
+					$('#uploadCvModal, #jobFormModal').find('select[name="applicant-find"][value="'+$list[$i]+'"]').select();
+					break;
+				} else {
+					$('#uploadCvModal, #jobFormModal').find('select[name="applicant-find"]').append($('<option>', {
+						value: $host,
+						text: $host
+					})).val($host);
+					break;
+				}
+			}
+			
+		}
+
+	}
+
+}
+
 var $formCont;
 $(document).ready(function() {
 	if($('#jobFormModal').length) {
@@ -300,5 +372,5 @@ $(document).ready(function() {
 	} else {
 		$formCont = $('#uploadCvModal');
 	}
-	console.log(document.referrer);
+	getReferrer();
 });
