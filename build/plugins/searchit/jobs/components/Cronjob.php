@@ -235,6 +235,7 @@ class Cronjob extends ComponentBase
     {
         Job::orderBy('id', 'desc')->chunk(50, function($jobs) {
             foreach($jobs as $job) {
+
                 $jobSingleCatID = Category::where('category_slug', 'fulfilled')->value('id');
                 $isJobFulfilled = DB::table('searchit_jobs_job_categories')
                     ->where('job_id', $job->id)
@@ -242,18 +243,31 @@ class Cronjob extends ComponentBase
                     ->count();
                 
                 if(!in_array($job->job_id, $this->job_ids) && $isJobFulfilled === 0) {
+
                     DB::table('searchit_jobs_job_categories')
+                        ->where('job_id', $job->id)
+                        ->delete();
+
+                    DB::table('searchit_jobs_job_types')
                         ->where('job_id', $job->id)
                         ->delete();
 
                     DB::table('searchit_jobs_job_categories')
                         ->insert([ 'job_id' => $job->id, 'category_id' => $jobSingleCatID ]);
+
+                } elseif(!in_array($job->job_id, $this->job_ids) && $isJobFulfilled === 1) {
+
+                    DB::table('searchit_jobs_job_types')
+                        ->where('job_id', $job->id)
+                        ->delete();
+
                 } elseif(in_array($job->job_id, $this->job_ids) && $isJobFulfilled === 1) {
+
                     DB::table('searchit_jobs_job_categories')
                         ->where('job_id', $job->id)
                         ->where('category_id', $jobSingleCatID)
                         ->delete();
-                    var_dump($job->job_id);
+                    
                 }
             }
         });
