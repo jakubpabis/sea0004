@@ -48,7 +48,7 @@
     </div>
     <div class="input-cont">
         <div>
-            <label for="applicant-find">{{ 'How did you find us?'|_ }}</label>
+            {#<label for="applicant-find">{{ 'How did you find us?'|_ }}</label>#}
             <select name="applicant-find">
                 <option value="Website SIR" selected disabled>{{ 'Choose an option'|_ }}</option>
                 <option value="Website SIR">Website (direct)</option>
@@ -70,6 +70,28 @@
             </select>
             <i class="material-icons">expand_more</i>
         </div>
+        
+        <div class="row">
+            <div class="dob">
+                <label for="dob">Date of birth</label>
+                <input type="date" name="dob" placeholder="dd/mm/yyyy" pattern="[0-9]{2}/[0-9]{2}/[0-9]{4}">
+            </div>
+            <div class="radios">
+                <label for="gender">{{ 'Gender'|_ }}</label>
+                <div class="radio">
+                    <input type="radio" name="gender" value="male">
+                    <label for="gender">{{ 'Male'|_ }}</label>
+                </div>
+                <div class="radio">
+                    <input type="radio" name="gender" value="female">
+                    <label for="gender">{{ 'Female'|_ }}</label>
+                </div>
+                {#<div class="radio">
+                    <input type="radio" name="gender" value="other">
+                    <label for="gender">{{ 'Other'|_ }}</label>
+                </div>#}
+            </div>
+        </div>
         <label for="applicant-message">{{ 'Motivation and extra details'|_ }}</label>
         <textarea class="message" name="applicant-message" placeholder="{{ 'Webtwo ipsum mobly doostang cotweet handango, mozy. Jajah shopify meebo spotify balihoo dopplr klout, vimeo dopplr tumblr chumby yoono. Mozy napster tivo kazaa, kaboodle heekya. Etsy zillow movity jajah imvu, zanga dogster. Rovio bitly insala blyve, wikia.'|_ }}"></textarea>
         <div class="hidden-mobile">
@@ -79,6 +101,10 @@
                 <input type="file" accept="image/*" name="applicant-photo" value="" onchange="getFileName(this, 'applicant-photo-desktop')">
             </div>
         </div>
+    </div>
+    <div class="checkbox">
+        <input name="consent" type="checkbox" required="required">
+        <label for="consent">{{ 'I hereby agree with the  <a href=""><u>Privacy Policy</u></a>'|_ }} <span>*</span></label>
     </div>
     <input type="submit" value="{{ 'Send the application'|_ }}">
 {{ form_close() }}
