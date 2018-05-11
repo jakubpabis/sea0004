@@ -61,7 +61,8 @@ class Form extends ComponentBase
             $application_data = array(
                 'name' => Input::get('applicant-name'),
                 'email' => Input::get('applicant-email'),
-                'gender' => Input::get('applicant-gender'),
+                'gender' => Input::get('gender'),
+                'date_of_birth' => Input::get('dob'),
                 'address' => Input::get('applicant-address'),
                 'phone' => Input::get('applicant-phone'),
                 'note' => array(
@@ -110,6 +111,8 @@ class Form extends ComponentBase
                 'email' => Input::get('applicant-email'),
                 'address' => Input::get('applicant-address'),
                 'phone' => Input::get('applicant-phone'),
+                'gender' => Input::get('gender'),
+                'date_of_birth' => Input::get('dob'),
                 'note' => array(
                     'text' => Input::get('applicant-message')
                 ),

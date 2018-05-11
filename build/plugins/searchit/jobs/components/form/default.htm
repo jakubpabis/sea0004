@@ -22,7 +22,6 @@
         {{ form_token() }}
         {{ form_sessionKey() }}
         <input type="hidden" name="job-id" class="job-id" value="{{ record.job_id|length ? record.job_id : 188 }}">
-        <input type="hidden" name="applicant-gender">
         <input type="hidden" name="form_type" value="application">
         <label for="applicant-name">{{ 'Name'|_ }} <span>*</span></label>
         <input type="text" name="applicant-name" value="" required="required" placeholder="{{ 'John Doe'|_ }}">
@@ -74,7 +73,7 @@
         <div class="row">
             <div class="dob">
                 <label for="dob">Date of birth</label>
-                <input type="date" name="dob" placeholder="dd/mm/yyyy" pattern="[0-9]{2}/[0-9]{2}/[0-9]{4}">
+                <input type="date" name="dob" placeholder="yyyy-mm-dd" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}">
             </div>
             <div class="radios">
                 <label for="gender">{{ 'Gender'|_ }}</label>
