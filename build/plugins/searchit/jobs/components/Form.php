@@ -62,7 +62,7 @@ class Form extends ComponentBase
                 'name' => Input::get('applicant-name'),
                 'email' => Input::get('applicant-email'),
                 'gender' => Input::get('gender'),
-                'birthday' => Input::get('dob'),
+                'birthdate' => Input::get('dob'),
                 'location' => array(
                     'line1' => Input::get('applicant-street'),
                     'city' => Input::get('applicant-city'),
@@ -126,7 +126,7 @@ class Form extends ComponentBase
                 ),
                 'phone' => Input::get('applicant-phone'),
                 'gender' => Input::get('gender'),
-                'birthday' => Input::get('dob'),
+                'birthdate' => Input::get('dob'),
                 'note' => array(
                     'text' => Input::get('applicant-message')
                 ),
