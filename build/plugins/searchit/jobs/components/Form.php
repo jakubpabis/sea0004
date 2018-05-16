@@ -62,8 +62,13 @@ class Form extends ComponentBase
                 'name' => Input::get('applicant-name'),
                 'email' => Input::get('applicant-email'),
                 'gender' => Input::get('gender'),
-                'date_of_birth' => Input::get('dob'),
-                'address' => Input::get('applicant-address'),
+                'birthday' => Input::get('dob'),
+                'location' => array(
+                    'line1' => Input::get('applicant-street'),
+                    'city' => Input::get('applicant-city'),
+                    'zip' => Input::get('applicant-zip'), 
+                    'country' => Input::get('applicant-country'),
+                ),
                 'phone' => Input::get('applicant-phone'),
                 'note' => array(
                     'text' => Input::get('applicant-message')
@@ -78,6 +83,10 @@ class Form extends ComponentBase
                     )
                 )
             );
+
+            if($application_data['location']['country'] === NULL) {
+                unset($application_data['location']['country']);
+            }
 
             if(Input::hasFile('applicant-cv')){
                 $uploaded_file = Input::file('applicant-cv')->getRealPath();
@@ -109,10 +118,15 @@ class Form extends ComponentBase
             $form_data = array(
                 'name' => Input::get('applicant-name'),
                 'email' => Input::get('applicant-email'),
-                'address' => Input::get('applicant-address'),
+                'location' => array(
+                    'line1' => Input::get('applicant-street'),
+                    'city' => Input::get('applicant-city'),
+                    'zip' => Input::get('applicant-zip'), 
+                    'country' => Input::get('applicant-country'),
+                ),
                 'phone' => Input::get('applicant-phone'),
                 'gender' => Input::get('gender'),
-                'date_of_birth' => Input::get('dob'),
+                'birthday' => Input::get('dob'),
                 'note' => array(
                     'text' => Input::get('applicant-message')
                 ),

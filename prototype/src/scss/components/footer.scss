@@ -452,6 +452,7 @@
 			display: flex;
 			flex-wrap: nowrap;
 			width: 100%;
+			position: relative;
 		}
 
 		.radios {
@@ -518,6 +519,13 @@
 
 		}
 
+		.zip {
+			width: 100%;
+			max-width: 130px;
+			flex-basis: 130px;
+			padding-right: 20px;
+		}
+
 		input,
 		select,
 		textarea {
@@ -537,19 +545,19 @@
 			}
 
 			&.message {
-				height: 228px;
+				height: 194px;
 			}
 
 		}
 
 		select {
-			height: 38px;
+			height: 36px;
 			width: 100%;
 			cursor: pointer;
 
 			&+i {
 				position: absolute;
-				right: 16px;
+				right: 6px;
 				top: 30px;
 				pointer-events: none;
 				transition: all 200ms ease;
@@ -570,7 +578,7 @@
 			display: block;
 			position: relative;
 			width: 100%;
-			height: 38px;
+			height: 36px;
 			margin-bottom: 20px;
 			background-color: white;
 
@@ -578,7 +586,7 @@
 				margin: 0;
 				padding: 0 10px;
 				font-size: 15px;
-				line-height: 38px;
+				line-height: 36px;
 
 				i {
 					opacity: 0.6;
