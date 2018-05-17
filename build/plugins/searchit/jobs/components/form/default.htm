@@ -39,7 +39,7 @@
                 <input type="text" name="applicant-zip" placeholder="{{ '2595 AK'|_ }}"></input>
             </div>
             <div class="country">
-                <label for="applicant-country">Country</label>
+                <label for="applicant-country">{{ 'Country'|_ }}</label>
                 <select name="applicant-country">
                     <option value="0" selected disabled>{{ 'Choose an option'|_ }}</option>
                     <option value="AF">Afghanistan</option>
@@ -312,7 +312,7 @@
         </div>
         <div class="row">
             <div class="dob">
-                <label for="dob">Date of birth</label>
+                <label for="dob">{{ 'Date of birth'|_ }}</label>
                 <input type="date" name="dob" placeholder="dd-mm-yyyy" pattern="[0-9]{2}-[0-9]{2}-[0-9]{4}">
             </div>
             <div class="radios">
