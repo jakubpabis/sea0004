@@ -65,7 +65,8 @@ class Cronjob extends ComponentBase
         foreach($vacancies as $job) {
             array_push($this->job_ids, $job->id);
             $date = date("Y-m-d H:i:s", strtotime($job->publish_date));
-            if($job->url_title) {
+            
+            if(!empty($job->url_title)) {
                 $slug = $job->url_title;
             } else {
                 $slug = $this->slugify( $job->title.'-'.$job->id );
