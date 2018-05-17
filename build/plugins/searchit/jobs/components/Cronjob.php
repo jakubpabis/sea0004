@@ -65,7 +65,11 @@ class Cronjob extends ComponentBase
         foreach($vacancies as $job) {
             array_push($this->job_ids, $job->id);
             $date = date("Y-m-d H:i:s", strtotime($job->publish_date));
-            $slug = $this->slugify( $job->title.'-'.$job->id );
+            if($job->url_title) {
+                $slug = $job->url_title;
+            } else {
+                $slug = $this->slugify( $job->title.'-'.$job->id );
+            }
             $salary_min = preg_replace("/\./", "", $job->salary_fixed);
             $salary_max = preg_replace("/\./", "", $job->salary_bonus);
             if($job->meta) {
