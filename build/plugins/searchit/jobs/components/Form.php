@@ -32,7 +32,7 @@ class Form extends ComponentBase
     */
     protected function onFormSubmit()
     {
-        if(env('APP_ENV') !== 'dev') {
+        if(env('APP_ENV') === 'dev') {
 
             if(Input::hasFile('applicant-cv')) {
 
@@ -88,32 +88,34 @@ class Form extends ComponentBase
                 unset($application_data['location']['country']);
             }
 
-            if(Input::hasFile('applicant-cv')){
-                $uploaded_file = Input::file('applicant-cv')->getRealPath();
-                $file_ext = Input::file('applicant-cv')->getMimeType();
-                $file_name = Input::file('applicant-cv')->getClientOriginalName();
-                $file_cv = curl_file_create($uploaded_file, $file_ext, $file_name);
-                $data = array(
-                    'json' => json_encode($application_data),
-                    'cv' => $file_cv
-                );
-            } else {
-                $data = array(
-                    'json' => json_encode($application_data)
-                );
-            }
+            var_dump($application_data);
 
-            //initialise the curl request
-            $request = curl_init();
+            // if(Input::hasFile('applicant-cv')){
+            //     $uploaded_file = Input::file('applicant-cv')->getRealPath();
+            //     $file_ext = Input::file('applicant-cv')->getMimeType();
+            //     $file_name = Input::file('applicant-cv')->getClientOriginalName();
+            //     $file_cv = curl_file_create($uploaded_file, $file_ext, $file_name);
+            //     $data = array(
+            //         'json' => json_encode($application_data),
+            //         'cv' => $file_cv
+            //     );
+            // } else {
+            //     $data = array(
+            //         'json' => json_encode($application_data)
+            //     );
+            // }
 
-            curl_setopt($request, CURLOPT_URL, $uri);
-            curl_setopt($request, CURLOPT_RETURNTRANSFER, 1);
-            curl_setopt($request, CURLOPT_POST, 1);
-            curl_setopt($request, CURLOPT_POSTFIELDS, $data);
+            // //initialise the curl request
+            // $request = curl_init();
 
-            $reply = curl_exec($request);
-            // close the session
-            curl_close($request);
+            // curl_setopt($request, CURLOPT_URL, $uri);
+            // curl_setopt($request, CURLOPT_RETURNTRANSFER, 1);
+            // curl_setopt($request, CURLOPT_POST, 1);
+            // curl_setopt($request, CURLOPT_POSTFIELDS, $data);
+
+            // $reply = curl_exec($request);
+            // // close the session
+            // curl_close($request);
 
             $form_data = array(
                 'name' => Input::get('applicant-name'),
@@ -140,25 +142,25 @@ class Form extends ComponentBase
                 'job_link' => Request::url()
             );
 
-            if(Input::get('form_type') == 'application') {
+            // if(Input::get('form_type') == 'application') {
                 
-                if(Lang::getLocale() == 'en') {
-                    $this->sendMail($form_data, 'Thanks for applying for a job at Search It Recruitment', 'application_en');
-                } else {
-                    $this->sendMail($form_data, 'Bedankt voor solliciteren bij Search It Recruitment', 'application_nl');
-                }
-                Flash::success('app');
+            //     if(Lang::getLocale() == 'en') {
+            //         $this->sendMail($form_data, 'Thanks for applying for a job at Search It Recruitment', 'application_en');
+            //     } else {
+            //         $this->sendMail($form_data, 'Bedankt voor solliciteren bij Search It Recruitment', 'application_nl');
+            //     }
+            //     Flash::success('app');
 
-            } else {
+            // } else {
                 
-                if(Lang::getLocale() == 'en') {
-                    $this->sendMail($form_data, 'Thanks for uploading your resume at Search It Recruitment', 'resume_en');
-                } else {
-                    $this->sendMail($form_data, 'Bedankt voor het uploaden van jouw cv bij Search It Recruitment', 'resume_nl');
-                }
-                Flash::success('cv');
+            //     if(Lang::getLocale() == 'en') {
+            //         $this->sendMail($form_data, 'Thanks for uploading your resume at Search It Recruitment', 'resume_en');
+            //     } else {
+            //         $this->sendMail($form_data, 'Bedankt voor het uploaden van jouw cv bij Search It Recruitment', 'resume_nl');
+            //     }
+            //     Flash::success('cv');
 
-            }
+            // }
 
         } else {
 

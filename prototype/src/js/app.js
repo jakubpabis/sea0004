@@ -329,7 +329,9 @@ function getReferrer()
 			'Freelance',
 			'Github',
 			'Glassdoor',
-			'Google',
+			'Google Organic',
+			'Google Adwords',
+			'Google Display Advertising',
 			'Indeed',
 			'Instagram',
 			'Jobbird',
@@ -360,6 +362,7 @@ function getReferrer()
 			
 		} else {
 			$('#uploadCvModal, #jobFormModal').find('select[name="applicant-find"]').val('Website SIR');
+			console.log('from: here, yay!');
 		}
 
 	}
