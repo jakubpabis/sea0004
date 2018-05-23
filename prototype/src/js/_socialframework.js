@@ -33,12 +33,12 @@
 // }(document, 'script', 'facebook-jssdk'));
 
 function myFacebookLogin() {
-	FB.init({
-		appId      : '382574281913074',
-		cookie     : true,
-		xfbml      : true,
-		version    : '3.0'
-	});
+	// FB.init({
+	// 	appId      : '382574281913074',
+	// 	cookie     : true,
+	// 	xfbml      : true,
+	// 	version    : '3.0'
+	// });
 	FB.login(function(response){
 		if (response.status === 'connected') {
 			console.log('Logged in.');
