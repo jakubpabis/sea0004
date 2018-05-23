@@ -149,35 +149,10 @@
     ]|theme }}">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-	<script type="text/javascript" src="//platform.linkedin.com/in.js">
-		api_key: 77dug7ogaz4ouh
-		authorize: true
-		onLoad: OnLinkedInFrameworkLoad
-	</script>
 </head>
 <body>
 	<!-- Google Tag Manager (noscript) -->
 	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PMG8TTV" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<!-- /Google Tag Manager (noscript) -->
-	<!-- Facebook API -->
-	<script type="text/javascript">
-		window.fbAsyncInit = function() {
-			FB.init({
-				appId      : '382574281913074',
-				cookie     : true,
-				xfbml      : true,
-				version    : '3.0'
-			});
-			FB.AppEvents.logPageView();
-		};
-		(function(d, s, id){
-			var js, fjs = d.getElementsByTagName(s)[0];
-			if (d.getElementById(id)) {return;}
-			js = d.createElement(s); js.id = id;
-			js.src = "https://connect.facebook.net/en_US/sdk.js";
-			fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk'));
-	</script>
-	<!-- /Facebook API -->
 	{% partial 'navigation' %}
 	<div id="wrapper">
