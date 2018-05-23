@@ -465,17 +465,15 @@ public function onStart()
 		</div>
 	</div>
 	<!-- Scripts -->
-	<script src="{{ [
+	<script type="text/javascript" src="{{ [
 		'assets/js/app.js',
 		'@framework',
 		'@framework.extras'
 	]|theme }}" defer></script>
 	<script type="text/javascript" src="//platform.linkedin.com/in.js" defer>
-		$(window).on('load', function() {
-			api_key: 77dug7ogaz4ouh
-			onLoad: OnLinkedInFrameworkLoad
-			authorize: false
-		});
+		api_key: 77dug7ogaz4ouh
+		authorize: true
+		onLoad: OnLinkedInFrameworkLoad
 	</script>
 </body>
 </html>

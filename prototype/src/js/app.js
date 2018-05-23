@@ -319,8 +319,9 @@ function urlParser($url)
 function getReferrer()
 {
 	var $url = document.referrer;
+	var $oldURL = getCookie('referrerURL');
 
-	if($url.length > 0) {
+	if($url.length > 0 || $oldURL) {
 		
 		$host = urlParser($url)['host'];
 		$list = [
@@ -335,12 +336,19 @@ function getReferrer()
 			'Indeed',
 			'Instagram',
 			'Jobbird',
+			'Jobrapido',
 			'LinkedIn',
+			'Meetup',
 			'Monsterboard',
 			'Stackoverflow',
 			'Twitter',
+			'Werk',
 			'sea0004'
 		];
+
+		if(!$oldURL) {
+			setCookie('referrerURL', $host, '1');
+		}
 
 		if($host !== window.location.hostname) {
 
