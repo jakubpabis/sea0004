@@ -323,7 +323,12 @@ function getReferrer()
 
 	if($url.length > 0 || $oldURL) {
 		
-		$host = urlParser($url)['host'];
+		if($url.length > 0) {
+			$host = urlParser($url)['host'];
+		} else if($oldURL) {
+			$host = urlParser($oldURL)['host'];
+		}
+		
 		$list = [
 			'Bing',
 			'Facebook',
@@ -350,7 +355,7 @@ function getReferrer()
 			setCookie('referrerURL', $host, '1');
 		}
 
-		if($host === window.location.hostname) {
+		if($host !== window.location.hostname) {
 
 			console.log('from:'+ $host +' yay!');
 			for(var $i = 0; $i < $list.length; $i++) {
