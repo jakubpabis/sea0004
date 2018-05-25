@@ -350,7 +350,7 @@ function getReferrer()
 			setCookie('referrerURL', $host, '1');
 		}
 
-		if($host !== window.location.hostname) {
+		if($host === window.location.hostname) {
 
 			console.log('from:'+ $host +' yay!');
 			for(var $i = 0; $i < $list.length; $i++) {
@@ -363,7 +363,8 @@ function getReferrer()
 					$('#uploadCvModal, #jobFormModal').find('select[name="applicant-find"]').append($('<option>', {
 						value: $host,
 						text: $host
-					})).val($host);
+					}));
+					$('#uploadCvModal, #jobFormModal').find('select[name="applicant-find"]').val($host);
 					break;
 				}
 			}
