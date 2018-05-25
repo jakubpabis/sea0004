@@ -359,7 +359,7 @@ function getReferrer()
 					console.log($string + ' yay!');
 					$('#uploadCvModal, #jobFormModal').find('select[name="applicant-find"]').val($list[$i]);
 					break;
-				} else if($i === $list.length) {
+				} else if($i === ($list.length - 1)) {
 					console.log('appending an option!');
 					$('#uploadCvModal, #jobFormModal').find('select[name="applicant-find"]').append($('<option>', {
 						value: $host,
