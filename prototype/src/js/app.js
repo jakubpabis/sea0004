@@ -298,17 +298,10 @@ if(document.getElementById('uploadCvModal')) {
  */
 function urlParser($url)
 {	
-	//Create a new link with the url as its href:
-    var a = $('<a>', {
-        href: $url
-    });
+	var parser = document.createElement('a');
+	parser.href = $url;
 
-	var $result = {
-		'protocol': a.prop('protocol'),
-		'host': a.prop('hostname'),
-		'path': a.prop('pathname'),
-		'query': a.prop('search')
-	};
+	var $result = parser.hostname;
 
 	return $result;
 }
@@ -319,15 +312,22 @@ function urlParser($url)
 function getReferrer()
 {
 	var $url = document.referrer;
-	var $oldURL = getCookie('referrerURL');
+	if(getCookie('referrerURL')) {
+		var $oldURL = getCookie('referrerURL');
+	}
 
 	if($url.length > 0 || $oldURL) {
 		
 		if($oldURL) {
-			$host = urlParser($oldURL)['host'];
+			var $hostname = urlParser($oldURL);
 		} else if($url.length > 0) {
-			$host = urlParser($url)['host'];
+			var $hostname = urlParser($url);
 		}
+		console.log($hostname);
+		var $host = $hostname.replace('www.','');
+		console.log($host);
+		$host = $host.split(".")[0];
+		console.log($host);
 		
 		$list = [
 			'Bing',
@@ -347,30 +347,31 @@ function getReferrer()
 			'Monsterboard',
 			'Stackoverflow',
 			'Twitter',
-			'Werk',
-			'sea0004'
+			'Werk'
 		];
 
 		if(!$oldURL) {
-			setCookie('referrerURL', $host, '7');
+			setCookie('referrerURL', $hostname, '7');
 		}
 
-		if($host !== window.location.hostname) {
+		if($hostname !== window.location.hostname) {
 
 			console.log('from:'+ $host +' yay!');
 			for(var $i = 0; $i < $list.length; $i++) {
 				$string = $list[$i].toLowerCase();
 				if( $host.match($string) !== null ) {
-					console.log($string + ' yay!');
+					console.log('selected:' + $list[$i]);
 					$('#uploadCvModal, #jobFormModal').find('select[name="applicant-find"]').val($list[$i]);
+					console.log($('#uploadCvModal, #jobFormModal').find('select[name="applicant-find"]').find(":selected"));
 					break;
 				} else if($i === ($list.length - 1)) {
-					console.log('appending an option!');
+					console.log('appending an option!' + $host);
 					$('#uploadCvModal, #jobFormModal').find('select[name="applicant-find"]').append($('<option>', {
 						value: $host,
 						text: $host
 					}));
 					$('#uploadCvModal, #jobFormModal').find('select[name="applicant-find"]').val($host);
+					console.log($('#uploadCvModal, #jobFormModal').find('select[name="applicant-find"]').find(":selected"));
 					break;
 				}
 			}
@@ -378,6 +379,7 @@ function getReferrer()
 		} else {
 			$('#uploadCvModal, #jobFormModal').find('select[name="applicant-find"]').val('Website SIR');
 			console.log('from: here, yay!');
+			console.log($('#uploadCvModal, #jobFormModal').find('select[name="applicant-find"]').find(":selected"));
 		}
 
 	}
