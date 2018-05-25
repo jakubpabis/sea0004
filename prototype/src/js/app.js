@@ -320,7 +320,7 @@ function getReferrer()
 		
 		if($oldURL) {
 			var $hostname = urlParser($oldURL);
-		} else if($url.length > 0) {
+		} else {
 			var $hostname = urlParser($url);
 		}
 		console.log($hostname);
