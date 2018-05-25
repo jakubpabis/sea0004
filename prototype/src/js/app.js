@@ -323,10 +323,10 @@ function getReferrer()
 
 	if($url.length > 0 || $oldURL) {
 		
-		if($url.length > 0) {
-			$host = urlParser($url)['host'];
-		} else if($oldURL) {
+		if($oldURL) {
 			$host = urlParser($oldURL)['host'];
+		} else if($url.length > 0) {
+			$host = urlParser($url)['host'];
 		}
 		
 		$list = [
@@ -352,7 +352,7 @@ function getReferrer()
 		];
 
 		if(!$oldURL) {
-			setCookie('referrerURL', $host, '1');
+			setCookie('referrerURL', $host, '7');
 		}
 
 		if($host !== window.location.hostname) {
