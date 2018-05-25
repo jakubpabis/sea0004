@@ -88,7 +88,7 @@ class Form extends ComponentBase
                 unset($application_data['location']['country']);
             }
 
-            var_dump($application_data);
+            //var_dump($application_data);
 
             if(Input::hasFile('applicant-cv')){
                 $uploaded_file = Input::file('applicant-cv')->getRealPath();
