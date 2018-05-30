@@ -122,6 +122,8 @@ class JobsList extends ComponentBase
         $this->jobs = $this->jobs->whereHas('categories', function($query) use ($fulfilledCategory) {
           $query->where('category_id', '!=', $fulfilledCategory);
         });
+      } else {
+        
       }
       if(!empty($salaryMin)) {
         $this->jobs = $this->jobs->where('salary_min', '>=', $salaryMin);
