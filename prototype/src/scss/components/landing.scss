@@ -40,8 +40,11 @@
 			background-color: $color-primary;
 			color: $color-light;
 			text-align: center;
-			padding-top: 30px;
-			padding-bottom: 30px;
+
+			.centerV-container {
+				padding-top: 30px;
+				padding-bottom: 30px;
+			}
 
 			p {
 				max-width: 600px;
