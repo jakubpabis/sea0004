@@ -243,9 +243,10 @@
 
                 &.sub {
                     position: relative;
+                    margin-bottom: 8px;
 
                     &+.sub {
-                        margin-top: 6px;
+                        margin-top: 8px;
                     }    
 
                     &+.checkbox {
@@ -253,15 +254,15 @@
                     }
 
                     &+.checkbox.sub {
-                        margin-top: 6px;
+                        margin-top: 8px;
                     }
 
                     &:before {
                         position: absolute;
                         content: '';
-                        top: -3px;
+                        top: -4px;
                         right: -20px;
-                        bottom: -3px;
+                        bottom: -4px;
                         left: -20px;
                         background-color: $color-light;
 
