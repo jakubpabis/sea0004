@@ -76,7 +76,7 @@ class JobsList extends ComponentBase
           }
         }
       }
-      return $this->catsArr->where('parent', 0)->all();
+      return $this->catsArr->where('parent', 0)->sortBy('id')->all();
     }
 
     /**
@@ -194,7 +194,7 @@ class JobsList extends ComponentBase
      */
     public function init()
     {
-      $this->page['cats'] = $this->getCategories(Category::get());
+      $this->page['cats'] = $this->getCategories(Category::orderBy('category_name', 'desc')->get());
       $this->page['types'] = Type::get();
 
       $this->prepareJobs();

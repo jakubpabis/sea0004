@@ -237,7 +237,40 @@
                 -webkit-touch-callout: none;
                 user-select: none;
 
+                &+.sub {
+                    margin-top: 12px;
+                }
+
                 &.sub {
+                    position: relative;
+
+                    &+.sub {
+                        margin-top: 6px;
+                    }    
+
+                    &+.checkbox {
+                        margin-top: 12px;
+                    }
+
+                    &+.checkbox.sub {
+                        margin-top: 6px;
+                    }
+
+                    &:before {
+                        position: absolute;
+                        content: '';
+                        top: -3px;
+                        right: -20px;
+                        bottom: -3px;
+                        left: -20px;
+                        background-color: $color-light;
+
+                        @media(max-width: 900px) {
+                            right: -10px;
+                            left: -10px;
+                        }
+
+                    }
 
                     span {
                         margin-left: 0;

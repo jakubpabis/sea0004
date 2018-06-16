@@ -62,7 +62,7 @@ class JobsCategory extends ComponentBase
     {
         $this->jobs = new Job;
 
-        $this->page['cats'] = $this->getCategories(Category::get());
+        $this->page['cats'] = $this->getCategories(Category::orderBy('category_name', 'desc')->get());
         $this->page['types'] = Type::get();
 
         $this->page['jobs'] = $this->loadResults()->orderBy('date', 'desc')->paginate(20);
@@ -96,7 +96,7 @@ class JobsCategory extends ComponentBase
           }
         }
       }
-      return $this->catsArr->where('parent', 0)->all();
+      return $this->catsArr->where('parent', 0)->sortBy('id')->all();
     }
 
     /**

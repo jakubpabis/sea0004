@@ -386,6 +386,25 @@ function getReferrer()
 
 }
 
+function menuScroll()
+{
+	var $nav = $('.main-navigation');
+	var $scroll = $(window).scrollTop();
+	if($scroll >= 100) {
+		if(!$nav.hasClass('scrolled')) {
+			$nav.addClass('scrolled');
+		}
+	} else {
+		if($nav.hasClass('scrolled')) {
+			$nav.removeClass('scrolled');
+		}
+	}
+}
+
+$(window).on('load scroll', function() {
+	menuScroll();
+});
+
 var $formCont;
 $(document).ready(function() {
 	
