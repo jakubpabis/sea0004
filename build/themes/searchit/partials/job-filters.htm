@@ -47,13 +47,17 @@
             <label for="{{ cat.category_name }}" class="checkbox" onclick="checkboxLabel(this); document.getElementById('jobFilterSearch').click();">
                 <input type="checkbox" name="category[]" value="{{ cat.id }}" {% for catLink in linkQuery['category'] %}{{ catLink == cat.id ? 'checked' : null }}{% endfor %}>
                 <span>{{ cat.category_name }} - <small>{{ cat.jobs|length }}</small><i class="material-icons">cancel</i></span>
-            </label>  
-            {% for sub in cat.children if sub.jobs|length != 0 %}
-                <label for="{{ sub.category_name }}" class="checkbox sub" onclick="checkboxLabel(this); document.getElementById('jobFilterSearch').click();">
-                    <input type="checkbox" name="category[]" value="{{ sub.id }}" {% for catLink in linkQuery['category'] %}{{ catLink == sub.id ? 'checked' : null }}{% endfor %}>
-                    <span>{{ sub.category_name }} - <small>{{ sub.jobs|length }}</small><i class="material-icons">cancel</i></span>
-                </label> 
-            {% endfor %} 
+            </label>
+            {% if cat.children %}  
+                <div class="checkbox-container">
+                    {% for sub in cat.children if sub.jobs|length != 0 %}
+                        <label for="{{ sub.category_name }}" class="checkbox sub" onclick="checkboxLabel(this); document.getElementById('jobFilterSearch').click();">
+                            <input type="checkbox" name="category[]" value="{{ sub.id }}" {% for catLink in linkQuery['category'] %}{{ catLink == sub.id ? 'checked' : null }}{% endfor %}>
+                            <span>{{ sub.category_name }} - <small>{{ sub.jobs|length }}</small><i class="material-icons">cancel</i></span>
+                        </label> 
+                    {% endfor %} 
+                </div>
+            {% endif %}
         {% endfor %}
         <span class="title">
             {{ 'Job type'|_ }}

@@ -229,6 +229,27 @@
             color: $color-primary;
         }
 
+        .checkbox-container {
+            background-color: #fafafa;
+            position: relative;
+            display: block;
+            padding: 10px 0 2px 20px;
+            margin-top: 9px;
+            margin-left: -20px;
+            margin-right: -20px;
+            box-shadow: inset 0 7px 9px -7px rgba($color: #000000, $alpha: .1);
+
+            @media(max-width: 900px) {
+                margin-left: -10px;
+                margin-right: -10px;
+            }
+
+            &+.checkbox {
+                margin-top: 8px;
+            }
+
+        }
+
         label {
             margin-bottom: 5px;
 
@@ -237,41 +258,25 @@
                 -webkit-touch-callout: none;
                 user-select: none;
 
-                &+.sub {
-                    margin-top: 12px;
-                }
-
                 &.sub {
                     position: relative;
                     margin-bottom: 8px;
 
-                    &+.sub {
-                        margin-top: 8px;
-                    }    
+                    // &:before {
+                    //     position: absolute;
+                    //     content: '';
+                    //     top: -4px;
+                    //     right: -20px;
+                    //     bottom: -4px;
+                    //     left: -20px;
+                    //     background-color: #fafafa;
 
-                    &+.checkbox {
-                        margin-top: 12px;
-                    }
+                    //     @media(max-width: 900px) {
+                    //         right: -10px;
+                    //         left: -10px;
+                    //     }
 
-                    &+.checkbox.sub {
-                        margin-top: 8px;
-                    }
-
-                    &:before {
-                        position: absolute;
-                        content: '';
-                        top: -4px;
-                        right: -20px;
-                        bottom: -4px;
-                        left: -20px;
-                        background-color: $color-light;
-
-                        @media(max-width: 900px) {
-                            right: -10px;
-                            left: -10px;
-                        }
-
-                    }
+                    // }
 
                     span {
                         margin-left: 0;
