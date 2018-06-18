@@ -62,7 +62,7 @@ class JobsCategory extends ComponentBase
     {
         $this->jobs = new Job;
 
-        $this->page['cats'] = $this->getCategories(Category::orderBy('category_name', 'desc')->get());
+        $this->page['cats'] = $this->getCategories(Category::withCount('jobs')->with('jobs')->has('jobs', '>=', 1)->orderBy('jobs_count', 'asc')->get());
         $this->page['types'] = Type::get();
 
         $this->page['jobs'] = $this->loadResults()->orderBy('date', 'desc')->paginate(20);

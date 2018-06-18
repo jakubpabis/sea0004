@@ -194,7 +194,7 @@ class JobsList extends ComponentBase
      */
     public function init()
     {
-      $this->page['cats'] = $this->getCategories(Category::orderBy('category_name', 'desc')->get());
+      $this->page['cats'] = $this->getCategories(Category::withCount('jobs')->with('jobs')->has('jobs', '>=', 1)->orderBy('jobs_count', 'asc')->get());
       $this->page['types'] = Type::get();
 
       $this->prepareJobs();
