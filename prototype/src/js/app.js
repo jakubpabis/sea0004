@@ -150,6 +150,8 @@ function showForm()
 	setTimeout(function() {
 		document.getElementById('jobFormModal').classList.add('active');
 		document.getElementsByTagName('html')[0].classList.add('modal-open');
+		document.getElementsByTagName('html')[0].classList.add('menu-active');
+		document.getElementsByTagName('body')[0].classList.add('menu-active');
 	}, 50);
 	stopBodyScrolling(true);
 }
@@ -158,6 +160,8 @@ function hideForm()
 {
 	document.getElementById('jobFormModal').classList.remove('active');
 	document.getElementsByTagName('html')[0].classList.remove('modal-open');
+	document.getElementsByTagName('html')[0].classList.remove('menu-active');
+	document.getElementsByTagName('body')[0].classList.remove('menu-active');
 	setTimeout(function() {
 		document.getElementById('jobFormModal').style.display = 'none';
 	}, 500);
@@ -170,6 +174,8 @@ function showCVForm()
 	setTimeout(function() {
 		document.getElementById('uploadCvModal').classList.add('active');
 		document.getElementsByTagName('html')[0].classList.add('modal-open');
+		document.getElementsByTagName('html')[0].classList.add('menu-active');
+		document.getElementsByTagName('body')[0].classList.add('menu-active');
 	}, 50);
 	stopBodyScrolling(true);
 }
@@ -178,6 +184,8 @@ function hideCVForm()
 {
 	document.getElementById('uploadCvModal').classList.remove('active');
 	document.getElementsByTagName('html')[0].classList.remove('modal-open');
+	document.getElementsByTagName('html')[0].classList.remove('menu-active');
+	document.getElementsByTagName('body')[0].classList.remove('menu-active');
 	setTimeout(function() {
 		document.getElementById('uploadCvModal').style.display = 'none';
 	}, 500);

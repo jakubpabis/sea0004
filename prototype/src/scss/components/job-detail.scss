@@ -398,6 +398,7 @@
         height: 100vh;
         left: 0;
         overflow: auto;
+        -webkit-overflow-scrolling: auto !important;
         padding: 1.5em;
         position: fixed;
         top: 0;
