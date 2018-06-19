@@ -132,6 +132,17 @@ function checkboxLabel($el)
 	}
 }
 
+var freezeVp = function(e) {
+    e.preventDefault();
+};
+
+function stopBodyScrolling (bool) {
+    if (bool === true) {
+        document.body.addEventListener("touchmove", freezeVp, false);
+    } else {
+        document.body.removeEventListener("touchmove", freezeVp, false);
+    }
+}
 
 function showForm()
 {
@@ -140,6 +151,7 @@ function showForm()
 		document.getElementById('jobFormModal').classList.add('active');
 		document.getElementsByTagName('html')[0].classList.add('modal-open');
 	}, 50);
+	stopBodyScrolling(true);
 }
 
 function hideForm() 
@@ -149,6 +161,7 @@ function hideForm()
 	setTimeout(function() {
 		document.getElementById('jobFormModal').style.display = 'none';
 	}, 500);
+	stopBodyScrolling(false);
 }
 
 function showCVForm()
@@ -158,6 +171,7 @@ function showCVForm()
 		document.getElementById('uploadCvModal').classList.add('active');
 		document.getElementsByTagName('html')[0].classList.add('modal-open');
 	}, 50);
+	stopBodyScrolling(true);
 }
 
 function hideCVForm() 
@@ -167,6 +181,7 @@ function hideCVForm()
 	setTimeout(function() {
 		document.getElementById('uploadCvModal').style.display = 'none';
 	}, 500);
+	stopBodyScrolling(false);
 }
 
 function showFilterForm()
