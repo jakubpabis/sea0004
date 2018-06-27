@@ -182,25 +182,25 @@ class Form extends ComponentBase
             //     'job_link' => Request::url()
             // );
 
-            // if(Input::get('form_type') == 'application') {
+            if(Input::get('form_type') == 'application') {
                 
-            //     if(Lang::getLocale() == 'en') {
-            //         $this->sendMail($application_data, 'Thanks for applying for a job at Search It Recruitment', 'application_en');
-            //     } else {
-            //         $this->sendMail($application_data, 'Bedankt voor solliciteren bij Search It Recruitment', 'application_nl');
-            //     }
-            //     Flash::success('app');
+                // if(Lang::getLocale() == 'en') {
+                //     $this->sendMail($application_data, 'Thanks for applying for a job at Search It Recruitment', 'application_en');
+                // } else {
+                //     $this->sendMail($application_data, 'Bedankt voor solliciteren bij Search It Recruitment', 'application_nl');
+                // }
+                Flash::success('app');
 
-            // } else {
+            } else {
                 
-            //     if(Lang::getLocale() == 'en') {
-            //         $this->sendMail($application_data, 'Thanks for uploading your resume at Search It Recruitment', 'resume_en');
-            //     } else {
-            //         $this->sendMail($application_data, 'Bedankt voor het uploaden van jouw cv bij Search It Recruitment', 'resume_nl');
-            //     }
-            //     Flash::success('cv');
+                // if(Lang::getLocale() == 'en') {
+                //     $this->sendMail($application_data, 'Thanks for uploading your resume at Search It Recruitment', 'resume_en');
+                // } else {
+                //     $this->sendMail($application_data, 'Bedankt voor het uploaden van jouw cv bij Search It Recruitment', 'resume_nl');
+                // }
+                Flash::success('cv');
 
-            // }
+            }
 
         }
         
