@@ -368,33 +368,6 @@ function getReferrer()
 			}
 		}
 
-		// console.log($hostname);
-		// var $host = $hostname.replace('www.','');
-		// console.log($host);
-		// $host = $host.split(".")[0];
-		// console.log($host);
-		
-		// $list = [
-		// 	'Bing',
-		// 	'Facebook',
-		// 	'Freelance',
-		// 	'Github',
-		// 	'Glassdoor',
-		// 	'Google Organic',
-		// 	'Google Adwords',
-		// 	'Google Display Advertising',
-		// 	'Indeed',
-		// 	'Instagram',
-		// 	'Jobbird',
-		// 	'Jobrapido',
-		// 	'LinkedIn',
-		// 	'Meetup',
-		// 	'Monsterboard',
-		// 	'Stackoverflow',
-		// 	'Twitter',
-		// 	'Werk'
-		// ];
-
 		if($hostname !== window.location.hostname) {
 
 			console.log('from:'+ $host +' yay!');
@@ -402,25 +375,6 @@ function getReferrer()
 			if(!$oldURL) {
 				setCookie('referrerURL', $url, '7');
 			}
-		
-			// for(var $i = 0; $i < $list.length; $i++) {
-			// 	$string = $list[$i].toLowerCase();
-			// 	if( $host.match($string) !== null ) {
-			// 		console.log('selected:' + $list[$i]);
-			// 		$('#uploadCvModal, #jobFormModal').find('select[name="applicant-find"]').val($list[$i]);
-			// 		console.log($('#uploadCvModal, #jobFormModal').find('select[name="applicant-find"]').find(":selected"));
-			// 		break;
-			// 	} else if($i === ($list.length - 1)) {
-			// 		console.log('appending an option!' + $host);
-			// 		$('#uploadCvModal, #jobFormModal').find('select[name="applicant-find"]').append($('<option>', {
-			// 			value: $host,
-			// 			text: $host
-			// 		}));
-			// 		$('#uploadCvModal, #jobFormModal').find('select[name="applicant-find"]').val($host);
-			// 		console.log($('#uploadCvModal, #jobFormModal').find('select[name="applicant-find"]').find(":selected"));
-			// 		break;
-			// 	}
-			// }
 			
 			if( $searchAdwords === true ) {
 				console.log('selecting Adwords!');
