@@ -335,28 +335,36 @@ function urlParser($url)
 function getReferrer()
 {
 	var $url = document.referrer;
+	//var $url = 'https://www.thealphamen.nl/bossman-jelly-beard-oil-gold.html?source=googlebase&gclid=EAIaIQobChMI457A8fHz2wIVQ4jVCh1UUAqPEAMYAiAAEgJ7b_D_BwE';
+
 	if(getCookie('referrerURL')) {
 		var $oldURL = getCookie('referrerURL');
 	}
 
 	if($url.length > 0 || $oldURL) {
 		
-		if($oldURL) {
+		if(typeof($oldURL) != "undefined" && $oldURL !== null) {
 			var $hostname = urlParser($oldURL);
-			var $search = $oldURL.search;
+			var $search = $oldURL.split("?")[1];
 		} else {
 			var $hostname = urlParser($url);
-			var $search = $url.search;
+			var $search = $url.split("?")[1];
 		}
-		var $host = $hostname;
-		var $searchParts = $search.split("=");
-		var $searchPhrase = 'gclid';
-		var $searchAdwords = false;
+		console.log($search);
 
-		for(var $i = 0; $i < $searchParts.length; $i++) {
-			if( $searchParts[$i].match($searchPhrase) !== null ) {
-				$searchAdwords = true;
-				break;
+		var $searchAdwords = false;
+		var $host = $hostname;
+		
+		if(typeof($search) != "undefined" && $search !== null) {
+			var $searchParts = $search.split("=");
+			var $searchPhrase = 'gclid';
+
+			for(var $i = 0; $i < $searchParts.length; $i++) {
+				console.log($searchParts[$i]);
+				if( $searchParts[$i].match($searchPhrase) !== null ) {
+					$searchAdwords = true;
+					break;
+				}
 			}
 		}
 
@@ -387,13 +395,14 @@ function getReferrer()
 		// 	'Werk'
 		// ];
 
-		if(!$oldURL) {
-			setCookie('referrerURL', $hostname, '7');
-		}
-
 		if($hostname !== window.location.hostname) {
 
 			console.log('from:'+ $host +' yay!');
+
+			if(!$oldURL) {
+				setCookie('referrerURL', $url, '7');
+			}
+		
 			// for(var $i = 0; $i < $list.length; $i++) {
 			// 	$string = $list[$i].toLowerCase();
 			// 	if( $host.match($string) !== null ) {
