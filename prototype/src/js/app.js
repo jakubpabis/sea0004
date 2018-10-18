@@ -330,6 +330,14 @@ function urlParser($url)
 }
 
 /**
+ * Put referrer address
+ */
+function putReferrer()
+{
+	setCookie('referrerURLNew', document.referrer, '7');
+}
+
+/**
  * Get referrer address
  */
 function getReferrer()
@@ -339,8 +347,8 @@ function getReferrer()
 	// var $url = 'https://www.googleadservices.com/pagead/aclk?sa=L&ai=DChcSEwj42t_l6oXcAhXvFdMKHZ9DBYAYABABGgJ3Yg&ohost=www.google.com&cid=CAASE-RoHW0b46McN-5DuPA1fgm8bws&sig=AOD64_1Qih4UGA3O5HwP4tWD-GT7ZmoccA&q=&ved=0ahUKEwi149vl6oXcAhVQ2KQKHewwA9oQ0QwINQ&adurl=';
 	//var $url = '.com/?parameter=1&parameter=1&gclid=TeSter-123#bookmark&parameter=1&';
 
-	if(getCookie('referrerURL')) {
-		var $oldURL = getCookie('referrerURL');
+	if(getCookie('referrerURLOld')) {
+		var $oldURL = getCookie('referrerURLOld');
 	}
 
 	if($url.length > 0 || $oldURL) {
@@ -391,7 +399,7 @@ function getReferrer()
 			console.log('from:'+ $host +' yay!');
 
 			if(!$oldURL) {
-				setCookie('referrerURL', $url, '7');
+				setCookie('referrerURLNew', $url, '7');
 			}
 			
 			if( $searchAdwords === true ) {
@@ -448,3 +456,5 @@ $(document).ready(function() {
 
 	getReferrer();
 });
+
+putReferrer();
