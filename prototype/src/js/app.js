@@ -335,6 +335,11 @@ function urlParser($url)
 function getReferrer()
 {
 	var $url = document.referrer;
+
+	/**
+	 * exmaples for testing
+	 */
+
 	//var $url = 'https://www.thealphamen.nl/bossman-jelly-beard-oil-gold.html?source=googlebase&gclid=EAIaIQobChMI457A8fHz2wIVQ4jVCh1UUAqPEAMYAiAAEgJ7b_D_BwE';
 	// var $url = 'https://www.googleadservices.com/pagead/aclk?sa=L&ai=DChcSEwj42t_l6oXcAhXvFdMKHZ9DBYAYABABGgJ3Yg&ohost=www.google.com&cid=CAASE-RoHW0b46McN-5DuPA1fgm8bws&sig=AOD64_1Qih4UGA3O5HwP4tWD-GT7ZmoccA&q=&ved=0ahUKEwi149vl6oXcAhVQ2KQKHewwA9oQ0QwINQ&adurl=';
 	//var $url = '.com/?parameter=1&parameter=1&gclid=TeSter-123#bookmark&parameter=1&';
