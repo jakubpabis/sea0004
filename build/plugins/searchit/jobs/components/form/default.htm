@@ -1,4 +1,27 @@
 {{ form_open({ enctype: 'multipart/form-data', method: 'POST', files: 'true', class: 'application-form', request: 'onFormSubmit',  }) }}
+    <div class="loading__container">
+        <div class="loading-indicator-container">
+            <div class="loading-indicator indicator-center">
+                <span></span>
+                <div>Loading...</div>
+            </div>
+        </div>
+    </div>
+    <div class="loading__container sent">
+        <h4>
+            {{ 'You have already apply for this job...'|_ }}
+            <br/>
+            {{ 'Do you want to do it again??'|_ }}
+        </h4>
+        <div class="btns">
+            <div class="btn btn__again" onclick="unblurApplication()">
+                {{ 'Yes, let me do it.'|_ }}
+            </div>
+            <div class="btn btn__thanks" onclick="hideForm()">
+                {{ 'No, thanks.'|_ }}
+            </div>
+        </div>
+    </div>
     <i class="material-icons close" onclick="hideForm()">close</i>
     {% flash success %}
         {% if message == 'app' %}

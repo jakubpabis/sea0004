@@ -1,4 +1,4 @@
-{{ form_open({ enctype: 'multipart/form-data', method: 'POST', files: 'true', request: 'onFormClientSubmit',  }) }}
+{{ form_open({ enctype: 'multipart/form-data', method: 'POST', files: 'true',  class: 'client-form', request: 'onFormClientSubmit',  }) }}
     {% flash success %}
         <p
             data-control="flash-message"
@@ -25,5 +25,5 @@
     </div>
     <label for="extra">{{ 'Extra details'|_ }}</label>
     <textarea class="message" name="extra" placeholder="{{ 'Webtwo ipsum mobly doostang cotweet handango, mozy. Jajah shopify meebo spotify balihoo dopplr klout, vimeo dopplr tumblr chumby yoono. Mozy napster tivo kazaa, kaboodle heekya. Etsy zillow movity jajah imvu, zanga dogster. Rovio bitly insala blyve, wikia.'|_ }}"></textarea>
-    <input type="submit" value="{{ 'Send'|_ }}" class="submit">
+    <input type="submit" value="{{ 'Send'|_ }}" class="submit" data-attach-loading>
 {{ form_close() }}

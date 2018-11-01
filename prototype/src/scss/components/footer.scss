@@ -222,6 +222,107 @@
 			padding: 16px;
 		}
 
+		&.disabled {
+
+			.loading__container {
+				display: flex;
+			}
+	
+		}
+	
+		&.cv-sent {
+					
+			.loading__container.sent {
+				display: flex;
+			}
+	
+			.loading__container.sent ~ * {
+				filter: blur(7px);
+			}
+	
+		}
+	
+		.loading__container {
+			display: none;
+			position: absolute;
+			top: 0;
+			right: 0;
+			left: 0;
+			bottom: 0;
+			background-color: rgba(0, 0, 0, 0.5);
+			z-index: 9999;
+			justify-content: center;
+			align-content: center;
+			align-items: center;
+			color: white;
+			font-weight: 700;
+			font-size: 21px;
+	
+			&.sent {
+				flex-wrap: wrap;
+				flex-direction: column;
+				background-color: rgba(0, 0, 0, 0.7);
+				text-align: center;
+				justify-content: flex-start;
+				align-content: flex-start;
+				padding-top: 50px;
+	
+				.btn__again {
+					display: inline-block;
+					width: auto;
+					padding: 10px 40px;
+					margin: 5px;
+					font-size: 16px;
+					font-weight: 700;
+					letter-spacing: 0.5px;
+					color: white;
+					cursor: pointer;
+					transition: all 200ms ease;
+					background-color: $color-tertiary;
+	
+					@media(max-width: 360px) {
+						margin: 0 0 10px 0;
+						padding: 10px 24px;
+					}
+	
+					&:hover {
+						transform: scale(1.05);
+						-webkit-box-shadow: 0 0 8px 0 rgba($color-primary, 0.6);
+						box-shadow: 0 0 8px 0 rgba($color-primary, 0.6);
+					}
+	
+				}
+	
+				.btn__thanks {
+					display: inline-block;
+					width: auto;
+					padding: 10px 40px;
+					margin: 5px;
+					font-size: 16px;
+					font-weight: 700;
+					letter-spacing: 0.5px;
+					color: $color-tertiary;
+					cursor: pointer;
+					transition: all 200ms ease;
+					background-color: white;
+	
+					@media(max-width: 360px) {
+						margin: 0 0 10px 0;
+						padding: 10px 24px;
+					}
+	
+					&:hover {
+						transform: scale(1.05);
+						-webkit-box-shadow: 0 0 8px 0 rgba($color-primary, 0.6);
+						box-shadow: 0 0 8px 0 rgba($color-primary, 0.6);
+					}
+	
+				}
+	
+			}
+	
+		}
+
 		.close {
 			position: absolute;
 			top: 0;

@@ -96,7 +96,30 @@ public function onStart()
 			</div>
 		</footer>
 		<div id="uploadCvModal" class="modal" aria-hidden="true">
-			{{ form_open({ method: 'POST', files: 'true', request: 'onFormSubmit',  }) }}
+			{{ form_open({ method: 'POST', files: 'true', class: 'cv-form', request: 'onFormSubmit',  }) }}
+				<div class="loading__container">
+					<div class="loading-indicator-container">
+						<div class="loading-indicator indicator-center">
+							<span></span>
+							<div>Loading...</div>
+						</div>
+					</div>
+				</div>
+				<div class="loading__container sent">
+					<h4>
+						{{ 'You have already submit a CV...'|_ }}
+						<br/>
+						{{ 'Do you want to do it again??'|_ }}
+					</h4>
+					<div class="btns">
+						<div class="btn btn__again" onclick="unblurCV()">
+							{{ 'Yes, let me do it.'|_ }}
+						</div>
+						<div class="btn btn__thanks" onclick="hideCVForm()">
+							{{ 'No, thanks.'|_ }}
+						</div>
+					</div>
+				</div>
 				<i class="material-icons close" onclick="hideCVForm()">close</i>
 				{% flash success %}
 					{% if message == 'cv' %}
@@ -451,7 +474,7 @@ public function onStart()
 					<input name="consent" type="checkbox" required="required">
 					<label for="consent">{{ 'I hereby agree with the  <a href="/privacy-policy"><u>Privacy Policy</u></a>'|_ }} <span>*</span></label>
 				</div>
-				<input type="submit" value="Upload your CV">
+				<input type="submit" value="{{ 'Upload your CV'|_ }}">
 			{{ form_close() }}
 		</div>
 	</div> <!-- /#wrapper -->
