@@ -239,7 +239,7 @@ pageNumber = "{{ :page }}"
 
 				{% for fields in clients %}
 					<div class="home-clients__item">
-						<img class="lazy" src="{{ fields.logo|resize(30, false, { quality: '30'}) }}" data-src="{{ fields.logo|media }}" width="180" alt="{{ fields.logo_alt|raw }}">
+						<img class="lazy" src="{{ fields.logo|media|resize(30, false, { quality: '30'}) }}" data-src="{{ fields.logo|media }}" width="180" alt="{{ fields.logo_alt|raw }}">
 					</div>
 				{% endfor %}
 
