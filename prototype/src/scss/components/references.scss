@@ -150,6 +150,7 @@
 
         &-img-left,
         &-img-right {
+            overflow: hidden;
 
             @media(max-width: 960px) {
                 flex-basis: 35%;

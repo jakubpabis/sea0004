@@ -11,6 +11,7 @@
 		&__image {
 			flex-basis: 50%;
 			height: 500px;
+			overflow: hidden;
 
 			@media(min-height: 900px) {
 				height: 550px;
@@ -430,6 +431,7 @@
 
 			&-img-left,
 			&-img-right {
+				overflow: hidden;
 
 				@media(max-width: 768px) {
 					height: 420px;
@@ -637,6 +639,7 @@
 			justify-content: center;
 			align-content: center;
 			align-items: center;
+			overflow: hidden;
 
 			@media(max-width: 1024px) {
 				flex-basis: 20%;
