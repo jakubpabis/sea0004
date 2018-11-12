@@ -56,7 +56,7 @@ forceUrl = 1
             {% for record in records %}
                 <div class="team__grid-item">
                     <div class="image">
-                        <img class="lazy" src="{{ record.photo|media|resize(50, false, { quality: '30'}) }}" alt="{{ record.name }}">
+                        <img class="lazy" src="{{ record.photo|media|resize(50, false, { quality: '30'}) }}" data-src="{{ record.photo|media }}" alt="{{ record.name }}">
                         <div class="social">
                             <div class="icons">
                                 {% if record.social_twitter %}
