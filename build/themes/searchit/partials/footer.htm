@@ -503,7 +503,52 @@ public function onStart()
     </noscript>
 	<script defer>
 		var loadDeferredStyles=function(){var e=document.getElementById("deferred-styles"),n=document.createElement("div");n.innerHTML=e.textContent,document.body.appendChild(n),e.parentElement.removeChild(e)},raf=window.requestAnimationFrame||window.mozRequestAnimationFrame||window.webkitRequestAnimationFrame||window.msRequestAnimationFrame;raf?raf(function(){window.setTimeout(loadDeferredStyles,0)}):window.addEventListener("load",loadDeferredStyles);
-		var lazy=[];function setLazy(){lazy=document.getElementsByClassName("lazy"),console.log("Found "+lazy.length+" lazy images")}function lazyLoad(){for(var t=0;t<lazy.length;t++)isInViewport(lazy[t])&&lazy[t].getAttribute("data-src")&&(lazy[t].src=lazy[t].getAttribute("data-src"),lazy[t].removeAttribute("data-src"),lazy[t].classList.add("loaded"));cleanLazy()}function cleanLazy(){lazy=Array.prototype.filter.call(lazy,function(t){return t.getAttribute("data-src")})}function isInViewport(t){var e=t.getBoundingClientRect();return 0<=e.bottom&&0<=e.right&&e.top<=(window.innerHeight||document.documentElement.clientHeight)&&e.left<=(window.innerWidth||document.documentElement.clientWidth)}function registerListener(t,e){window.addEventListener?window.addEventListener(t,e):window.attachEvent("on"+t,e)}registerListener("load",setLazy),registerListener("load",lazyLoad),registerListener("scroll",lazyLoad),registerListener("resize",lazyLoad);
+
+		var lazy = [];
+		registerListener('load', setLazy);
+		registerListener('load', lazyLoad);
+		registerListener('scroll', lazyLoad);
+		registerListener('resize', lazyLoad);
+		
+		function setLazy(){
+			lazy = document.getElementsByClassName('lazy');
+		} 
+		function lazyLoad(){
+			for(var i=0; i<lazy.length; i++){
+				if(isInViewport(lazy[i])){
+					if (lazy[i].getAttribute('data-src')){
+						lazy[i].src = lazy[i].getAttribute('data-src');
+						lazy[i].removeAttribute('data-src');
+						lazy[i].addEventListener('load', unBlur(lazy[i]));
+					}
+				}
+			}
+			cleanLazy();
+		}
+		function unBlur($el) {
+			$el.classList.add('loaded');
+		}
+		function cleanLazy(){
+			lazy = Array.prototype.filter.call(lazy, function(l){ return l.getAttribute('data-src');});
+		}
+		function isInViewport(el){
+			var rect = el.getBoundingClientRect();
+			
+			return (
+				rect.bottom >= 0 && 
+				rect.right >= 0 && 
+				rect.top <= (window.innerHeight || document.documentElement.clientHeight) && 
+				rect.left <= (window.innerWidth || document.documentElement.clientWidth)
+			);
+		}
+		function registerListener(event, func) {
+			if (window.addEventListener) {
+				window.addEventListener(event, func)
+			} else {
+				window.attachEvent('on' + event, func)
+			}
+		}
+
 	</script>
 	<script type="text/javascript" src="//platform.linkedin.com/in.js" defer>
 		$(window).on('load', function() {
