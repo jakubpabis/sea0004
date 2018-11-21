@@ -46,8 +46,8 @@
 		<div class="bottom">
 			<div class="left">
 				<div id="menu-btn" onclick="showMenu(this)">
-					<i class="material-icons">menu</i>
-					<i class="material-icons">close</i>
+					<i class="fas fa-bars"></i>
+					<i class="fas fa-times"></i>
 				</div>
                 {% partial 'menu-items' items=mainMenu.menuItems %}
 			</div>
@@ -79,7 +79,7 @@
 						</a>
 					</li>
 				</ul>
-				<i class="material-icons search-btn" aria-hidden="true" onclick="openSearch(this)">search</i>
+				<i class="fas fa-search search-btn" aria-hidden="true" onclick="openSearch(this)"></i>
 				<form 
 					class="search-field" 
 					id="search-field-general"
@@ -90,12 +90,12 @@
 				</form>
                 {% if activeLocale == 'en' %}
 					<a href="#" class="lang" data-request="onSwitchLocale" data-request-data="locale: 'nl'" title="Dutch">
-                        <i class="material-icons" aria-hidden="true" onclick="showLang(this, event)">language</i>
+                        <i class="fas fa-globe" aria-hidden="true" onclick="showLang(this, event)"></i>
                         <span>Nederlands</span>
                     </a>
                 {% else %}
                     <a href="#" class="lang" data-request="onSwitchLocale" data-request-data="locale: 'en'" title="English">
-                        <i class="material-icons" aria-hidden="true" onclick="showLang(this, event)">language</i>
+                        <i class="fas fa-globe" aria-hidden="true" onclick="showLang(this, event)"></i>
 					    <span>English</span>
                     </a>
                 {% endif %}

@@ -13,17 +13,17 @@
         <div class="info">
             {% if record.location %}
                 <div class="info-single">
-                    <p><i class="material-icons">location_on</i>{{ record.location }}</p>
+                    <p><i class="fas fa-map-marked-alt"></i>{{ record.location }}</p>
                 </div>
             {% endif %}
             {% if record.salary_min and record.salary_max %}
                 <div class="info-single">
-                    <p><i class="material-icons">euro_symbol</i>{{ record.salary_min|number_format(0, '.', '.') }} - {{ record.salary_max|number_format(0, '.', '.') }}</p>
+                    <p><i class="fas fa-euro-sign"></i>{{ record.salary_min|number_format(0, '.', '.') }} - {{ record.salary_max|number_format(0, '.', '.') }}</p>
                 </div>
             {% endif %}
             {% if record.types|last.type_name %}
                 <div class="info-single">
-                    <p><i class="material-icons">access_time</i>{{ record.types|last.type_name }}</p>
+                    <p><i class="far fa-clock"></i>{{ record.types|last.type_name }}</p>
                 </div>
             {% endif %}
         </div>

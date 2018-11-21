@@ -1,12 +1,8 @@
 <aside id="filterModal" class="job-listing__filters">
     <div class="job-listing__filters-container">
-        <i class="material-icons close" onclick="hideFilterForm()">close</i>
-        {# <a href="" class="shortlisted-jobs">
-            <i class="material-icons">favorite</i>
-            <p>{{ 'Shortlist vacatures'|_ }}</p>
-        </a> #}
+        <i class="fas fa-times close" onclick="hideFilterForm()"></i>
         <span class="shortlisted-jobs">
-            <i class="material-icons">filter_list</i>
+            <i class="fas fa-filter"></i>
             <p>{{ 'Job filters'|_ }}</p>
         </span>
         <span class="title">
@@ -15,14 +11,14 @@
         {% for cat in cats if cat.jobs|length != 0 %}
             <label for="{{ cat.category_name }}" class="checkbox" onclick="checkboxLabel(this); document.getElementById('jobFilterSearch').click();">
                 <input type="checkbox" name="category[]" value="{{ cat.id }}" {% for catLink in linkQuery['category'] %}{{ catLink == cat.id ? 'checked' : null }}{% endfor %}>
-                <span>{{ cat.category_name }} - <small>{{ cat.jobs|length }}</small><i class="material-icons">cancel</i></span>
+                <span>{{ cat.category_name }} - <small>{{ cat.jobs|length }}</small><i class="fas fa-times-circle"></i></span>
             </label>
             {% if cat.children %}  
                 <div class="checkbox-container">
                     {% for sub in cat.children if sub.jobs|length != 0 %}
                         <label for="{{ sub.category_name }}" class="checkbox sub" onclick="checkboxLabel(this); document.getElementById('jobFilterSearch').click();">
                             <input type="checkbox" name="category[]" value="{{ sub.id }}" {% for catLink in linkQuery['category'] %}{{ catLink == sub.id ? 'checked' : null }}{% endfor %}>
-                            <span>{{ sub.category_name }} - <small>{{ sub.jobs|length }}</small><i class="material-icons">cancel</i></span>
+                            <span>{{ sub.category_name }} - <small>{{ sub.jobs|length }}</small><i class="fas fa-times-circle"></i></span>
                         </label> 
                     {% endfor %} 
                 </div>
@@ -43,7 +39,7 @@
                 {% endfor %}
                 <option value="100000+" {{ linkQuery['salary-min'] == '100000+' ? 'selected' : null }}>{{ (100000)|number_format(0, '.', '.') }} +</option>
             </select>
-            <i class="material-icons">expand_more</i>
+            <i class="fas fa-chevron-down"></i>
         </label>
         <label for="salary-max" class="select">
             <span>{{ 'To'|_ }}:</span>
@@ -57,7 +53,7 @@
                 {% endfor %}
                 <option value="150000+" {{ linkQuery['salary-max'] == '150000+' ? 'selected' : null }}>{{ (150000)|number_format(0, '.', '.') }} +</option>
             </select>
-            <i class="material-icons">expand_more</i>
+            <i class="fas fa-chevron-down"></i>
         </label>
         <span class="title">
             {{ 'Job type'|_ }}
@@ -65,7 +61,7 @@
         {% for type in types if type.jobs|length != 0 %}
             <label for="{{ type.type_name }}" class="checkbox" onclick="checkboxLabel(this); document.getElementById('jobFilterSearch').click();">
                 <input type="checkbox" name="type[]" value="{{ type.id }}" {% for typeLink in linkQuery['type'] %}{{ typeLink == type.id ? 'checked' : null }}{% endfor %}>
-                <span>{{ type.type_name }} - <small>{{ type.jobs|length }}</small><i class="material-icons">cancel</i></span>
+                <span>{{ type.type_name }} - <small>{{ type.jobs|length }}</small><i class="fas fa-times-circle"></i></span>
             </label>
         {% endfor %}
         <a href="javascript:void(0)" onclick="hideFilterForm()" class="btn btn-default">

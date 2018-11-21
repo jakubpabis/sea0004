@@ -2,7 +2,7 @@
     <div class="job-listing__pagination">
         {% if pagination.currentPage > 1 %}
             <a href="{{ pagination.url(pagination.currentPage-1) }}" class="prev">
-                <i class="material-icons">chevron_left</i>
+                <i class="fas fa-chevron-left"></i>
                 <span>{{ 'Prev'|_ }}</span>
             </a>
         {% endif %}
@@ -26,7 +26,7 @@
         {% if pagination.lastPage > pagination.currentPage %}
             <a href="{{ pagination.url(pagination.currentPage+1) }}" class="next">
                 <span>{{ 'Next'|_ }}</span>
-                <i class="material-icons">chevron_right</i>
+                <i class="fas fa-chevron-right"></i>
             </a>
         {% endif %}
     </div>

@@ -43,17 +43,17 @@ localeUrl[nl] = "/vacature/:slug"
                             <div class="info">
                                 {% if record.location %}
                                     <div class="info-single">
-                                        <p><i class="material-icons">location_on</i>{{ record.location }}</p>
+                                        <p><i class="fas fa-map-marked-alt"></i>{{ record.location }}</p>
                                     </div>
                                 {% endif %}
                                 {% if record.salary_min or record.salary_max %}
                                     <div class="info-single">
-                                        <p><i class="material-icons">euro_symbol</i>{{ record.salary_min|number_format(0, '.', '.') }} - {{ record.salary_max|number_format(0, '.', '.') }}</p>
+                                        <p><i class="fas fa-euro-sign"></i>{{ record.salary_min|number_format(0, '.', '.') }} - {{ record.salary_max|number_format(0, '.', '.') }}</p>
                                     </div>
                                 {% endif %}
                                 {% if record.types[0].type_name %}
                                     <div class="info-single">
-                                        <p><i class="material-icons">access_time</i>{{ record.types[0].type_name }}</p>
+                                        <p><i class="far fa-clock"></i>{{ record.types[0].type_name }}</p>
                                     </div>
                                 {% endif %}
                             </div>
@@ -64,25 +64,25 @@ localeUrl[nl] = "/vacature/:slug"
                             </span>
                             <div class="job-detail__social">
                                 <a href="https://www.facebook.com/sharer/sharer.php?u={{ this.page.id | page }}&t={{ record.title }}" target="_blank">
-                                    <i class="fa fa-facebook-f" aria-hidden="true"></i>
+                                    <i class="fab fa-facebook-f" aria-hidden="true"></i>
                                 </a>
                                 <a href="https://twitter.com/intent/tweet?source={{ this.page.id | page }}&text={{ this.page.id | page }} - {{ record.title }}" target="_blank">
-                                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                                    <i class="fab fa-twitter" aria-hidden="true"></i>
                                 </a>
                                 <a href="http://www.linkedin.com/shareArticle?mini=true&url={{ this.page.id | page }}&title={{ record.title }}&summary=Checkout%20this%20job%20offer!&source={{ this.page.id | page }}" target="_blank">
-                                    <i class="fa fa-linkedin-in" aria-hidden="true"></i>
+                                    <i class="fab fa-linkedin-in" aria-hidden="true"></i>
                                 </a>
                                 <a href="https://plus.google.com/share?url={{ this.page.id | page }}" target="_blank">
-                                    <i class="fa fa-google-plus-g" aria-hidden="true"></i>
+                                    <i class="fab fa-google-plus-g" aria-hidden="true"></i>
                                 </a>
                                 <a href="https://getpocket.com/save?url={{ this.page.id | page }}&title={{ record.title }}" target="_blank">
-                                    <i class="fa fa-get-pocket" aria-hidden="true"></i>
+                                    <i class="fab fa-get-pocket" aria-hidden="true"></i>
                                 </a>
                                 <a href="whatsapp://send?text={{ record.title }}&nbsp;&nbsp;{{ this.page.id | page }}" target="_blank">
-                                    <i class="fa fa-whatsapp" aria-hidden="true"></i>
+                                    <i class="fab fa-whatsapp" aria-hidden="true"></i>
                                 </a>
                                 <a href="mailto:?subject={{ record.title }}&body=Checkout%20this%20job%20offer: {{ this.page.id | page }}" target="_blank">
-                                    <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                                    <i class="far fa-envelope" aria-hidden="true"></i>
                                 </a>
                             </div>
                         </div>
@@ -125,17 +125,17 @@ localeUrl[nl] = "/vacature/:slug"
                 <div class="info">
                     {% if record.location %}
                         <div class="info-single">
-                            <p><i class="material-icons">location_on</i>{{ record.location }}</p>
+                            <p><i class="fas fa-map-marked-alt"></i>{{ record.location }}</p>
                         </div>
                     {% endif %}
                     {% if record.salary_min or record.salary_max %}
                         <div class="info-single">
-                            <p><i class="material-icons">euro_symbol</i>{{ record.salary_min|number_format(0, '.', '.') }} - {{ record.salary_max|number_format(0, '.', '.') }}</p>
+                            <p><i class="fas fa-euro-sign"></i>{{ record.salary_min|number_format(0, '.', '.') }} - {{ record.salary_max|number_format(0, '.', '.') }}</p>
                         </div>
                     {% endif %}
                     {% if record.types[0].type_name %}
                         <div class="info-single">
-                            <p><i class="material-icons">access_time</i>{{ record.types[0].type_name }}</p>
+                            <p><i class="far fa-clock"></i>{{ record.types[0].type_name }}</p>
                         </div>
                     {% endif %}
                 </div>
@@ -144,25 +144,25 @@ localeUrl[nl] = "/vacature/:slug"
                 </span>
                 <div class="job-detail__social">
                     <a href="https://www.facebook.com/sharer/sharer.php?u={{ this.page.id | page }}&t={{ record.title }}" target="_blank">
-                        <i class="fa fa-facebook-f" aria-hidden="true"></i>
+                        <i class="fab fa-facebook-f" aria-hidden="true"></i>
                     </a>
                     <a href="https://twitter.com/intent/tweet?source={{ this.page.id | page }}&text={{ this.page.id | page }} - {{ record.title }}" target="_blank">
-                        <i class="fa fa-twitter" aria-hidden="true"></i>
+                        <i class="fab fa-twitter" aria-hidden="true"></i>
                     </a>
                     <a href="http://www.linkedin.com/shareArticle?mini=true&url={{ this.page.id | page }}&title={{ record.title }}&summary=Checkout%20this%20job%20offer!&source={{ this.page.id | page }}" target="_blank">
-                        <i class="fa fa-linkedin-in" aria-hidden="true"></i>
+                        <i class="fab fa-linkedin-in" aria-hidden="true"></i>
                     </a>
                     <a href="https://plus.google.com/share?url={{ this.page.id | page }}" target="_blank">
-                        <i class="fa fa-google-plus-g" aria-hidden="true"></i>
+                        <i class="fab fa-google-plus-g" aria-hidden="true"></i>
                     </a>
                     <a href="https://getpocket.com/save?url={{ this.page.id | page }}&title={{ record.title }}" target="_blank">
-                        <i class="fa fa-get-pocket" aria-hidden="true"></i>
+                        <i class="fab fa-get-pocket" aria-hidden="true"></i>
                     </a>
                     <a href="whatsapp://send?text={{ record.title }}&nbsp;&nbsp;{{ this.page.id | page }}" target="_blank">
-                        <i class="fa fa-whatsapp" aria-hidden="true"></i>
+                        <i class="fab fa-whatsapp" aria-hidden="true"></i>
                     </a>
                     <a href="mailto:?subject={{ record.title }}&body=Checkout%20this%20job%20offer: {{ this.page.id | page }}" target="_blank">
-                        <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                        <i class="far fa-envelope" aria-hidden="true"></i>
                     </a>
                 </div>
                 <span class="title">
