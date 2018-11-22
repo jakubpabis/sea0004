@@ -19,8 +19,7 @@ jobSlug = "{{ :slug }}"
 {% partial 'head' %}
 {% component 'breadcrumbs' %}
 {% page %}
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_CXNi6mCASl4D3Ud9ofmUqE7Lt9Kb5ps&callback=initJobMap" defer></script>
-<script type="text/javascript" defer>
+<script type="text/javascript">
 	function initJobMap()
 	{
 		var job_map = document.getElementById('job_map');
@@ -217,4 +216,5 @@ jobSlug = "{{ :slug }}"
 		);
 	}
 </script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_CXNi6mCASl4D3Ud9ofmUqE7Lt9Kb5ps&callback=initJobMap" defer></script>
 {% partial 'footer' %}
