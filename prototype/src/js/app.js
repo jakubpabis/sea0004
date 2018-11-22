@@ -473,6 +473,14 @@ function menuScroll()
 	}
 }
 
+function lazyImages()
+{
+	$('.lazy').each(function() {
+		var $src = $(this).data('src');
+		$(this).attr('src', $src).removeAttr('data-src');	
+	});
+}
+
 $(window).on('load scroll', function() {
 	menuScroll();
 });
@@ -489,4 +497,8 @@ $(document).ready(function() {
 	getReferrer();
 	onFormSubmit();
 	onFormLoad();
+});
+
+$(window).on('load', function() {
+	lazyImages();
 });

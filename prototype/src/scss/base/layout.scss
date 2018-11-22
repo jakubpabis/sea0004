@@ -331,17 +331,3 @@ section {
 	}
 
 }
-
-.lazy {
-	filter: blur(16px);
-	overflow: hidden;
-	transform: scale(1.05);
-	transition: all 200ms ease;
-
-	&.loaded {
-		filter: blur(0);
-		transform: scale(1);
-		overflow: initial;
-	}
-
-}
