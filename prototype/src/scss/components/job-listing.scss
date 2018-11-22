@@ -73,8 +73,8 @@
                     position: absolute;
                     top: 0;
                     right: 0;
-                    font-size: 32px;
-                    padding: 3px;
+                    font-size: 24px;
+                    padding: 6px 8px;
                     background-color: $color-tertiary;
                     color: white;
                     cursor: pointer;
@@ -162,7 +162,7 @@
             }
 
             i {
-                font-size: 24px;
+                font-size: 20px;
                 margin-right: 5px;
                 transition: all 250ms ease;
 
@@ -183,7 +183,7 @@
                 &:hover {
                     
                     i {
-                        font-size: 32px;
+                        font-size: 24px;
                     }
     
                 }
@@ -346,7 +346,7 @@
                     opacity: 0;
                     color: white;
                     font-size: 16px;
-                    vertical-align: -3px;
+                    vertical-align: -1px;
                     transition: all 150ms ease;
 
                     @media(max-width: 1170px) {
@@ -381,8 +381,8 @@
         
             &+i {
                 position: absolute;
-                right: 3px;
-                bottom: 6px;
+                right: 9px;
+                bottom: 9px;
                 pointer-events: none;
                 transition: all 200ms ease;
             }
@@ -391,7 +391,7 @@
                 color: $color-tertiary;
 
                 &+i {
-                    bottom: 3px;
+                    bottom: 6px;
                     color: $color-tertiary;
                 }
 
@@ -438,8 +438,8 @@
                 }
 
                 i {
-                    vertical-align: -8px;
-                    font-size: 28px;
+                    vertical-align: -3px;
+                    font-size: 21px;
                 }
                 
             }
@@ -713,9 +713,11 @@
 
                     i {
                         font-size: 19px;
-                        margin-right: 3px;
+                        margin-right: 5px;
+                        width: 21px;
+                        text-align: center;
                         margin-left: -23px;
-                        vertical-align: -4px;
+                        vertical-align: -2px;
                         color: $color-tertiary;
                     }
 
@@ -790,7 +792,10 @@
             }
 
             i {
-                font-size: 32px;
+                font-size: 24px;
+                width: 28px;
+                text-align: center;
+                display: inline-block;
             }
 
             @media(min-width: 549px) {

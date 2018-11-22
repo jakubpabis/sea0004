@@ -172,7 +172,9 @@
                     font-size: 19px;
                     margin-right: 8px;
                     margin-left: -27px;
-                    text-align: left;
+                    width: 20px;
+                    text-align: center;
+                    vertical-align: -4px;
                     display: inline-block;
                     color: $color-tertiary;
                 }
@@ -527,8 +529,8 @@
                 position: absolute;
                 top: 0;
                 right: 0;
-                font-size: 32px;
-                padding: 3px;
+                font-size: 24px;
+                padding: 6px 8px;
                 background-color: $color-tertiary;
                 color: white;
                 cursor: pointer;
@@ -887,8 +889,8 @@
     
                 &+i {
                     position: absolute;
-                    right: 6px;
-                    top: 30px;
+                    right: 9px;
+                    top: 35px;
                     pointer-events: none;
                     transition: all 200ms ease;
                 }
@@ -896,7 +898,7 @@
                 &:hover {
     
                     &+i {
-                        top: 33px;
+                        top: 38px;
                         color: $color-tertiary;
                     }
     
