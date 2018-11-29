@@ -425,7 +425,7 @@ function getReferrer()
 
 function onFormSubmit()
 {
-	$(document).on('submit', 'form', function() {
+	$(document).on('submit', 'form.application-form, form.cv-form', function() {
 		$(this).addClass('disabled').find('input[type="submit"]').attr("disabled", true).addClass('disabled');
 		if($(this).hasClass('application-form')) {
 			setCookie('jobid_'+$(this).find('input.job-id').val(), $(this).find('input.job-id').val(), 365);
