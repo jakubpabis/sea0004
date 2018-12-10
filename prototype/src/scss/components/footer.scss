@@ -544,6 +544,37 @@
 
 		}
 
+		button {
+
+			&.submit {
+				width: auto;
+				margin: 10px auto 0;
+				display: inline-block;
+				padding: 16px 40px!important;
+				height: auto!important;
+				border: none!important;
+				font-size: 12px;
+				font-weight: 700;
+				letter-spacing: 0.5px;
+				line-height: 1;
+				text-transform: uppercase;
+				color: white;
+				cursor: pointer;
+				background-color: $color-tertiary;
+
+				&.disabled {
+					
+				}
+
+				&:hover {
+					transform: scale(1.05);
+					-webkit-box-shadow: 0 0 8px 0 rgba($color-primary, 0.6);
+					box-shadow: 0 0 8px 0 rgba($color-primary, 0.6);
+				}
+			}
+
+		}
+
 		.checkbox {
 			width: 100%;
 			flex-basis: 100%;

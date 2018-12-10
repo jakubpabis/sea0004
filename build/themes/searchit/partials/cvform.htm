@@ -366,17 +366,18 @@
                 <p id="cv-photo-desktop"><i>{{ 'Accepted formats: .jpg | .png | .gif'|_ }}</i></p>
                 <input type="file" accept="image/*" name="applicant-photo" value="" onchange="getFileName(this, 'cv-photo-desktop')">
             </div>
-            <label for="applicant-cv">{{ 'Upload your CV'|_ }} <span>*</span></label>
+            <label for="applicant-cv">{{ 'Upload your CV'|_ }}</label>
             <div class="cvupload">
                 <p id="cv-cv"><i>{{ 'Accepted formats: .doc | .docx | .pdf'|_ }}</i></p>
                 <input type="file" accept="application/pdf,application/msword,
-                application/vnd.openxmlformats-officedocument.wordprocessingml.document" name="applicant-cv" value="" required="required" onchange="getFileName(this, 'cv-cv')">
+                application/vnd.openxmlformats-officedocument.wordprocessingml.document" name="applicant-cv" value="" onchange="getFileName(this, 'cv-cv')">
             </div>
         </div>
         <div class="checkbox">
             <input name="consent" type="checkbox" required="required">
             <label for="consent">{{ 'I hereby agree with the  <a href="/privacy-policy" target="_blank"><u>Privacy Policy</u></a>'|_ }} <span>*</span></label>
         </div>
+        {{ noCaptcha|raw }}
         <input type="submit" value="{{ 'Upload your CV'|_ }}">
     {{ form_close() }}
 </div>

@@ -497,6 +497,7 @@ $(document).ready(function() {
 	getReferrer();
 	onFormSubmit();
 	onFormLoad();
+	cvSubmit();
 });
 
 $(window).on('load', function() {
