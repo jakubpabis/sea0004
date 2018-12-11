@@ -428,6 +428,11 @@
 
                 .loading__container {
                     display: flex;
+    
+                    &.sent {
+                        display: none;
+                    }
+    
                 }
         
             }
@@ -442,6 +447,13 @@
                     filter: blur(7px);
                 }
 
+            }
+
+            .recaptcha-cont {
+                display: flex;
+                justify-content: center;
+                width: 100%;
+                padding: 16px 0 24px 0;
             }
         
             .loading__container {
@@ -699,6 +711,17 @@
                     color: white;
                     cursor: pointer;
                     background-color: $color-tertiary;
+
+                    &.disabled {
+                        background-color: #ddd;
+    
+                        &:hover {
+                            transform: scale(1);
+                            box-shadow: 0 0 0 0 transparent;
+                            cursor: not-allowed;
+                        }
+    
+                    }
     
                     &:hover {
                         transform: scale(1.05);

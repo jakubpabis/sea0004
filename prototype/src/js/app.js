@@ -275,13 +275,6 @@ function searchbarText()
 	}
 }
 
-cvFormOpen();
-loadCarousel();
-loadClientsCarousel();
-loadCandidatesCarousel();
-checkCookieMessage();
-searchbarText();
-
 var searchbarTyping = setInterval(function(){ searchbarText() }, 3500);
 
 function stopTyping() {
@@ -444,18 +437,28 @@ function onFormLoad()
 		$('form.cv-form').addClass('cv-sent');
 	}
 
-	if($jobid !== 188 && $jobid == getCookie('jobid_'+$jobid)) {
+	if($jobid !== 188 && $jobid == $cookie) {
 		$('form.application-form').addClass('application-sent');
 	}
 
 }
 
 function unblurApplication() {
-	$('.application-form').removeClass('application-sent');
+	$('form.application-form').removeClass('application-sent');
 }
 
 function unblurCV() {
-	$('.cv-form').removeClass('cv-sent');
+	$('form.cv-form').removeClass('cv-sent');
+}
+
+function cvCaptchaCallback()
+{
+	$('form.cv-form').find('input[type="submit"]').attr("disabled", false).removeClass('disabled');
+}
+
+function appCaptchaCallback()
+{
+	$('form.application-form').find('input[type="submit"]').attr("disabled", false).removeClass('disabled');
 }
 
 function menuScroll()
@@ -494,10 +497,17 @@ $(document).ready(function() {
 		$formCont = $('#uploadCvModal');
 	}
 
+	cvFormOpen();
+	loadCarousel();
+	loadClientsCarousel();
+	loadCandidatesCarousel();
+	checkCookieMessage();
+	searchbarText();
+
 	getReferrer();
 	onFormSubmit();
 	onFormLoad();
-	cvSubmit();
+
 });
 
 $(window).on('load', function() {

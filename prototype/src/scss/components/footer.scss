@@ -226,6 +226,11 @@
 
 			.loading__container {
 				display: flex;
+
+				&.sent {
+					display: none;
+				}
+
 			}
 	
 		}
@@ -240,6 +245,13 @@
 				filter: blur(7px);
 			}
 	
+		}
+
+		.recaptcha-cont {
+			display: flex;
+			justify-content: center;
+			width: 100%;
+			padding: 16px 0 24px 0;
 		}
 	
 		.loading__container {
@@ -497,6 +509,17 @@
 				cursor: pointer;
 				background-color: $color-tertiary;
 
+				&.disabled {
+					background-color: #ddd;
+
+					&:hover {
+						transform: scale(1);
+						box-shadow: 0 0 0 0 transparent;
+						cursor: not-allowed;
+					}
+
+				}
+
 				&:hover {
 					transform: scale(1.05);
 					-webkit-box-shadow: 0 0 8px 0 rgba($color-primary, 0.6);
@@ -544,37 +567,6 @@
 
 		}
 
-		button {
-
-			&.submit {
-				width: auto;
-				margin: 10px auto 0;
-				display: inline-block;
-				padding: 16px 40px!important;
-				height: auto!important;
-				border: none!important;
-				font-size: 12px;
-				font-weight: 700;
-				letter-spacing: 0.5px;
-				line-height: 1;
-				text-transform: uppercase;
-				color: white;
-				cursor: pointer;
-				background-color: $color-tertiary;
-
-				&.disabled {
-					
-				}
-
-				&:hover {
-					transform: scale(1.05);
-					-webkit-box-shadow: 0 0 8px 0 rgba($color-primary, 0.6);
-					box-shadow: 0 0 8px 0 rgba($color-primary, 0.6);
-				}
-			}
-
-		}
-
 		.checkbox {
 			width: 100%;
 			flex-basis: 100%;
@@ -606,8 +598,6 @@
 		}
 
 		.radios {
-			// width: 66.6666%;
-			// flex-basis: 66.6666%;
 			display: flex;
 			justify-content: flex-start;
 			flex-wrap: wrap;

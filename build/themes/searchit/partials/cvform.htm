@@ -24,15 +24,17 @@
             </div>
         </div>
         <i class="fas fa-times close" onclick="hideCVForm()"></i>
-        {% flash success %}
-            {% if message == 'cv' %}
-                <p
-                    data-control="flash-message"
-                    class="flash-message fade info"
-                    data-interval="30">
+        {% flash %}
+            <p
+                data-control="flash-message"
+                class="flash-message fade {{ type }}"
+                data-interval="30">
+                {% if message == 'cv' %}
                     {{ 'Thank you! Your CV was uploaded successfully.'|_ }}
-                </p>
-            {% endif %}
+                {% else %}
+                    {{ message }}
+                {% endif %}
+            </p>
         {% endflash %}
         <div class="title">
             <p><span>{{ 'Upload your CV to our database'|_ }}!</span></p>
@@ -377,7 +379,9 @@
             <input name="consent" type="checkbox" required="required">
             <label for="consent">{{ 'I hereby agree with the  <a href="/privacy-policy" target="_blank"><u>Privacy Policy</u></a>'|_ }} <span>*</span></label>
         </div>
-        {{ noCaptcha|raw }}
-        <input type="submit" value="{{ 'Upload your CV'|_ }}">
+        <div class="recaptcha-cont">
+            {{ cvCaptcha|raw }}
+        </div>
+        <input type="submit" class="disabled" disabled value="{{ 'Upload your CV'|_ }}">
     {{ form_close() }}
 </div>

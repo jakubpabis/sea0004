@@ -8,7 +8,6 @@ use Request;
 use Lang;
 use Mail;
 use Validator;
-use ValidationException;
 use Searchit\Jobs\Models\Job;
 use System\Models\File as FileSys;
 use \Anhskohbo\NoCaptcha\NoCaptcha;
@@ -30,7 +29,8 @@ class Form extends ComponentBase
 
     public function onRun()
 	{
-		$this->page['noCaptcha'] = app('captcha')->display();
+        $this->page['cvCaptcha'] = app('captcha')->display(['data-callback' => 'cvCaptchaCallback']);
+        $this->page['appCaptcha'] = app('captcha')->display(['data-callback' => 'appCaptchaCallback']);
 	}
 
     /*
@@ -49,7 +49,10 @@ class Form extends ComponentBase
         $validator = Validator::make(Input::all(), $rules);
 
         if($validator->fails()){
-			throw new ValidationException($validator);
+            $messages = $validator->messages();
+            foreach ($messages->all() as $message) {
+                Flash::error($message);
+            }
 		} else {
 
             if(env('APP_ENV') !== 'dev') {
