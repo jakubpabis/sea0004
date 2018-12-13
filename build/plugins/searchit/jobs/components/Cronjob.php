@@ -187,14 +187,16 @@ class Cronjob extends ComponentBase
     protected function checkForIddink($job)
     {
         $jobCategory = $job->categories->category;
+        $categoryArray = [];
         foreach($jobCategory as $category) {
-            if($category['group'] == '#2 Skill Area' || $category['group'] == '#3 Skill IT') {
-                if($category == 'IDDINK') {
-                    return false;
-                } else {
-                    return true;
-                }
+            if($category['group'] == '#2 Skill Area') {
+                $categoryArray[] = $category;
             }
+        }
+        if(in_array("IDDINK", $categoryArray)) {
+            return false;
+        } else {
+            return true;
         }
     }
 
