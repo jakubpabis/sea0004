@@ -35,7 +35,8 @@ var src = {
     buildImg: './build/assets/img',
     buildFonts: './build/assets/fonts',
     portJs: '../build/themes/searchit/assets/js',
-    portCss: '../build/themes/searchit/assets/css'
+    portCss: '../build/themes/searchit/assets/css',
+    portImg: '../build/themes/searchit/assets/img'
 };
 
 var production = false;
@@ -68,7 +69,6 @@ gulp.task('build-sass', function() {
         .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
         .pipe(autoprefixer('last 10 versions'))
         .pipe(plugins.minifyCss())
-        .pipe(gulp.dest(src.publicCss))
         .pipe(gulp.dest(src.buildCss))
         .pipe(gulp.dest(src.portCss))
 });
@@ -96,7 +96,6 @@ gulp.task('build-js', function () {
         .pipe(plugins.concat('app.js'))
         .pipe(plugins.uglify())
         .pipe(plugins.size())
-        .pipe(gulp.dest(src.publicJs))
         .pipe(gulp.dest(src.buildJs))
         .pipe(gulp.dest(src.portJs))
 });
@@ -113,8 +112,8 @@ gulp.task('sprite', function () {
     cssName: 'sprite.css'
   }));
   var imgStream = spriteData.img
-    .pipe(gulp.dest(src.publicImg))
-    .pipe(gulp.dest(src.buildImg));
+    .pipe(gulp.dest(src.buildImg))
+    .pipe(gulp.dest(src.portImg));
   var cssStream = spriteData.css
     .pipe(gulp.dest('src/scss/other/'));
 
@@ -126,8 +125,8 @@ gulp.task('sprite', function () {
  */
 gulp.task('build-img', function() {
     return gulp.src([src.img + '/*', src.img + '/**/*'])
-        .pipe(gulp.dest(src.publicImg))
         .pipe(gulp.dest(src.buildImg))
+        .pipe(gulp.dest(src.portImg));
 });
 
 
@@ -137,7 +136,6 @@ gulp.task('build-img', function() {
 
 gulp.task('build-fonts', function() {
     return gulp.src([src.fonts + '/*', src.fonts + '/**/*'])
-        .pipe(gulp.dest(src.publicFonts))
         .pipe(gulp.dest(src.buildFonts))
 });
 
