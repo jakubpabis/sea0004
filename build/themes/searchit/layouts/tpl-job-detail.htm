@@ -10,11 +10,13 @@ forceUrl = 1
 
 jobSlug = "{{ :slug }}"
 
+[breadcrumbs]
 [form]
 
 [langCheck]
 ==
-
+{% partial 'head' %}
+{% component 'breadcrumbs' %}
 {% page %}
 <script type="text/javascript">
 	function initJobMap()
