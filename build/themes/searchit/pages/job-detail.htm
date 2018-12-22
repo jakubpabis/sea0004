@@ -16,6 +16,7 @@ notFoundMessage = "Record not found"
 [localePicker]
 forceUrl = 1
 
+[breadcrumbs]
 
 [jobFulfilled]
 jobfulfilled = "{{ :slug }}"
@@ -26,6 +27,175 @@ localeUrl[nl] = "/vacature/:slug"
 {% set record = builderDetails.record %}
 {% set displayColumn = builderDetails.displayColumn %}
 {% set notFoundMessage = builderDetails.notFoundMessage %}
+
+<!DOCTYPE html>
+<html lang="{{ activeLocale }}">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Meta title -->
+		<title>
+			{% if record.meta_title %}
+				{{ record.meta_title }}
+			{% elseif record.title %}
+				{{ record.title }} | Search It Recruitment
+			{% elseif this.page.meta_title %}
+				{{ this.page.meta_title }}
+			{% else %}
+				{{ this.page.title }} | Search It Recruitment
+			{% endif %}
+		</title>
+	<!-- /Meta title -->
+	<!-- Google Tag Manager -->
+		<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+		})(window,document,'script','dataLayer','GTM-PMG8TTV');</script>
+	<!-- /Google Tag Manager -->
+	<!-- Bing Webmaster Tools -->
+		<meta name="msvalidate.01" content="DB26E7D9A02A63952EAC119AC5AB03FC" />
+	<!-- /Bing Webmaster Tools -->
+	<!-- Meta description -->
+		{% if record.meta_description %}
+			<meta name="description" content="{{ record.meta_description }}">
+		{% elseif record.excerpt %}
+			<meta name="description" content="{{ record.excerpt|striptags|slice(0, 160) }}">
+		{% elseif record.summary %}
+			<meta name="description" content="{{ record.summary|striptags|slice(0, 160) }}">
+		{% elseif this.page.meta_description %}
+			<meta name="description" content="{{ this.page.meta_description }}">
+		{% endif %}
+	<!-- /Meta description -->
+	<!-- Other meta -->
+		{% if record.meta_keywords %}
+			<meta name="keywords" content="{{ record.meta_keywords }}">
+		{% endif %}
+		<meta name="author" content="Search It Recruitment">
+		<meta name="generator" content="Search It Recruitment">
+	<!-- /Other meta -->
+	<!-- OG Tags -->
+		<meta property="fb:app_id" content="382574281913074">
+		<meta property="og:site_name" content="Search It Recruitment"/>
+		{% if record.meta_title %}
+			<meta property="og:title" content="{{ record.meta_title }}"/>
+		{% elseif record.title %}
+			<meta property="og:title" content="{{ record.title }} | Search It Recruitment"/>
+		{% elseif this.page.meta_title %}
+			<meta property="og:title" content="{{ this.page.meta_title }}"/>
+		{% else %}
+			<meta property="og:title" content="{{ this.page.title }} | Search It Recruitment"/>
+		{% endif %}
+		<meta property="og:url" content="{{ url('/') }}/{{ activeLocale }}{{ this.page.url }}"/>
+		<meta property="og:type" content="website" />
+		{# <meta property="og:description" content="{{ record.meta_description }}"/> #}
+		{# <meta property="og:description" content="{{ this.page.meta_description }}"/> #}
+		<meta property="og:description" content="{{ record.summary|striptags|slice(0, 160) }}"/>
+		{% if record.meta_description %}
+			<meta property="og:description" content="{{ record.meta_description }}"/> 
+		{% elseif record.summary %}
+			<meta property="og:description" content="{{ record.summary|striptags|slice(0, 160) }}"/>
+		{% elseif this.page.meta_description %}
+			<meta property="og:description" content="{{ this.page.meta_description }}"/>
+		{% endif %}
+		<meta property="og:image" content="{{ 'assets/img/logo.png'|theme }}"/>
+		<meta property="og:image:type" content="image/png" />
+		<meta property="og:image:width" content="850" />
+		<meta property="og:image:height" content="300" />
+	<!-- /OG Tags -->
+	<!-- hreflangs and prefetching -->
+		{% if hreflang_en and hreflang_nl %}
+			<link rel="alternate" hreflang="en" href="{{ url('/') }}/en/{{ hreflang_en }}" />
+			<link rel="alternate" hreflang="nl" href="{{ url('/') }}/nl/{{ hreflang_nl }}" />
+			<link rel="alternate" hreflang="x-default" href="{{ url('/') }}/en/{{ hreflang_en }}" />
+			{% if activeLocale == 'en' %}
+				<link rel="prefetch" href="{{ url('/') }}/en/jobs?page=1">
+				<link rel="prerender" href="{{ url('/') }}/en/jobs?page=1">
+			{% else %}
+				<link rel="prefetch" href="{{ url('/') }}/nl/vacatures?page=1">
+				<link rel="prerender" href="{{ url('/') }}/nl/vacatures?page=1">
+			{% endif %}
+		{% elseif this.param.category %}
+			<link rel="alternate" hreflang="en" href="{{ url('/') }}/en/jobs/{{ this.param.category }}" />
+			<link rel="alternate" hreflang="nl" href="{{ url('/') }}/nl/vacatures/{{ this.param.category }}" />
+			<link rel="alternate" hreflang="x-default" href="{{ url('/') }}/en/jobs/{{ this.param.category }}" />
+			{% if pagination.lastPage > 1 %}
+				<link rel="prefetch" href="{{ pagination.url(pagination.currentPage+1) }}">
+				<link rel="prerender" href="{{ pagination.url(pagination.currentPage+1) }}">
+			{% endif %}
+		{% elseif this.param.slug %}
+			<link rel="alternate" hreflang="en" href="{{ url('/') }}/en/job/{{ this.param.slug }}" />
+			<link rel="alternate" hreflang="nl" href="{{ url('/') }}/nl/vacature/{{ this.param.slug }}" />
+			<link rel="alternate" hreflang="x-default" href="{{ url('/') }}/en/job/{{ this.param.slug }}" />
+			{% if activeLocale == 'en' %}
+				<link rel="prefetch" href="{{ url('/') }}/en/jobs?page=1">
+				<link rel="prerender" href="{{ url('/') }}/en/jobs?page=1">
+			{% else %}
+				<link rel="prefetch" href="{{ url('/') }}/nl/vacatures?page=1">
+				<link rel="prerender" href="{{ url('/') }}/nl/vacatures?page=1">
+			{% endif %}
+		{% elseif jobs %}
+			<link rel="alternate" hreflang="en" href="{{ url('/') }}/en/jobs" />
+			<link rel="alternate" hreflang="nl" href="{{ url('/') }}/nl/vacatures" />
+			<link rel="alternate" hreflang="x-default" href="{{ url('/') }}/en/jobs" />
+			{% if pagination.lastPage > 1 %}
+				<link rel="prefetch" href="{{ pagination.url(pagination.currentPage+1) }}">
+				<link rel="prerender" href="{{ pagination.url(pagination.currentPage+1) }}">
+			{% endif %}
+		{% else %}
+			<link rel="alternate" hreflang="en" href="{{ url('/') }}/en" />
+			<link rel="alternate" hreflang="nl" href="{{ url('/') }}/nl" />
+			<link rel="alternate" hreflang="x-default" href="{{ url('/') }}/en" />
+			{% if activeLocale == 'en' %}
+				<link rel="prefetch" href="{{ url('/') }}/en/jobs?page=1">
+				<link rel="prerender" href="{{ url('/') }}/en/jobs?page=1">
+			{% else %}
+				<link rel="prefetch" href="{{ url('/') }}/nl/vacatures?page=1">
+				<link rel="prerender" href="{{ url('/') }}/nl/vacatures?page=1">
+			{% endif %}
+		{% endif %}
+	<!-- /hreflangs and prefetching -->
+	<!-- Favicons -->
+		<link rel="apple-touch-icon" sizes="57x57" href="{{ 'assets/img/favicon/apple-icon-57x57.png'|theme }}">
+		<link rel="apple-touch-icon" sizes="60x60" href="{{ 'assets/img/favicon/apple-icon-60x60.png'|theme }}">
+		<link rel="apple-touch-icon" sizes="72x72" href="{{ 'assets/img/favicon/apple-icon-72x72.png'|theme }}">
+		<link rel="apple-touch-icon" sizes="76x76" href="{{ 'assets/img/favicon/apple-icon-76x76.png'|theme }}">
+		<link rel="apple-touch-icon" sizes="114x114" href="{{ 'assets/img/favicon/apple-icon-114x114.png'|theme }}">
+		<link rel="apple-touch-icon" sizes="120x120" href="{{ 'assets/img/favicon/apple-icon-120x120.png'|theme }}">
+		<link rel="apple-touch-icon" sizes="144x144" href="{{ 'assets/img/favicon/apple-icon-144x144.png'|theme }}">
+		<link rel="apple-touch-icon" sizes="152x152" href="{{ 'assets/img/favicon/apple-icon-152x152.png'|theme }}">
+		<link rel="apple-touch-icon" sizes="180x180" href="{{ 'assets/img/favicon/apple-icon-180x180.png'|theme }}">
+		<link rel="icon" type="image/png" sizes="192x192"  href="{{ 'assets/img/favicon/android-icon-192x192.png'|theme }}">
+		<link rel="icon" type="image/png" sizes="32x32" href="{{ 'assets/img/favicon/favicon-32x32.png'|theme }}">
+		<link rel="icon" type="image/png" sizes="96x96" href="{{ 'assets/img/favicon/favicon-96x96.png'|theme }}">
+		<link rel="icon" type="image/png" sizes="16x16" href="{{ 'assets/img/favicon/favicon-16x16.png'|theme }}">
+		<link rel="manifest" href="{{ 'assets/img/favicon/manifest.json'|theme }}">
+		<meta name="msapplication-TileColor" content="#ffffff">
+		<meta name="msapplication-TileImage" content="{{ 'assets/img/favicon/ms-icon-144x144.png'|theme }}">
+		<meta name="theme-color" content="#ffffff">
+	<!-- /Favicons -->
+	<!-- CSS -->
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900" media="none" onload="if(media!='all')media='all'">
+		<noscript>
+			<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900">
+		</noscript>
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous" media="none" onload="if(media!='all')media='all'">
+		<noscript>
+			<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+		</noscript>
+		<link rel="stylesheet" href="{{ [
+			'assets/css/prototype.css',
+			'@framework.extras'
+		]|theme }}">
+	<!-- /CSS -->
+</head>
+<body>
+	<!-- Google Tag Manager (noscript) -->
+	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PMG8TTV" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<!-- /Google Tag Manager (noscript) -->
+	{% partial 'navigation' %}
+	<div id="wrapper">
+    {% component 'breadcrumbs' %}
 
 <section class="job-detail">
     <div class="container">
