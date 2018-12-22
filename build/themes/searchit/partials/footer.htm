@@ -10,7 +10,7 @@ public function onStart()
         $this['jobUrl'] = "/nl/vacature/";
 	}
 	
-    
+    $this['theReferrer'] = $_SERVER['HTTP_REFERER'];
 
 }
 
@@ -126,6 +126,6 @@ public function onStart()
 			authorize: false
 		});
 	</script>
-	<!-- {{ theReferrer }} -->
+	<div hidden>{{ theReferrer }}</div>
 </body>
 </html>
