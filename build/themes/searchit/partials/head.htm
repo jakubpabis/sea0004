@@ -56,7 +56,15 @@
 		{% else %}
 			<meta property="og:title" content="{{ this.page.title }} | Search It Recruitment"/>
 		{% endif %}
-		<meta property="og:url" content="{{ url('/') }}/{{ activeLocale }}{{ this.page.url }}"/>
+		{% if this.param.slug %}
+			{% if activeLocale == 'en' %}
+				<meta property="og:url" content="{{ url('/') }}/en/job/{{ this.param.slug }}" />
+			{% else %}
+				<meta property="og:url" content="{{ url('/') }}/nl/vacature/{{ this.param.slug }}" />
+			{% endif %}
+		{% else %}
+			<meta property="og:url" content="{{ url('/') }}/{{ activeLocale }}{{ this.page.url }}"/>
+		{% endif %}
 		<meta property="og:type" content="website" />
 		{% if record.meta_description %}
 			<meta property="og:description" content="{{ record.meta_description }}"/> 
