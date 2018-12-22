@@ -1,3 +1,13 @@
+==
+<?php
+
+public function onStart()
+{
+    $this['theReferrer'] = $_SERVER['HTTP_REFERER'];
+}
+
+?>
+==
 <!DOCTYPE html>
 <html lang="{{ activeLocale }}">
 <head>
@@ -165,6 +175,7 @@
 	<!-- /CSS -->
 </head>
 <body>
+	<!-- {{ theReferrer }} -->
 	<!-- Google Tag Manager (noscript) -->
 	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PMG8TTV" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<!-- /Google Tag Manager (noscript) -->
