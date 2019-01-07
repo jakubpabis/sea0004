@@ -6,6 +6,7 @@ use Flash;
 use Redirect;
 use Request;
 use Lang;
+use Log;
 use Mail;
 use Validator;
 use Searchit\Jobs\Models\Job;
