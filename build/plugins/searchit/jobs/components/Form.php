@@ -137,7 +137,7 @@ class Form extends ComponentBase
                 curl_setopt($request, CURLOPT_POSTFIELDS, $data);
 
                 $reply = curl_exec($request);
-                Log::info('CURL logging for form submition: '.);
+                Log::info('CURL logging for form submition: '.$reply);
                 // close the session
                 curl_close($request);
 
