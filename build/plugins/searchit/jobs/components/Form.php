@@ -139,6 +139,7 @@ class Form extends ComponentBase
 
                 $reply = curl_exec($request);
                 Log::info('CURL logging for form submition: '.$reply);
+                Log::info('Candidate Name: '.Input::get('applicant-name').'; Source: '.Input::get('applicant-find'));
                 // close the session
                 curl_close($request);
 
