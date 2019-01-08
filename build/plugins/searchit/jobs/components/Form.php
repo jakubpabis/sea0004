@@ -6,6 +6,7 @@ use Flash;
 use Redirect;
 use Request;
 use Lang;
+use Session;
 use Log;
 use Mail;
 use Validator;
