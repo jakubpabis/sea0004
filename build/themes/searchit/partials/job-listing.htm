@@ -28,7 +28,9 @@
             {% endif %}
         </div>
         <p class="description">
-            {{ record.summary|striptags|slice(0, 300) }}...
+            {% autoescape 'html' %}
+                {{ record.summary|replace({"&amp;#39;": "’"})|striptags|slice(0, 300) }}...
+            {% endautoescape %}
         </p>
     </article>
 {% endfor %}
