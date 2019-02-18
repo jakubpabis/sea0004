@@ -28,11 +28,7 @@
             data-control="flash-message"
             class="flash-message fade {{ type }}"
             data-interval="30">
-            {% if message == 'app' %}
-                {{ 'Thank you! Your application was submitted successfully.'|_ }}
-            {% else %}
                 {{ message }}
-            {% endif %}
         </p>
     {% endflash %}
     <div class="title">

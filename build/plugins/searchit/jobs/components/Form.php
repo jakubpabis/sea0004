@@ -185,19 +185,21 @@ class Form extends ComponentBase
                     
                     if(Lang::getLocale() == 'en') {
                         $this->sendMail($form_data, 'Thanks for applying for a job at Search It Recruitment', 'application_en');
+                        Flash::success('Thanks for applying for a job at Search It Recruitment');
                     } else {
                         $this->sendMail($form_data, 'Bedankt voor solliciteren bij Search It Recruitment', 'application_nl');
+                        Flash::success('Bedankt voor solliciteren bij Search It Recruitment');
                     }
-                    Flash::success('app');
 
                 } else {
                     
                     if(Lang::getLocale() == 'en') {
                         $this->sendMail($form_data, 'Thanks for uploading your resume at Search It Recruitment', 'resume_en');
+                        Flash::success('Thanks for uploading your resume at Search It Recruitment');
                     } else {
                         $this->sendMail($form_data, 'Bedankt voor het uploaden van jouw cv bij Search It Recruitment', 'resume_nl');
+                        Flash::success('Bedankt voor het uploaden van jouw cv bij Search It Recruitment');
                     }
-                    Flash::success('cv');
 
                 }
 
