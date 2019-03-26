@@ -221,6 +221,8 @@ class Cronjob extends ComponentBase
                 //     $cat = $category;
                 // }
 
+                $cat = $category;
+
                 $jobSingleCatID = Category::where('category_name', $cat)->value('id');
                 if($jobSingleCatID != 0) {
                     $jobSingleCatCheck = DB::table('searchit_jobs_job_categories')
