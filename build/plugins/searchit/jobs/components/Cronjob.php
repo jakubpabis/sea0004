@@ -215,11 +215,11 @@ class Cronjob extends ComponentBase
         foreach($jobCategory as $category) {
             if($category['group'] == '#2 Skill Area' || $category['group'] == '#3 Skill IT') {
 
-                if($category == 'Sales' || $category == 'Recruitment') {
-                    $cat = 'Recruitment and Sales';
-                } else {
-                    $cat = $category;
-                }
+                // if($category == 'Sales' || $category == 'Recruitment') {
+                //     $cat = 'Recruitment and Sales';
+                // } else {
+                //     $cat = $category;
+                // }
 
                 $jobSingleCatID = Category::where('category_name', $cat)->value('id');
                 if($jobSingleCatID != 0) {
