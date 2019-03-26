@@ -129,6 +129,16 @@ pageNumber = "{{ :page }}"
 				</a>
 			</div>
 			<div class="home-categories__grid">
+				<a href="{{ url('/') }}{{ jobCat }}sales">
+					<div class="home-categories__grid-content">
+						<i class="fas fa-comments-dollar" aria-hidden="true"></i>
+						<p class="category-title">
+							{{ 'Sales Jobs'|_ }}
+						</p>
+					</div>
+				</a>
+			</div>
+			<div class="home-categories__grid">
 				<a href="{{ url('/') }}{{ jobCat }}">
 					<div class="home-categories__grid-content">
 						<i class="fas fa-sitemap" aria-hidden="true"></i>
