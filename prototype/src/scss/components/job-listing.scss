@@ -742,9 +742,12 @@
     }
 
     &__pagination {
-        display: block;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
         width: 100%;
-        line-height: 28px;
+        //line-height: 28px;
         padding: 12px 0;
         margin: 30px 0 0 0;
         text-align: center;
@@ -753,6 +756,7 @@
 
         @media(max-width: 550px) {
             padding: 6px 0 44px 0;
+            flex-wrap: wrap;
         }
 
         > * {
@@ -761,21 +765,12 @@
 
         .prev,
         .next {
+            padding: 10px;
 
             @media(max-width: 550px) {
-                display: inline-block;
-                width: 130px;
-
-                &.prev {
-                    text-align: right;
-                    padding-right: 10px;
-                }
-
-                &.next {
-                    text-align: left;
-                    padding-left: 10px;
-                }
-
+                max-width: 130px;
+                flex-basis: 130px;
+                order: 1;
             }
 
             span,
@@ -836,9 +831,10 @@
             @media(max-width: 550px) {
                 margin: 12px 0 0 0;
                 display: block;
-                position: absolute;
                 width: 100%;
+                flex-basis: 100%;
                 text-align: center;
+                order: 100;
             }
 
             li {
