@@ -62,6 +62,7 @@ class Form extends ComponentBase
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     
         $response = curl_exec($ch);
+        Log::info('CURL logging for form submition: '.$response);
         $response = json_decode($response);
     
         return $response;
@@ -85,10 +86,10 @@ class Form extends ComponentBase
             'gender'        => Input::get('gender'),
             'phone'         => Input::get('applicant-phone'),
     
-            'custom_fields' => array(
-                'referral_name'     => Input::get('referral-name'),
-                'referral_email'    => Input::get('referral-email'),
-            ),
+            // 'custom_fields' => array(
+            //     'referral_name'     => Input::get('referral-name'),
+            //     'referral_email'    => Input::get('referral-email'),
+            // ),
     
             'location' => array(
                 'line1'   => Input::get('applicant-street'),
@@ -120,32 +121,43 @@ class Form extends ComponentBase
         if($application_data['location']['country'] === NULL) {
             unset($application_data['location']['country']);
         }
+
+        if(Input::get('referral-name') && Input::get('referral-email')) {
+            $application_data['note']['text'] = Input::get('applicant-message').'<br/><hr/><br/>Referrer name: '.Input::get('referral-name').'<br/>Referrer email: '.Input::get('referral-email');
+        }
     
         $data['json'] = json_encode($application_data);
         
     
-        if(Input::hasFile('applicant-cv') && Input::file('applicant-cv')->getSize() < (2097152)) { //can't be larger than 2 MB
-            $file = new FileSys;
-            $file->data = Input::file('applicant-cv');
-            $file->save();
-            $data['cv'] = '@'.Input::file('applicant-cv')->getRealPath();
-        } else {
-            throw new ValidationException('Oops!  Your file\'s size is to large.');
+        if(Input::hasFile('applicant-cv')) {
+
+            if(Input::file('applicant-cv')->getSize() < (2097152)) { //can't be larger than 2 MB
+                $file = new FileSys;
+                $file->data = Input::file('applicant-cv');
+                $file->save();
+                $data['cv'] = '@'.Input::file('applicant-cv')->getRealPath();
+            } else {
+                throw new ValidationException('Oops!  Your file\'s size is to large.');
+            }
+
         }
 
-        if(Input::hasFile('applicant-photo') && Input::file('applicant-photo')->getSize() < (2097152)) { //can't be larger than 2 MB
-            $file = new FileSys;
-            $file->data = Input::file('applicant-photo');
-            $file->save();
-            $data['profile_picture'] = '@'.Input::file('applicant-photo')->getRealPath();
-        } else {
-            throw new ValidationException('Oops!  Your file\'s size is to large.');
+        if(Input::hasFile('applicant-photo')) {
+
+            if(Input::file('applicant-photo')->getSize() < (2097152)) { //can't be larger than 2 MB
+                $file = new FileSys;
+                $file->data = Input::file('applicant-photo');
+                $file->save();
+                $data['profile_picture'] = '@'.Input::file('applicant-photo')->getRealPath();
+            } else {
+                throw new ValidationException('Oops!  Your file\'s size is to large.');
+            }
+
         }
 
-        Log::info('CURL logging for form submition: '.$reply);
         Log::info('Candidate Name: '.Input::get('applicant-name').'; Source: '.Input::get('applicant-find'));
 
-        $person_response = postRequest('people/add_to_queue', $this->api_key, $this->api_secret, $data);
+        $person_response = $this->postRequest('people/add_to_queue', $this->api_key, $this->api_secret, $data);
     
     }
 
@@ -171,7 +183,7 @@ class Form extends ComponentBase
             }
 		} else {
 
-            if(env('APP_ENV') !== 'dev') {
+            if(env('APP_ENV') === 'dev') {
 
                 // if(Input::hasFile('applicant-cv')) {
 
@@ -258,7 +270,7 @@ class Form extends ComponentBase
                 // // close the session
                 // curl_close($request);
 
-                $this->add_to_queue();
+                //$this->add_to_queue();
 
                 $form_data = array(
                     'name' => Input::get('applicant-name'),
@@ -329,6 +341,9 @@ class Form extends ComponentBase
 
             $message->from('info@searchitrecruitment.com', 'Search It Recruitment');
             $message->to($inputs['email'], $inputs['name']);
+            if(Input::get('referral-name') && Input::get('referral-email')) {
+                $message->cc(Input::get('referral-email'), Input::get('referral-name'));
+            }
             $message->subject($subject);
 
         });
