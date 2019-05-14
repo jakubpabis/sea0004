@@ -297,6 +297,19 @@ class Form extends ComponentBase
                     'job_link' => Request::url()
                 );
 
+                if(Input::get('referral-name') && Input::get('referral-email')) {
+
+                    $form_data['referral_name'] = Input::get('referral-name');
+                    $form_data['referral_email'] = Input::get('referral-email');
+                    
+                    if(Lang::getLocale() == 'en') {
+                        $this->sendMail($form_data, 'You have been referred for a job!', 'referral_en');
+                    } else {
+                        $this->sendMail($form_data, 'U bent doorverwezen voor een baan!', 'referral_nl');
+                    }
+
+                }
+
                 if(Input::get('form_type') == 'application') {
                     
                     if(Lang::getLocale() == 'en') {
@@ -341,9 +354,6 @@ class Form extends ComponentBase
 
             $message->from('info@searchitrecruitment.com', 'Search It Recruitment');
             $message->to($inputs['email'], $inputs['name']);
-            if(Input::get('referral-name') && Input::get('referral-email')) {
-                $message->cc(Input::get('referral-email'), Input::get('referral-name'));
-            }
             $message->subject($subject);
 
         });

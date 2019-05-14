@@ -11,11 +11,16 @@
                 <p style="font-size: 10pt!important;">
                     <strong>Naam:</strong> {{ name }}<br/>
                     <strong>E-mail:</strong> {{ email }}<br/>
+                    {% if phone %}
                     <strong>Telefoon: </strong> {{ phone }}<br/>
+                    {% endif %}
+                    {% if address %}
                     <strong>Adres:</strong> {{ address }}<br/>
-                    <strong>Hoe heb je ons gevonden?</strong> {{ sources[0]['parent_source_id'] }}<br/>
-                    <strong>Motivatie en extra details:</strong><br/> 
+                    {% endif %}
+                    {% if note['text'] %}
+                    <strong>Motivatie en extra details: </strong><br/> 
                     {{ note['text'] }}
+                    {% endif %}
                 </p>
                 <p style="font-size: 10pt!important;">
                     Vacaturelink: <a href="{{ job_link }}">{{ job_link }}</a>

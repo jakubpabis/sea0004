@@ -3,21 +3,22 @@
         <tr>
             <td>
                 <h1 style="font-size: 12pt!important;">
-                    Thank you for uploading your resume on our website. By submitting your job application on our website, you agreed to and accepted the terms of our <a href="https://www.searchitrecruitment.com/en/privacy-policy" style="color: #425CBB; font-size: 12pt!important;">Privacy Policy</a>.
+                    U bent door uw vriend doorverwezen voor een baan: {{referral_name}} op {{referral_email}}.<br/>
+                    We willen je erop attenderen dat je met het uploaden van je cv, akkoord bent gegaan met onze <a href="https://www.searchitrecruitment.com/nl/privacy-policy" style="color: #425CBB; font-size: 12pt!important;">privacyverklaring.</a>.
                     <br/><br/>
-                    In the event that we wish to arrange an extensive intake, we will contact you.
+                    Je ontvangt spoedig van ons bericht over het verdere verloop van de procedure.
                 </h1>
                 <p style="font-size: 10pt!important;">
-                    <strong>Name:</strong> {{ name }}<br/>
-                    <strong>Email:</strong> {{ email }}<br/>
+                    <strong>Naam:</strong> {{ name }}<br/>
+                    <strong>E-mail:</strong> {{ email }}<br/>
                     {% if phone %}
-                    <strong>Phone: </strong> {{ phone }}<br/>
+                    <strong>Telefoon: </strong> {{ phone }}<br/>
                     {% endif %}
                     {% if address %}
-                    <strong>Address:</strong> {{ address }}<br/>
+                    <strong>Adres:</strong> {{ address }}<br/>
                     {% endif %}
                     {% if note['text'] %}
-                    <strong>Motivation and extra details: </strong><br/> 
+                    <strong>Motivatie en extra details: </strong><br/> 
                     {{ note['text'] }}
                     {% endif %}
                 </p>
@@ -28,13 +29,13 @@
         <tr>
             <td style="padding-top: 40px;">
                 <p style="font-size: 10pt!important;">
-                    Keep up-to-date with our latest jobs. Follow us on social media and sign up for our newsletter/job alert!
+                    Wil je op de hoogte gehouden worden van onze laatste vacatures? Volg ons via social media, en schrijf je in voor onze nieuwsbrief/job alert!
                 </p>
                 <p style="font-size: 10pt!important;">
                     <strong>LinkedIn: </strong><a href="https://www.linkedin.com/company/3512705">https://www.linkedin.com/company/3512705</a><br/>
                     <strong>Facebook: </strong><a href="https://www.facebook.com/searchitrecruitment">https://www.facebook.com/searchitrecruitment</a><br/>
                     <strong>Twitter: </strong><a href="https://twitter.com/searchitjobs">https://twitter.com/searchitjobs</a><br/>
-                    <strong>Newsletter/job alert: </strong><a href="http://jobs.searchsoftware.nl/searchit/subscribe">http://jobs.searchsoftware.nl/searchit/subscribe</a> 
+                    <strong>Nieuwsbrief/job alert: </strong><a href="http://jobs.searchsoftware.nl/searchit/subscribe">http://jobs.searchsoftware.nl/searchit/subscribe</a> 
                 </p>
             </td>
         </tr>
