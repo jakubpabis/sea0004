@@ -3,7 +3,7 @@
         <tr>
             <td>
                 <h1 style="font-size: 12pt!important;">
-                    U bent door uw vriend doorverwezen voor een baan: {{referral_name}} op {{referral_email}}.<br/>
+                    U hebt met succes uw vriend doorverwezen: <strong>{{ name }}</strong>.<br/>
                     We willen je erop attenderen dat je met het uploaden van je cv, akkoord bent gegaan met onze <a href="https://www.searchitrecruitment.com/nl/privacy-policy" style="color: #425CBB; font-size: 12pt!important;">privacyverklaring.</a>.
                     <br/><br/>
                     Je ontvangt spoedig van ons bericht over het verdere verloop van de procedure.
@@ -22,6 +22,11 @@
                     {{ note['text'] }}
                     {% endif %}
                 </p>
+                {% if job_link %}
+                <p style="font-size: 10pt!important;">
+                    Vacaturelink: <a href="{{ job_link }}">{{ job_link }}</a>
+                </p>
+                {% endif %}
             </td>
         </tr>
     </tbody>

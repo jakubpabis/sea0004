@@ -303,9 +303,9 @@ class Form extends ComponentBase
                     $form_data['referral_email'] = Input::get('referral-email');
                     
                     if(Lang::getLocale() == 'en') {
-                        $this->sendMail($form_data, 'You have been referred for a job!', 'referral_en');
+                        $this->sendMail($form_data, 'You have referred your friend!', 'referral_en');
                     } else {
-                        $this->sendMail($form_data, 'U bent doorverwezen voor een baan!', 'referral_nl');
+                        $this->sendMail($form_data, 'Je hebt naar je vriend verwezen!', 'referral_nl');
                     }
 
                 }

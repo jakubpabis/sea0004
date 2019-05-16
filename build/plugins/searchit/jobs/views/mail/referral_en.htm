@@ -3,7 +3,7 @@
         <tr>
             <td>
                 <h1 style="font-size: 12pt!important;">
-                    You have been referred for a job by your friend: {{ referral_name }} at {{ referral_email }}.<br/>
+                    You have successfully referred your friend: <strong>{{ name }}</strong>.<br/>
                     By submitting your job application on our website, you agreed to and accepted the terms of our <a href="https://www.searchitrecruitment.com/en/privacy-policy" style="color: #425CBB; font-size: 12pt!important;">Privacy Policy</a>.
                     <br/><br/>
                     In the event that we wish to arrange an extensive intake, we will contact you.
@@ -22,6 +22,11 @@
                     {{ note['text'] }}
                     {% endif %}
                 </p>
+                {% if job_link %}
+                <p style="font-size: 10pt!important;">
+                    Job link: <a href="{{ job_link }}">{{ job_link }}</a>
+                </p>
+                {% endif %}
             </td>
         </tr>
     </tbody>

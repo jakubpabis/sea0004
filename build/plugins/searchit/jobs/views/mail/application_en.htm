@@ -3,7 +3,11 @@
         <tr>
             <td>
                 <h1 style="font-size: 12pt!important;">
+                    {% if referral_name and referral_email %}
+                    You have been referred by your friend: <strong>{{ referral_name }}</strong>, for the position of<a href="{{ job_link }}" style="color: #425CBB; font-size: 12pt!important;">{{ job_title|raw }}</a>.<br/>
+                    {% else %}
                     Thank you for your application for the position of <a href="{{ job_link }}" style="color: #425CBB; font-size: 12pt!important;">{{ job_title|raw }}</a>.<br/>
+                    {% endif %}
                     By submitting your job application on our website, you agreed to and accepted the terms of our <a href="https://www.searchitrecruitment.com/en/privacy-policy" style="color: #425CBB; font-size: 12pt!important;">Privacy Policy</a>.
                     <br/><br/>
                     We will carefully consider your application and contact you if you are selected to continue in the recruitment process.
