@@ -4,9 +4,9 @@
             <td>
                 <h1 style="font-size: 12pt!important;">
                     {% if referral_name and referral_email %}
-                    Hartelijk dank voor je sollicitatie op de functie van <a href="{{ job_link }}" style="color: #425CBB; font-size: 12pt!important;">{{ job_title|raw }}</a>.<br/>
-                    {% else %}
                     Er is naar verwezen door je vriend: <strong>{{referral_name}}</strong>, voor de positie van <a href="{{ job_link }}" style="color: #425CBB; font-size: 12pt!important;">{{ job_title|raw }}</a>.<br/>
+                    {% else %}
+                    Hartelijk dank voor je sollicitatie op de functie van <a href="{{ job_link }}" style="color: #425CBB; font-size: 12pt!important;">{{ job_title|raw }}</a>.<br/>
                     {% endif %}
                     We willen je erop attenderen dat je met het solliciteren op deze vacature, akkoord bent gegaan met onze <a href="https://www.searchitrecruitment.com/nl/privacy-policy" style="color: #425CBB; font-size: 12pt!important;">privacyverklaring.</a>
                     <br/><br/>

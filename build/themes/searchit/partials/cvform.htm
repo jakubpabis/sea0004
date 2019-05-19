@@ -345,6 +345,19 @@
                 application/vnd.openxmlformats-officedocument.wordprocessingml.document" name="applicant-cv" value="" onchange="getFileName(this, 'cv-cv')">
             </div>
         </div>
+        <div class="title">
+            <span>
+                {{ 'Make a referral'|_ }}:
+            </span>
+        </div>
+        <div class="input-cont">
+            <label for="referral-name">{{ 'Referral name'|_ }}</label>
+            <input type="text" name="referral-name" value="" placeholder="{{ 'Mark Referral'|_ }}">
+        </div>
+        <div class="input-cont">
+            <label for="referral-email">{{ 'Referral email'|_ }}</label>
+            <input type="email" name="referral-email" value="" placeholder="{{ 'referral@example.com'|_ }}">
+        </div>
         <div class="checkbox">
             <input name="consent" type="checkbox" required="required">
             <label for="consent">{{ 'I hereby agree with the  <a href="/privacy-policy" target="_blank"><u>Privacy Policy</u></a>'|_ }} <span>*</span></label>
