@@ -270,7 +270,7 @@ class Form extends ComponentBase
                 // // close the session
                 // curl_close($request);
 
-                //$this->add_to_queue();
+                $this->add_to_queue();
 
                 $form_data = array(
                     'name' => Input::get('applicant-name'),
