@@ -3,7 +3,7 @@
         <tr>
             <td>
                 <h1 style="font-size: 12pt!important;">
-                    U hebt met succes uw vriend doorverwezen: <strong>{{ name }}</strong>.<br/>
+                    U hebt met succes uw vriend doorverwezen: <strong style="font-size: 12pt!important; color:#425CBB">{{ name }}</strong>.<br/>
                     We willen je erop attenderen dat je met het uploaden van je cv, akkoord bent gegaan met onze <a href="https://www.searchitrecruitment.com/nl/privacy-policy" style="color: #425CBB; font-size: 12pt!important;">privacyverklaring.</a>.
                     <br/><br/>
                     Je ontvangt spoedig van ons bericht over het verdere verloop van de procedure.
@@ -14,8 +14,12 @@
                     {% if phone %}
                     <strong>Telefoon: </strong> {{ phone }}<br/>
                     {% endif %}
-                    {% if address %}
-                    <strong>Adres:</strong> {{ address }}<br/>
+                    {% if location['line1'] or location['city'] or location['zip'] or location['country'] %}
+                    <strong>Adres:</strong><br/>
+                    <strong>Straat: </strong> {{ location['line1'] }}<br/>
+                    <strong>Woonplaats: </strong> {{ location['city'] }}<br/>
+                    <strong>Postcode: </strong> {{ location['zip'] }}<br/>
+                    <strong>Land: </strong> {{ location['country'] }}<br/>
                     {% endif %}
                     {% if note['text'] %}
                     <strong>Motivatie en extra details: </strong><br/> 

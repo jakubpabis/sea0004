@@ -4,7 +4,7 @@
             <td>
                 <h1 style="font-size: 12pt!important;">
                     {% if referral_name and referral_email %}
-                    You have been referred by your friend: <strong>{{ referral_name }}</strong>.
+                    You have been referred by your friend: <strong style="font-size: 12pt!important; color:#425CBB">{{ referral_name }}</strong>.
                     {% else %}
                     Thank you for uploading your resume on our website.
                     {% endif %}
@@ -18,8 +18,12 @@
                     {% if phone %}
                     <strong>Phone: </strong> {{ phone }}<br/>
                     {% endif %}
-                    {% if address %}
-                    <strong>Address:</strong> {{ address }}<br/>
+                    {% if location['line1'] or location['city'] or location['zip'] or location['country'] %}
+                    <strong>Address:</strong><br/>
+                    <strong>Street: </strong> {{ location['line1'] }}<br/>
+                    <strong>City: </strong> {{ location['city'] }}<br/>
+                    <strong>Zip: </strong> {{ location['zip'] }}<br/>
+                    <strong>Country: </strong> {{ location['country'] }}<br/>
                     {% endif %}
                     {% if note['text'] %}
                     <strong>Motivation and extra details: </strong><br/> 

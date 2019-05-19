@@ -294,8 +294,11 @@ class Form extends ComponentBase
                         )
                     ),
                     'job_title' => Job::where('job_id', Input::get('job-id'))->value('title'),
-                    'job_link' => Request::url()
                 );
+
+                if(Input::get('job-id') != 188) {
+                    $form_data['job_link'] = Request::url();
+                }
 
                 if(Input::get('referral-name') && Input::get('referral-email')) {
 
@@ -303,9 +306,9 @@ class Form extends ComponentBase
                     $form_data['referral_email'] = Input::get('referral-email');
                     
                     if(Lang::getLocale() == 'en') {
-                        $this->sendMail($form_data, 'You have referred your friend!', 'referral_en');
+                        $this->sendMailR($form_data, 'You have referred your friend!', 'referral_en', $form_data['referral_email'], $form_data['referral_name']);
                     } else {
-                        $this->sendMail($form_data, 'Je hebt naar je vriend verwezen!', 'referral_nl');
+                        $this->sendMailR($form_data, 'Je hebt naar je vriend verwezen!', 'referral_nl', $form_data['referral_email'], $form_data['referral_name']);
                     }
 
                 }
@@ -354,6 +357,17 @@ class Form extends ComponentBase
 
             $message->from('info@searchitrecruitment.com', 'Search It Recruitment');
             $message->to($inputs['email'], $inputs['name']);
+            $message->subject($subject);
+
+        });
+    }
+
+    protected function sendMailR($inputs, $subject, $template, $email, $name)
+    {
+        Mail::send('searchit.jobs::mail.'.$template, $inputs, function($message) use ($inputs, $subject, $email, $name){
+
+            $message->from('info@searchitrecruitment.com', 'Search It Recruitment');
+            $message->to($email, $name);
             $message->subject($subject);
 
         });

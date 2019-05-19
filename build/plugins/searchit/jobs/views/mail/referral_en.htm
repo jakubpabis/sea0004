@@ -3,7 +3,7 @@
         <tr>
             <td>
                 <h1 style="font-size: 12pt!important;">
-                    You have successfully referred your friend: <strong>{{ name }}</strong>.<br/>
+                    You have successfully referred your friend: <strong style="font-size: 12pt!important; color:#425CBB">{{ name }}</strong>.<br/>
                     By submitting your job application on our website, you agreed to and accepted the terms of our <a href="https://www.searchitrecruitment.com/en/privacy-policy" style="color: #425CBB; font-size: 12pt!important;">Privacy Policy</a>.
                     <br/><br/>
                     In the event that we wish to arrange an extensive intake, we will contact you.
@@ -14,8 +14,12 @@
                     {% if phone %}
                     <strong>Phone: </strong> {{ phone }}<br/>
                     {% endif %}
-                    {% if address %}
-                    <strong>Address:</strong> {{ address }}<br/>
+                    {% if location['line1'] or location['city'] or location['zip'] or location['country'] %}
+                    <strong>Address:</strong><br/>
+                    <strong>Street: </strong> {{ location['line1'] }}<br/>
+                    <strong>City: </strong> {{ location['city'] }}<br/>
+                    <strong>Zip: </strong> {{ location['zip'] }}<br/>
+                    <strong>Country: </strong> {{ location['country'] }}<br/>
                     {% endif %}
                     {% if note['text'] %}
                     <strong>Motivation and extra details: </strong><br/> 
