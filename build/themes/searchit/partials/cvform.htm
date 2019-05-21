@@ -31,6 +31,11 @@
                 data-interval="30">
                     {{ message }}
             </p>
+            {% if type == 'success' %}
+                <script>
+                    dataLayer.push({'formulier': 'Upload CV','event': 'formulierVerstuurd'});
+                </script>
+            {% endif %}
         {% endflash %}
         <div class="title">
             <p><span>{{ 'Upload your CV to our database'|_ }}!</span></p>
@@ -325,10 +330,6 @@
                         <input type="radio" name="gender" value="female">
                         <label for="gender">{{ 'Female'|_ }}</label>
                     </div>
-                    {#<div class="radio">
-                        <input type="radio" name="gender" value="other">
-                        <label for="gender">{{ 'Other'|_ }}</label>
-                    </div>#}
                 </div>
             </div>
             <label for="applicant-message">{{ 'Motivation and extra details'|_ }}</label>

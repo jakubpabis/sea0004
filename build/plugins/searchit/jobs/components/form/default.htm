@@ -30,6 +30,11 @@
             data-interval="30">
             {{ message }}
         </p>
+        {% if type == 'success' %}
+            <script>
+                dataLayer.push({'formulier': 'Upload CV','event': 'formulierVerstuurd'});
+            </script>
+        {% endif %}
     {% endflash %}
     <div class="title">
         <p>{{ 'Applying for'|_ }}: <span>{{ record.title|raw }}</span></p>
