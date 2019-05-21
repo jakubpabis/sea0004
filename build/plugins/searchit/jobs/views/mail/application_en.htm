@@ -4,7 +4,7 @@
             <td>
                 <h1 style="font-size: 12pt!important;">
                     {% if referral_name and referral_email %}
-                    You have been referred by your friend: <strong style="font-size: 12pt!important; color:#425CBB">{{ referral_name }}</strong>, for the position of <a href="{{ job_link }}" style="color: #425CBB; font-size: 12pt!important;">{{ job_title|raw }}</a>.<br/>
+                    You have been successfully referred by your network contact: <strong style="font-size: 12pt!important; color:#425CBB">{{ referral_name }}</strong>, for the position of <a href="{{ job_link }}" style="color: #425CBB; font-size: 12pt!important;">{{ job_title|raw }}</a>.<br/>
                     {% else %}
                     Thank you for your application for the position of <a href="{{ job_link }}" style="color: #425CBB; font-size: 12pt!important;">{{ job_title|raw }}</a>.<br/>
                     {% endif %}

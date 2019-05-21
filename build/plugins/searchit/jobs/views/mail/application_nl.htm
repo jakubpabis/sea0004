@@ -4,7 +4,7 @@
             <td>
                 <h1 style="font-size: 12pt!important;">
                     {% if referral_name and referral_email %}
-                    Er is naar verwezen door je vriend: <strong style="font-size: 12pt!important; color:#425CBB">{{referral_name}}</strong>, voor de positie van <a href="{{ job_link }}" style="color: #425CBB; font-size: 12pt!important;">{{ job_title|raw }}</a>.<br/>
+                    Je bent succesvol aangedragen door jouw netwerk contact: <strong style="font-size: 12pt!important; color:#425CBB">{{referral_name}}</strong>, voor de positie van <a href="{{ job_link }}" style="color: #425CBB; font-size: 12pt!important;">{{ job_title|raw }}</a>.<br/>
                     {% else %}
                     Hartelijk dank voor je sollicitatie op de functie van <a href="{{ job_link }}" style="color: #425CBB; font-size: 12pt!important;">{{ job_title|raw }}</a>.<br/>
                     {% endif %}
