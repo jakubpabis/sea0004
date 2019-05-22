@@ -76,20 +76,12 @@ class Form extends ComponentBase
     protected function add_to_queue()
     {
     
-        //$api_key = 'XXX';
-        //$api_secret = 'XXX';
-    
         $application_data = array(
             'name'          => Input::get('applicant-name'),
             'email'         => Input::get('applicant-email'),
             'date_of_birth' => Input::get('dob'),
             'gender'        => Input::get('gender'),
             'phone'         => Input::get('applicant-phone'),
-    
-            // 'custom_fields' => array(
-            //     'referral_name'     => Input::get('referral-name'),
-            //     'referral_email'    => Input::get('referral-email'),
-            // ),
     
             'location' => array(
                 'line1'   => Input::get('applicant-street'),
@@ -156,7 +148,6 @@ class Form extends ComponentBase
         }
 
         Log::info('Candidate Name: '.Input::get('applicant-name').'; Source: '.Input::get('applicant-find'));
-
         $person_response = $this->postRequest('people/add_to_queue', $this->api_key, $this->api_secret, $data);
     
     }
@@ -183,7 +174,7 @@ class Form extends ComponentBase
             }
 		} else {
 
-            if(env('APP_ENV') === 'dev') {
+            if(env('APP_ENV') !== 'dev') {
 
                 // if(Input::hasFile('applicant-cv')) {
 
