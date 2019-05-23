@@ -194,7 +194,7 @@ class Form extends ComponentBase
             }
 		} else {
 
-            if(env('APP_ENV') === 'dev') {
+            if(env('APP_ENV') !== 'dev') {
                 $this->add_to_queue();
             }
 
