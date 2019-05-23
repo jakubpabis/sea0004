@@ -504,7 +504,7 @@ $(document).ready(function() {
 	checkCookieMessage();
 	searchbarText();
 
-	getReferrer();
+	//getReferrer();
 	onFormSubmit();
 	onFormLoad();
 

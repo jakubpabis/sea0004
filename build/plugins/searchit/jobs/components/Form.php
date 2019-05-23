@@ -32,16 +32,14 @@ class Form extends ComponentBase
     public function onRun()
 	{
 
-        if(Session::has('referrer') && !empty(Session::has('referrer'))) {
-            $this->page['theReferrer'] = Session::get('referrer');
-        } else {
+        if(!Session::has('referrer') && empty(Session::has('referrer'))) {
             if(preg_match('/gclid/i', Request::server('HTTP_REFERER')) or preg_match('/gclid/i', Request::server('REQUEST_URI'))) {
                 Session::put('referrer', 'AdWords');
             } else {
                 Session::put('referrer', Request::server('HTTP_REFERER'));
             }
-            $this->page['theReferrer'] = Session::get('referrer');
         }
+        $this->page['theReferrer'] = Session::get('referrer');
 
         $this->page['cvCaptcha'] = app('captcha')->display(['data-callback' => 'cvCaptchaCallback']);
         $this->page['appCaptcha'] = app('captcha')->display(['data-callback' => 'appCaptchaCallback']);
