@@ -32,7 +32,7 @@
         </p>
         {% if type == 'success' %}
             <script>
-                dataLayer.push({'formulier': 'Upload CV','event': 'formulierVerstuurd'});
+                dataLayer.push({'formulier': 'apply job','event': 'formulierVerstuurd','vacature': '{{ record.title|raw }}'});  
             </script>
         {% endif %}
     {% endflash %}
