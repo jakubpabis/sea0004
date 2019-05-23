@@ -120,6 +120,13 @@ class Form extends ComponentBase
     
         $data['json'] = json_encode($application_data);
         
+        if (!function_exists('curl_file_create')) {
+            function curl_file_create($filename, $mimetype = '', $postname = '') {
+                return "@$filename;filename="
+                    . ($postname ?: basename($filename))
+                    . ($mimetype ? ";type=$mimetype" : '');
+            }
+        }
     
         if(Input::hasFile('applicant-cv')) {
 
@@ -127,10 +134,14 @@ class Form extends ComponentBase
                 $file = new FileSys;
                 $file->data = Input::file('applicant-cv');
                 $file->save();
-                $data['cv'] = '@'.Input::file('applicant-cv')->getRealPath();
             } else {
                 throw new ValidationException('Oops!  Your file\'s size is to large.');
             }
+
+            $uploaded_cv = Input::file('applicant-cv')->getRealPath();
+            $cv_ext = Input::file('applicant-cv')->getMimeType();
+            $cv_name = Input::file('applicant-cv')->getClientOriginalName();
+            $data['cv'] = curl_file_create($uploaded_cv, $cv_ext, $cv_name);
 
         }
 
@@ -140,15 +151,24 @@ class Form extends ComponentBase
                 $file = new FileSys;
                 $file->data = Input::file('applicant-photo');
                 $file->save();
-                $data['profile_picture'] = '@'.Input::file('applicant-photo')->getRealPath();
             } else {
                 throw new ValidationException('Oops!  Your file\'s size is to large.');
             }
+
+            $uploaded_photo = Input::file('applicant-photo')->getRealPath();
+            $photo_ext = Input::file('applicant-photo')->getMimeType();
+            $photo_name = Input::file('applicant-photo')->getClientOriginalName();
+            $data['files'] = curl_file_create($uploaded_photo, $photo_ext, $photo_name);
 
         }
 
         Log::info('Candidate Name: '.Input::get('applicant-name').'; Source: '.Input::get('applicant-find'));
         $person_response = $this->postRequest('people/add_to_queue', $this->api_key, $this->api_secret, $data);
+
+        // echo '<pre>';
+        // echo var_dump($person_response);
+        // echo '</pre>';
+        // exit;
     
     }
 
@@ -174,7 +194,7 @@ class Form extends ComponentBase
             }
 		} else {
 
-            if(env('APP_ENV') !== 'dev') {
+            if(env('APP_ENV') === 'dev') {
                 $this->add_to_queue();
             }
 
