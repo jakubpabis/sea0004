@@ -75,12 +75,12 @@ class Cronjob extends ComponentBase
                     $slug = $this->slugify( $job->title.'-'.$job->id );
                 }
 
-                if($job->salary_fixed){
+                if(!empty($job->salary_fixed)){
                     $salary_min = preg_replace("/\./", "", $job->salary_fixed);
                 } else {
                     $salary_min = 0;
                 }
-                if($job->salary_bonus){
+                if(!empty($job->salary_bonus)){
                     $salary_max = preg_replace("/\./", "", $job->salary_bonus);
                 } else {
                     $salary_max = 0;
