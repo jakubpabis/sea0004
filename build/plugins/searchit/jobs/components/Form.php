@@ -19,7 +19,6 @@ class Form extends ComponentBase
 
     protected $api_key = 'XoslTEyE';
     protected $api_secret = 'ZZXRgDovPQvPfLjklPLBoTAl';
-    //protected $endpoint = 'people/add_to_queue';
 
     public function componentDetails()
     {
@@ -32,10 +31,10 @@ class Form extends ComponentBase
     public function onRun()
 	{
 
-        if(Session::has('referrer') && !empty(Session::has('referrer'))) {
+        if(Session::has('referrer') && !empty(Session::get('referrer'))) {
             $this->page['theReferrer'] = Session::get('referrer');
         } else {
-            if(preg_match('/gclid/i', Request::server('HTTP_REFERER')) or preg_match('/gclid/i', Request::server('REQUEST_URI'))) {
+            if(preg_match('/gclid/i', Request::server('HTTP_REFERER')) || preg_match('/gclid/i', Request::server('REQUEST_URI'))) {
                 Session::put('referrer', 'AdWords');
                 $this->page['theReferrer'] = 'AdWords';
             } else {
@@ -43,9 +42,10 @@ class Form extends ComponentBase
                 $this->page['theReferrer'] = Request::server('HTTP_REFERER');
             }
         }
-
         $this->page['cvCaptcha'] = app('captcha')->display(['data-callback' => 'cvCaptchaCallback']);
-        $this->page['appCaptcha'] = app('captcha')->display(['data-callback' => 'appCaptchaCallback']);
+        if(!empty($this->property('jobSlug'))) {
+            $this->page['appCaptcha'] = app('captcha')->display(['data-callback' => 'appCaptchaCallback']);
+        }
     }
     
     /**

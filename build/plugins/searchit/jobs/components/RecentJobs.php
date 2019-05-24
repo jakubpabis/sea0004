@@ -22,7 +22,7 @@ class RecentJobs extends ComponentBase
     {
 
         $this->jobs = new Job;
-        $this->page['recent'] = $this->jobs->orderBy('date', 'desc')->paginate(12);
+        $this->page['recent'] = $this->jobs->orderBy('date', 'desc')->select('title', 'slug')->take(12)->get();
 
     }
 
