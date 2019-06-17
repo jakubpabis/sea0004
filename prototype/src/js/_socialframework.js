@@ -41,7 +41,7 @@ function myFacebookLogin() {
 		} else {
 			FB.login();
 		}
-	}, {scope: 'default,email'} );
+	}, {scope: 'name,email,picture'} );
 }
 
 // function liAuth(){
