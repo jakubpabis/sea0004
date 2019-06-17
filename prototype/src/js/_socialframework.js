@@ -33,7 +33,7 @@ function myFacebookLogin() {
 			FB.api('/me', {fields: 'name, email, picture'}, function(response1){
 				$formCont.find('input[name="applicant-name"]').val(response1['name']);
 				$formCont.find('input[name="applicant-email"]').val(response1['email']);
-				$formCont.find('input[name="applicant-photo"]').val(response2['data']['url']);
+				$formCont.find('input[name="applicant-photo"]').val(response1['data']['url']);
 			});
 			// FB.api('/me/picture',{"redirect": false, "height": 200, "width": 200, "type": "normal"}, function(response2){
 			// 	$formCont.find('input[name="applicant-photo"]').val(response2['data']['url']);
