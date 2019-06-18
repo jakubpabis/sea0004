@@ -55,6 +55,16 @@
 			line-height: 52px;
 		}
 
+		@media(max-width: 380px) {
+			height: 46px;
+			line-height: 46px;
+		}
+
+		@media(max-width: 340px) {
+			height: 42px;
+			line-height: 42px;
+		}
+
 		object,
 		svg {
 			height: 64px;
@@ -69,11 +79,20 @@
 				height: 52px;
 			}
 
+			@media(max-width: 380px) {
+				height: 46px;
+			}
+
+			@media(max-width: 340px) {
+				height: 42px;
+			}
+
 		}
 
 	}
 
-	.telephone-no {
+	.telephone-no,
+	.whatsapp {
 		font-size: 14px;
 		font-weight: 500;
 		margin-right: 20px;
@@ -83,7 +102,17 @@
 			vertical-align: -3px;
 			font-size: 22px;
 			margin-right: 5px;
-			transition: all 250ms ease
+			transition: all 250ms ease;
+
+			@media(max-width: 380px) {
+				font-size: 20px;
+				margin-right: 0;
+			}
+
+			@media(max-width: 340px) {
+				font-size: 18px;
+			}
+
 		}
 
 		&:hover {
@@ -96,8 +125,43 @@
 
 		}
 
-		@media(max-width: 560px) {
-			display: none;
+		@media(max-width: 600px) {
+			margin-right: 10px;
+			
+			span {
+				display: none;
+			}
+
+		}
+
+	}
+
+	.whatsapp {
+		margin-right: 12px;
+
+		@media(max-width: 380px) {
+			margin-right: 10px;
+		}
+
+		@media(max-width: 340px) {
+			margin-right: 8px;
+		}
+
+		i {
+			font-size: 27px;
+			margin-right: 0;
+			vertical-align: -4px;
+
+			@media(max-width: 380px) {
+				font-size: 23px;
+				vertical-align: -3px;
+			}
+
+			@media(max-width: 340px) {
+				font-size: 21px;
+				vertical-align: -3px;
+			}
+
 		}
 
 	}
@@ -137,9 +201,33 @@
 			.right {
 
 				.btn {
-					height: 30px;
-					line-height: 26px;
-					padding: 0 20px;
+					height: 32px;
+					line-height: 28px;
+					padding: 0 12px;
+				}
+
+			}
+
+		}
+
+		@media(max-width: 380px) {
+
+			.right {
+
+				.btn {
+					padding: 0 10px;
+				}
+
+			}
+
+		}
+
+		@media(max-width: 340px) {
+
+			.right {
+
+				.btn {
+					padding: 0 8px;
 				}
 
 			}
@@ -250,7 +338,6 @@
 		}
 
 	}
-
 
 	.search-btn {
 		width: 60px;
