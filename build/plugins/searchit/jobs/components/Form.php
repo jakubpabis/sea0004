@@ -133,15 +133,15 @@ class Form extends ComponentBase
     
         if(Input::hasFile('applicant-cv')) {
 
-            if(Input::file('applicant-cv')->getSize() < (2097152)) { //can't be larger than 2 MB
+            // if(Input::file('applicant-cv')->getSize() < (2097152)) { //can't be larger than 2 MB
                 $file = new FileSys;
                 $file->data = Input::file('applicant-cv');
                 $file->save();
-            } else {
-                Flash::error('Oops!  Your file\'s size is to large.');
-                return Redirect::back();
-                die();
-            }
+            // } else {
+            //     Flash::error('Oops!  Your file\'s size is to large.');
+            //     return Redirect::back();
+            //     die();
+            // }
 
             $uploaded_cv = Input::file('applicant-cv')->getRealPath();
             $cv_ext = Input::file('applicant-cv')->getMimeType();
@@ -152,15 +152,15 @@ class Form extends ComponentBase
 
         if(Input::hasFile('applicant-photo')) {
 
-            if(Input::file('applicant-photo')->getSize() < (2097152)) { //can't be larger than 2 MB
+            // if(Input::file('applicant-photo')->getSize() < (2097152)) { //can't be larger than 2 MB
                 $file = new FileSys;
                 $file->data = Input::file('applicant-photo');
                 $file->save();
-            } else {
-                Flash::error('Oops!  Your file\'s size is to large.');
-                return Redirect::back();
-                die();
-            }
+            // } else {
+            //     Flash::error('Oops!  Your file\'s size is to large.');
+            //     return Redirect::back();
+            //     die();
+            // }
 
             $uploaded_photo = Input::file('applicant-photo')->getRealPath();
             $photo_ext = Input::file('applicant-photo')->getMimeType();
