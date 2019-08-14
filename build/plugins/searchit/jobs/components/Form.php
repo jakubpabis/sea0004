@@ -10,6 +10,8 @@ use Session;
 use Log;
 use Mail;
 use Validator;
+use Validation;
+use ValidationException;
 use Searchit\Jobs\Models\Job;
 use System\Models\File as FileSys;
 use \Anhskohbo\NoCaptcha\NoCaptcha;
