@@ -138,7 +138,9 @@ class Form extends ComponentBase
                 $file->data = Input::file('applicant-cv');
                 $file->save();
             } else {
-                throw new ValidationException('Oops!  Your file\'s size is to large.');
+                Flash::error('Oops!  Your file\'s size is to large.');
+                return Redirect::back();
+                die();
             }
 
             $uploaded_cv = Input::file('applicant-cv')->getRealPath();
@@ -155,7 +157,9 @@ class Form extends ComponentBase
                 $file->data = Input::file('applicant-photo');
                 $file->save();
             } else {
-                throw new ValidationException('Oops!  Your file\'s size is to large.');
+                Flash::error('Oops!  Your file\'s size is to large.');
+                return Redirect::back();
+                die();
             }
 
             $uploaded_photo = Input::file('applicant-photo')->getRealPath();
