@@ -58,8 +58,8 @@
         <input type="tel" name="applicant-phone" value="" placeholder="{{ '+31 123 456 789'|_ }}">
         <label for="applicant-street">{{ 'Street address'|_ }}</label>
         <input type="text" name="applicant-street" placeholder="{{ 'Prinses Beatrixlaan 23'|_ }}"></input>
-        <label for="applicant-city">{{ 'City'|_ }}</label>
-        <input type="text" name="applicant-city" placeholder="{{ 'S-Gravenhage'|_ }}"></input>
+        <label for="applicant-city">{{ 'City'|_ }} <span>*</span></label>
+        <input type="text" name="applicant-city" required="required" placeholder="{{ 'S-Gravenhage'|_ }}"></input>
         <div class="row">
             <div class="zip">
                 <label for="applicant-zip">{{ 'Zip code'|_ }}</label>
