@@ -74,37 +74,31 @@ function myFacebookLogin() {
 		if (response.status === 'connected') {
 			FB.api('/me', {fields: 'name, email, birthday, gender, location, picture'}, function(response) {
 				console.log(response);
-				$('form').find('input[name="applicant-name"]').val(response['name']);
-				$('form').find('input[name="applicant-email"]').val(response['email']);
-				$('form').find('input[name="applicant-photo"]').val(response['picture']['data']['url']);
+				if(response['name']) {
+					$('form').find('input[name="applicant-name"]').val(response['name']);
+				}
+				if(response['email']) {
+					$('form').find('input[name="applicant-email"]').val(response['email']);
+				}
+				// $('form').find('input[name="applicant-photo"]').val(response['picture']['data']['url']);
+				if(response['gender'] == 'male') {
+					$('form').find('input[name="gender" value="male"]').prop('checked', true);
+				} else if(response['gender'] == 'female') {
+					$('form').find('input[name="gender" value="female"]').prop('checked', true);
+				}
+				if(response['location']['name']) {
+					$('form').find('input[name="applicant-city"]').val(response['location']['name']);
+				}
+				if(response['birthday']) {
+					var $bdayO = response['birthday'];
+					var $bdayM = $bdayO.split('/');
+					$bdayM = $bdayM[1]+'-'+$bdayM[0]+'-'+$bdayM[2];
+					$('form').find('input[name="dob"]').val($bdayM);
+				}
 			});
-			// FB.api('/me/picture',{"redirect": false, "height": 200, "width": 200, "type": "normal"}, function(response2){
-			// 	$formCont.find('input[name="applicant-photo"]').val(response2['data']['url']);
-			// });
 		} else {
 			console.log('User cancelled login or did not fully authorize.');
-			// FB.login();
 		}
 	}, {scope: 'public_profile,email,user_gender,user_location,user_birthday'});
-	// FB.init({
-	// 	appId            : '382574281913074',
-	// 	autoLogAppEvents : true,
-	// 	xfbml            : true,
-	// 	version          : 'v3.3'
-	// });
-	// FB.login(function(response){
-	// 	if (response.status === 'connected') {
-	// 		console.log('Logged in.');
-	// 		FB.api('/me', {fields: 'name, email, picture'}, function(response1){
-	// 			$formCont.find('input[name="applicant-name"]').val(response1['name']);
-	// 			$formCont.find('input[name="applicant-email"]').val(response1['email']);
-	// 			$formCont.find('input[name="applicant-photo"]').val(response1['data']['url']);
-	// 		});
-	// 		// FB.api('/me/picture',{"redirect": false, "height": 200, "width": 200, "type": "normal"}, function(response2){
-	// 		// 	$formCont.find('input[name="applicant-photo"]').val(response2['data']['url']);
-	// 		// });
-	// 	} else {
-	// 		FB.login();
-	// 	}
-	// }, {scope: 'email'});
+
 }
