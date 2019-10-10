@@ -82,9 +82,9 @@ function myFacebookLogin() {
 				}
 				// $('form').find('input[name="applicant-photo"]').val(response['picture']['data']['url']);
 				if(response['gender'] == 'male') {
-					$('form').find('input[name="gender" value="male"]').prop('checked', true);
+					$('form').find('input[name="gender"][value="male"]').prop('checked', true);
 				} else if(response['gender'] == 'female') {
-					$('form').find('input[name="gender" value="female"]').prop('checked', true);
+					$('form').find('input[name="gender"][value="female"]').prop('checked', true);
 				}
 				if(response['location']['name']) {
 					$('form').find('input[name="applicant-city"]').val(response['location']['name']);
