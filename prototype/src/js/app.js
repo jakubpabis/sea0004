@@ -154,6 +154,7 @@ function showForm()
 		document.getElementsByTagName('body')[0].classList.add('menu-active');
 	}, 50);
 	stopBodyScrolling(true);
+	afterFormOpen();
 }
 
 function hideForm() 
@@ -178,6 +179,7 @@ function showCVForm()
 		document.getElementsByTagName('body')[0].classList.add('menu-active');
 	}, 50);
 	stopBodyScrolling(true);
+	afterFormOpen();
 }
 
 function hideCVForm() 
