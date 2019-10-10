@@ -64,7 +64,7 @@ function afterFormOpen()
 		FB.getLoginStatus(function(response) {
 			statusChangeCallback(response);
 		});
-		$('form').find('.title').append('<button class="fb" type="button" onclick="myFacebookLogin()">Facebook</button>').find('.d-none').removeClass('d-none');
+		$('form').find('.social-btns').append('<button class="fb" type="button" onclick="myFacebookLogin()">Facebook</button>').find('.d-none').removeClass('d-none');
 	});
 }
 
