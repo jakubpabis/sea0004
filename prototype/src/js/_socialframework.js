@@ -20,6 +20,14 @@ $(window).on('load', function() {
 
 });
 
+function isScriptLoaded(url) {
+    var scripts = document.getElementsByTagName('script');
+    for (var i = scripts.length; i--;) {
+        if (scripts[i].src == url) return true;
+    }
+    return false;
+}
+
 function addScript($src)
 {
 	var head = document.getElementsByTagName('head')[0];
@@ -51,8 +59,11 @@ function loadScript( url, callback ) {
 
 function afterFormOpen()
 {
-	addScript('https://www.google.com/recaptcha/api.js');
-	loadScript('https://connect.facebook.net/en_US/sdk.js', function() {
+	if(isScriptLoaded('https://www.google.com/recaptcha/api.js') == false) {
+		addScript('https://www.google.com/recaptcha/api.js');
+	}
+	if(isScriptLoaded('https://connect.facebook.net/en_US/sdk.js') == false) {
+		loadScript('https://connect.facebook.net/en_US/sdk.js', function() {
 		window.fbAsyncInit = function() {
 			FB.init({
 				appId            : '382574281913074',
@@ -66,6 +77,7 @@ function afterFormOpen()
 		});
 		$('form').find('.social-btns').append('<button class="fb" type="button" onclick="myFacebookLogin()">Facebook</button>').find('.d-none').removeClass('d-none');
 	});
+	}
 }
 
 function myFacebookLogin() {
