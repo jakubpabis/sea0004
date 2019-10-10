@@ -92,7 +92,7 @@ function myFacebookLogin() {
 				if(response['birthday']) {
 					var $bdayO = response['birthday'];
 					var $bdayM = $bdayO.split('/');
-					$bdayM = $bdayM[1]+'-'+$bdayM[0]+'-'+$bdayM[2];
+					$bdayM = $bdayM[2]+'-'+$bdayM[0]+'-'+$bdayM[1];
 					$('form').find('input[name="dob"]').val($bdayM);
 				}
 			});
