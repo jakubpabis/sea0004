@@ -37,12 +37,11 @@
             </script>
         {% endif %}
     {% endflash %}
-    <div class="title">
+    <div class="title social-btns">
         <p>{{ 'Applying for'|_ }}: <span>{{ record.title|raw }}</span></p>
-        <span>
+        <span class="d-none">
             {{ 'Fill the form using'|_ }}:
         </span>
-        <button class="fb" type="button" onclick="myFacebookLogin()">Facebook</button>
         {# <button class="li" type="button" onclick="liAuth()">Linkedin</button> #}
     </div>
     <div class="input-cont">
