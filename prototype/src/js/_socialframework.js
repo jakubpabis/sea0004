@@ -72,7 +72,7 @@ function myFacebookLogin() {
 
 	FB.login(function(response) {
 		if (response.status === 'connected') {
-			FB.api('/me', {fields: 'name, email, picture, birthday, gender, location'}, function(response) {
+			FB.api('/me', {fields: 'name, email, birthday, gender, location, picture'}, function(response) {
 				console.log(response);
 				$('form').find('input[name="applicant-name"]').val(response['name']);
 				$('form').find('input[name="applicant-email"]').val(response['email']);
