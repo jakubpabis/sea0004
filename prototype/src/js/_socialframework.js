@@ -76,7 +76,7 @@ function myFacebookLogin() {
 				console.log(response);
 				$('form').find('input[name="applicant-name"]').val(response['name']);
 				$('form').find('input[name="applicant-email"]').val(response['email']);
-				$('form').find('input[name="applicant-photo"]').val(response['data']['url']);
+				$('form').find('input[name="applicant-photo"]').val(response['picture']['data']['url']);
 			});
 			// FB.api('/me/picture',{"redirect": false, "height": 200, "width": 200, "type": "normal"}, function(response2){
 			// 	$formCont.find('input[name="applicant-photo"]').val(response2['data']['url']);
@@ -85,7 +85,7 @@ function myFacebookLogin() {
 			console.log('User cancelled login or did not fully authorize.');
 			// FB.login();
 		}
-	}, {scope: 'public_profile,email'});
+	}, {scope: 'public_profile,email,user_gender,user_location,user_birthday'});
 	// FB.init({
 	// 	appId            : '382574281913074',
 	// 	autoLogAppEvents : true,
