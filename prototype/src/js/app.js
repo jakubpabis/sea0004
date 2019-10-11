@@ -228,7 +228,11 @@ function cvFormOpen()
 function searchbarText()
 {
 	var $text = [
-		"CTO ",
+		"CTO",
+		"Development Manager",
+		"CIO",
+		"CISO",
+		"Python Developer",
 		"Technical Teamlead",
 		"PHP Developer",
 		"Java Developer",
@@ -236,7 +240,6 @@ function searchbarText()
 		"Front-End Developer",
 		"Scrum Master",
 		"Agile Coach",
-		"Python Developer",
 		"Scala Developer",
 		".NET Developer",
 		"Tester",
@@ -249,8 +252,6 @@ function searchbarText()
 		"Account Manager",
 		"Business Developer",
 		"Inside Sales",
-		"SEO Specialist",
-		"SEA Specialist",
 		"Recruitment Consultant",
 		"Test Automation Consultant",
 		"Data Scientist",
@@ -261,8 +262,7 @@ function searchbarText()
 		"Hybris Developer",
 		"Talent Sourcer",
 		"Game Developer",
-		"Digital Consultant",
-		"Digital Analytics Consultant"
+		"Digital Consultant"
 	];
 	var $box = document.getElementById('searchboxtextchange');
 	if($box) {
