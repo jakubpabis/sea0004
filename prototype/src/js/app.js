@@ -513,7 +513,14 @@ $(document).ready(function() {
 	onFormSubmit();
 	onFormLoad();
 
-	$.getJSON( "https://maps.googleapis.com/maps/api/place/details/json?place_id=ChIJYehzZWwKxkcRYEIE2Tips08&fields=rating,user_ratings_total&key=AIzaSyD_CXNi6mCASl4D3Ud9ofmUqE7Lt9Kb5ps&callback=?", function( data ) {
+
+	$.ajax({
+		url: "https://maps.googleapis.com/maps/api/place/details/json?place_id=ChIJYehzZWwKxkcRYEIE2Tips08&fields=rating,user_ratings_total&key=AIzaSyD_CXNi6mCASl4D3Ud9ofmUqE7Lt9Kb5ps",
+		method: "GET",
+		complete: "success",
+		crossDomain: true,
+		dataType: "jsonp"
+	}).done(function() {
 		console.log( data );
 	});
 
