@@ -10,12 +10,50 @@ public function onStart()
         $this['jobUrl'] = "/nl/vacature/";
 	}
 
+	$url = 'https://maps.googleapis.com/maps/api/place/details/json?place_id=ChIJYehzZWwKxkcRYEIE2Tips08&fields=rating,user_ratings_total&key=AIzaSyD_CXNi6mCASl4D3Ud9ofmUqE7Lt9Kb5ps';
+	$data = file_get_contents($url);
+	$rating = json_decode($data);
+	$this['ratings_stars'] = $rating->result->rating;
+	$this['ratings_stars_int'] = intval($rating->result->rating);
+	if($rating->result->rating - intval($rating->result->rating) > 0.75) {
+		$this['ratings_stars_float'] = 0.75;
+	} else {
+		$this['ratings_stars_float'] = $rating->result->rating - intval($rating->result->rating);
+	}
+	$this['ratings_count'] = $rating->result->user_ratings_total;
+
 }
 
 ?>
 ==
 		<footer class="footer">
 			<div class="container">
+				<div class="stars text-center">
+					<div class="text">
+						<i class="fab fa-google"></i>
+						<span class="rating">
+							<strong>{{ ratings_stars }}</strong>
+						</span>
+						<small>
+							({{ ratings_count }} {{ 'reviews'|_ }})
+						</small>
+					</div>
+					<div class="icons">
+						{% for i in 1..ratings_stars_int %}
+							<i class="fas fa-star"></i>
+						{% endfor %}
+						{% for i in 1..(5-ratings_stars_int) %}
+							<i class="fas fa-star partial"></i>
+						{% endfor %}
+					</div>
+					<style>
+						.stars .partial {
+							background: -webkit-gradient(linear,left top,right top,color-stop({{ ratings_stars_float * 100 }}%,#FFFFFF),color-stop({{ ratings_stars_float * 100 }}%,rgba(255,255,255,.5))); 
+							background: -webkit-linear-gradient(left,#FFFFFF {{ ratings_stars_float * 100 }}%,rgba(255,255,255,.5) {{ ratings_stars_float * 100 }}%); 
+							background: linear-gradient(90deg,#FFFFFF {{ ratings_stars_float * 100 }}%,rgba(255,255,255,.5) {{ ratings_stars_float * 100 }}%);
+						}
+					</style>
+				</div>
 				<div class="footer__grid-container">
 					<div class="footer__grid">
 						<div class="footer__grid-content">

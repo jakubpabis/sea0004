@@ -158,6 +158,74 @@
 
 	}
 
+	.stars {
+		display: block; 
+		margin: 0 auto;
+		margin-top: 0;
+		margin-bottom: 30px;
+		line-height: 1;
+		text-align: center;
+
+		.text {
+			display: inline-block;
+			margin: 0 auto 12px;
+			border-radius: 36px;
+			background: white;
+			box-shadow: 0 0 7px 0 rgba($color: #000000, $alpha: .15);
+			line-height: 1;
+			vertical-align: middle;
+		}
+
+		.rating {
+			margin: 0 auto 0 3px;
+			line-height: 1;
+			display: inline-block;
+			text-align: center;
+			font-size: 22px;
+			vertical-align: middle;
+			position: relative;
+			color: $color-tertiary;
+		}
+
+		small {
+			margin: 0 7px 0 auto;
+			line-height: 1;
+			display: inline-block;
+			text-align: center;
+			font-size: 14px;
+			transform: translateY(1px);
+			vertical-align: middle;
+			color: $color-tertiary;
+		}
+
+		i {
+			color: white;
+			font-size: 28px;
+
+			&.fa-google {
+				font-size: 18px;
+				background: $color-tertiary;
+				color: white;
+				width: 32px;
+				height: 32px;
+				border-radius: 32px;
+				text-align: center;
+				line-height: 32px;
+				box-shadow: 0 0 5px 0 rgba($color: #000000, $alpha: .1);
+				transform: translateX(-1px);
+				vertical-align: middle;
+			}
+		
+			&.partial {
+				color: white;
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+			}
+
+		}
+
+	}
+
 }
 
 #uploadCvModal {
