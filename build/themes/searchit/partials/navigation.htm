@@ -1,3 +1,23 @@
+==
+<?php
+
+public function onStart()
+{
+	$url = 'https://maps.googleapis.com/maps/api/place/details/json?place_id=ChIJYehzZWwKxkcRYEIE2Tips08&fields=rating,user_ratings_total&key=AIzaSyD_CXNi6mCASl4D3Ud9ofmUqE7Lt9Kb5ps';
+	$data = file_get_contents($url);
+	$rating = json_decode($data);
+	$this['ratings_stars'] = $rating->result->rating;
+	$this['ratings_stars_int'] = intval($rating->result->rating);
+	if($rating->result->rating - intval($rating->result->rating) > 0.75) {
+		$this['ratings_stars_float'] = 0.75;
+	} else {
+		$this['ratings_stars_float'] = $rating->result->rating - intval($rating->result->rating);
+	}
+	$this['ratings_count'] = $rating->result->user_ratings_total;
+}
+
+?>
+==
 <nav role="navigation" class="main-navigation">
 	<div class="container">
 		<div class="top">
@@ -5,6 +25,31 @@
 				<a href="{{ url('/') }}" class="logo">
 					<object type="image/svg+xml" data="{{ 'assets/img/logo.svg'|theme }}"></object>
 				</a>
+				<div class="stars text-center">
+					<div class="text">
+						<h3 class="rating">
+							{{ ratings_stars }}
+						</h3>
+						<small>
+							({{ ratings_count }} {{ 'reviews'|_ }})
+						</small>
+					</div>
+					<div class="icons">
+						{% for i in 1..ratings_stars_int %}
+							<i class="fas fa-star"></i>
+						{% endfor %}
+						{% for i in 1..(5-ratings_stars_int) %}
+							<i class="fas fa-star partial"></i>
+						{% endfor %}
+					</div>
+					<style>
+						.stars .partial {
+							background: -webkit-gradient(linear,left top,right top,color-stop({{ ratings_stars_float * 100 }}%,#425CBB),color-stop({{ ratings_stars_float * 100 }}%,rgba(66,92,187,.5))); 
+							background: -webkit-linear-gradient(left,#425CBB {{ ratings_stars_float * 100 }}%,rgba(66,92,187,.5) {{ ratings_stars_float * 100 }}%); 
+							background: linear-gradient(90deg,#425CBB {{ ratings_stars_float * 100 }}%,rgba(66,92,187,.5) {{ ratings_stars_float * 100 }}%);
+						}
+					</style>
+				</div>
 			</div>
 			<div class="right">
 				<ul class="social">

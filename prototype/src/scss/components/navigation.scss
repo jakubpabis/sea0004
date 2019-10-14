@@ -947,4 +947,45 @@
 
 	}
 
+	.stars {
+		display: inline-block; 
+		margin-left: 60px;
+		transform: translateY(20px);
+		line-height: 1;
+		text-align: center;
+
+		.text {
+			display: inline-block;
+			margin: 0 auto;
+		}
+
+		.rating {
+			margin: 0 auto 10px;
+			line-height: 1;
+			display: inline-block;
+			text-align: center;
+		}
+
+		small {
+			margin: 0 auto 10px;
+			line-height: 1;
+			display: inline-block;
+			text-align: center;
+			font-size: 12px;
+		}
+
+		i {
+			color: $color-tertiary;
+			font-size: 21px;
+		
+			&.partial {
+				color: $color-tertiary;
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+			}
+
+		}
+
+	}
+
 }
