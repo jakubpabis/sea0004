@@ -4,6 +4,7 @@ use Cms\Classes\ComponentBase;
 use Searchit\Jobs\Models\Job;
 use Searchit\Jobs\Models\Type;
 use Searchit\Jobs\Models\Category;
+use Searchit\Team\Models\Team;
 use Illuminate\Pagination\Paginator;
 use DB;
 use Lang;

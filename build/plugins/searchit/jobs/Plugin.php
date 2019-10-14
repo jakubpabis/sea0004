@@ -17,7 +17,8 @@ class Plugin extends PluginBase
             'Searchit\Jobs\Components\FormClient' => 'formClient',
             'Searchit\Jobs\Components\LangCheck' => 'langCheck',
             'Searchit\Jobs\Components\Shortlist' => 'shortlist',
-            'Searchit\Jobs\Components\JobFulfilled' => 'jobFulfilled'
+            'Searchit\Jobs\Components\JobFulfilled' => 'jobFulfilled',
+            'Searchit\Jobs\Components\Recruiter' => 'recruiter',
         ];
     }
 

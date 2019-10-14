@@ -102,6 +102,10 @@ class Cronjob extends ComponentBase
                     $meta_description = null;
                 }
 
+                if($job->contact) {
+                    $recruiter = $job->contact;
+                }
+
                 /*
                 *
                 * Run when job in XML is already in database and modification date is different than one in database.
@@ -123,7 +127,8 @@ class Cronjob extends ComponentBase
                                 'slug'          => $slug,
                                 'meta_title'    => $meta_title,
                                 'meta_keywords' => $meta_keywords,
-                                'meta_description' => $meta_description
+                                'meta_description' => $meta_description,
+                                'recruiter'     => $recruiter
                             ]
                         );
 
@@ -144,7 +149,8 @@ class Cronjob extends ComponentBase
                             'slug'          => $slug,
                             'meta_title'    => $meta_title,
                             'meta_keywords' => $meta_keywords,
-                            'meta_description' => $meta_description
+                            'meta_description' => $meta_description,
+                            'recruiter'     => $recruiter
                         ]
                     );
                     
