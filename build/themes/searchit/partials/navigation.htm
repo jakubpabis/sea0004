@@ -1,25 +1,4 @@
-==
-<?php
 
-public function onStart()
-{
-	$url = 'https://maps.googleapis.com/maps/api/place/details/json?place_id=ChIJYehzZWwKxkcRYEIE2Tips08&fields=rating,user_ratings_total&key=AIzaSyD_CXNi6mCASl4D3Ud9ofmUqE7Lt9Kb5ps';
-	$data = file_get_contents($url);
-	if($data) {
-		$rating = json_decode($data);
-		$this['ratings_stars'] = $rating->result->rating;
-		$this['ratings_stars_int'] = intval($rating->result->rating);
-		if($rating->result->rating - intval($rating->result->rating) > 0.75) {
-			$this['ratings_stars_float'] = 0.75;
-		} else {
-			$this['ratings_stars_float'] = $rating->result->rating - intval($rating->result->rating);
-		}
-		$this['ratings_count'] = $rating->result->user_ratings_total;
-	}
-}
-
-?>
-==
 <nav role="navigation" class="main-navigation">
 	<div class="container">
 		<div class="top">
