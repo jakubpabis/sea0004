@@ -25,6 +25,7 @@ public function onStart()
 				<a href="{{ url('/') }}" class="logo">
 					<object type="image/svg+xml" data="{{ 'assets/img/logo.svg'|theme }}"></object>
 				</a>
+				{% if ratings_count or ratings_stars %}
 				<div class="stars text-center">
 					<div class="text">
 						<i class="fab fa-google"></i>
@@ -52,6 +53,7 @@ public function onStart()
 						}
 					</style>
 				</div>
+				{% endif %}
 			</div>
 			<div class="right">
 				<ul class="social">
