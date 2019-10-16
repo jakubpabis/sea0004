@@ -146,6 +146,7 @@ function stopBodyScrolling (bool) {
 
 function showForm()
 {
+	afterFormOpen();
 	document.getElementById('jobFormModal').style.display = 'flex';
 	setTimeout(function() {
 		document.getElementById('jobFormModal').classList.add('active');
@@ -154,7 +155,6 @@ function showForm()
 		document.getElementsByTagName('body')[0].classList.add('menu-active');
 	}, 50);
 	stopBodyScrolling(true);
-	afterFormOpen();
 }
 
 function hideForm() 
@@ -171,6 +171,7 @@ function hideForm()
 
 function showCVForm()
 {
+	afterFormOpen();
 	document.getElementById('uploadCvModal').style.display = 'flex';
 	setTimeout(function() {
 		document.getElementById('uploadCvModal').classList.add('active');
@@ -179,7 +180,6 @@ function showCVForm()
 		document.getElementsByTagName('body')[0].classList.add('menu-active');
 	}, 50);
 	stopBodyScrolling(true);
-	afterFormOpen();
 }
 
 function hideCVForm() 

@@ -45,9 +45,10 @@ class Form extends ComponentBase
             }
         }
         $this->page['cvCaptcha'] = app('captcha')->display(['data-callback' => 'cvCaptchaCallback']);
-        if(!empty($this->property('jobSlug'))) {
-            $this->page['appCaptcha'] = app('captcha')->display(['data-callback' => 'appCaptchaCallback']);
-        }
+        $this->page['appCaptcha'] = app('captcha')->display(['data-callback' => 'appCaptchaCallback']);
+        // if(!empty($this->property('jobSlug'))) {
+            
+        // }
     }
     
     /**
