@@ -1,5 +1,5 @@
 <div id="uploadCvModal" class="modal" aria-hidden="true">
-    {{ form_open({ method: 'POST', files: 'true', class: 'cv-form', request: 'onFormSubmit',  }) }}
+    {{ form_open({ method: 'POST', files: 'true', class: 'cv-form', id: 'cv-form', request: 'onFormSubmit',  }) }}
         <div class="loading__container">
             <div class="loading-indicator-container">
                 <div class="loading-indicator indicator-center">
@@ -42,8 +42,8 @@
             <span class="d-none">
                 {{ 'Fill the form using'|_ }}:
             </span>
-            
-            {# <button class="li" type="button" onclick="liAuth()">Linkedin</button> #}
+            <script src="https://www.linkedin.com/autofill/js/autofill.js" type="text/javascript" async></script>
+            <script type="IN/Form2" data-form="cv-form" data-field-firstname="cv-applicant-name" data-field-lastname="cv-applicant-name" data-field-phone="cv-applicant-phone" data-field-email="cv-applicant-email" data-field-city="cv-applicant-city" data-field-country="cv-applicant-country" data-field-zip="cv-applicant-zip"></script>
         </div>
         <div class="input-cont">
             {{ form_token() }}
@@ -51,23 +51,23 @@
             <input type="hidden" name="job-id" class="job-id" value="188">
             <input type="hidden" name="form_type" value="cv">
             <label for="applicant-name">{{ 'Name'|_ }} <span>*</span></label>
-            <input type="text" name="applicant-name" value="" required="required" placeholder="{{ 'John Doe'|_ }}">
+            <input id="cv-applicant-name" type="text" name="applicant-name" value="" required="required" placeholder="{{ 'John Doe'|_ }}">
             <label for="applicant-email">{{ 'Email'|_ }} <span>*</span></label>
-            <input type="email" name="applicant-email" value="" required="required" placeholder="{{ 'johndoe@example.com'|_ }}">
+            <input id="cv-applicant-email" type="email" name="applicant-email" value="" required="required" placeholder="{{ 'johndoe@example.com'|_ }}">
             <label for="applicant-phone">{{ 'Phone'|_ }}</label>
-            <input type="tel" name="applicant-phone" value="" placeholder="{{ '+31 123 456 789'|_ }}">
+            <input id="cv-applicant-phone" type="tel" name="applicant-phone" value="" placeholder="{{ '+31 123 456 789'|_ }}">
             <label for="applicant-street">{{ 'Street address'|_ }}</label>
             <input type="text" name="applicant-street" placeholder="{{ 'Prinses Beatrixlaan 23'|_ }}"></input>
             <label for="applicant-city">{{ 'City'|_ }} <span>*</span></label>
-            <input type="text" name="applicant-city" required="required" placeholder="{{ 'S-Gravenhage'|_ }}"></input>
+            <input id="cv-applicant-city" type="text" name="applicant-city" required="required" placeholder="{{ 'S-Gravenhage'|_ }}"></input>
             <div class="row">
                 <div class="zip">
                     <label for="applicant-zip">{{ 'Zip code'|_ }}</label>
-                    <input type="text" name="applicant-zip" placeholder="{{ '2595 AK'|_ }}"></input>
+                    <input id="cv-applicant-zip" type="text" name="applicant-zip" placeholder="{{ '2595 AK'|_ }}"></input>
                 </div>
                 <div class="country">
                     <label for="applicant-country">{{ 'Country'|_ }}</label>
-                    <select name="applicant-country">
+                    <select id="cv-applicant-country" name="applicant-country">
                         <option value="0" selected disabled>{{ 'Choose an option'|_ }}</option>
                         <option value="AF">Afghanistan</option>
                         <option value="AL">Albania</option>
