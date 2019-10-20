@@ -34,9 +34,11 @@ function loadScript( url, callback ) {
 	script.src = url;
 	document.getElementsByTagName( "head" )[0].appendChild( script );
 }
-
 function afterFormOpen()
 {
+	if(isScriptLoaded('https://www.linkedin.com/autofill/js/autofill.js') == false) {
+		addScript('https://www.linkedin.com/autofill/js/autofill.js');
+	}
 	if(isScriptLoaded('https://www.google.com/recaptcha/api.js') == false) {
 		addScript('https://www.google.com/recaptcha/api.js');
 	}

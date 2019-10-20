@@ -10,7 +10,7 @@ public function onStart()
         $this['jobUrl'] = "/nl/vacature/";
 	}
 
-	$url = 'https://maps.googleapis.com/maps/api/place/details/json?place_id=ChIJYehzZWwKxkcRYEIE2Tips08&fields=rating,user_ratings_total&key=AIzaSyAN-L4uGCRjfv0NiflVT7ld29rDMI0DmQc';
+	/*$url = 'https://maps.googleapis.com/maps/api/place/details/json?place_id=ChIJYehzZWwKxkcRYEIE2Tips08&fields=rating,user_ratings_total&key=AIzaSyAN-L4uGCRjfv0NiflVT7ld29rDMI0DmQc';
 	$data = file_get_contents($url);
 	if($data) {
 		$rating = json_decode($data);
@@ -22,7 +22,7 @@ public function onStart()
 			$this['ratings_stars_float'] = $rating->result->rating - intval($rating->result->rating);
 		}
 		$this['ratings_count'] = $rating->result->user_ratings_total;
-	}
+	}*/
 
 }
 
